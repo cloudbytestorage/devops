@@ -1,5 +1,5 @@
 ####### Below script checks for the new errors or warnings introduced  #######
-
+#note that the path where this script should run is relative to jenkins job
 var1=$(grep -i \|error* pylint.log  | head -1  | cut -c32);
 var2=$(grep -i \|error* pylint.log  | head -1  | cut -c33-37);
 echo $var1
