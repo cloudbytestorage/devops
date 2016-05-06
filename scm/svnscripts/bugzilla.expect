@@ -1,0 +1,25 @@
+#/usr/local/bin/expect -f
+
+#set timeout 60
+set timeout -1
+spawn scp /svnrepo/esmgmt/hooks/bugzilla.log root@10.30.1.0:/etc 
+#spawn echo "[lindex $argv 3]\r"
+#spawn ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no [lindex $argv 1]@[lindex $argv 0]
+#scp bugzilla.log root@10.30.1.0:/etc
+expect "yes/no" { 
+    send "yes\r"
+    expect "*?assword" { send "[lindex $argv 2]\r" }
+    } "*?assword" { send "[lindex $argv 2]\r" }
+#added 
+spawn ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no [lindex $argv 1]@[lindex $argv 0]
+
+expect "yes/no" {
+    send "yes\r"
+    expect "*?assword" { send "[lindex $argv 2]\r" }
+    } "*?assword" { send "[lindex $argv 2]\r" }
+
+expect "# " { send "cd  /var/www/html/bugzilla \r" }
+#above line written because it throws compilation error otherwise.
+expect "# " { send "perl bug_svn.pl [lindex $argv 4] [lindex $argv 3]  [lindex $argv 5] \r" }
+
+expect "# " { send "exit\r" }
