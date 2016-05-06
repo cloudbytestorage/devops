@@ -1,4 +1,6 @@
 #basic command "ping" to check connectivity.
+#In case the machines are down the jenkins job will send out a notification 
+#to recipients for the failure of the job
 echo "checking the Main ESX"
 
         ping -c 4 20.10.48.1
