@@ -32,6 +32,7 @@ def get_nfs_cifs_default_params():
             'protocoltype': '', 'mountpoint': ''}
     return vol_def_params
 
+# Sample comment for checkin
 #Overwriting some default values by new values given by user in 'volume' 
 #dictionary
 def get_params(def_params, volume):
