@@ -21,7 +21,7 @@ class JobBuilder implements AsConstruct{
 
         BasicUtils.instance.runClosure(cls, this)
 
-        getOrWarns()        
+        getOrWarns()
     }
 
     void local(Closure cls){
@@ -48,8 +48,10 @@ class JobBuilder implements AsConstruct{
 
         set JobConstructType.http, taskBuilder.buildTaskFromScript(cls)
     }
-    
+
     void https(Closure cls){
-        http(cls)
+        HttpTaskBuilder taskBuilder = new HttpTaskBuilder()
+
+        set JobConstructType.https, taskBuilder.buildTaskFromScript(cls)
     }
 }

@@ -32,9 +32,16 @@ if(conf){
 /*
  * STEP 3 - Display the generated config
  */
-config = config ?: [error: "Config could not be generated from the provided DSL."]
+config = config ?: [
+    error: "Config could not be generated from the provided DSL.",
+    suggest: "Refer to docs on usage of DSL."
+]
 
 BasicUtils.instance.pPrint(config)
+
+/*
+ * STEP 4 - 
+ */
 
 // check if any warnings after parsing
 

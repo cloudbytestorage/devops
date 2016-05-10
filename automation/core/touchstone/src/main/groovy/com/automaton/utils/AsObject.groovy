@@ -27,8 +27,16 @@ trait AsObject {
     }
 
     void fail(key, value){
-        props.put(key, value)
-        props.put(MessagePropertyType.status, MessagePropertyType.failed)
+        
+        Map newprops = [:]
+        
+        newprops.put(key, value)
+        newprops.put(MessagePropertyType.status, MessagePropertyType.failed)
+        
+        List warningVals = get()?.get(MessagePropertyType.warnings, [])
+        warningVals?.add(newprops)
+        
+        get()?.putAt(MessagePropertyType.warnings, warningVals)
     }
 
     boolean isNull(value){

@@ -21,6 +21,10 @@ enum JobConstructType {
      */
     http,
     /*
+     * Property to map against a https task.
+     */
+    https,
+    /*
      * Property to map against a local expression based task. 
      */
     expression,

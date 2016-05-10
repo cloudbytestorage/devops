@@ -1,7 +1,8 @@
 package com.automaton.model.constructs
 
 import com.automaton.types.construct.AutomatonConstructType
-import com.automaton.types.construct.SettingsConstructType;
+import com.automaton.types.construct.TaskConstructType
+import com.automaton.types.generic.MessagePropertyType
 import com.automaton.utils.BasicUtils
 
 /**
@@ -13,14 +14,12 @@ class AutomatonBuilder implements AsConstruct{
 
     def buildAutomatonFromScript(Closure cls){
 
-        if(cls){
-            
-            context = AutomatonConstructType.automaton
-            
-            BasicUtils.instance.runClosure(cls, this)
-            
-        }else{
-            println 'Nil closure provided'
+        context = AutomatonConstructType.automaton
+        
+        if(cls){            
+            BasicUtils.instance.runClosure(cls, this)            
+        }else{            
+            fail(MessagePropertyType.msg, "Nil closure provided to '$context'.")
         }
 
         getOrWarns()
