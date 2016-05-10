@@ -1,0 +1,303 @@
+import static groovy.json.JsonOutput.*
+import groovy.time.*
+
+/*
+ * Execute a command via ssh.
+ * Note - It uses methods & properties exposed by plugin org.hidetake.ssh
+ * Note - The dependency management of above plugin is done at the caller logic.
+ */
+def _ssh_exec = { cmd ->
+
+	if(!cmd){
+		return "ERROR:    cmd not provided"
+	}
+
+	def errBaos = new ByteArrayOutputStream()
+	def opBaos = new ByteArrayOutputStream()
+
+	execute(cmd, ignoreError: true, errorStream: errBaos, outputStream: opBaos)
+
+	def errResult = errBaos.toString().empty ? null : "ERROR:    " + errBaos.toString()
+	def opResult = opBaos.toString().empty ? null : opBaos.toString()
+
+	if(null != errResult){
+		return errResult
+	}else {
+		return opResult
+	}
+}
+
+def _runStatsCounter = { command, stats ->
+
+	if(command){
+		stats.actual_runs++
+	}
+}
+
+def _runStatsCmdOutput = { command, cmdResp, runConfig, stats ->
+
+	if (cmdResp =~ /ERROR:.*/) {
+		stats.cmd_errors << [
+			'cmd': command,
+			'msg': cmdResp
+		]
+		
+		stats.cmd_errors_count++
+		
+	} else if (runConfig.settings.level == 'verbose') {
+		stats.cmd_success << cmdResp
+	}
+}
+
+def _runStatsCmdLatency = { command, startTime, endTime, stats ->
+	if (command) {
+		TimeDuration duration = TimeCategory.minus(endTime, startTime)
+		stats.latency << ['cmd': command, 'report': "Command execution took " + duration]
+	}
+}
+
+def _setOverallVerificationAsFailed = { stats ->
+
+	stats.overall_verifications_status = 'FAILED'
+	stats.overall_failed_verifications_count++
+}
+
+def _setOverallVerificationAsSuccess = { stats ->
+
+	if (stats.overall_verifications_status != 'FAILED') {
+		stats.overall_verifications_status = 'SUCCESS'
+	}
+}
+
+def _runOutputWithCheck = { command, cmdResp, reqStepConfig, stats ->
+
+	def is_check_success = null
+
+	if (reqStepConfig.check && reqStepConfig.check[0]) {
+		is_check_success = reqStepConfig.check[0](cmdResp)
+	} else {
+		is_check_success = true
+	}
+
+	if(!is_check_success){
+
+		stats.failed_checks << [
+			'cmd': command,
+			'msg': reqStepConfig.check[1] ? reqStepConfig.check[1] : "check failed"
+		]
+
+		stats.failed_checks_count++
+	}
+
+	is_check_success
+}
+
+def _runOutputWithStartsWithCheck = { command, cmdResp, reqStepConfig, stats ->
+
+	def is_startswith_check_success = null
+
+	if (reqStepConfig.starts_with && reqStepConfig.starts_with[0]) {
+		is_startswith_check_success = cmdResp =~ /${reqStepConfig.starts_with[0]}.*/
+	} else {
+		is_startswith_check_success = true
+	}
+
+	if(!is_startswith_check_success){
+
+		stats.failed_startswith_checks << [
+			'cmd': command,
+			'msg': reqStepConfig.starts_with[1] ? reqStepConfig.starts_with[1] : "starts with check failed"
+		]
+
+		stats.failed_startswith_checks_count++
+	}
+
+	is_startswith_check_success
+}
+
+def _setOverallStatsAsInProgress = { stats ->
+
+	stats.overall_status = 'RUNS IN PROGRESS'
+}
+
+def _setOverallStatsAsCompleted = { stats ->
+
+	stats.overall_status = 'RUNS COMPLETED SUCCESSFULLY'
+}
+
+def _setOverallStatsAsFailed = { stats ->
+
+	stats.overall_status = 'RUNS COMPLETED WITH ERRORS'
+}
+
+def _setOverallStatsAsExited = { stats ->
+
+	stats.overall_status = 'EXITED DURING EXECUTION'
+}
+
+def _willExit = { stats, runConfig ->
+
+	if(runConfig.settings.exit_condition == 'on_error' && stats.cmd_errors_count > 0){
+		return true
+	} else {
+		return false
+	}
+}
+
+def _run = { delegatedSshExec, reqStepConfig, stats, runConfig ->
+
+	def command = reqStepConfig.cmd
+
+	def startTime = new Date()
+
+	def cmdResp = delegatedSshExec(command)
+
+	def endTime = new Date()
+
+	def is_verification_passed = null
+
+	_runStatsCounter(command, stats)
+
+	_runStatsCmdOutput(command, cmdResp, runConfig, stats)
+
+	_runStatsCmdLatency(command, startTime, endTime, stats)
+
+	is_verification_passed = _runOutputWithCheck(command, cmdResp, reqStepConfig, stats)
+
+	is_verification_passed ? _setOverallVerificationAsSuccess(stats) : _setOverallVerificationAsFailed(stats)
+
+	is_verification_passed = _runOutputWithStartsWithCheck(command, cmdResp, reqStepConfig, stats)
+
+	is_verification_passed ? _setOverallVerificationAsSuccess(stats) : _setOverallVerificationAsFailed(stats)
+
+	_setOverallStatsAsInProgress(stats)
+
+	return _willExit(stats, runConfig)
+}
+
+def _default_settings = '''
+
+	settings {
+		level = 'quiet'
+		exit_condition = 'on_error'
+	}
+
+'''
+
+def _finalSettingsObj = { settings ->
+
+	def defaultConfig = new ConfigSlurper('run settings').parse(_default_settings)
+	def finalConfig = defaultConfig
+
+	if(settings){
+		def settingsConfig  = new ConfigSlurper('run settings').parse(settings)
+		finalConfig = defaultConfig.merge(settingsConfig)
+	}
+
+	finalConfig
+}
+
+def _default_stats = { reqConfig ->
+
+	def no_of_reqs = reqConfig.reqs.keySet().size()
+
+	def stats = [
+		'expected_runs': no_of_reqs,
+		'actual_runs': 0,
+		'latency': [],
+		
+		'cmd_errors': [],
+		'cmd_errors_count': 0,
+		'cmd_success': [],
+		
+		'failed_checks': [],
+		'failed_checks_count': 0,
+
+		'failed_startswith_checks': [],
+		'failed_startswith_checks_count': 0,
+
+		'overall_verifications_status' : "NO VERIFICATIONS DONE",
+		'overall_failed_verifications_count' : 0,
+		'overall_time_taken': "",
+		'overall_status': "RUNS NOT STARTED"
+	]
+
+	stats
+}
+
+def _req_step = { step_name ->
+	def configSlurper = new ConfigSlurper(step_name)
+	configSlurper.registerConditionalBlock('reqs', step_name)
+	configSlurper
+}
+
+def _pPrint = { data ->
+	println prettyPrint(toJson(data)) + '\n'
+}
+
+def _postRun = { will_exit, stats, runStartTime, runEndTime ->
+	
+	if(!will_exit){
+		_setOverallStatsAsCompleted(stats)
+	}
+	
+	if(stats.cmd_errors_count > 0 || stats.overall_failed_verifications_count > 0){
+		_setOverallStatsAsFailed(stats)
+	}
+	
+	TimeDuration duration = TimeCategory.minus(runEndTime, runStartTime)
+	stats.overall_time_taken = duration.toString()
+	
+}
+
+def run = { host, request, settings ->
+
+	def stats = null
+	def runStartTime = new Date()
+	def runEndTime = null
+	
+	ssh.run {
+		session(host) {
+
+			_ssh_exec.delegate = delegate
+
+			def reqConfig = new ConfigSlurper('all reqs').parse(request)
+			def runConfig = _finalSettingsObj(settings)
+
+			// debugging p.o.v
+			_pPrint(['run conf': reqConfig])
+			_pPrint(['run settings': runConfig])
+
+			stats = _default_stats(reqConfig)
+			def reqs = reqConfig.reqs.keySet()
+			def req_step_config = null
+			def will_exit = false
+
+			for (int i = 0; i < stats.expected_runs; i++) {
+
+				req_step_config = _req_step(reqs[i]).parse(request)
+				will_exit = _run(_ssh_exec, req_step_config, stats, runConfig)
+
+				if (will_exit) {
+					_setOverallStatsAsExited(stats)
+					break
+				}
+
+			}
+
+			runEndTime = new Date()
+			_postRun(will_exit, stats, runStartTime, runEndTime)			
+		}
+	}
+
+	_pPrint(['run statistics': stats])
+}
+
+
+/*
+ * The functions to be exposed.
+ */
+ext{
+	tt_ssh = [:]
+	tt_ssh['run'] = run
+}

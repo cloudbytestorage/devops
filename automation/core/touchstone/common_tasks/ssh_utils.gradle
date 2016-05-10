@@ -1,0 +1,170 @@
+/*
+ * Execute a command via ssh.
+ * Note - It uses methods & properties exposed by plugin org.hidetake.ssh
+ * Note - The dependency management of above plugin is done at the caller logic.
+ */
+def _ssh_exec = { cmd ->
+
+	def errBaos = new ByteArrayOutputStream()
+	def opBaos = new ByteArrayOutputStream()
+
+	execute(cmd, ignoreError: true, errorStream: errBaos, outputStream: opBaos)
+
+	def errResult = errBaos.toString().empty ? null : "ERROR:	" + errBaos.toString()
+	def opResult = opBaos.toString().empty ? null : opBaos.toString()
+
+	if(null != errResult){
+		return errResult
+	}else {
+		return opResult
+	}
+}
+
+def _default_settings = { settings ->
+
+	def flow_settings = settings ? settings : ['level': 'quiet', 'exit_condition': 'never']
+
+	if (!flow_settings.level) {
+		flow_settings.level = "quiet"
+	}
+
+	if(!flow_settings.exit_condition) {
+		flow_settings.exit_condition = "never"
+	}
+
+	flow_settings
+}
+
+def _default_result = { options ->
+
+	//def cmd_count = options.keySet().size()
+	def cmd_count = options.size()
+
+	def result = [
+		'expected_runs': cmd_count,
+		'actual_runs': 0,
+		'cmds': [],
+		'errors': [],
+		'success': [],
+		'failed_checks': [],
+		'error_count': 0,
+		'status': "SUCCESS"
+	]
+
+	result
+}
+
+/*
+ * This will try to execute all the commands provided in the collection.
+ * The execution will be done in a sequential manner.
+ * Any error while executing the command will lead to exit of this logic.
+ * 
+ * Note - It uses methods & properties exposed by plugin org.hidetake.ssh
+ * Note - The dependency management of above plugin is done at the caller logic.
+ * Note - A single ssh session will be used.
+ */
+def flow = { host, options, settings ->
+	ssh.run {
+		session(host) {
+
+			_ssh_exec.delegate = delegate
+
+			//def sortedCmds = options.sort { it.key }
+			//def cmd_count = sortedCmds.keySet().size()
+			def cmd_count = options.size()
+			def error_count = 0
+			int actual_runs = 0
+			def cmdObj = null
+			def command = null
+			def is_check_success = true
+			def is_starts_with_success = true
+			def is_error = false
+			def exec_op = null
+
+			//def flow_settings = settings ? settings : ['level': 'quiet', 'exit_condition': 'never']
+			def flow_settings = _default_settings(settings)
+
+			def result = _default_result(options)
+
+			//for (k in sortedCmds.keySet()) {
+			for (int i = 0; i < cmd_count; i++) {
+
+				//cmdObj = sortedCmds[k] ? sortedCmds[k] : []
+				cmdObj = options[i] ? options[i] : []
+
+				command = cmdObj.cmd
+
+				if (flow_settings.level == 'verbose') {
+					result.cmds << command
+				}
+
+				if (command) {
+					exec_op = _ssh_exec(command)
+					actual_runs++
+				} else {
+					continue
+				}
+
+				if (cmdObj.check && cmdObj.check[0]) {
+					is_check_success = cmdObj.check[0](exec_op)										
+				} else {
+					is_check_success = true					
+				}
+
+				if (cmdObj.startsWith && cmdObj.startsWith[0]) {
+					is_starts_with_success = exec_op =~ /${cmdObj.startsWith[0]}.*/				
+				} else {
+					is_starts_with_success = true
+				}
+				
+				if (result.status == 'SUCCESS' && !is_check_success) {
+					result.status = 'FAILED'					
+				} else if (result.status == 'SUCCESS' && !is_starts_with_success) {
+					result.status = 'FAILED'
+				}
+
+				if (!is_check_success && cmdObj.check && cmdObj.check[1]) {
+					result.failed_checks << "'" + command + "' - '" + cmdObj.check[1] + "'"
+				}
+				
+				if (!is_starts_with_success && cmdObj.startsWith && cmdObj.startsWith[1]) {
+					result.failed_checks << "'" + command + "' - '" + cmdObj.startsWith[1] + "'"
+				}
+
+				if (exec_op =~ /ERROR:.*/) {
+					result.errors << exec_op
+					error_count++
+					is_error = true
+				} else {
+					is_error = false
+				}
+
+				if (!is_error && flow_settings.level == 'verbose') {
+					result.success << exec_op
+				}
+
+				if (flow_settings.exit_condition == 'on_error' && error_count > 0) {
+					break
+				}
+			}
+
+			result.actual_runs = actual_runs
+			result.error_count = error_count
+
+			if (actual_runs > 0 && flow_settings.level == 'quiet') {
+				result.success << "..."
+				result.cmds << "..."
+			}
+
+			result
+		}
+	}
+}
+
+/*
+ * The functions to be exposed.
+ */
+ext{
+	tt_ssh = [:]
+	tt_ssh['flow'] = flow
+}

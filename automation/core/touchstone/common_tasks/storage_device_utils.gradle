@@ -1,0 +1,64 @@
+/*
+ * Closure to install parted
+ */
+def install_parted = {
+	yum -y install parted
+}
+
+/*
+ * Closure to create label.
+ * e.g. parted --script /dev/sdb "mklabel msdos"
+ */
+def create_label = {
+	device, label ->
+	labelStr = '"' + label + '"'
+	parted --script device labelStr
+}
+
+/*
+ * Closure to create partition.
+ * e.g. parted --script /dev/sdb "mkpart primary 0% 100%" 
+ */
+def create_partition = {
+	device, partition ->
+	partitionStr = '"' + partition + '"'
+	parted --script device partitionStr
+}
+
+/*
+ * Closure to format with EXT4.
+ * e.g. mkfs.ext4 /dev/sdb1
+ */
+def format_ext4 = {
+	device ->
+	mkfs.ext4 device
+}
+
+/*
+ * Closure to mount the device
+ * e.g. mount /dev/sdb1 /mnt
+ */
+def mount = {
+	device, mountpath ->
+	mount device mountpath
+}
+
+/*
+ * Closure to display the mount.
+ */
+def show = {
+	df -hT
+}
+
+/*
+ * The properties, functions etc. to be exposed.
+ */
+ext{
+	tt_storage_device = [:]
+	tt_storage_device['install_parted'] = install_parted
+	tt_storage_device['create_label'] = create_label
+	tt_storage_device['create_partition'] = create_partition
+	tt_storage_device['format_ext4'] = format_ext4
+	tt_storage_device['mount'] = mount
+	tt_storage_device['show'] = show
+}

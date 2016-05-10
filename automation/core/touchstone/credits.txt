@@ -1,0 +1,6 @@
+ reference - http://mrhaki.blogspot.in/2011/11/groovy-goodness-create-simple-builders.html
+ reference - https://dzone.com/articles/higher-order-functions-groovy--1
+ reference - https://dzone.com/articles/groovy-dsl-scratch-2-hours
+ reference - http://stackoverflow.com/questions/6129067/load-closure-code-from-string-in-groovy
+ reference - http://mrhaki.blogspot.in/2010/08/groovy-goodness-store-closures-in.html
+ reference - http://www.groovy-tutorial.org/basic-files/

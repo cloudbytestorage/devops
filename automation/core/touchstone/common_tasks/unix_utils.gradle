@@ -1,0 +1,24 @@
+/*
+ * Command to diplay list of items of the current path. 
+ */
+def list = { "ls -a" }
+
+/*
+ * Command to display the memory of the system.
+ */
+def free = { "free" }
+
+/*
+ * Command to display the release type & version.
+ */
+def distro = { "cat /etc/*-release" }
+
+/*
+ * The properties, functions etc. to be exposed.
+ */
+ext{
+	tt_unix = [:]
+	tt_unix['list'] = list
+	tt_unix['free'] = free
+	tt_unix['distro'] = distro
+}

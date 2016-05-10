@@ -1,0 +1,6 @@
+// set of utility tasks
+task name << { task -> println "$task.project.name" }
+
+task desc << { task -> println "$task.project.description" }
+
+task version << { task -> println "$task.project.description			--$task.project.version" }

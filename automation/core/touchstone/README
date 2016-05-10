@@ -1,0 +1,85 @@
+The Automaton Project
+===============================
+
+Eclipse Project is already Created
+---------------------------------------
+This project can be imported as an Eclipse Project.
+I am currently using Eclipse Mars.
+Please use eclipse style settings.xml present in the root folder for styling this project.
+
+My windows laptop looks like (others may refer in case things do not run fine)
+---------------------------------------
+JAVA_HOME
+
+C:\Program Files\Java\jdk1.8.0_73
+
+System path
+
+C:\ProgramData\Oracle\Java\javapath;%JAVA_HOME%\bin;C:\Python33\;C:\Python33\Scripts\;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;C:\Program Files\Common Files\Lenovo;C:\Program Files (x86)\Common Files\Ulead Systems\MPEG;C:\Program Files (x86)\Windows Live\Shared;C:\SWTOOLS\ReadyApps;C:\Program Files (x86)\Symantec\VIP Access Client\;C:\Program Files (x86)\Common Files\Lenovo;%MAVEN_HOME%\bin;C:\Program Files (x86)\Git\cmd;C:\Program Files (x86)\KDiff3;C:\Program Files\TortoiseSVN\bin;C:\Users\amit\code_src\play-2.1.5;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\nodejs\;%GRADLE_HOME%\bin;%GROOVY_HOME%\bin
+
+
+amit@CLOUDBYTE-AMIT ~
+$ java -version
+java version "1.8.0_73"
+Java(TM) SE Runtime Environment (build 1.8.0_73-b02)
+Java HotSpot(TM) 64-Bit Server VM (build 25.73-b02, mixed mode)
+
+
+Build Process
+======================
+
+Gradle will automatically download all required dependencies, compile the project, and finally run the example specs. 
+The Gradle build bootstraps itself, alleviating the need to have a build tool preinstalled.
+
+Prerequisites
+-------------
+- JDK 8 or higher
+
+
+Gradle Tips
+--------------------
+gradle eclipse // will generate the eclipse related files
+gradle clean test // to run the tests
+gradle jar // to generate latest jar after compilation
+gradle build // to get the jar file(s)
+gradle projects // list the sub projects & root project
+gradle tasks // all tasks that are available
+gradle <project-path>:tasks // list of the tasks of a project e.g. gradle :ec-eco-core:tasks
+
+Building with Gradle & getting the code coverage reports
+------------------------------------
+Type: ./gradlew clean test jacocoTestReport
+
+
+Downloaded files (including the Gradle distribution itself) will be stored in the Gradle user home directory (typically "<user_home>/.gradle").
+
+Creating an Eclipse project
+---------------------------
+Type: ./gradlew cleanEclipse eclipse
+
+Make sure you have a recent version of the Groovy Eclipse plugin installed. 
+After importing the generated project into a workspace, 
+Go to Preferences->Java->Build Path->Classpath Variables and 
+	add a variable named GRADLE_CACHE with value "<user_home>/.gradle/cache". 
+	(If you have an environment variable GRADLE_USER_HOME set, the correct value is "<GRADLE_USER_HOME>/cache".) 
+
+
+
+Getting hold of the Jars used in this project
+---------------------------------------------
+Type: ./gradlew collectJars
+
+The Jars will be copied to build/output/lib. 
+
+Comments
+---------------
+The comments in build.gradle explain what they are needed for.
+
+Project Usage
+-----------
+gradle clean
+gradle build
+gradle jar
+gradle automaton
+atm --help
+atm --script "...\somefile.groovy"

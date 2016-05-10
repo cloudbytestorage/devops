@@ -1,0 +1,97 @@
+/*
+ * Command to install the iscsi initiator utils.
+ */
+def install = { "yum -y install iscsi-initiator-utils" }
+
+/*
+ * Command to get the installed version.
+ */
+def installed_version = { "iscsiadm --version" }
+
+/*
+ * Series of instructions to install the iscsi initiator utils.
+ * Note: This closure facilitates the caller to invoke this logic
+ * in a single ssh session.
+ * Note: Some of the commands depends on gradle ssh plugin.
+ * Note: The ssh plugin dependency will be set by the caller 
+ */
+def install_cls = { host ->
+	ssh.run {
+		session(host) {
+			def errBaos = new ByteArrayOutputStream()
+			def opBaos = new ByteArrayOutputStream()
+			execute(installed_version(), ignoreError: true, errorStream: errBaos, outputStream: opBaos)
+
+			def errResult = errBaos.toString().empty ? null : "ERROR:	" + errBaos.toString()
+			def opResult = opBaos.toString().empty ? null : opBaos.toString()
+
+			if(opResult){
+				return "INFO: iscsi initiator utils already installed - " + opResult
+			}
+
+			// reset the streams before invoking the next cmd
+			errBaos.reset()
+			opBaos.reset()
+			execute(install(), ignoreError: true, errorStream: errBaos, outputStream: opBaos)
+
+			errResult = errBaos.toString().empty ? null : "ERROR:	" + errBaos.toString()
+			opResult = opBaos.toString().empty ? null : opBaos.toString()
+
+			if(opResult){
+				return opResult
+			}else {
+				return errResult
+			}
+		}
+	}
+}
+
+/*
+ * Condition to check if iscsi initiator is installed or not.
+ * @param : output of some command of iscsi initiator
+ */
+def is_iscsi_installed = { output ->
+	output =~ /.*iscsiadm: command not found/ ? false : true
+}
+
+/*
+ * Command to display the iscsi conf file.
+ */
+def show_conf = { "cat /etc/iscsi/iscsid.conf" }
+
+/*
+ * Command to discover the iscsi target. 
+ * e.g. iscsiadm -m discovery -t sendtargets -p 10.0.0.30
+ */
+def discover_target = { target -> "iscsiadm -m discovery -t sendtargets -p $target" }
+
+/*
+ * Command to display the status of discovery.
+ */
+def discovery_status = { "iscsiadm -m node -o show" }
+
+/*
+ * Command to login to iscsi target.
+ */
+def login = { "iscsiadm -m node --login" }
+
+/*
+ * Command to display established session.
+ */
+def show_session = { "iscsiadm -m session -o show" }
+
+/*
+ * The properties, functions etc. to be exposed.
+ */
+ext{
+	tt_iscsi_utils = [:]
+	tt_iscsi_utils['install'] = install
+	tt_iscsi_utils['install_cls'] = install_cls
+	tt_iscsi_utils['installed_version'] = installed_version
+	tt_iscsi_utils['is_iscsi_installed'] = is_iscsi_installed
+	tt_iscsi_utils['show_conf'] = show_conf
+	tt_iscsi_utils['discover_target'] = discover_target
+	tt_iscsi_utils['discovery_status'] = discovery_status
+	tt_iscsi_utils['login'] = login
+	tt_iscsi_utils['show_session'] = show_session
+}
