@@ -7,6 +7,14 @@ import com.automaton.utils.BasicUtils
 
 class JobBuilder implements AsConstruct{
 
+    private void buildTask(JobConstructType type, TaskBuilder builder, Closure cls){
+        
+        Map props = [:]
+        props[type] = builder.buildTaskFromScript(cls)
+
+        add MessagePropertyType.constructs, props
+    }
+    
     /**
      * Point of entry !!
      * 
@@ -19,45 +27,33 @@ class JobBuilder implements AsConstruct{
 
         context = AutomatonConstructType.job
 
-        buildConstructs()
-        
         BasicUtils.instance.runClosure(cls, this)
 
         getOrWarns()
     }
-    
-    def buildConstructs(){
-        
-    }
 
     void local(Closure cls){
-
-        LocalTaskBuilder taskBuilder = new LocalTaskBuilder()
-
-        set JobConstructType.local, taskBuilder.buildTaskFromScript(cls)
+        
+        buildTask(JobConstructType.local, new LocalTaskBuilder(), cls)
     }
 
     void expression(Closure cls){
-        ExpressionTaskBuilder taskBuilder = new ExpressionTaskBuilder()
-
-        set JobConstructType.expression, taskBuilder.buildTaskFromScript(cls)
+        
+        buildTask(JobConstructType.expression, new ExpressionTaskBuilder(), cls)        
     }
 
     void remote(Closure cls){
-        RemoteTaskBuilder taskBuilder = new RemoteTaskBuilder()
-
-        set JobConstructType.remote, taskBuilder.buildTaskFromScript(cls)
+        
+        buildTask(JobConstructType.remote, new RemoteTaskBuilder(), cls)        
     }
 
     void http(Closure cls){
-        HttpTaskBuilder taskBuilder = new HttpTaskBuilder()
-
-        set JobConstructType.http, taskBuilder.buildTaskFromScript(cls)
+        
+        buildTask(JobConstructType.http, new HttpTaskBuilder(), cls)        
     }
 
     void https(Closure cls){
-        HttpTaskBuilder taskBuilder = new HttpTaskBuilder()
-
-        set JobConstructType.https, taskBuilder.buildTaskFromScript(cls)
+        
+        buildTask(JobConstructType.https, new HttpTaskBuilder(), cls)        
     }
 }

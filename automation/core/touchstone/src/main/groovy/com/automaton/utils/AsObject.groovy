@@ -13,6 +13,14 @@ trait AsObject {
     void set(Map<String, String> props){
         props.putAll(props)
     }
+    
+    void add(key, newValue){
+        List existingVals = get()?.get(key, [])
+        
+        existingVals?.add(newValue)
+        
+        get()?.putAt(key, existingVals)
+    }
 
     Map getWarns(){
         props?.subMap(MessagePropertyType.warnings) ?: null
@@ -36,10 +44,7 @@ trait AsObject {
             newprops.put(MessagePropertyType.suggest, suggestion)
         }
 
-        List warningVals = get()?.get(MessagePropertyType.warnings, [])
-        warningVals?.add(newprops)
-
-        get()?.putAt(MessagePropertyType.warnings, warningVals)
+        add(MessagePropertyType.warnings, newprops)
     }
 
     boolean isNull(value){

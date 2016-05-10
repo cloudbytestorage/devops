@@ -4,6 +4,10 @@
         usecase 'abc', '1.0.0'
         
         job{
+            local {
+                
+            }
+            
             remote {
              
             }
