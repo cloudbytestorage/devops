@@ -1,16 +1,16 @@
-package com.automaton.task.chain
+package com.automaton.task.executors
 
 import java.util.Map;
 
-class FeedData implements Executor{
+class LocalExecutor implements Executor{
 
-    FeedData(Executor next){
+    LocalExecutor(Executor next){
         super(next)
     }
 
     def execute(Map automaton){
         
-        if(feedData(automaton)){
+        if(localExec(automaton)){
             
         }
 

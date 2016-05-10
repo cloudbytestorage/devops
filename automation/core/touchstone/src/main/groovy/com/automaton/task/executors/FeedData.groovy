@@ -1,15 +1,16 @@
-package com.automaton.task.chain
+package com.automaton.task.executors
 
 import java.util.Map;
 
-class RunIf implements Executor{
+class FeedData implements Executor{
 
-    RunIf(Executor next){
+    FeedData(Executor next){
         super(next)
     }
 
     def execute(Map automaton){
-        if(automaton.measureLatency){
+        
+        if(feedData(automaton)){
             
         }
 

@@ -1,6 +1,9 @@
 package com.automaton.types.construct
 
-enum ConnectionConstructType {
+import com.automaton.types.generic.BaseConstructType
+
+
+enum ConnectionConstructType implements BaseConstructType{
     /*
      * Property to map against a host.
      */

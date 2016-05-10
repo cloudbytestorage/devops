@@ -1,8 +1,6 @@
 package com.automaton.model.constructs
 
 import com.automaton.types.construct.AutomatonConstructType
-import com.automaton.types.construct.TaskConstructType
-import com.automaton.types.generic.MessagePropertyType
 import com.automaton.utils.BasicUtils
 
 /**
@@ -12,22 +10,28 @@ import com.automaton.utils.BasicUtils
  */
 class AutomatonBuilder implements AsConstruct{
 
+    private boolean isVersioned = false
+    private boolean hasJob = false
+
+    /*
+     * Entry point
+     */
     def buildAutomatonFromScript(Closure cls){
 
         context = AutomatonConstructType.automaton
-        
-        if(cls){            
-            BasicUtils.instance.runClosure(cls, this)            
-        }else{            
-            fail(MessagePropertyType.msg, "Nil closure provided to '$context'.")
-        }
 
+        cls ? BasicUtils.instance.runClosure(cls, this) : reportFailure("Nil closure provided to '$context'.")
+        
         getOrWarns()
     }
 
     void automaton(Closure cls){
 
         BasicUtils.instance.runClosure(cls, this)
+
+        hasJob ?: reportFailure("'$context' does not have any job construct.", "Provide job and tasks that needs to be automated.")
+
+        versionize()
     }
 
     void job(Closure cls){
@@ -35,6 +39,8 @@ class AutomatonBuilder implements AsConstruct{
         def jobBuilder = new JobBuilder()
 
         set AutomatonConstructType.job, jobBuilder.buildJobFromScript(cls)
+
+        hasJob = true
     }
 
     void conn(Closure cls){
@@ -49,5 +55,18 @@ class AutomatonBuilder implements AsConstruct{
         def settingsBuilder = new SettingsBuilder()
 
         set AutomatonConstructType.settings, settingsBuilder.buildSettingsFromScript(cls)
+    }
+
+    void usecase(String usecaseName, String usecaseVer){
+
+        def versionBuilder = new VersionBuilder()
+
+        set AutomatonConstructType.version, versionBuilder.buildVersion(usecaseName, usecaseVer)
+
+        isVersioned = true
+    }
+
+    void versionize(){
+        isVersioned ?: usecase("NA", "0.0.0")
     }
 }

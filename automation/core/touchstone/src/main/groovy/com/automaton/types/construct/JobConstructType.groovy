@@ -1,4 +1,7 @@
 package com.automaton.types.construct
+
+import com.automaton.types.generic.BaseConstructType
+
 /**
  * The constructs supported within a job construct.
  * There may be multiple occurrences of each construct. 
@@ -7,7 +10,7 @@ package com.automaton.types.construct
  * @author amit.das@cloudbyte.com
  *
  */
-enum JobConstructType {
+enum JobConstructType implements BaseConstructType{    
     /*
      * Property to map against a remote task.
      */

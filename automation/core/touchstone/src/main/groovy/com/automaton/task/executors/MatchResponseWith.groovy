@@ -1,16 +1,16 @@
-package com.automaton.task.chain
+package com.automaton.task.executors
 
 import java.util.Map;
 
-class LocalExecutor implements Executor{
+class MatchResponseWith implements Executor{
 
-    LocalExecutor(Executor next){
+    MatchResponseWith(Executor next){
         super(next)
     }
 
     def execute(Map automaton){
         
-        if(localExec(automaton)){
+        if(matchResponseWith(automaton)){
             
         }
 

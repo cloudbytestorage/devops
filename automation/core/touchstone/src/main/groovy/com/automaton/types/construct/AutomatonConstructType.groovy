@@ -1,17 +1,23 @@
 package com.automaton.types.construct
 
+import com.automaton.types.generic.BaseConstructType
+
 /**
  * The constructs supported within a Automaton construct.
  *  
  * @author amit.das@cloudbyte.com
  *
  */
-enum AutomatonConstructType {
+enum AutomatonConstructType implements BaseConstructType{
 
     /*
      * Property to map automaton.
      */
     automaton,
+    /*
+     * Property to map version.
+     */
+    version,
     /*
      * Property to map job.
      */

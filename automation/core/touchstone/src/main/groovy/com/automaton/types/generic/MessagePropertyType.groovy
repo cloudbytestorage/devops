@@ -16,7 +16,11 @@ enum MessagePropertyType implements BaseType{
     /*
      * Property to map against warnings
      */
-    warnings,    
+    warnings,
+    /*
+     * Property to map against constructs
+     */
+    constructs,   
     /*
      * Used as value
      */

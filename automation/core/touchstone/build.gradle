@@ -16,6 +16,7 @@ allprojects{
     apply plugin: "eclipse"
     apply plugin: "groovy"
 
+    // Remember to chage at Version.groovy file
     version = "0.0.2"
 
     // Spock works with Java 1.8 and above

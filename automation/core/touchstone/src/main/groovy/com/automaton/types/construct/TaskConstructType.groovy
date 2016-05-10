@@ -1,5 +1,7 @@
 package com.automaton.types.construct
 
+import com.automaton.types.generic.BaseConstructType
+
 /**
  * The constructs supported within a task 
  * i.e. remote, or local, or http, or expression construct.
@@ -7,7 +9,7 @@ package com.automaton.types.construct
  * @author amit.das@cloudbyte.com
  *
  */
-enum TaskConstructType {
+enum TaskConstructType implements BaseConstructType{
 
     /*
      * a unique representation of this task

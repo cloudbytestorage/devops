@@ -1,4 +1,4 @@
-package com.automaton.task.chain
+package com.automaton.task.executors
 
 
 class StopMeasureLatency implements Executor{

@@ -17,25 +17,28 @@ trait AsObject {
     Map getWarns(){
         props?.subMap(MessagePropertyType.warnings) ?: null
     }
-    
+
     Map getOrWarns(){
         getWarns() ?: props
     }
-    
+
     Map get(){
         props
     }
 
-    void fail(key, value){
-        
+    void reportFailure(failureMsg, suggestion = null){
+
         Map newprops = [:]
-        
-        newprops.put(key, value)
+
         newprops.put(MessagePropertyType.status, MessagePropertyType.failed)
-        
+        newprops.put(MessagePropertyType.msg, failureMsg)
+        if(suggestion){
+            newprops.put(MessagePropertyType.suggest, suggestion)
+        }
+
         List warningVals = get()?.get(MessagePropertyType.warnings, [])
         warningVals?.add(newprops)
-        
+
         get()?.putAt(MessagePropertyType.warnings, warningVals)
     }
 

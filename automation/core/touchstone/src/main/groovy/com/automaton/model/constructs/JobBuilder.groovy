@@ -19,9 +19,15 @@ class JobBuilder implements AsConstruct{
 
         context = AutomatonConstructType.job
 
+        buildConstructs()
+        
         BasicUtils.instance.runClosure(cls, this)
 
         getOrWarns()
+    }
+    
+    def buildConstructs(){
+        
     }
 
     void local(Closure cls){

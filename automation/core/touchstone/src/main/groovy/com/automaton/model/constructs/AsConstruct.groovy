@@ -35,27 +35,11 @@ trait AsConstruct implements AsObject{
         "Either '$name' is an invalid construct or its arguments are invalid !"
     }
     
-    def methodMissing(String name, args) {
-        Map<String, String> props = [:]
-        props.putAt(MessagePropertyType.status, MessagePropertyType.failed)
-        props.putAt(MessagePropertyType.msg, errConstruct(name))
-        props.putAt(MessagePropertyType.suggest, errSuggestAsInvalidConstruct(name))
-
-        List warningVals = get()?.get(MessagePropertyType.warnings, [])
-        warningVals?.add(props)
-        
-        get()?.putAt(MessagePropertyType.warnings, warningVals)
+    def methodMissing(String name, args) {        
+        reportFailure errConstruct(name), errSuggestAsInvalidConstruct(name)        
     }
 
-    def propertyMissing(String name) {
-        Map<String, String> props = [:]
-        props.putAt(MessagePropertyType.status, MessagePropertyType.failed)
-        props.putAt(MessagePropertyType.msg, errProperty(name))
-        props.putAt(MessagePropertyType.suggest, errSuggestAsConstruct(name))
-
-        List warningVals = get()?.get(MessagePropertyType.warnings, [])
-        warningVals?.add(props)
-        
-        get()?.putAt(MessagePropertyType.warnings, warningVals)
+    def propertyMissing(String name) {        
+        reportFailure errProperty(name), errSuggestAsConstruct(name)        
     }
 }

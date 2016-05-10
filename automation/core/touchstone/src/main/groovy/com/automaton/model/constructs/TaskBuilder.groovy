@@ -25,26 +25,26 @@ trait TaskBuilder implements AsConstruct{
 
     void measure_latency(String truthy){
 
-        isNull(truthy) ? fail(MessagePropertyType.msg, errNilValue(TaskConstructType.measure_latency)) : set(TaskConstructType.measure_latency, BasicUtils.instance.isTrue(truthy))
+        isNull(truthy) ? reportFailure(errNilValue(TaskConstructType.measure_latency)) : set(TaskConstructType.measure_latency, BasicUtils.instance.isTrue(truthy))
     }
 
     void cmd(String command){
 
-        isNull(command) ? fail(MessagePropertyType.msg, errNilValue(TaskConstructType.command)) : set(TaskConstructType.command, command)
+        isNull(command) ? reportFailure(errNilValue(TaskConstructType.command)) : set(TaskConstructType.command, command)
     }
 
     void url(String url){
 
-        isNull(url) ? fail(MessagePropertyType.msg, errNilValue(TaskConstructType.command)) : set(TaskConstructType.command, url)
+        isNull(url) ? reportFailure(errNilValue(TaskConstructType.command)) : set(TaskConstructType.command, url)
     }
 
     void response_starts_with(String match){
 
-        isNull(match) ? fail(MessagePropertyType.msg, errNilValue(TaskConstructType.response_starts_with)) : set(TaskConstructType.response_starts_with, match)
+        isNull(match) ? reportFailure(errNilValue(TaskConstructType.response_starts_with)) : set(TaskConstructType.response_starts_with, match)
     }
 
     void match_response_with(String match){
 
-        isNull(match) ? fail(MessagePropertyType.msg, errNilValue(TaskConstructType.match_response_with)) : set(TaskConstructType.match_response_with, match)
+        isNull(match) ? reportFailure(errNilValue(TaskConstructType.match_response_with)) : set(TaskConstructType.match_response_with, match)
     }
 }
