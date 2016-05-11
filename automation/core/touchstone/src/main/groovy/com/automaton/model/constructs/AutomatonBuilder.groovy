@@ -2,6 +2,7 @@ package com.automaton.model.constructs
 
 import com.automaton.types.construct.AutomatonConstructType
 import com.automaton.utils.BasicUtils
+import com.automaton.utils.Version;
 
 /**
  *
@@ -13,6 +14,10 @@ class AutomatonBuilder implements AsConstruct{
     private boolean isVersioned = false
     private boolean hasJob = false
 
+    private void versionize(){
+        isVersioned ?: usecase(Version.instance.defaultCaseName, Version.instance.defaultCaseVersion)
+    }
+
     /*
      * Entry point
      */
@@ -21,7 +26,7 @@ class AutomatonBuilder implements AsConstruct{
         context = AutomatonConstructType.automaton
 
         cls ? BasicUtils.instance.runClosure(cls, this) : reportFailure("Nil closure provided to '$context'.")
-        
+
         getOrWarns()
     }
 
@@ -64,9 +69,5 @@ class AutomatonBuilder implements AsConstruct{
         set AutomatonConstructType.version, versionBuilder.buildVersion(usecaseName, usecaseVer)
 
         isVersioned = true
-    }
-
-    void versionize(){
-        isVersioned ?: usecase("NA", "0.0.0")
     }
 }

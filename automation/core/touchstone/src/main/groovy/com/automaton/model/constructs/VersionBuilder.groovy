@@ -18,17 +18,17 @@ class VersionBuilder implements AsConstruct{
         context = AutomatonConstructType.version
 
         tool()
-        
+
         usecase(usecaseName, usecaseVer)
-        
+
         getOrWarns()
     }
 
     void usecase(String usecaseName, String usecaseVer){
-        set(VersionConstructType.usecase, usecaseName + ":" + usecaseVer)
+        set(VersionConstructType.usecase, usecaseName + Version.instance.delimiter + usecaseVer)
     }
 
     void tool(){
-        set(VersionConstructType.tool, Version.instance.name + ":" + Version.instance.version)
+        set(VersionConstructType.tool, Version.instance.toolName + Version.instance.delimiter + Version.instance.toolVersion)
     }
 }

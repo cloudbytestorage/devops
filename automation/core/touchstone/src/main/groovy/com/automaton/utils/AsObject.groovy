@@ -15,6 +15,10 @@ trait AsObject {
     }
     
     void add(key, newValue){
+        
+        assert key != null, "Nil key was provided."
+        assert newValue != null, "Nil value was provided."
+        
         List existingVals = get()?.get(key, [])
         
         existingVals?.add(newValue)
@@ -36,6 +40,8 @@ trait AsObject {
 
     void reportFailure(failureMsg, suggestion = null){
 
+        assert failureMsg != null, "Nil failure message was provided."
+        
         Map newprops = [:]
 
         newprops.put(MessagePropertyType.status, MessagePropertyType.failed)
