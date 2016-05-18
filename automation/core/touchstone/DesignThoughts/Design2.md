@@ -64,3 +64,49 @@ the burden of maintaining yet another automation library.
       - A new ConnectableObservable might fit this mode
     - Local execution
       - Existing rxjava operators will fit into this
+
+#### How the DSL will look like (WIP)?
+```Groovy
+  // any one of these are correct
+  // remote, local, http can be considered as automaton tasks
+  // automaton will merge the tasks in sequential or parallel manner
+
+  automaton {
+  	remote(cmd) {
+      // Observable operators
+    }
+  	local(cmd) {
+      // Observable operators
+    }
+  	http(cmd) {
+      // Observable operators
+    }
+  }
+
+  // or
+
+  automaton {
+  	http() { }
+  	remote() { }
+  	local() { }
+  }
+
+  // or
+
+  automaton {
+  	http() { }
+  	remote() { }
+  	remote() { }
+  	local() { }
+  }
+
+  // or
+
+  automaton {
+    local() {}
+    http() {}
+    remote() { }
+    local() { }
+    http() { }
+  }
+```
