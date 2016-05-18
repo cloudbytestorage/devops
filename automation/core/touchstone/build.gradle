@@ -43,6 +43,9 @@ allprojects{
 
         // hidetake ssh
         compile 'org.hidetake:groovy-ssh:2.0.0'
+        
+        // rxjava
+        compile 'io.reactivex:rxjava:1.1.5'
 
         // snakeyaml
         //compile 'org.yaml:snakeyaml:1.17'
