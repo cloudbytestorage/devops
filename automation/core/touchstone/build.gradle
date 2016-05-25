@@ -4,11 +4,10 @@ description = "TOUCHSTONE PROJECT"
 /*
  * Below applies to all projects.
  * 
- * Plan is to allow users create sub projects based on their needs.
+ * local grabs - 
+ * http://stackoverflow.com/questions/33431754/include-dependencies-in-groovy-application-without-repository-access
+ * https://github.com/apache/groovy/blob/master/src/resources/groovy/grape/defaultGrapeConfig.xml
  * 
- * The sub projects will do the specific dependency management.
- * The common_tasks/*.gradle files will contain the utility functions and wrappers 
- * over the 3rd party dependencies.
  */
 allprojects{
 
@@ -30,19 +29,25 @@ allprojects{
         maven { url "http://oss.sonatype.org/content/repositories/snapshots/" }
     }
 
-
     // Add new configuration for
     // dependencies needed to run
     // Groovy command line scripts.
-    configurations { automatonCli }
+    configurations { 
+        automatonCli        
+    }
 
     dependencies {
 
+        compile 'org.codehaus.groovy:groovy-all:2.4.4'
+        
         // dependencies for running our AutomatonCli
         automatonCli "org.codehaus.groovy:groovy-all:2.4.4", "commons-cli:commons-cli:1.2"
 
         // hidetake ssh
         compile 'org.hidetake:groovy-ssh:2.0.0'
+        
+        // aestasit ssh
+        compile 'com.aestasit.infrastructure.sshoogr:sshoogr:0.9.25'
         
         // rxjava
         compile 'io.reactivex:rxjava:1.1.5'
@@ -51,17 +56,16 @@ allprojects{
         //compile 'org.yaml:snakeyaml:1.17'
 
         // mandatory dependencies for using ec.eco.apache.http
-        compile "org.apache.httpcomponents:httpclient:4.2.2"
-        testRuntime "commons-logging:commons-logging:1.2"
+        compile 'org.apache.httpcomponents:httpclient:4.2.2'
+        testRuntime 'commons-logging:commons-logging:1.2'
 
-        // mandatory dependencies for using Spock
-        compile "org.codehaus.groovy:groovy-all:2.4.4"
-        testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
+        // mandatory dependencies for using Spock        
+        //testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
 
         // optional dependencies for using Spock
-        testCompile "org.hamcrest:hamcrest-core:1.3" // only necessary if Hamcrest matchers are used
-        testRuntime "cglib:cglib-nodep:3.1"          // allows mocking of classes (in addition to interfaces)
-        testRuntime "org.objenesis:objenesis:2.1"    // allows mocking of classes without default constructor (together with CGLIB)
+        //testCompile "org.hamcrest:hamcrest-core:1.3" // only necessary if Hamcrest matchers are used
+        //testRuntime "cglib:cglib-nodep:3.1"          // allows mocking of classes (in addition to interfaces)
+        //testRuntime "org.objenesis:objenesis:2.1"    // allows mocking of classes without default constructor (together with CGLIB)
 
     }
 

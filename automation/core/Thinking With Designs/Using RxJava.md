@@ -4,14 +4,17 @@ The entire credit goes to these good fellas. What I have tried to do is to
 categorize them, to make it easy for my understanding.
 
 ##### References
-- http://blog.danlew.net/2015/03/02/dont-break-the-chain/
-- https://github.com/ReactiveX/RxJava/wiki/
-- http://reactivex.io/documentation/observable.html
-- http://blog.danlew.net/2015/07/23/deferring-observable-code-until-subscription-in-rxjava/
-- http://blog.freeside.co/2015/01/29/simple-background-polling-with-rxjava/
-- https://medium.com/@v.danylo/server-polling-and-retrying-failed-operations-with-retrofit-and-rxjava-8bcc7e641a5a#.ygzqdf1of
-- http://stackoverflow.com/questions/34943734/using-of-skipwhile-combined-with-repeatwhen-in-rxjava-to-implement-server-po/34948978
-
+- [dont-break-the-chain](http://blog.danlew.net/2015/03/02/dont-break-the-chain/)
+- [wiki](https://github.com/ReactiveX/RxJava/wiki/)
+- [observable-docs](http://reactivex.io/documentation/observable.html)
+- [defer](http://blog.danlew.net/2015/07/23/deferring-observable-code-until-subscription-in-rxjava/)
+- [polling](http://blog.freeside.co/2015/01/29/simple-background-polling-with-rxjava/)
+- [polling-2](https://medium.com/@v.danylo/server-polling-and-retrying-failed-operations-with-retrofit-and-rxjava-8bcc7e641a5a#.ygzqdf1of)
+- [use or not to use subject](http://davesexton.com/blog/post/To-Use-Subject-Or-Not-To-Use-Subject.aspx)
+- [advantages of subject](http://akarnokd.blogspot.in/2015/06/subjects-part-1.html)
+- [problems with subject](http://tomstechnicalblog.blogspot.in/2016/03/rxjava-problem-with-subjects.html)
+- [parallel computations](http://tomstechnicalblog.blogspot.in/2015/11/rxjava-achieving-parallelization.html)
+- [parallel computations - 2](http://tomstechnicalblog.blogspot.in/2016/02/rxjava-understanding-observeon-and.html)
 
 ##### Observer vs. Observable
 - In ReactiveX an observer subscribes to an Observable
@@ -45,8 +48,108 @@ categorize them, to make it easy for my understanding.
 ```
 
 
-##### Understand RxJava through code snippets
-- combineLatest
+##### Learning from examples !!!
+- **create operator**
+
+```java
+
+	// Signature of the interfaces used internally...
+
+	// public interface OnSubscribe<T> extends Action1<Subscriber<? super T>> {..}
+	// public interface Action1<T> extends Action {...}
+	// public interface Action extends Function {...}
+	// public interface Function {}
+
+	// signature of create present @ Observable.java
+	public static <T> Observable<T> create(OnSubscribe<T> f) {...}
+
+	// invoking create
+	Observable.create(new Observable.OnSubscribe<String>() {
+    @Override
+    public void call(Subscriber<? super String> subscriber) {
+        try {
+            String result = xyzService.operation();
+            subscriber.onNext(result);    // emit data to subscriber
+            subscriber.onCompleted();     // termination signal to subscriber
+        } catch (Exception e) {
+            subscriber.onError(e);        // error signal to subscriber
+        }
+    }
+	});
+
+	// invoking create in Groovy; just concentrate on 'call()' signature
+	Observable.create({ observer ->		
+    observer.onNext([
+	    id: "id-" + id,                
+	    name: "groovy"])
+    observer.onCompleted();
+  })
+
+```
+
+- **fromCallable operator**
+- Do a single IO operation & mark completion
+```java
+	Observable.fromCallable(new Callable<String>() {
+	    @Override
+	    public String call() throws Exception {
+	        return httpCall();
+	    }
+	});
+
+	// in Groovy; concentrate on 'call()' signature
+	Observable.fromCallable({
+		httpCall()
+	})
+```
+
+- **Imperative style to Observable style**
+
+```java
+
+	// source
+	Observable<String> oVal = Observable.just("Hello", "World");
+
+	// transform
+	Observable<Integer> oLen = oVal.map(String::length);
+
+	// listener
+	Subscription printS = oLen.subscribe(System.out::println);
+
+	// vs.
+
+	Observable.just("Hello", "World")
+		.map(String::length)
+		.subscribe(System.out::println)
+```
+
+- **From Observable logic to Subject based logic**
+
+```java
+
+	Observable.just("Hello", "World")
+		.map(String::length)
+		.subscribe(System.out::println)
+
+	// vs.
+
+	PublishSubject<String> subject = PublishSubject.create()
+
+	// set the operator & then the subscription
+	subject.map(String::length)
+		.subscribe(System.out::println);
+
+	// inject values that will be emitted
+	subject.onNext("Hello");
+	subject.onNext("World");
+
+	// mark termination
+	subject.onCompleted();
+
+```
+
+- **Using combineLatest operator**
+
 ```java
 
 	// example 1
@@ -74,7 +177,79 @@ categorize them, to make it easy for my understanding.
 					Arrays.asList(o1, o2),
 					Functions.fromFunc(combineFunction));
 	}
+
 ```
+
+
+##### Understand the source of notifications:
+- A source can be local or external.
+- External source is any Observable or event that exists outside of your code
+- A local source is when you generate an Observable from your code.
+
+
+##### What is a Subject ?
+- A subject is both an Observable as well as an observer.
+- It can subscribe to one or more Observables.
+- It can pass through the items it observes by re-emitting them.
+- It can emit new items.
+- It is a hot Observable. It operates even when there is no Subscriber listening to it.
+
+
+##### What is a ReplaySubject ?
+- Observables keep emitting values, however consumers will consume at their own pace.
+- Sometimes the consumers will get created after Observable has emitted values.
+- When we want a late Subscriber but still want to replay all the events that happened earlier.
+- An unbounded ReplaySubject will cache all the events & can replay it to all subscribers.
+- A limited ReplaySubject will cache based on parameters like count &/or time.
+```java
+
+	// replay modes
+	createWithSize(n)
+	createWithTime(t, u)
+	createWithTimeAndSize(n, t, u)
+```
+
+
+##### What is a PublishSubject ?
+- A hot Observable.
+- Will keep emitting values even without a subscriber.
+
+
+##### What is a AsyncSubject ?
+- It remembers the last element it received
+- On termination it will notify the last element as well as the termination event:
+	- to current listeners
+	- as well as future listeners
+- A flavor of ReplaySubject.
+- An use case for AsyncSubject:
+	- If we want to perform a asynchronous computation.
+	- Then we want to emit the computed value.
+	- Finally we want to terminate i.e. send a completion event.
+
+
+##### What is a BehaviorSubject ?
+- When we want to store a single value
+- Subscribers should immediately receive this value
+- Any subsequent value should be next'd on the Subject
+
+
+##### RxJava - The issues with Subjects !!!
+- Accommodate multiple Observables & get them a subscriber via a Subject.
+- This enables passing the emissions till the Subject's subscriber.
+- Quite convenient.
+- However, look for below pitfalls:
+	- Source is not tightly controlled i.e. not a well defined Observable.
+	- Subjects by default are not thread safe.
+		- Multiple concurrent calls to onNext occur on different threads.
+		- This breaks the Observable contract.
+		- This might create race conditions with the operators.
+		- Ideally only one thread should be passing through a given operator at a time.
+- Quote
+>	An Observable is an immutable chain of operations from the source to the Subscriber,
+>	and the emissions are pushed in a predictable, contained manner.
+>	A Subject introduces mutability to that chain and can break it with unpredictable
+>	emission sources, lost data, and unwanted thread safety behaviors.
+
 
 
 ##### A positive side-effect. The code is clear in its intent.
@@ -168,7 +343,7 @@ categorize them, to make it easy for my understanding.
 
 ##### Observable & comparison of its creational operators
 ```java
-	// Assume a POJO with a instance variable value has below method
+	// Assume a POJO with a instance variable 'value' has below methods
 
 	public Observable<String> valueObservable() {	// (1)
 		return Observable.just(value);
@@ -264,7 +439,7 @@ categorize them, to make it easy for my understanding.
 
 ##### Which one to use: Observer or Subscriber ?
 - Observer is a mechanism to receive push based notifications from Observables.
-- Subscriber is same as an Observer & also permits manual unsubscribing.
+- Subscriber is same as an Observer & also permits manual un-subscribing.
 - Subscriber extends from an Observer.
 - Subscriber has back pressure semantics // TODO write more
 

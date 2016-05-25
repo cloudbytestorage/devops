@@ -57,13 +57,27 @@ the burden of maintaining yet another automation library.
     - Verify phases will parse the DSL & mark it as fit or unfit
   - Run
     - If verification phase passes then run phase will be executed
-  - Execution Mode:
-    - SSH based execution
-      - A new ConnectableObservable might fit this mode
-    - Rest client based execution
-      - A new ConnectableObservable might fit this mode
-    - Local execution
-      - Existing rxjava operators will fit into this
+- Run Logic:
+  - Observables may be created via
+    - fromCallable operator for remote operations
+    - single operator for local operations
+  - Observable chained to a variant of retry operator  
+  - Observable chained to a variant of sample operator
+  - An Observable will wrap the remote/http calls
+  - It might be desired to execute an Observable based on a Predicate.
+  - It might be desired to combine the Observables & have a single subscriber.
+  - Various transformers will verify the content that is emitted by the Observable.
+  - Subscriber will publish the results.
+  - We need to have a file based subscriber that will contain the formatted results.
+  - What if the remote call takes a lot of time for completion?
+- Look out for:
+  - various retry operators
+  - various sample operators
+  - various combination operators
+  - execution on particular Schedulers
+  - take operator or throttle operator along with timeout operator for hang cases
+  - debug the computations & the subscriptions with the Thread names
+
 
 #### How the DSL will look like (WIP)?
 ```Groovy
