@@ -6,7 +6,7 @@ import com.aestasit.infrastructure.ssh.dsl.SshDslEngine
 import com.aestasit.infrastructure.ssh.log.SysOutEventLogger
 import com.automaton.dsl.AutomatonSSHTask;
 
-class GrSshAutomaton {
+class GrSsh {
     
     private Closure<AutomatonSSHTask> task = null
 

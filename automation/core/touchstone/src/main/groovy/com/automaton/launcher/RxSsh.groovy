@@ -12,7 +12,7 @@ import com.aestasit.infrastructure.ssh.log.SysOutEventLogger
 import com.automaton.dsl.AutomatonSSHTask;
 
 @Singleton
-class RxAutomaton {
+class RxSsh {
 
     Observable<AutomatonSSHTask> sequencedTasks;
 
