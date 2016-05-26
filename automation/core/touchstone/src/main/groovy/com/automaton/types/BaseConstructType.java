@@ -1,4 +1,4 @@
-package com.automaton.types.generic;
+package com.automaton.types;
 
 public interface BaseConstructType extends BaseType{
 
