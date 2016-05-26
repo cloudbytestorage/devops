@@ -1,6 +1,7 @@
-package com.automaton.utils
+package com.automaton.dsl
 
-import com.automaton.types.generic.MessagePropertyType
+import com.automaton.types.generic.BaseType
+import com.automaton.types.generic.MessageKey
 
 trait AsObject {
 
@@ -12,6 +13,16 @@ trait AsObject {
 
     void set(Map<String, String> props){
         props.putAll(props)
+    }
+    
+    void incr(BaseType key){
+        assert key != null, "Nil key was provided."
+        
+        int currentCount = get()?.get(key, 0)
+        
+        currentCount++
+        
+        get()?.putAt(key, currentCount)
     }
 
     void add(key, newValue){

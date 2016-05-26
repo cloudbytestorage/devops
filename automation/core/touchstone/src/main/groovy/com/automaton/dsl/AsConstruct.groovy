@@ -1,7 +1,6 @@
-package com.automaton.model.constructs
+package com.automaton.dsl
 
-import com.automaton.types.generic.MessagePropertyType
-import com.automaton.utils.AsObject
+import com.automaton.types.generic.MessageKey
 
 trait AsConstruct implements AsObject{
 
