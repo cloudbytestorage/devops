@@ -360,3 +360,67 @@ mentioned below. The entire credit goes to these good folks.
 
 - The stress should be given to **higher order function**.
 - Template pattern has suddenly become functional with all functional goodies.
+
+
+##### From strategy pattern to just closure function
+
+```java
+
+  List<Program> findPrograms(List<Program> progs, Closure<Boolean> strategy) {
+    progs
+      .findAll(strategy)
+      .asImmutable()
+  }
+
+```
+
+- The stress here is again on **function** i.e. a closure function than a pattern.
+
+
+##### Handling nulls
+- The null value in groovy is not null of java.
+- null.getClass() == org.codehaus.groovy.runtime.NullObject
+- **How does it help ?**
+
+```java
+
+  // collections are safe
+  List<String> doSomething(List<String> words) {
+      return words
+          .findAll { it.startsWith('j') }
+          .collect { it.toUpperCase() }
+  }
+
+  // usage
+  def cities = null
+  def names = ['john', 'jeronimo', 'james']
+
+  // citiesResult == []
+  def citiesResult = doSomething(cities)
+  // namesResult == ['JOHN', 'JERONIMO', 'JAMES']
+  def namesResult = doSomething(names)
+
+```
+
+- Should developers use **findAll** & **collect** to avoid NullPointerException ?
+
+```NOTE: Anything in groovy can use collect() & hence method chain !!!```
+
+- Groovy provides the **elvis** operator for providing default values.
+- Groovy also provides **Optional** pattern
+
+
+##### Groovy & Option
+
+```java
+
+  Option<ImmutableVideo> result =
+    Option
+      .from(video)
+      .map { ImmutableVideo v ->
+          new ImmutableVideo(
+              name: "${v.name}-processed",
+              type: v.type)
+      }
+
+```
