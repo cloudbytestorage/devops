@@ -3,7 +3,9 @@ package com.automaton.experimental
 @Grab('com.aestasit.infrastructure.sshoogr:sshoogr:0.9.25')
 @Grab('com.cb:touchstone:0.0.2')
 
-import com.automaton.GrSshAutomaton
+import com.automaton.launcher.AutomatonSpecsRunner;
+import static groovy.json.JsonOutput.prettyPrint
+import static groovy.json.JsonOutput.toJson
 
 def cythonMacOpts = {
     defaultHost = '20.10.112.21'
@@ -17,43 +19,66 @@ def elastistorMacOpts = {
     defaultPassword = 'test'
 }
 
+def Map container = [:]
 
-// TASK 1 - Remove lock file @ elastistor
-def task1 = new GrSshAutomaton()
-task1.of(elastistorMacOpts, 'remove lock', 'rm /tenants/f7ec4eb1486c3aa6a4bafaa12d93e084/PoolRaidz1/Account1TSM1/amit.has')
-println task1.trigger()
+def automaton = {
+    
+    ssh {
+        to(elastistorMacOpts, 'Remove lock file @ elastistor')
+        
+        run('rm /tenants/f7ec4eb1486c3aa6a4bafaa12d93e084/PoolRaidz1/Account1TSM1/amit.has')
+        
+    }
 
-// TASK 2 - Restart lockd @ elastistor
-def task2 = new GrSshAutomaton()
-task2.of(elastistorMacOpts, 'restart lockd service', 'restart lockd')
-println task2.trigger()
+    ssh('task-002') {
+        to(elastistorMacOpts, 'Restart lockd service @ elastistor')
+        
+        run('restart lockd')
+        
+        storeAs('task-002.output', [])
+    }
 
-// TASK 3 - Trigger execution of cython test cases
-def task3 = new GrSshAutomaton()
-task3.of(cythonMacOpts, 'trigger cython test cases', 'cd /cthon04 && pwd')
-task3.map('verify', {String it ->
-    it.contains("cthon05") ? "true" : "false"
-})
-task3.map('verify once again', {String it ->
-    it ? "yeah" : "naah"
-})
-task3.map('last verification', {String it ->
-    it == "yoho" ? "yoho" : "nono"
-})
-println task3.trigger()
+    ssh {
+        to(cythonMacOpts, 'Trigger cython test cases')
+        
+        run('cd /cthon04 && pwd')
+        
+        storeAs('task-003.output', container)
 
-// TASK 4 - Verify output of cython test cases by sampling at periodic intervals
-def task4 = new GrSshAutomaton()
-task4.of(cythonMacOpts, 'verify cython test cases', 'cd /cthon04 && cat abc.out')
-println task4.trigger()
+        then('is it cthon05', { contains("cthon05") ? "'$it' contains cthon05." : "'$it' does not have cthon05." })
 
-// TASK 5 - Enable lock file & restart lockd @ elastistor
-def task5 = new GrSshAutomaton()
-task5.of(elastistorMacOpts, 'enable lock', 'touch /tenants/f7ec4eb1486c3aa6a4bafaa12d93e084/PoolRaidz1/Account1TSM1/amit.has')
-println task5.trigger()
+        then('verify if numeric', { isNumber() ? "'$it' is a number." : "'$it' is a string." })
 
-// TASK 6 - Restart lockd @ elastistor
-def task6 = new GrSshAutomaton()
-task6.of(elastistorMacOpts, 'restart lockd service', 'restart lockd')
-println task6.trigger()
+        then('verify if empty', { isEmpty() ? "'$it' is an empty thing." : "'$it' is a filled stuff." })
+        
+        storeAs('task-003.output2', container)
+        
+    }
 
+    ssh('task-004') {
+        to(cythonMacOpts, 'Verify cython test cases by sampling at periodic intervals')
+        
+        run('cd /cthon04 && cat abc.out')
+        
+        then { container.get('task-003.output').contains("cthon04") ? "Yes. It is cthon04." : "No. It is not cthon04." }
+    }
+
+    ssh('task-005') {
+        to(elastistorMacOpts, 'Enable lock file @ elastistor')
+        
+        run('touch /tenants/f7ec4eb1486c3aa6a4bafaa12d93e084/PoolRaidz1/Account1TSM1/amit.has')
+        
+        storeAs('task-005.output', container)
+    }
+
+    ssh('task-006', !container.get('task-005.output').contains('No such file')) {
+        
+        to(elastistorMacOpts, 'Restart lockd service @ elastistor')
+        
+        run('restart lockd')
+    }
+}
+
+AutomatonSpecsRunner runner = new AutomatonSpecsRunner()
+
+println prettyPrint(toJson(runner.specification(automaton)))

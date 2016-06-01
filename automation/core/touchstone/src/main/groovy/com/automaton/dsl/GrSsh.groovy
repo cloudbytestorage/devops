@@ -4,45 +4,68 @@ import com.aestasit.infrastructure.ssh.SshOptions
 import com.aestasit.infrastructure.ssh.dsl.CommandOutput
 import com.aestasit.infrastructure.ssh.dsl.SshDslEngine
 import com.aestasit.infrastructure.ssh.log.SysOutEventLogger
+import com.automaton.types.AutomatonSpecs
+import com.automaton.types.SshSpecs
 import com.automaton.utils.BasicUtils
+
 
 /**
  * The class that enables lazy execution of ssh command & 
- * the corresponding map operations.
+ * the corresponding post execute operations. This class can 
+ * be considered as the core class for executing a command
+ * over ssh. 
  * 
  * <p>
- * NOTE - This class is a wrapper over sshoogr-0.9.25 library. 
+ * NOTE - This class is a dependent on sshoogr-0.9.25 library. 
  * 
  * @author amit.das@cloudbyte.com
  *
  */
-class GrSsh {
+class GrSsh implements AsErrHandler{
 
-    private Closure<AutomatonSSHTask> task = null
+    private final String uuid
+
+    private Closure<AutomatonSSHTask> theSshTask = null
+
+    private Map<String, String> props = [:]
 
     private Map<String, Closure> operations = [:]
 
     private Map<String, String> results = [:]
 
-    private final String ERR = "ERROR"
+    /**
+     * Constructor that accepts a unique identifier.
+     * 
+     * @param uuid
+     */
+    GrSsh(String uuid){
+        assert uuid != null, "Nil uuid provided."
+        
+        props.put(AutomatonSpecs.uuid, uuid)
+    }
 
     /**
-     * This will build the ssh command that needs to be executed
-     * at a later point in time.
+     * Set the connection properties & task name.
      * 
+     * @param conn
+     * @param taskName
+     * @return
      */
-    def of(Closure connOpts, String taskName, String cmd){
+    def to(Closure conn, String taskName){
+        of(conn, taskName, "Yet to provide the command")
+    }
 
-        assert connOpts != null, "Nil connection options provided."
-        assert taskName != null, "Nil task name provided."
+    /**
+     * Set the command.
+     *
+     * @param conn
+     * @param taskName
+     * @return
+     */
+    def run(String cmd){
         assert cmd != null, "Nil command provided."
 
-        SshDslEngine sshEngine = buildSshEngine(connOpts)
-
-        // build the function as a closure to be executed later
-        task = {
-            doSsh(sshEngine, taskName, cmd)
-        }
+        props.put(SshSpecs.command, cmd)
     }
 
     /**
@@ -51,12 +74,31 @@ class GrSsh {
      * just executed ssh command.
      * 
      */
-    def map(String name, Closure func){
+    def then(String name, Closure func){
 
         assert name != null, "Nil function name provided."
         assert func != null, "Nil function provided."
 
         operations.put(name, func)
+    }
+
+    /**
+     * An operation that stores the current operational value 
+     * at a point in time. This value can be referred to in future. 
+     * <p>
+     * Note - There might be several operations done on this value
+     * after invoking this method.
+     * 
+     * @param key
+     */
+    def storeAs(String key, Map container){
+        assert key != null, "Nil store key provided."
+
+        operations.put(key, {
+            container.put(key, it)
+            it
+        })
+
     }
 
     /**
@@ -66,22 +108,49 @@ class GrSsh {
      * @return the results
      */
     Map trigger(){
+
         // actual execution of ssh
-        AutomatonSSHTask automatonTask = task()
-        def cmdOutput = automatonTask.cmdOutput
+        AutomatonSSHTask automatonTask = theSshTask()
 
-        results.put('task', automatonTask.name)
-        results.put('command', automatonTask.command)
-        results.put('result', cmdOutput.output)
-        results.put('error', cmdOutput.exception?: "None")
-        results.put('exit_status', cmdOutput.exitStatus)
-        results.put('start_time', 'x:y:z')
-        results.put('end_time', 'x1:y1:z1')
-        results.put('latency', automatonTask.timeTaken)
+        fillSshResults(automatonTask)
 
-        String operationalOutput = cmdOutput.output
+        runPostSshOperations(automatonTask)
+
+        results
+    }
+
+    /**
+     * This will build the ssh command that needs to be executed
+     * at a later point in time.
+     *
+     */
+    private void of(Closure connOpts, String taskName, String cmd){
+
+        assert connOpts != null, "Nil connection options provided."
+        assert taskName != null, "Nil task name provided."
+        assert cmd != null, "Nil command provided."
+
+        props.put(SshSpecs.taskName, taskName)
+        props.put(SshSpecs.command, cmd)
+
+        SshDslEngine sshEngine = buildSshEngine(connOpts)
+
+        // build the function as a closure to be executed later
+        theSshTask = { doSsh(sshEngine) }
+    }
+
+    /**
+     * This runs the operations intended to be executed after running the ssh
+     * command. The operation name as well as the output is saved.
+     * 
+     * @param automatonTask
+     * @return
+     */
+    private runPostSshOperations(AutomatonSSHTask automatonTask){
+        String operationalOutput = automatonTask.cmdOutput.output
 
         operations?.each {
+
             operationalOutput = operationalOutput ?
                     BasicUtils.instance.runClosure(it.value, operationalOutput, operationalOutput) :
                     null
@@ -91,8 +160,17 @@ class GrSsh {
                     results.put(it.key, "Could not run function on nil value.")
 
         }
+    }
 
-        results
+    /**
+     * This fills up the results derived from the output 
+     * by execution of ssh command.
+     * 
+     * @param automatonTask
+     * @return
+     */
+    private fillSshResults(AutomatonSSHTask automatonTask){
+        results << BasicUtils.instance.toMap(automatonTask, true)
     }
 
     /**
@@ -133,13 +211,16 @@ class GrSsh {
      * @param cmd
      * @return
      */
-    private AutomatonSSHTask doSsh(SshDslEngine sshEngine, String taskName, String cmd){
+    private AutomatonSSHTask doSsh(SshDslEngine sshEngine){
         CommandOutput cmdOutput = null
-        sshEngine.remoteSession({cmdOutput = exec(cmd)})
+        sshEngine.remoteSession({cmdOutput = exec(props.get(SshSpecs.command))})
 
         def task = new AutomatonSSHTask(
-                name: taskName,
-                command: cmd,
+                uuid: props.get(AutomatonSpecs.uuid),
+                name: props.get(SshSpecs.taskName),
+                command: props.get(SshSpecs.command),
+                startTime: 'x:y:z',
+                endTime: 'x1:y1:z1',
                 timeTaken: 'x secs',
                 threadName: Thread.currentThread().name,
                 cmdOutput: cmdOutput)

@@ -1,9 +1,11 @@
 package com.automaton.model.constructs
 
+import com.automaton.dsl.AsConstruct
 import com.automaton.types.construct.AutomatonConstructType
 import com.automaton.types.construct.ConnectionConstructType
 import com.automaton.utils.BasicUtils
 
+@Deprecated
 class ConnectionBuilder implements AsConstruct{
 
     def buildConnFromScript(Closure cls){

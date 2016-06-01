@@ -1,9 +1,11 @@
 package com.automaton.model.constructs
 
+import com.automaton.dsl.AsConstruct
 import com.automaton.types.construct.AutomatonConstructType
 import com.automaton.types.construct.VersionConstructType
 import com.automaton.utils.Version
 
+@Deprecated
 class VersionBuilder implements AsConstruct{
 
     /**

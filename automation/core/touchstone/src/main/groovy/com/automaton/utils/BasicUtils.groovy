@@ -3,7 +3,11 @@ package com.automaton.utils
 import static groovy.json.JsonOutput.prettyPrint
 import static groovy.json.JsonOutput.toJson
 
+import java.text.SimpleDateFormat
+
 import com.automaton.model.constructs.AutomatonBuilder
+import com.automaton.types.BaseType
+import com.automaton.types.MessageKey
 
 @Singleton
 class BasicUtils {
@@ -22,6 +26,66 @@ class BasicUtils {
         AutomatonBuilder atmBuilder = new AutomatonBuilder()
         GroovyShell gShell = new GroovyShell()
         atmBuilder.buildAutomatonFromScript(gShell.evaluate(conf.text))
+    }
+
+    def Map getWarnsOrEmpty(Map props){
+        Map warns = props?.subMap(MessageKey.warnings) ?: [:]
+    }
+
+    def Map getWarnsOrInfo(Map props){
+        getWarnsOrEmpty(props) ?: props
+    }
+
+    def void incr(Map props, BaseType key){
+        assert props != null, "Nil props was provided."
+        assert key != null, "Nil key was provided."
+
+        int currentCount = props.get(key, 0)
+
+        currentCount++
+
+        props.putAt(key, currentCount)
+    }
+
+    def Map toMap(object, boolean flatten = false) {
+
+        assert object != null, "Nil object was provided."
+
+        return object.properties
+                .findAll{
+                    (it.key != 'class')
+                }.collectEntries {
+                    it.value == null || it.value instanceof Serializable ?
+                            [it.key, it.value]:
+                            flatten ? toMap(it.value, true) : [it.key, toMap(it.value)]
+                }
+    }
+
+    def void appendTo(Map props, key, newValue){
+
+        assert props != null, "Nil props was provided."
+        assert key != null, "Nil key was provided."
+        assert newValue != null, "Nil value was provided."
+
+        List existingVals = props.get(key, [])
+
+        existingVals?.add(newValue)
+
+        props.putAt(key, existingVals)
+    }
+
+    def void appendToWarns(Map props, failureMsg, suggestion = null){
+        assert props != null, "Nil props was provided."
+        assert failureMsg != null, "Nil failure message was provided."
+
+        Map newprops = [:]
+
+        newprops.put(MessageKey.msg, failureMsg)
+        if(suggestion){
+            newprops.put(MessageKey.suggest, suggestion)
+        }
+
+        appendTo(props, MessageKey.warnings, newprops)
     }
 
     /**
@@ -43,6 +107,10 @@ class BasicUtils {
         clsClone.resolveStrategy = Closure.DELEGATE_ONLY
         // run the closure
         args ? clsClone(args) : clsClone()
+    }
+
+    def time(String format = "yyyy-MM-dd HH:mm:ss"){
+        new SimpleDateFormat(format).format(new Date())
     }
 
     /**

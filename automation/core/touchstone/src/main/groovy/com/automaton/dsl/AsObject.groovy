@@ -1,8 +1,10 @@
 package com.automaton.dsl
 
-import com.automaton.types.generic.BaseType
-import com.automaton.types.generic.MessageKey
+import com.automaton.types.BaseType
+import com.automaton.types.MessageKey
+import com.automaton.types.MessageValue
 
+@Deprecated
 trait AsObject {
 
     private Map props = [:]
@@ -14,14 +16,14 @@ trait AsObject {
     void set(Map<String, String> props){
         props.putAll(props)
     }
-    
+
     void incr(BaseType key){
         assert key != null, "Nil key was provided."
-        
+
         int currentCount = get()?.get(key, 0)
-        
+
         currentCount++
-        
+
         get()?.putAt(key, currentCount)
     }
 
@@ -38,7 +40,7 @@ trait AsObject {
     }
 
     Map getWarns(){
-        props?.subMap(MessagePropertyType.warnings) ?: null
+        props?.subMap(MessageKey.warnings) ?: null
     }
 
     Map getOrWarns(){
@@ -64,13 +66,13 @@ trait AsObject {
 
         Map newprops = [:]
 
-        newprops.put(MessagePropertyType.status, MessagePropertyType.failed)
-        newprops.put(MessagePropertyType.msg, failureMsg)
+        newprops.put(MessageKey.status, MessageValue.failed)
+        newprops.put(MessageKey.msg, failureMsg)
         if(suggestion){
-            newprops.put(MessagePropertyType.suggest, suggestion)
+            newprops.put(MessageKey.suggest, suggestion)
         }
 
-        add(MessagePropertyType.warnings, newprops)
+        add(MessageKey.warnings, newprops)
     }
 
     boolean isNull(value){

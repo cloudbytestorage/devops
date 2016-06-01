@@ -1,8 +1,10 @@
 package com.automaton.model.constructs
 
+import com.automaton.dsl.AsConstruct
 import com.automaton.types.construct.AutomatonConstructType
 import com.automaton.utils.BasicUtils
 
+@Deprecated
 class SettingsBuilder implements AsConstruct{
 
     /**

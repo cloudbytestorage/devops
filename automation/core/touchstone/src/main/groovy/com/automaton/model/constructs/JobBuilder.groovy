@@ -1,10 +1,12 @@
 package com.automaton.model.constructs
 
+import com.automaton.dsl.AsConstruct
+import com.automaton.types.MessageKey
 import com.automaton.types.construct.AutomatonConstructType
 import com.automaton.types.construct.JobConstructType
-import com.automaton.types.generic.MessagePropertyType
 import com.automaton.utils.BasicUtils
 
+@Deprecated
 class JobBuilder implements AsConstruct{
 
     private void buildTask(JobConstructType type, TaskBuilder builder, Closure cls){
@@ -12,7 +14,7 @@ class JobBuilder implements AsConstruct{
         Map props = [:]
         props[type] = builder.buildTaskFromScript(cls)
 
-        add MessagePropertyType.constructs, props
+        add MessageKey.constructs, props
     }
     
     /**

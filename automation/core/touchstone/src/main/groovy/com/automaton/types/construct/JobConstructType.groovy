@@ -1,6 +1,7 @@
 package com.automaton.types.construct
 
-import com.automaton.types.generic.BaseConstructType
+import com.automaton.types.BaseConstructType
+
 
 /**
  * The constructs supported within a job construct.
@@ -10,6 +11,7 @@ import com.automaton.types.generic.BaseConstructType
  * @author amit.das@cloudbyte.com
  *
  */
+@Deprecated
 enum JobConstructType implements BaseConstructType{    
     /*
      * Property to map against a remote task.

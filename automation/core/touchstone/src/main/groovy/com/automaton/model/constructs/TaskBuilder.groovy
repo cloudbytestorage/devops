@@ -1,8 +1,8 @@
 package com.automaton.model.constructs
 
+import com.automaton.dsl.AsConstruct
 import com.automaton.types.construct.JobConstructType
 import com.automaton.types.construct.TaskConstructType
-import com.automaton.types.generic.MessagePropertyType
 import com.automaton.utils.BasicUtils
 
 /**
@@ -10,6 +10,7 @@ import com.automaton.utils.BasicUtils
  * @author amit.das@cloudbyte.com
  *
  */
+@Deprecated
 trait TaskBuilder implements AsConstruct{
 
     def buildTaskFromScript(Closure cls){

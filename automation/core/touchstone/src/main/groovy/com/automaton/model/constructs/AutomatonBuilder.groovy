@@ -1,14 +1,16 @@
 package com.automaton.model.constructs
 
+import com.automaton.dsl.AsConstruct
 import com.automaton.types.construct.AutomatonConstructType
 import com.automaton.utils.BasicUtils
-import com.automaton.utils.Version;
+import com.automaton.utils.Version
 
 /**
  *
  * @author amit.das@cloudbyte.com
  *
  */
+@Deprecated
 class AutomatonBuilder implements AsConstruct{
 
     private boolean isVersioned = false

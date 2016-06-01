@@ -1,8 +1,9 @@
 package com.automaton.types.construct
 
-import com.automaton.types.generic.BaseConstructType
+import com.automaton.types.BaseConstructType
 
 
+@Deprecated
 enum ConnectionConstructType implements BaseConstructType{
     /*
      * Property to map against a host.

@@ -1,7 +1,6 @@
 package com.automaton.dsl
 
-import com.automaton.types.generic.MessageKey
-
+@Deprecated
 trait AsConstruct implements AsObject{
 
     String context

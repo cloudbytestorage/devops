@@ -1,6 +1,7 @@
 package com.automaton.types.construct
 
-import com.automaton.types.generic.BaseConstructType
+import com.automaton.types.BaseConstructType
+
 
 /**
  * The constructs supported within a Automaton construct.

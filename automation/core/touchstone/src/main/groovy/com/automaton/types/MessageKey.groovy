@@ -3,6 +3,7 @@ package com.automaton.types
 enum MessageKey implements BaseType{
 
     msg,
+    hasErrors,
     status,
     suggest,
     warnings,
@@ -10,6 +11,6 @@ enum MessageKey implements BaseType{
     success,
     failed,
     latency,
-    start_time,
-    end_time
+    startTime,
+    endTime
 }
