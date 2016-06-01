@@ -4,12 +4,10 @@ import json
 import time
 import logging
 import subprocess
-from time import ctime
+from time import ctime, sleep
+from subprocess import call, check_output
 from cbrequest import sendrequest, getoutput, executeCmd, getoutput_with_error,\
         resultCollection, getControllerInfoAppend
-
-#logging.basicConfig(format = '%(asctime)s %(message)s', filename = \
-#        'logs/automation_execution.log', filemode = 'a', level=logging.DEBUG)
 
 def get_logger_footer(message):
     logging.info('----------- %s -------------', message)
@@ -30,16 +28,28 @@ def listGlobalSettings_param(stdurl):
         result = ['PASSED', global_config]
         return result
 
-def get_IOPS_values_from_node(datapath, node_ip, node_passwd):
+#filePath = where the output to be saved
+def get_IOPS_values_from_node(datapath, node_ip, node_passwd, filePath):
     cmd = 'reng stats access dataset %s qos | head -n 4 ; sleep 1 ;'\
             'echo "-----------------";'\
             'reng stats access dataset %s qos | head -n 4' \
             %(datapath, datapath)
     logging.debug('executing the command %s in controller', str(cmd))
-    iops_value = getControllerInfoAppend(node_ip, node_passwd, cmd, 'results/result.csv')
+    iops_value = getControllerInfoAppend(node_ip, node_passwd, cmd, filePath)
     logging.debug('iops result is %s', (iops_value))
     return iops_value
 
+#para can be -m or -h or any other parameter
+def mountPointDetails(para, mountPoint):
+    df = subprocess.Popen(["df", para, "%s" %(mountPoint)], \
+            stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    std_output, std_error = df.communicate()
+    if df.returncode != 0 or std_error:
+        std_error = std_error.strip()
+        return ['FAILED', std_error]
+    std_output = ' '.join(std_output.splitlines()[1:])
+    filesystem, size, used, available, percent, mountpoint = std_output.split()
+    return [filesystem, size, used, available, percent, mountpoint]
 
 def updateGlobalSettings(config_name , value, stdurl):
     logging.info('Inside the Global setting update method...')
@@ -58,7 +68,6 @@ def updateGlobalSettings(config_name , value, stdurl):
     else:
         result = ['PASSED', 'Successfully updated global configuration']
         return result
-
 
 def assign_iniator_gp_to_LUN(stdurl, vol_id, account_id, iniator_gp_name):
     #vol_id is volume id and iniator_gp_name is iniator group name
@@ -95,7 +104,6 @@ def assign_iniator_gp_to_LUN(stdurl, vol_id, account_id, iniator_gp_name):
     workerthreads = data['listVolumeiSCSIServiceResponse']['iSCSIService'][0]\
             ['workerthreads']
     logging.debug('workerthreads %s', workerthreads)
-    workerthreads = 26
     querycommand = 'command=listiSCSIInitiator&accountid=%s' %(account_id)
     resp_api = str(stdurl) + str(querycommand)
     logging.debug('RESP API for listiSCSIInitiator...%s', resp_api)
@@ -558,3 +566,140 @@ def get_iops_by_api(vol_id, STDURL):
         errormsg = str(monitorFileSystemQoS_resp.get('monitorFileSystemResponse').get('errortext'))
         logging.error('Not able to get iops due to: %s', errormsg)
         return ['FAILED', errormsg]
+
+
+def add_initator_group(account_id, initGrpName, InitIqn, ntw, stdurl):
+    logging.debug('Inside the add_initiator_group method...')
+    querycommand = 'command=addiSCSIInitiator&accountid=%s&name=%s&'\
+        'initiatorgroup=%s&netmask=%s' \
+        %(account_id, initGrpName, InitIqn, ntw)
+    rest_api = str(stdurl) + str(querycommand)
+    logging.debug('REST API for addiSCSI_initatorGroup...%s', rest_api)
+    resp_addiSCSIAuthGroup = sendrequest(stdurl, querycommand)
+    data = json.loads(resp_addiSCSIAuthGroup.text)
+    logging.debug('Response for addiSCSI_initatorGroup : %s', str(data))
+    if 'errorcode' in str(data):
+        errormsg = str(data['tsmiSCSIInitiatorResponse'].get('errortext'))
+        print errormsg
+        result = ["FAILED", errormsg]
+        return result
+    else:
+        result = ['PASSED', 'Added initiator group "%s" successfully' \
+                                %initGrpName]
+        return result
+#---------------------------------------------------------------------------
+# copying getDiskAllocatedToISCSI, mount_iscsi method from volumeUtils.py
+# this meyhods are used in iscsi_mount_flow
+# to avoid circular dependancy copying this two method
+
+def getDiskAllocatedToISCSI(VSMIP,MountPoint):
+    logging.info('Function execution starts')
+    #config = configFileAccess()
+    toGetIpList = 'iscsiadm -m session'
+    toGetAttachedScsiDisk = "iscsiadm -m session -P3 | grep 'Attached scsi disk'"
+    time.sleep(2)
+    strlist = ToExecuteCmdOnShellAndReturnOutput(toGetIpList)
+    scsiAssociatedDisk = ToExecuteCmdOnShellAndReturnOutput(toGetAttachedScsiDisk)
+    ipList = [i.split(' ')[2].split(':')[0] for i in strlist]
+    accountName = [i.split(' ')[3].split(':')[1].split('\n')[0] for i in strlist]
+    diskAllocatedToScsi = [i.split(' ')[3].split('\t')[0] for i in scsiAssociatedDisk]
+    indexDict = {}
+    for x in range (0,1,1):
+        for i in range(0,len(ipList),1):
+            for j in range(0,len(accountName),1):
+                logging.debug(ipList[i] + " and " + accountName[j])
+                if ipList[i] == VSMIP and accountName[j] == MountPoint:
+                    indexDict = {accountName[j]:accountName.index(accountName[j])}
+    for k in indexDict:
+        indexDict = {k:diskAllocatedToScsi[indexDict[k]]}
+        result = ['PASSED', indexDict]
+        return result
+
+def mount_iscsi(device, vol_name):
+    #this method will work only when you create a partion to your iscsi LUN
+    executeCmd('mkdir -p mount/%s' %(vol_name))
+    mount_result = executeCmd('mount /dev/%s1 mount/%s' %(device, vol_name))
+    if mount_result[0] == 'PASSED':
+        logging.debug('mounted %s at mount/%s successfully', vol_name, vol_name)
+        return ['PASSED', '']
+    logging.error('Not able to mount iscsi LUN: %s', mount_result)
+    return ['FAILED', mount_result]
+#--------------------------------------------------------------------------------
+
+def iscsi_mount_flow(volname, tsm_ip, vol_iqn, vol_mntPoint, fs_type):
+    discover_lun = discover_iscsi_lun(tsm_ip, vol_iqn)
+    if discover_lun[0] == 'FAILED':
+        return ['FAILED', discover_lun[1]]
+    logging.debug('IQN of discovered lun is "%s"', discover_lun[1])
+    lun_login = iscsi_login_logout(discover_lun[1], tsm_ip, 'login')
+    if lun_login[0] == "FAILED":
+        return ["FAILED", lun_login[1]]
+    time.sleep(3)
+    result = getDiskAllocatedToISCSI(tsm_ip, vol_mntPoint)
+    if result[0] == 'PASSED' and vol_mntPoint in str(result[1]):
+        logging.debug('iscsi logged device... %s', result[1][vol_mntPoint])
+        device =  result[1][vol_mntPoint]
+    else:
+        return ['FAILED', 'Not able to get logged in device']
+    fs = execute_mkfs(device, fs_type)
+    if fs[0] == 'FAILED':
+        return ['FAILED', fs[1]]
+    logging.debug('file system "%s" has been written successfully on the lun')
+    mnt_lun = mount_iscsi(device, volname)
+    if mnt_lun[0] == 'FAILED':
+        return ['FAILED', mnt_lun[1]]
+    return ['PASSED', 'Successfully mounted iscsi volume "%s"' %volname, \
+            discover_lun[1], device]
+
+
+#--------------------Unmount methods-------------------------------------------
+
+def umount(mnt_pt):
+    res = call ("umount %s" %(mnt_pt), shell=True)
+    return res
+
+def lazyumount(mnt_pt):
+    call ("umount -l %s" %(mnt_pt), shell=True)
+
+def checkMountUser(mnt_pt):
+    res = check_output ("lsof %s | awk '{print $2}' | grep -v 'PID'" %(mnt_pt), shell=True)
+    list = str(res)
+    pidlist = list.split()
+    return pidlist
+
+def killer(processes):
+    for x in processes:
+        call ("kill -9 %s" %(x), shell=True)
+        sleep(5)
+
+def UMain(path):
+    
+    result = umount(path)
+    
+    if int(result) == 0:
+         print "unmounted volume successfully"
+         logging.debug('unmounted volume successfully')
+
+    elif int(result) == 16:
+        print "umount response is EBUSY"
+        logging.debug('umount response is EBUSY')
+        processlist = checkMountUser(path)
+        print "Processes using mount point are %s" %(processlist)
+        logging.debug('Processes using mount point are %s', processlist)
+        print "Attempting Kill of above processes..."
+        logging.debug('Attempting Kill of above processes...')
+        killer(processlist)
+        print "Attempting umount now.."
+        logging.debug('Attempting umount now..')
+        newresult = umount(path)
+        if int(newresult) == 0:
+            print "unmounted volume successfully NOW"
+            logging.debug('unmounted volume successfully NOW')
+        elif int(newresult) == 16:
+            print "Attempting lazy umount"
+            logging.debug('Attempting lazy umount')
+            lazyumount(path)
+            print "lazy-umounted volume successfully"
+            logging.debug('lazy-umounted volume successfully')
+
+#----------------------Unmount methods ends------------------------------------

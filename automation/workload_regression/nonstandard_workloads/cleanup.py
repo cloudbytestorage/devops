@@ -4,7 +4,7 @@ import md5
 import requests
 import time
 from cbrequest import configFile, sendrequest, filesave, get_apikey, get_url
-
+from utils import assign_iniator_gp_to_LUN
 conf = configFile(sys.argv)
 DEVMAN_IP = conf['host']
 USER = conf['username']
@@ -18,46 +18,59 @@ querycommand = 'command=listFileSystem'
 resp_listFileSystem = sendrequest(stdurl, querycommand)
 filesave("logs/ListFileSystem.txt", "w", resp_listFileSystem)
 data = json.loads(resp_listFileSystem.text)
-filesystems = data["listFilesystemResponse"]["filesystem"]
-for filesystem in filesystems:
-    filesystem_id = filesystem['id']
-    filesystem_name = filesystem['name']
-    querycommand = 'command=deleteFileSystem&id=%s&forcedelete=true' %(filesystem_id)
-    print querycommand
-    resp_delete_volume = sendrequest(stdurl, querycommand)
-    time.sleep(2)
-    filesave("logs/DeleteFileSystem", "w", resp_delete_volume)
-    print "Deleted the Volume", filesystem_name
+filesystems = data["listFilesystemResponse"].get("filesystem")
+if filesystems == None:
+    print 'There are no volumes'
+else:
+    for filesystem in filesystems:
+        filesystem_id = filesystem['id']
+        filesystem_name = filesystem['name']
+        acct_id = filesystem.get('accountid')
+        init_grp = filesystem.get('initiatorgroup')
+        if init_grp == 'ALL':
+            assign_iniator_gp_to_LUN(stdurl, filesystem_id, acct_id, 'None')
+        querycommand = 'command=deleteFileSystem&id=%s&forcedelete=true' %(filesystem_id)
+        print querycommand
+        resp_delete_volume = sendrequest(stdurl, querycommand)
+        time.sleep(2)
+        filesave("logs/DeleteFileSystem", "w", resp_delete_volume)
+        print "Deleted the Volume", filesystem_name
 
 ##########Delete TSMs
 querycommand = 'command=listTsm'
 resp_listTsm = sendrequest(stdurl, querycommand)
 filesave("logs/listTSM.txt", "w", resp_listTsm)
 data = json.loads(resp_listTsm.text)
-tsms = data["listTsmResponse"]["listTsm"]
-for tsm in tsms:
-    tsm_id = tsm['id']
-    tsm_name = tsm['name']
-    querycommand = 'command=deleteTsm&id=%s&forcedelete=true' %(tsm_id)
-    resp_delete_tsm = sendrequest(stdurl, querycommand)
-    time.sleep(2)
-    filesave("logs/Deletetsm", "w", resp_delete_tsm)
-    print "Deleted the TSM", tsm_name
+tsms = data["listTsmResponse"].get("listTsm")
+if tsms == None:
+    print 'There are no tsms'
+else:
+    for tsm in tsms:
+        tsm_id = tsm['id']
+        tsm_name = tsm['name']
+        querycommand = 'command=deleteTsm&id=%s&forcedelete=true' %(tsm_id)
+        resp_delete_tsm = sendrequest(stdurl, querycommand)
+        time.sleep(2)
+        filesave("logs/Deletetsm", "w", resp_delete_tsm)
+        print "Deleted the TSM", tsm_name
 
 ##########Delete HAPool
 querycommand = 'command=listHAPool'
 resp_listHAPool = sendrequest(stdurl, querycommand)
 filesave("logs/listHAPool.txt", "w", resp_listHAPool)
 data = json.loads(resp_listHAPool.text)
-hapools = data["listHAPoolResponse"]["hapool"]
-for hapool in hapools:
-    hapool_id = hapool['id']
-    hapool_name = hapool['name']
-    querycommand = 'command=deleteHAPool&id=%s&forcedelete=true' %(hapool_id)
-    resp_delete_hapool = sendrequest(stdurl, querycommand)
-    time.sleep(2)
-    filesave("logs/DeleteHAPool", "w", resp_delete_hapool)
-    print "Deleted the HAPool", hapool_name
+hapools = data["listHAPoolResponse"].get("hapool")
+if hapools == None:
+    print 'There are no pools'
+else:
+    for hapool in hapools:
+        hapool_id = hapool['id']
+        hapool_name = hapool['name']
+        querycommand = 'command=deleteHAPool&id=%s&forcedelete=true' %(hapool_id)
+        resp_delete_hapool = sendrequest(stdurl, querycommand)
+        time.sleep(2)
+        filesave("logs/DeleteHAPool", "w", resp_delete_hapool)
+        print "Deleted the HAPool", hapool_name
 
 '''
 ##########Delete Accounts

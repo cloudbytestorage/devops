@@ -5,10 +5,8 @@ import os
 import json
 import logging
 from cbrequest import sendrequest, queryAsyncJobResult
-
-logging.basicConfig(format='%(asctime)s %(levelname)s: %(message)s',\
-    filename='logs/automation_execution.log',filemode='a',level=logging.DEBUG)
-
+from poolUtils import listPool, get_pool_info
+from accountUtils import create_account, get_account_info, listAccount_new
 
 def get_tsm_default_params():
     tsm_def_params = {'name': '', 'accountid': '', 'poolid': '', \
@@ -123,9 +121,8 @@ def create_tsm(user_params, stdurl):
         logging.debug('result of create_tsm: %s', str(result))
         return result
 
-
 def delete_tsm(tsm_id, stdurl):
-    logging.info('Inside the delete tsm method...')
+    logging.info('Inside  delete tsm method...')
     querycommand = 'command=deleteTsm&id=%s' %(tsm_id)
     rest_api = str(stdurl) + str(querycommand)
     logging.debug('REST API for deleting TSM: %s', str(rest_api))
@@ -135,13 +132,12 @@ def delete_tsm(tsm_id, stdurl):
     if 'errorcode' in str(data):
         errormsg = str(data['deleteTsmResponse']['errortext'])
         print errormsg
-        result = ['FAILED', errormsg]
+        result = ['FAILED', 'Not able to delete tsm due to: %s', errormsg]
         logging.error('Not able to delete tsm due to: %s', errormsg)
         return result
     else:
         result = ['PASSED', 'Successfully deleted Tsm']
         return result
-
 
 def editTsmQuota(dataset_id, quota, stdurl):
     logging.info('Editing tsm quota method..')
@@ -160,7 +156,6 @@ def editTsmQuota(dataset_id, quota, stdurl):
     else:
         result = ['PASSED', 'Successfully updated TSM quota size']
         return result
-
 
 def editTsmIOPS(tsm_id, iops, stdurl):
     logging.info('Editing tsm iops method..')
@@ -182,7 +177,6 @@ def editTsmIOPS(tsm_id, iops, stdurl):
         result = ['PASSED', 'Successfully updated TSM IOPS value']
         return result
 
-
 def editNFSthreads(tsm_id, threads, stdurl):
     logging.info('Editing NFS thread value method...')
     querycommand = 'command=updateTsmNfsOptions&tsmid=%s&nfsworkerthreads=%s' \
@@ -191,6 +185,7 @@ def editNFSthreads(tsm_id, threads, stdurl):
     logging.debug('REST API for editing tsm IOPS: %s', str(rest_api))
     resp_threadUpdate = sendrequest(stdurl, querycommand)
     data = json.loads(resp_threadUpdate.text)
+    logging.debug('response for editing NFS threads: %s', str(data))
     if 'errorcode' in str(data):
         errormsg = str(data['updateTsmNfsOptionsResponse']['errortext'])
         print errormsg
@@ -201,5 +196,76 @@ def editNFSthreads(tsm_id, threads, stdurl):
         result = ['PASSED', 'Successfully updated thread value']
         return result
 
+def updateTsmIP(tsm_id, tsm_new_IP, stdurl):
+    logging.info('Inside Tsm IP update method...')
+    querycommand='command=updateTsmSettings&tsmid=%s&primaryipaddress=%s'\
+                    '&defaultrouter=0'  %(tsm_id, tsm_new_IP)
+    rest_api = str(stdurl) + str(querycommand)
+    logging.debug('REST API for editing tsm IOPS: %s', str(rest_api))
+    resp_IPUpdate = sendrequest(stdurl, querycommand)
+    data = json.loads(resp_IPUpdate.text)
+    logging.debug('response for updating Tsm IP: %s', str(data))
+    if 'errorcode' in str(data):
+        errormsg = str(data['updateTsmDnsSettingsResponse'].get('errortext'))
+        print errormsg
+        result = ['FAILED', errormsg]
+        return result
+    else:
+        result = ['PASSED', 'Successfully Updated Tsm IP']
+        return result
 
+#tsm_params dict must have : name, tsm ip, interface
+#other params are optional
+#from this method passing pool_id & acct_id to dict
+def tsm_creation_flow(stdurl, poolName, acctName, tsm_params):
+    #pool details
+    list_pool = listPool(stdurl)
+    if list_pool[0] == 'FAILED':
+        return ['FAILED', list_pool[1]]
+    pool_info = get_pool_info(list_pool[1], poolName)
+    if pool_info[0] == 'FAILED':
+        return ['FAILED', pool_info[1]]
+    pool_id = pool_info[1]
+    logging.debug('Pool id of pool "%s" is: %s', poolName, pool_id)
+    #account details
+    account_creation = create_account(acctName, stdurl)
+    if account_creation[0] == 'FAILED' and 'already exists' in str(account_creation[1]):
+        logging.debug('Account already exist, taking its details..')
+    elif account_creation[0] == 'FAILED':
+        return ['FAILED', account_creation[1]]
+    logging.debug('"%s" Account created successfully', acctName)
+    list_acct = listAccount_new(stdurl)
+    if list_acct[0] == 'FAILED':
+        return ['FAILED', list_acct[1]]
+    get_accInfo =  get_account_info(list_acct[1], acctName)
+    if get_accInfo[0] == 'FAILED':
+        return ['FAILED', get_accInfo[1]]
+    acct_id = get_accInfo[1]
+    logging.debug('Account Id of account "%s" is: %s', acctName, acct_id)
+    #tsm details
+    req_ids = {'poolid': pool_id, 'accountid': acct_id}
+    final_tsm_params = dict(tsm_params.items() + req_ids.items())
+    logging.debug('final_tsm_params : %s', final_tsm_params)
+    tsm_creation =  create_tsm(final_tsm_params, stdurl)
+    if tsm_creation[0] == 'FAILED':
+        return ['FAILED', tsm_creation[1]]
+    return ['PASSED', 'Tsm "%s" created successfully' %(tsm_params['name'])]
+
+
+#verify tsmIP whether used or not given in config file
+def verify_tsmIP_from_configFile(config, stdurl):
+    for x in range(1,6):
+        tsmIP = config["ipVSM%s" %x]
+        tsmInterface = config["interfaceVSM%x" %x]
+        tsmList = listTSMWithIP_new(stdurl, tsmIP)
+        if 'There is no VSMs' in tsmList[1]:
+            logging.info('Taking "%s" as tsm IP, to create tsm', tsmIP)
+            return ['PASSED', tsmIP, tsmInterface]
+        else:
+             logging.debug('"%s" IP is already used, hence getting another IP', tsmIP)
+    else:
+        logging.info('Checking extra IP if given in config file')
+        msg = 'All the given tsm IP in config file are used, '\
+                'Please specify unused IP'
+        return ['FAILED', msg]
 

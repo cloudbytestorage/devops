@@ -1,25 +1,28 @@
-# SMGLNSN
+
 '''
 ###############################################################################################################
-# Testcase Name : Continuous_File_Ops_Multiple_Small_Files_NFS                                                #
+# Testcase Name : Continuous_Archival_Ops_NFS                                                                 #
 #                                                                                                             #
-# Testcase Description : This test performs the following actions continuously for fixed set of iterations :  #
-#                        a) Creates multiple small files of varying size (1-10MB) on the NFS volume,          #
-#                        b) writes into the above files,                                                      #
-#                        c) reads from the above files and                                                    # 
-#                        d) Deletes them after a fixed period                                                 #
+# Testcase Description : This test performs the following actions :                                           #
+#                        a) Creates multiple large file of specified size on the NFS volume,                  #
+#                        b) writes into the above file                                                        #
+#                        c) reads from the above file and                                                     # 
+#                        d) zips file after a fixed period with timestamp                                     #
+#                        e) Moves file into backup location (another NFS volume)                              #
+#                                                                                                             #
 #                                                                                                             # 
-# Testcase Pre-Requisites : Pool has to be created                                                            #
+# Testcase Pre-Requisites : Controllers have to be in available state                                         #
 #                                                                                                             #
-# Testcase Creation Date : 27/04/2016                                                                         #
+# Testcase Creation Date : 08/05/2016                                                                         #
 #                                                                                                             #
-# Testcase Last Modified : 27/04/2016                                                                         #  
+# Testcase Last Modified : 23/05/2016                                                                         #  
 #                                                                                                             #  
-# Modifications made : None                                                                                   #  
+# Modifications made : a) Added step to flush cache buffers before read                                       #  
 #                                                                                                             #
-# Testcase Author : Karthik,Mardan                                                                            #
+# Testcase Author : Karthik                                                                                   #
 ###############################################################################################################
 '''
+
 # Import necessary packages and methods
 
 import sys
@@ -29,41 +32,33 @@ from time import ctime
 from cbrequest import get_url, configFile, sendrequest, resultCollection, \
         get_apikey, mountNFS, executeCmd, sshToOtherClient, putFileToController, \
         sshToRemoteClient
-from utils import check_mendatory_arguments, is_blocked, get_logger_footer
+from utils import check_mendatory_arguments, is_blocked, get_logger_footer, UMain
 from haUtils import get_controller_info, list_controller, get_value, get_node_IP
 from poolUtils import listPool, get_pool_info, getFreeDisk, getDiskToAllocate, \
         create_pool, listDiskGroup, delete_pool
 from accountUtils import get_account_id
 from tsmUtils import listTSMWithIP_new, create_tsm, delete_tsm
 from volumeUtils import create_volume, delete_volume, addNFSclient, \
-        listVolumeWithTSMId_new
-
-'''
-# Clear configuration before this test begins
-
-
-CleanUpResult = CleanUp(STDURL)
-if CleanUpResult[0] == 'FAILED':
-    logging.error('Cleanup before starting testcase Continuous_File_Ops_Multiple_Small_Files_NFS')
-    is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
-'''
+        listVolumeWithTSMId_new, get_volume_info
 
 # Clear the log file before execution starts
 
 executeCmd('> logs/automation_execution.log')
 
 # Initialization for Logging location 
-
-logging.basicConfig(format = '%(asctime)s %(message)s', filename = \
-        'logs/Continuous_File_Ops_Multiple_Small_Files_NFS.log', filemode = 'a', level = logging.DEBUG)
+tcName = sys.argv[0]
+tcName = tcName.split('.py')[0]
+logFile = tcName + '.log'
+logging.basicConfig(format='%(asctime)s %(levelname)s: %(message)s',\
+       filename='logs/'+logFile,filemode='a',level=logging.DEBUG)
 
 # Initialization for few common global variables
 
 startTime = ctime()
-HEADER_MSG = 'Testcase "Continuous_File_Ops_Multiple_Small_Files_NFS" is started'
-FOOTER_MSG = 'Testcase "Continuous_File_Ops_Multiple_Small_Files_NFS" is completed'
-BLOCKED_MSG = 'Testcase "Continuous_File_Ops_Multiple_Small_Files_NFS" is blocked'
-EXECUTE_SYNATX = 'python Continuous_File_Ops_Multiple_Small_Files_NFS.py conf.txt'
+HEADER_MSG = 'Testcase "%s" is started' %tcName
+FOOTER_MSG = 'Testcase "%s" is completed' %tcName
+BLOCKED_MSG = 'Testcase "%s" is blocked' %tcName
+EXECUTE_SYNATX = 'python %s.py conf.txt' %tcName
 
 logging.info('%s', HEADER_MSG)
 
@@ -93,13 +88,18 @@ VSM_INTERFACE = conf['interfaceVSM1']
 VSM_DNS = conf['dnsVSM1']
 VSM_NAME = 'VSMTEST'
 
-VOL_NAME = 'VolTest1'
+VOL1_NAME = 'VolTest1'
+VOL2_NAME = 'VolTest2'
+
+VOL1_IOPS = int(POOL_IOPS)/2
+VOL2_IOPS = VOL1_IOPS
 
 CLIENT1_IP = conf['Client1_IP']
 CLIENT1_USER = conf['Client1_user'] 
 CLIENT1_PASSWORD = conf['Client1_pwd']
 
-CLIENT_NFS_MOUNT_PNT = '/mnt/nfs_cont_file_ops_multiple_small'
+CLIENT_NFS_MOUNT_PNT_1 = '/mnt/nfs_source'
+CLIENT_NFS_MOUNT_PNT_2 = '/mnt/nfs_backup'
 
 logging.debug('DEVMAN_IP: %s', DEVMAN_IP)
 logging.debug('USER: %s', USER)
@@ -108,28 +108,27 @@ logging.debug('VSM_IP: %s', VSM_IP)
 logging.debug('APIKEY: %s', APIKEY)
 logging.debug('STDURL: %s', STDURL)
 
-
 # definitions for some methods used in this script
 
 def verify_list_controller(list_cntrl, startTime):
     if list_cntrl[0] == 'PASSED':
         return list_cntrl[1]
-    logging.error('Testcase Continuous_File_Ops_Multiple_Small_Files_NFS is blocked due to' \
-            ': %s',list_cntrl[1])
+    logging.error('Testcase %s is blocked due to' \
+            ': %s',tcName, list_cntrl[1])
     is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
 
 def verify_get_controller_info(get_info, startTime):
     if get_info[0] == 'PASSED':
         return
-    logging.error('Testcase Continuous_File_Ops_Multiple_Small_Files_NFS is blocked due to' \
-            ': %s', get_info[1])
+    logging.error('Testcase %s is blocked due to' \
+            ': %s', tcName, get_info[1])
     is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
 
 def verify_create_volume(result):
     if result[0] == 'PASSED':
         return
-    logging.error('Testcase Continuous_File_Ops_Multiple_Small_Files_NFS is blocked due to' \
-            ': %s', result[1])
+    logging.error('Testcase %s is blocked due to' \
+            ': %s', tcName, result[1])
     is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
 
 # Getting controller info and state before creating pool
@@ -164,23 +163,22 @@ if status.lower() == 'maintenance' and num_of_Nodes == 2:
 elif status.lower() == 'maintenance' and num_of_Nodes == 1:
     logging.error('The single node in HAgroup is in maintenance, testcase cannot proceed')
     is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
-    
+
 # Steps to get free disk list for pool creation
 
 freedisk = getFreeDisk(ctrl_disks)
 if freedisk[0] == 'FAILED':
-    logging.error('Testcase Continuous_File_Ops_Multiple_Small_Files_NFS is blocked due to' \
-           ': %s', freedisk[1])
+    logging.error('Testcase %s is blocked due to' \
+           ': %s', tcName, freedisk[1])
     is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
 freedisk = freedisk[1]
 
 # Steps to get allocatable disks for pool (based on size, type etc..,)
 
 allocatable_diskidlist = getDiskToAllocate(freedisk, NUM_POOL_DISKS, POOL_DISK_TYPE)
-
 if allocatable_diskidlist[0] == 'FAILED':
-    logging.error('Testcase Continuous_File_Ops_Multiple_Small_Files_NFS is blocked due to' \
-            ': %s', allocatable_diskidlist[1])
+    logging.error('Testcase %s is blocked due to' \
+            ': %s', tcName, allocatable_diskidlist[1])
     is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
 allocatable_diskidlist = allocatable_diskidlist[1]
 
@@ -194,18 +192,16 @@ pool_params = {'name': POOL_NAME, 'siteid': site_id, 'clusterid': ctrl_cluster_i
 
 pool_creation = create_pool(pool_params, STDURL)
 if pool_creation[0] == 'FAILED':
-    logging.error('Testcase Continuous_File_Ops_Multiple_Small_Files_NFS is blocked due to' \
-           ' : %s', pool_creation[1])
+    logging.error('Testcase %s is blocked due to' \
+           ' : %s', tcName, pool_creation[1])
     is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
-
-
 
 # Obtain the Pool list for before extracting the name
 
 pool_list = listPool(STDURL)
 if pool_list[0] == 'FAILED':
-    logging.error('Testcase Continuous_File_Ops_Multiple_Small_Files_NFS is blocked due to' \
-            ': %s', pool_list[1])
+    logging.error('Testcase %s is blocked due to' \
+            ': %s', tcName, pool_list[1])
     is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
 pool_list = pool_list[1]
 
@@ -214,8 +210,8 @@ pool_list = pool_list[1]
 #pool_info = get_pool_info(pool_list, POOL_NAME)
 pool_info = get_pool_info(pool_list, None)
 if pool_info[0] == 'FAILED':
-    logging.error('Testcase Continuous_File_Ops_Multiple_Small_Files_NFS is blocked due to' \
-           ' : %s', pool_info[1])
+    logging.error('Testcase %s is blocked due to' \
+           ' : %s', tcName, pool_info[1])
 
 # Extract the pool_id from the info obtained for said pool above
 
@@ -225,8 +221,8 @@ pool_id = pool_info[1] # Note that in get_pool_info return value, pool_info[1] i
 
 account_id = get_account_id(STDURL, None) # 2nd param is acc_name, if None, taken as 1st acc
 if account_id[0] == 'FAILED':
-    logging.error('Testcase Continuous_File_Ops_Multiple_Small_Files_NFS is blocked due to' \
-           ': %s', account_id[1])
+    logging.error('Testcase %s is blocked due to' \
+           ': %s', tcName, account_id[1])
     is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
 account_id = account_id[1]
 
@@ -241,105 +237,127 @@ vsm_dict = {'name': VSM_NAME, 'accountid': account_id, 'poolid': \
 
 result = create_tsm(vsm_dict, STDURL) # This method is an aberration, elsewhere STDURL is 1st param
 if result[0] == 'FAILED':
-    logging.error('Testcase Continuous_File_Ops_Multiple_Small_Files_NFS is blocked due to' \
-            ': %s', result[1])
+    logging.error('Testcase %s is blocked due to' \
+            ': %s', tcName, result[1])
     is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
 
 # Get the info for the VSM created above (this list method response contains id, not create, so needed)
 
 vsm = listTSMWithIP_new(STDURL, VSM_IP)
 if vsm[0] == 'FAILED':
-    logging.error('Testcase Continuous_File_Ops_Multiple_Small_Files_NFS is blocked due to' \
-            ': %s', tsm[1])
+    logging.error('Testcase %s is blocked due to' \
+            ': %s', tcName, tsm[1])
     is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
 vsminfo = vsm[1]
 print vsminfo
+
 # Extract the vsm_id & vsm_dataset_id from info obtained above
 
 vsm_id = vsminfo[0].get('id')
 vsm_dataset_id = vsminfo[0].get('datasetid')
 
-# Provide variables for Volume creation (from conf & hardcode) in dict format 
+# Provide variables for Volume1 & Volume2 creation (from conf & hardcode) in dict format 
 
-vol_dict = {'name': VOL_NAME, 'quotasize': '500G', 'tsmid': vsm_id, 'iops': POOL_IOPS, \
+vol1_dict = {'name': VOL1_NAME, 'quotasize': '500G', 'tsmid': vsm_id, 'iops': VOL1_IOPS, \
         'datasetid': vsm_dataset_id, 'protocoltype': 'NFS'}
 
-# Create Volume using the vsm_ids and params specified 
+vol2_dict = {'name': VOL2_NAME, 'quotasize': '500G', 'tsmid': vsm_id, 'iops': VOL2_IOPS, \
+        'datasetid': vsm_dataset_id, 'protocoltype': 'NFS'}
 
-result = create_volume(vol_dict, STDURL)
+# Create Volume1 & Volume2 using the vsm_ids and params specified 
+
+result = create_volume(vol1_dict, STDURL)
+verify_create_volume(result)
+
+result = create_volume(vol2_dict, STDURL)
 verify_create_volume(result)
 
 # Get the info for the Volume created above (this list method response contains id, etc.., not create, so needed)
 
 volumes = listVolumeWithTSMId_new(STDURL, vsm_id)
 if volumes[0] == 'FAILED':
-    logging.error('Testcase Continuous_File_Ops_Multiple_Small_Files_NFS is blocked due to' \
-            ': %s', volumes[1])
+    logging.error('Testcase %s is blocked due to' \
+            ': %s', tcName, volumes[1])
     is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
 volumes = volumes[1]
 
-# Extract the vol_id & vol_mnt_pt from info obtained above
+# Extract the vol_id & vol_mnt_pt for both volumes from info obtained above
 
+'''
 for vol in volumes:
     vol_id = vol.get('id')
     vol_mnt_pt = vol.get('mountpoint')
+'''
 
-# Updating nfs client access property for volume
+vol1_info = get_volume_info(volumes, VOL1_NAME)
+vol1_id, vol1_mnt_pt = vol1_info[2], vol1_info[3]
+print vol1_id, vol1_mnt_pt
 
+vol2_info = get_volume_info(volumes, VOL2_NAME)
+vol2_id, vol2_mnt_pt = vol2_info[2], vol2_info[3]
+print vol2_id, vol2_mnt_pt
 
-result = addNFSclient(STDURL, vol_id, 'ALL')
+# Updating nfs client access property for both volume
+
+result = addNFSclient(STDURL, vol1_id, 'ALL')
 if result[0] == 'FAILED':
-    logging.error('Testcase Continuous_File_Ops_Multiple_Small_Files_NFS is blocked due to' \
-            ': %s', result[1])
+    logging.error('Testcase %s is blocked due to' \
+            ': %s', tcName, result[1])
     is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
 
+result = addNFSclient(STDURL, vol2_id, 'ALL')
+if result[0] == 'FAILED':
+    logging.error('Testcase %s is blocked due to' \
+            ': %s', tcName, result[1])
+    is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
 
-# Form the command to mount, will be sent to client for execution
+# Form the command to mount source & destintion, will be sent to client for execution
 
-mkdir_cmd = 'mkdir %s' %(CLIENT_NFS_MOUNT_PNT) # Way to assign string where using %s
-mount_cmd = 'mount -o mountproto=tcp,sync %s:/%s %s' %(VSM_IP, vol_mnt_pt, CLIENT_NFS_MOUNT_PNT)
-check_mount_cmd = 'df -h | grep %s' %(vol_mnt_pt)
+source_mkdir_cmd = 'mkdir %s' %(CLIENT_NFS_MOUNT_PNT_1) # Way to assign string where using %s
+source_mount_cmd = 'mount -o mountproto=tcp,sync %s:/%s %s' %(VSM_IP, vol1_mnt_pt, CLIENT_NFS_MOUNT_PNT_1)
+source_check_mount_cmd = 'df -h | grep %s' %(vol1_mnt_pt)
 
-# Perform the nfs mount on the client machine
+dest_mkdir_cmd = 'mkdir %s' %(CLIENT_NFS_MOUNT_PNT_2) # Way to assign string where using %s
+dest_mount_cmd = 'mount -o mountproto=tcp,sync %s:/%s %s' %(VSM_IP, vol2_mnt_pt, CLIENT_NFS_MOUNT_PNT_2)
+dest_check_mount_cmd = 'df -h | grep %s' %(vol2_mnt_pt)
 
-mkdir_result = sshToOtherClient(CLIENT1_IP, CLIENT1_USER, CLIENT1_PASSWORD, mkdir_cmd)
-mount_result = sshToOtherClient(CLIENT1_IP, CLIENT1_USER, CLIENT1_PASSWORD, mount_cmd)
-check_mount_result = sshToOtherClient(CLIENT1_IP, CLIENT1_USER, CLIENT1_PASSWORD, check_mount_cmd)
-if '%s' %(vol_mnt_pt) in str(check_mount_result):
-    print "Volume is mounted successfully"
+# Perform the source nfs mount on the client machine
+
+mkdir_result = sshToOtherClient(CLIENT1_IP, CLIENT1_USER, CLIENT1_PASSWORD, source_mkdir_cmd)
+mount_result = sshToOtherClient(CLIENT1_IP, CLIENT1_USER, CLIENT1_PASSWORD, source_mount_cmd)
+check_mount_result = sshToOtherClient(CLIENT1_IP, CLIENT1_USER, CLIENT1_PASSWORD, source_check_mount_cmd)
+
+if '%s' %(vol1_mnt_pt) in str(check_mount_result):
+    print "Source Volume is mounted successfully"
 else:
-    print "Volume is not mounted successfully" 
-    logging.error('Testcase Continuous_File_Ops_Multiple_Small_Files_NFS is blocked due to' \
-            ': %s', mount_result)
+    print "Source Volume is not mounted successfully" 
+    logging.error('Testcase %s is blocked due to' \
+            ': %s', tcName, mount_result)
+    is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
+
+# Perform the dest nfs mount on the client machine
+
+mkdir_result = sshToOtherClient(CLIENT1_IP, CLIENT1_USER, CLIENT1_PASSWORD, dest_mkdir_cmd)
+mount_result = sshToOtherClient(CLIENT1_IP, CLIENT1_USER, CLIENT1_PASSWORD, dest_mount_cmd)
+check_mount_result = sshToOtherClient(CLIENT1_IP, CLIENT1_USER, CLIENT1_PASSWORD, dest_check_mount_cmd)
+
+if '%s' %(vol2_mnt_pt) in str(check_mount_result):
+    print "Destination Volume is mounted successfully"
+else:
+    print "Destination Volume is not mounted successfully"
+    logging.error('Testcase %s is blocked due to' \
+            ': %s', tcName, mount_result)
     is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
 
 # Transfer the shell script that will run the workload 
 
-#src_file = 'FileCreateReadModifyWriteDelete.sh'
-#src_file = 'FileCreateReadModifyWriteDelete.py'
-#dst_file = src_file
-#file_transfer_result = putFileToController(CLIENT1_IP, CLIENT1_PASSWORD, src_file, dst_file)
-
-src_file_1 = 'SmallFileCreate.py'
-src_file_2 = 'SmallFileReadModify.py'
-src_file_3 = 'SmallFileDelete.py'
-
-dst_file_1 = src_file_1
-dst_file_2 = src_file_2
-dst_file_3 = src_file_3
-
-file_transfer_result_1 = putFileToController(CLIENT1_IP, CLIENT1_PASSWORD, src_file_1, dst_file_1)
-file_transfer_result_2 = putFileToController(CLIENT1_IP, CLIENT1_PASSWORD, src_file_2, dst_file_2)
-file_transfer_result_3 = putFileToController(CLIENT1_IP, CLIENT1_PASSWORD, src_file_3, dst_file_3)
+src_file = 'AMSx-WLAx-NSWx-NFSx-xxxx-AUX1_ARCHIVAL_FILE_OPS.py'
+dst_file = src_file
+file_transfer_result = putFileToController(CLIENT1_IP, CLIENT1_PASSWORD, src_file, dst_file)
 
 # Form the command that will run the workload on the NFS mount point
 
-#run_workload_cmd = 'sh FileCreateReadModifyWriteDelete.sh %s' %(CLIENT_NFS_MOUNT_PNT)
-#run_workload_cmd = 'nohup python FileCreateReadModifyWriteDelete.py %s' %(CLIENT_NFS_MOUNT_PNT)
-
-run_workload_cmd_1 = 'nohup python SmallFileCreate.py %s' %(CLIENT_NFS_MOUNT_PNT)
-run_workload_cmd_2 = 'nohup python SmallFileReadModify.py %s' %(CLIENT_NFS_MOUNT_PNT)
-run_workload_cmd_3 = 'nohup python SmallFileDelete.py %s' %(CLIENT_NFS_MOUNT_PNT)
+run_workload_cmd = 'python %s %s %s' %(src_file, CLIENT_NFS_MOUNT_PNT_1, CLIENT_NFS_MOUNT_PNT_2)
 
 # Note the time when the workload starts
 
@@ -347,11 +365,8 @@ startTime = ctime()
 
 # Run the File Create Read ModifyWrite Delete Ops on the NFS mount point for 5 iterations
 
-sshToOtherClient(CLIENT1_IP, CLIENT1_USER, CLIENT1_PASSWORD, run_workload_cmd_1)
-sshToOtherClient(CLIENT1_IP, CLIENT1_USER, CLIENT1_PASSWORD, run_workload_cmd_2)
-sshToOtherClient(CLIENT1_IP, CLIENT1_USER, CLIENT1_PASSWORD, run_workload_cmd_3)
+sshToOtherClient(CLIENT1_IP, CLIENT1_USER, CLIENT1_PASSWORD, run_workload_cmd)
 
-#sshToRemoteClient(CLIENT1_IP, CLIENT1_USER, CLIENT1_PASSWORD, run_workload_cmd)
 # Note the time when the workload execution has completed
 
 endTime = ctime()
@@ -359,26 +374,15 @@ endTime = ctime()
 # Grep the workload script's log file to verify successful run
 
 test_result = sshToOtherClient(CLIENT1_IP, CLIENT1_USER, CLIENT1_PASSWORD, \
-        'grep -w "CREATED\|MODIFIED\|DELETED" FileCreateReadModifyWriteDelete.log | wc -l')
-if int(test_result) == 3:
+        'grep -w "CREATED\|MODIFIED\|ARCHIVED\|DELETED" Archival.log | wc -l')
+if int(test_result) > 4:
     print "Workload has run successfully"
-    logging.info('Testcase Continuous_File_Ops_Multiple_Small_Files_NFS is successfully completed')
-    resultCollection('Testcase Continuous_File_Ops_Multiple_Small_Files_NFS is %s', \
+    logging.info('Testcase %s is successfully completed', tcName)
+    resultCollection('Testcase %s is :' %tcName, \
             ['PASSED', ''], startTime, endTime)
 else:
-    logging.error('Testcase Continuous_File_Ops_Multiple_Small_Files_NFS is failed,' \
-            'look at client logs')
-    resultCollection('Testcase Continuous_File_Ops_Multiple_Small_Files_NFS is %s', \
+    logging.error('Testcase %s is failed,' \
+            'look at client logs', tcName)
+    resultCollection('Testcase %s is :' %tcName, \
             ['FAILED', ''], startTime, endTime)
-
-
-
-
-
-
-
-
-
-
-
 

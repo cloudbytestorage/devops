@@ -34,16 +34,29 @@ from cbrequest import get_url, configFile, sendrequest, mountNFS, get_apikey, \
         executeCmd, sshToOtherClient, resultCollection, getControllerInfo, \
         putFileToController
 from utils import check_mendatory_arguments, is_blocked, get_logger_footer, \
-        get_iops_by_api
+        get_iops_by_api, UMain
 from poolUtils import listPool, get_pool_info, getFreeDisk, getDiskToAllocate, \
         create_pool, listDiskGroup, delete_pool
 
+# Clear configuration before this test begins
+
+'''
+CleanUpResult = CleanUp(STDURL)
+if CleanUpResult[0] == 'FAILED':
+    logging.error('Cleanup before starting testcase Multiple_Sighups_During_File_IO')
+    is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
+'''
 
 # Clear the log file before execution starts
 
 #executeCmd('> logs/automation_execution.log')
 
 # Initialization for Logging location 
+tcName = sys.argv[0]
+tcName = tcName.split('.py')[0]
+logFile = tcName + '.log'
+logging.basicConfig(format='%(asctime)s %(levelname)s: %(message)s',\
+                 filename='logs/'+logFile,filemode='a',level=logging.DEBUG)
 
 logging.basicConfig(format = '%(asctime)s %(message)s', filename = \
         'logs/Multiple_Sighups_During_File_IO.log', filemode = 'a', \
@@ -80,9 +93,9 @@ POOL_DISK_TYPE = conf['pool_disk_type']
 POOL_IOPS = conf['pool_iops']
 POOL_NAME = 'POOLTEST'
 
-VSM_IP = conf['ipVSM2']
-VSM_INTERFACE = conf['interfaceVSM2']
-VSM_DNS = conf['dnsVSM2']
+VSM_IP = conf['ipVSM1']
+VSM_INTERFACE = conf['interfaceVSM1']
+VSM_DNS = conf['dnsVSM1']
 VSM_NAME = 'VSMTESTM1'
 
 VOL_NAME = 'VolTestM1'
@@ -159,6 +172,7 @@ elif status.lower() == 'maintenance' and num_of_Nodes == 1:
     is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
 
 # Steps to get free disk list for pool creation
+#'''
 freedisk = getFreeDisk(ctrl_disks)
 if freedisk[0] == 'FAILED':
     logging.error('Testcase Multiple_Sighups_During_File_IO is blocked due to' \
@@ -189,6 +203,7 @@ if pool_creation[0] == 'FAILED':
            ' : %s', pool_creation[1])
     is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
 
+#'''
 # Obtain the Pool list for before extracting the name
 
 pool_list = listPool(STDURL)
@@ -200,8 +215,8 @@ pool_list = pool_list[1]
 
 # Get the pool_info for the desired from the list obtained above
 
-pool_info = get_pool_info(pool_list, POOL_NAME)
-#pool_info = get_pool_info(pool_list, None)
+#pool_info = get_pool_info(pool_list, POOL_NAME)
+pool_info = get_pool_info(pool_list, None)
 if pool_info[0] == 'FAILED':
     logging.error('Testcase Multiple_Sighups_During_File_IO is blocked due to' \
            ' : %s', pool_info[1])
@@ -309,7 +324,7 @@ dic_for_vdbench_use = {'name': VOL_NAME, 'mountPoint': CLIENT_NFS_MOUNT_PNT}
 # Executing vdbench
 logging.info('...executing vdbench....')
 executeVdbenchFile(dic_for_vdbench_use, 'filesystem_nfs')
-
+data_size = 1000
 # wait till vdbench complete seeding...
 time.sleep(60) # sleep according to data size given for seeding
 
@@ -377,12 +392,12 @@ else:
             ['FAILED', ''], startTime, endTime)
 
 # --------- cleaning all the configuration created for this test case ---------
-# killing vdbench
+# 1 killing vdbench
 kill_vdbench()
 
 # sleeping for 20 seconds after killing vdbench, 
 #it wil take some time to erlease the mount point
-time.sleep(20)
+#time.sleep(20)
 
 # umount the NFS share
 umount_result = executeCmd('umount %s' %(CLIENT_NFS_MOUNT_PNT))

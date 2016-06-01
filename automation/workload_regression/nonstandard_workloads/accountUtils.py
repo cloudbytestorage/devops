@@ -7,8 +7,6 @@ from time import ctime
 import time
 from cbrequest import sendrequest
 
-logging.basicConfig(format='%(asctime)s %(levelname)s: %(message)s',\
-    filename='logs/automation_execution.log',filemode='a',level=logging.DEBUG)
 
 def listAccount_new(stdurl):
     querycommand = 'command=listAccount' 

@@ -4,12 +4,10 @@ import time
 import json
 import logging
 import subprocess
+from itertools import groupby
 from cbrequest import sendrequest, queryAsyncJobResult
 from volumeUtils import get_params, get_querycommand
-from itertools import groupby
-
-logging.basicConfig(format='%(asctime)s %(levelname)s: %(message)s',\
-        filename='logs/automation_execution.log',filemode='a',level=logging.DEBUG)
+from haUtils import list_controller, get_controller_info, get_value, get_node_IP
 
 def get_pool_default_params():
     pool_def_params = {'name': '', 'siteid': '', 'clusterid': '', \
@@ -125,7 +123,9 @@ def getFreeDisk(result):
     logging.debug('Free disks are %s', disklist) 
     return ['PASSED', disklist]
 
+##Use this method for pool creation and for adding /cache/log/log mirror
 def getDiskToAllocate(free_disks, num_of_disk, disk_type):
+    disk_type = disk_type.upper()
     logging.info('inside getDiskToAllocate method...')
     final_disk = []
     final_size = []
@@ -420,8 +420,9 @@ def replaceDisk(curr_disk_id, new_disk_id, disk_grp_id, stdurl):
         return result
 
 ###getting few parameter value from list disk group
-###disktype = raidtype/cache/log etc
-###use this method in adding Disk group
+###disktype = SSD/SAS/SATA
+###use this method for adding Disk group that shd be equal or greater than the pool size
+##like spare/vdev
 def disklistID(disk_size, type_of_disk, num_of_disk, disks):
     count = 0
     final_size = []
@@ -584,7 +585,68 @@ def delete_pool(pool_id, stdurl):
         result = ['PASSED', 'Successfully deleted Pool']
         return result
 
-   
+#pool_params : name, iops, pool type
+def pool_creation_flow(stdurl, pool_params, num_of_disks, disk_type):
+    list_cntrl = list_controller(stdurl)
+    if list_cntrl[0] == 'FAILED':
+        return ['FAILED', list_cntrl[1]]
+    controllers_ip, num_of_Nodes = get_node_IP(list_cntrl[1])
+    logging.debug('num_of_Nodes: %s, controllers_ip: %s', \
+            num_of_Nodes, controllers_ip) 
+    if num_of_Nodes == 1:
+        NODE1_IP = controllers_ip[0]
+    elif num_of_Nodes == 2:
+        NODE1_IP = controllers_ip[0]
+        NODE2_IP = controllers_ip[1]
+    else:
+        logging.debug('Number of Nodes are more than 2, please revisit the code')
+        exit()
+    cntrl_info = get_controller_info(NODE1_IP, list_cntrl[1])
+    if cntrl_info[0] == 'FAILED':
+        return ["FAILED", cntrl_info[1]]
+    status, ctrl_name, ctrl_id, ctrl_ip, ctrl_cluster_id, ctrl_disks, \
+            site_id  = get_value(cntrl_info)
+    logging.info('Controller details is as follows:')
+    logging.debug('status: %s, ctrl_name: %s, ctrl_id: %s, ctrl_ip: %s', \
+            status, ctrl_name, ctrl_id, ctrl_ip)
+    logging.debug('ctrl_cluster_id: %s, ctrl_disks: %s, site_id: %s', \
+            ctrl_cluster_id, ctrl_disks, site_id)
+    #Checking Node state
+    if status.lower() == 'maintenance' and num_of_Nodes == 2:
+        logging.debug('Node1 is in maintenance, checking status of Node2')
+        cntrl_info = get_controller_info(NODE2_IP, list_cntrl[1])
+        if cntrl_info[0] == 'FAILED':
+            return ["FAILED", cntrl_info[1]]
+        status, ctrl_name, ctrl_id, ctrl_ip, ctrl_cluster_id, ctrl_disks, \
+                site_id  = get_value(cntrl_info)
+        if status.lower() == 'maintenance':
+            msg = 'Both nodes are in maintenance, testcase cannot proceed'
+            return ['FAILED', msg]
+    elif status.lower() == 'maintenance' and num_of_Nodes == 1:
+        msg = 'The single node in HAgroup is in maintenance, '\
+                'testcase cannot proceed'
+        return ['FAILED', msg]
+    free_disks =  getFreeDisk(ctrl_disks)
+    if free_disks[0] == 'FAILED':
+        return ['FAILED', free_disks[1]]
+    disklist_id = getDiskToAllocate(free_disks[1], num_of_disks, disk_type)
+    if disklist_id[0] == 'FAILED':
+        return ['FAILED', disklist_id[1]]
+    disklist_id = disklist_id[1]
+    logging.debug('disklist_id: %s', disklist_id)
+
+    #forming pool requried parameters for pool creation
+    req_ids = {'siteid': site_id, 'clusterid': ctrl_cluster_id, \
+            'controllerid': ctrl_id, 'diskslist': disklist_id }
+    final_pool_params = dict(pool_params.items() + req_ids.items())
+    pool_creation = create_pool(final_pool_params, stdurl)
+    if pool_creation[0] == 'FAILED':
+        return ['FAILED', pool_creation[1]]
+    return ["PASSED", 'Successfully created pool']
+    
+
+
+
 
 
 

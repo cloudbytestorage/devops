@@ -8,8 +8,7 @@ import json
 import logging
 from cbrequest import configFile, sendrequest, getControllerInfo , getoutput, \
         executeCmd, getControllerInfo, queryAsyncJobResult
-logging.basicConfig(format = '%(asctime)s %(message)s', filename = \
-        'logs/automation_execution.log', filemode = 'a', level=logging.DEBUG)
+from utils import assign_iniator_gp_to_LUN
 
 def get_qos_default_params():
     qos_def_params = {'name': '', 'tsmid': '', 'iops': 2, 'throughput': 0, \
@@ -55,7 +54,7 @@ def listVolume_new(stdurl):
     logging.debug('REST API for listing volume: %s', str(rest_api))
     resplistVolumes = sendrequest(stdurl, querycommand)
     data = json.loads(resplistVolumes.text)
-    logging.debug('REST API for listing volume: %s', str(rest_api))
+    logging.debug('Response for listing volume: %s', str(data))
     if 'filesystem' in str(data['listFilesystemResponse']):
         volumes = data['listFilesystemResponse']['filesystem']
         result = ['PASSED', volumes]
@@ -75,7 +74,7 @@ def listVolumeWithTSMId_new(stdurl, tsm_id):
     logging.debug('REST API for listing volume with Tsm ID: %s', str(rest_api))
     resp_listVolumes = sendrequest(stdurl, querycommand)
     data = json.loads(resp_listVolumes.text)
-    logging.debug('REST API for listing volume with Tsm ID: %s', str(rest_api))
+    logging.debug('Response for listing volume with Tsm ID: %s', str(data))
     if 'filesystem' in str(data['listFilesystemResponse']):
         volumes = data['listFilesystemResponse']['filesystem']
         result = ['PASSED', volumes]
@@ -279,6 +278,58 @@ def addNFSclient(stdurl, filesystemID, Client):
         result = ['PASSED', 'NFS client added successfully']
         return result
 
+#to delete nfs clients....
+def deleteNFSclient(stdurl, volid, client):
+    logging.info('Removing NFS client method...')
+    querycommand='command=listNfs&datasetid=%s' %(volid)
+    rest_api = str(stdurl) + str(querycommand)
+    logging.debug('REST API for listing NFS client: %s', str(rest_api))
+    resp_listNfs = sendrequest(stdurl, querycommand)
+    data1 = json.loads(resp_listNfs.text)
+    logging.debug('response for listing nfs client: %s', str(data1))
+    if 'nfs' in data1["listNfsProtocolResponse"]:
+        listNfs = data1["listNfsProtocolResponse"]["nfs"]
+        for nfs in listNfs:
+            authnetwork = nfs['authnetwork']
+            if authnetwork == client:
+                nfsClientID = nfs['id']
+                querycommand='command=deleteNfs&storageid=%s&id=%s' \
+                        %(volid, nfsClientID)
+                rest_api = str(stdurl) + str(querycommand)
+                logging.debug('REST API for deleting NFS client: %s', str(rest_api))
+                resp_deleteNfs = sendrequest(stdurl, querycommand)
+                data2 = json.loads(resp_deleteNfs.text)
+                logging.debug('response for deleting nfs client: %s', str(data2))
+                dataset_id = data2["deleteNfsServiceResponse"]["nfs"]["STORAGEID"]
+                ctrl_id = data2["deleteNfsServiceResponse"]["nfs"]["controllerid"]
+                querycommand = 'command=updateController&datasetid=%s'\
+                        '&type=removenfs&id=%s&response=json'\
+                            %(dataset_id, ctrl_id)
+                rest_api = str(stdurl) + str(querycommand)
+                logging.debug('REST API for updating client in controller: %s',\
+                        str(rest_api))
+                UpadateNFSService = sendrequest(stdurl, querycommand)
+                data3 = json.loads(UpadateNFSService.text)
+                logging.debug('response for updating client in controller: %s',\
+                        str(data3))
+                if "errorcode" in data3["updateControllerResponse"]:
+                    errormsg = str(data3["updateControllerResponse"].get("errortext"))
+                    logging.error('%s', errormsg)
+                    result1 = ['FAILED', errormsg]
+                    return result1
+
+                result = ['PASSED', 'Deleted NFS Authorized Client "%s" '\
+                                'from the volume' %client]
+                return result
+        else:
+            result = ['FAILED', 'Nfs Client "%s" not present in the volume' \
+                                    %client]
+            return result
+    else:
+        result = ['FAILED', 'No NFS Clients are present in the volume']
+        return result
+
+
 ##To change the Throughput value
 def edit_qos_tp(groupid, tpvalue, stdurl):
     logging.info('.....inside edit_qos_tp method....')
@@ -301,7 +352,8 @@ def edit_qos_tp(groupid, tpvalue, stdurl):
         logging.debug('new  throughput value is %s', (tp))
         vol_nametp = upddata['updateqosresponse']['qosgroup'][0]['name']
         if int(tpvalue) == int(tp):
-            print "Throughput is  updated in "+vol_nametp+" is "+tp
+            msg = "Throughput updated in "+vol_nametp+" is "+tp
+            logging.debug('%s', msg)
             result = ['PASSED', upddata]
             logging.debug('PASSED: %s', upddata)
             return result
@@ -335,6 +387,7 @@ def edit_qos_iops(group_id, iops_value, stdurl):
         if int(iops_value) == int(iops):
             msg =  "Updated Iops in "+vol_name+" is "+iops
             print msg
+            logging.debug('%s', msg)
             result = ['PASSED', upddata]
             logging.debug('PASSED: %s', upddata)
             return result
@@ -423,14 +476,44 @@ def edit_qos_syncronization(stdurl, volid, condition):
         result = ['FAILED', 'syncronization condition is not updated']
         return result
 
+def edit_qos_grace(group_id, condition, stdurl):
+    logging.info('.....inside edit_qos_grace method....')
+    querycommand = 'command=updateQosGroup&id=%s&graceallowed=%s' %(group_id, condition)
+    rest_api = stdurl + querycommand
+    logging.debug('REST API for editing QoS group Grace property is: %s', (rest_api))
+    resp_updateQOS = sendrequest(stdurl, querycommand)
+    upddata = json.loads(resp_updateQOS.text)
+    logging.debug('Response for editing QoS group Grace property is: %s', str(upddata))
+    if 'errorcode' in str(upddata):
+        errormsg = str(upddata['updateqosresponse'].get('errortext'))
+        result = ['FAILED', errormsg]
+        logging.error('FAILED: %s', errormsg)
+        return result
+    else:
+        logging.info('Getting updated grace condition....')
+        grace = upddata['updateqosresponse']['qosgroup'][0]['graceallowed']
+        logging.debug('Updated grace condition is : %s', (condition))
+        vol_name = upddata['updateqosresponse']['qosgroup'][0]['name']
+        if str(condition).lower() == str(grace).lower():
+            msg =  "Updated Grace in %s is %s" %(vol_name, grace)
+            print msg
+            logging.debug('%s', msg)
+            result = ['PASSED', upddata]
+            logging.debug('PASSED: %s', upddata)
+            return result
+        else:
+            errormsg =  "Failed to update Grace condition in"+vol_name
+            result =['FAILED', errormsg]
+            logging.error('FAILED: %s', errormsg)
+            return result
+
 def mount_iscsi(device, vol_name):
     #this method will work only when you create a partion to your iscsi LUN
-    mnt_point = 'mount/%s' %(vol_name)
-    executeCmd('mkdir -p %s' %(mnt_point))
-    mount_result = executeCmd('mount /dev/%s1 %s' %(device, mnt_point))
+    executeCmd('mkdir -p mount/%s' %(vol_name))
+    mount_result = executeCmd('mount /dev/%s1 mount/%s' %(device, vol_name))
     if mount_result[0] == 'PASSED':
-        logging.debug('mounted %s at %s successfully', vol_name, mnt_point)
-        return ['PASSED', mnt_point]
+        logging.debug('mounted %s at mount/%s successfully', vol_name, vol_name)
+        return ['PASSED', '']
     logging.error('Not able to mount iscsi LUN: %s', mount_result)
     return ['FAILED', mount_result]
 
@@ -505,3 +588,29 @@ def edit_vol_quota(volid, quota, stdurl):
     else:
         result = ['PASSED', 'Successfully updated volume quota size']
         return result
+
+def volumeCleanUP(stdurl):
+    list_vol = listVolume_new(stdurl)
+    if list_vol[0] == 'PASSED':
+        list_vol = list_vol[1]
+    else:
+        return ['FAILED', list_vol[1]]
+    for volume in list_vol:
+        volid = volume.get('id')
+        volname = volume.get('name')
+        account_id = volume.get('accountid')
+        init_grp = volume.get('initiatorgroup')
+        if init_grp == 'ALL':
+            set_init = assign_iniator_gp_to_LUN(stdurl, volid, account_id, 'None')
+            if set_init[0] == 'FAILED':
+                return ['FAILED', set_init[1]]
+        delete_vol = delete_volume(volid, stdurl)
+        if delete_vol[0] == 'FAILED':
+            querycommand = 'command=deleteFileSystem&id=%s&forcedelete=true' %(volid)
+            resp_delete_volume = sendrequest(stdurl, querycommand)
+            data = json.loads(resp_delete_volume.text)
+            if 'errorcode' in str(data):
+                errormsg = str(data['deleteFileSystemResponse'].get('errortext'))
+                return ['FAILED', errormsg]
+    return ['PASSED', 'Volumes deleted successfully']
+

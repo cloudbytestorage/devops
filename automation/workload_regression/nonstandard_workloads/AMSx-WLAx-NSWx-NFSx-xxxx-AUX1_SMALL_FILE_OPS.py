@@ -5,15 +5,20 @@ from subprocess import call
 
 script_name = sys.argv[0]
 mount_point = sys.argv[1]
-print mount_point
+
+# Log file into which fileops are 
 
 test_log = '/root/FileCreateReadModifyWriteDelete.log' 
 
-No2kFiles=200
-No4kFiles=200
-No8kFiles=200
-No16kFiles=200
-No32kFiles=200
+# Total file no : 16 * (No2kFiles+No4kFiles+No8kFiles+No16kFiles+No32kFiles)
+
+No2kFiles=500 
+No4kFiles=500 
+No8kFiles=500 
+No16kFiles=500 
+No32kFiles=500
+
+# Total dir no : square {length(dir_recursive)}
 
 dir_recursive = ['a', 'b', 'c', 'd']
 
@@ -101,7 +106,6 @@ def DeleteFiles(FileSize, location):
 def Create(dir_list):
     for x in dir_list:
         call ("mkdir -p %s/%s" %(mount_point, x), shell=True)
-        #call ("cd %s,%s" %(mount_point, x), shell=True)
         for y in dir_list:
             call ("mkdir -p %s/%s/%s%s" %(mount_point, x, x, y), shell=True)
             #call ("cd %s/%s/%s%s" %(mount_point, x, x, y), shell=True)
@@ -111,8 +115,10 @@ def Create(dir_list):
             CreateFiles('8k', loc)
             CreateFiles('16k', loc)
             CreateFiles('32k', loc)
-            #break
-        #break
+    
+    #FLUSH CACHE
+    call ("echo 3 > /proc/sys/vm/drop_caches", shell=True)
+    
     call ("echo 'FILES CREATED' > %s" %(test_log), shell=True)
 
 def ReadModifyWrite(dir_list):
@@ -132,20 +138,17 @@ def ReadModifyWrite(dir_list):
 def Delete(dir_list):
     for x in dir_list:
         for y in dir_list:
-            #call ("cd %s/%s/%s%s" %(mount_point, x, x, y), shell=True)
             loc = '%s/%s/%s%s' %(mount_point, x, x, y )
             DeleteFiles('2k', loc)
             DeleteFiles('4k', loc)
             DeleteFiles('8k', loc)
             DeleteFiles('16k', loc)
             DeleteFiles('32k', loc)
-            #break
-        #break
     call ("echo 'FILES DELETED' >> %s" %(test_log), shell=True)
 
-#Create(dir_recursive)
+Create(dir_recursive)
 #ReadModifyWrite(dir_recursive)
-Delete(dir_recursive)
+#Delete(dir_recursive)
 
 
 

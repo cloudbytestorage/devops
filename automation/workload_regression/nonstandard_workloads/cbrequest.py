@@ -10,8 +10,6 @@ import os
 import getpass
 import sys
 import logging
-logging.basicConfig(format = '%(asctime)s %(message)s', filename = \
-        'logs/automation_execution.log', filemode = 'a', level = logging.DEBUG)
 
 #### Function(s) Declaration Begins
 def get_apikey(conf):

@@ -4,10 +4,9 @@ import time
 import json
 import logging
 from time import ctime
-from cbrequest import sendrequest, configFile, getControllerInfo, executeCmd, queryAsyncJobResult
+from cbrequest import sendrequest, configFile, getControllerInfo, \
+        executeCmd, queryAsyncJobResult
 
-logging.basicConfig(format = '%(asctime)s %(message)s', filename = \
-        'logs/automation_execution.log', filemode = 'a', level=logging.DEBUG)
 
 def ping_machine(ip):
     pingvalue = executeCmd('ping -c 1 %s' %(ip))
@@ -166,4 +165,4 @@ def get_node_IP(controllers):
         nodeIP  = controller.get('ipAddress')
         nodeName = controller.get('name')
         node_ip_list.append(nodeIP)
-        return node_ip_list, num_of_Nodes
+    return node_ip_list, num_of_Nodes

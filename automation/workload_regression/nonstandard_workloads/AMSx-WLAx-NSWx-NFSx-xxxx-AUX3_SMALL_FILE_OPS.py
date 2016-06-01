@@ -1,7 +1,8 @@
 import sys
 import logging
-from time import ctime
-from subprocess import call
+from time import ctime, sleep
+from subprocess import call, check_output
+import os
 
 script_name = sys.argv[0]
 mount_point = sys.argv[1]
@@ -143,12 +144,50 @@ def Delete(dir_list):
         #break
     call ("echo 'FILES DELETED' >> %s" %(test_log), shell=True)
 
-Create(dir_recursive)
-#ReadModifyWrite(dir_recursive)
-#Delete(dir_recursive)
+def umount(mnt_pt):
+    res = call ("umount %s" %(mnt_pt), shell=True)
+    return res
 
+def lazyumount(mnt_pt):
+    call ("umount -l %s" %(mnt_pt), shell=True)
 
+def checkMountUser(mnt_pt):
+    res = check_output ("lsof %s | awk '{print $2}' | grep -v 'PID'" %(mnt_pt), shell=True)
+    list = str(res)
+    pidlist = list.split()
+    return pidlist
 
+def killer(processes):
+    for x in processes:
+        call ("kill -9 %s" %(x), shell=True)
+        sleep(5)
+
+def UMain(path):
+    result = umount(path)
+    if int(result) == 0:
+        print "unmounted volume successfully"
+    elif int(result) == 16:
+        print "umount response is EBUSY"
+        processlist = checkMountUser(path)
+        print "Processes using mount point are %s" %(processlist)
+        print "Attempting Kill of above processes..."
+        killer(processlist)
+        print "Attempting umount now.."
+        newresult = umount(path)
+        if int(newresult) == 0:
+            print "unmounted volume successfully NOW"
+        elif int(newresult) == 16:
+            print "Attempting lazy umount"
+            lazyumount(path)
+            print "lazy-umounted volume successfully"
+
+def main():
+    #Create(dir_recursive)
+    #ReadModifyWrite(dir_recursive)
+    Delete(dir_recursive)
+    Umain(mount_point)
+
+main()
 
 
 

@@ -6,8 +6,6 @@ import subprocess
 from time import ctime
 import time
 from cbrequest import executeCmd, getoutput
-logging.basicConfig(format='%(asctime)s %(levelname)s: %(message)s',\
-    filename='logs/automation_execution.log',filemode='a',level=logging.DEBUG)
 
 #make sure the standard file is present in templates folder to run vdbench
 
