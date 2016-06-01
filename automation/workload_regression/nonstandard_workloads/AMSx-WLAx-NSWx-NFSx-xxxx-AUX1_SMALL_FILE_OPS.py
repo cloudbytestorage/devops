@@ -6,7 +6,7 @@ from subprocess import call
 script_name = sys.argv[0]
 mount_point = sys.argv[1]
 
-# Log file into which fileops are 
+# File into which completion of important fileops are logged
 
 test_log = '/root/FileCreateReadModifyWriteDelete.log' 
 
@@ -124,15 +124,12 @@ def Create(dir_list):
 def ReadModifyWrite(dir_list):
     for x in dir_list:
         for y in dir_list:
-            #call ("cd %s/%s/%s%s" %(mount_point, x, x, y), shell=True)
             loc = '%s/%s/%s%s' %(mount_point, x, x, y )
             ReadFiles('2k', loc)
             ReadFiles('8k', loc)
             ReadFiles('16k', loc)
             ModifyWriteFiles('4k', loc)
             ModifyWriteFiles('32k', loc)
-            #break
-        #break
     call ("echo 'FILES READ MODIFIED WRITTEN' >> %s" %(test_log), shell=True)
 
 def Delete(dir_list):

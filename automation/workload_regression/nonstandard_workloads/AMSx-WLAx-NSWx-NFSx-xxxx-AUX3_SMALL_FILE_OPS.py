@@ -102,46 +102,36 @@ def DeleteFiles(FileSize, location):
 def Create(dir_list):
     for x in dir_list:
         call ("mkdir -p %s/%s" %(mount_point, x), shell=True)
-        #call ("cd %s,%s" %(mount_point, x), shell=True)
         for y in dir_list:
             call ("mkdir -p %s/%s/%s%s" %(mount_point, x, x, y), shell=True)
-            #call ("cd %s/%s/%s%s" %(mount_point, x, x, y), shell=True)
             loc = '%s/%s/%s%s' %(mount_point, x, x, y )
             CreateFiles('2k', loc)
             CreateFiles('4k', loc)
             CreateFiles('8k', loc)
             CreateFiles('16k', loc)
             CreateFiles('32k', loc)
-            #break
-        #break
     call ("echo 'FILES CREATED' > %s" %(test_log), shell=True)
 
 def ReadModifyWrite(dir_list):
     for x in dir_list:
         for y in dir_list:
-            #call ("cd %s/%s/%s%s" %(mount_point, x, x, y), shell=True)
             loc = '%s/%s/%s%s' %(mount_point, x, x, y )
             ReadFiles('2k', loc)
             ReadFiles('8k', loc)
             ReadFiles('16k', loc)
             ModifyWriteFiles('4k', loc)
             ModifyWriteFiles('32k', loc)
-            #break
-        #break
     call ("echo 'FILES READ MODIFIED WRITTEN' >> %s" %(test_log), shell=True)
 
 def Delete(dir_list):
     for x in dir_list:
         for y in dir_list:
-            #call ("cd %s/%s/%s%s" %(mount_point, x, x, y), shell=True)
             loc = '%s/%s/%s%s' %(mount_point, x, x, y )
             DeleteFiles('2k', loc)
             DeleteFiles('4k', loc)
             DeleteFiles('8k', loc)
             DeleteFiles('16k', loc)
             DeleteFiles('32k', loc)
-            #break
-        #break
     call ("echo 'FILES DELETED' >> %s" %(test_log), shell=True)
 
 def umount(mnt_pt):
