@@ -25,30 +25,30 @@ etc programming models.
 - Taming asynchronous workflows with compositional event systems
 
 
-##### Quotes that help us stay calm !!!
+##### Quotes that help us understand !!!
 - from ```Mario Fusco```
 > The goal of functional programming is not a world without side-effects or
 > mutability, but one where we don't have to directly deal with them.
 
 
-##### Compositional Event Systems - What is this now ?
-- Lets try to talk a bit on imperative programming:
+##### Imperative vs. Functional debate !!!
+- On imperative programming:
   - It implements computations as a series of actions
   - These actions keep on modifying program state
-- Now a bit about functional programming:
+- On functional programming:
   - It describes what we want to do.
-  - It does not talk about how we want it to be done.
+  - It **does not talk about how** we want it to be done.
   - There is no variables with local state
 
 ##### Core principles of FP design
-- Steal from mathematics
-  - In a maths function the input & output values are unchanged.
-  - A maths function always gives same output for a given input value.
-  - A maths function has no side effects
-- Types are not classes
-- Functions are things
-  - It is a standalone thing, not attached to any class
-- composition everywhere
+- Learn from mathematics.
+- In a maths function the input & output values are unchanged.
+- A maths function always gives same output for a given input value.
+- A maths function has no side effects.
+- **Types are not classes.**
+- **Functions are things.**
+  - It is a standalone thing, not attached to any class.
+- Compose from top till bottom.
 
 
 ##### Benefits using Functions
@@ -60,28 +60,32 @@ etc programming models.
 
 
 ##### Benefits using Types
-- Use types to represent constraints
-  - i.e. Types represent constraints on input & output.
-
+- Use types to **represent constraints**
 ```java
-
+  // Types represent constraints on input & output.
   type Suit = Club|Diamond|Spade|Heart
   type String50 = //non-null, not more than 50 chars
   type EmailAddress = //non-null, must contain @
-  type StringTransformer = string->string
-  type GetCustomer = CustomerId->Customer option
-
 ```
 
 - Types are cheap
-  - i.e. New types composed from existing types
-- Use types to indicate errors
-  - Output types as error codes
-- Types can represent business rules
-- Use sum types instead of inheritance
-
 ```java
+  // New types can be composed from existing types
+```
 
+- Use types to indicate errors
+```java
+  // Output types as error codes
+```
+
+- Types can represent business rules
+```java
+  type StringTransformer = string->string
+  type GetCustomer = CustomerId->Customer option
+```
+
+- Use types instead of inheritance
+```java
   type PaymentMethod =
   | Cash
   | Cheque
@@ -92,11 +96,9 @@ etc programming models.
   class Cash implements iPaymentMethod {}
   class Cheque implements iPaymentMethod {}
   class Card implements iPaymentMethod {}
-
 ```
 
-- Use sum types for state machine
-- 
+- Use types for state machine
 
 
 ##### Function that can decompose an object === Un-apply
@@ -109,7 +111,7 @@ etc programming models.
 
 ##### Throwing exceptions is a side-effect
 - They break the control flow.
-- Check the use of Try<T> @ javaslang
+- Check the use of ```Try<T> @ javaslang```
 
 ##### What is a Persistent Data Structure ?
 - It preserves the previous version of itself when being modified.
