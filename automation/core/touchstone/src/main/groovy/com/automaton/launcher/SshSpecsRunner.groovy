@@ -13,6 +13,9 @@ import com.automaton.utils.BasicUtils
  *
  * The suffix *Runner* signifies the **run** phase of the specifications.
  * In other words this class is meant to run the specifications.
+ * 
+ * <p>
+ * NOTE - This class is not threadsafe.
  *
  * @author amit.das@cloudbyte.com
  *
@@ -23,22 +26,25 @@ class SshSpecsRunner implements AsErrHandler{
 
     /**
      * Point of entry !!
+     * 
+     * Will trigger the SSH iff the SSH specification is correct.
      *
      */
-    def Map runner(String uuid = null, boolean canRun = true, Closure sshSpecs){
+    def Map runner(String sshUuid = null, boolean canRun = true, Closure sshSpecs){
 
         assert sshSpecs != null, "Nil ssh specifications provided."
 
-        uuid = uuid ?: BasicUtils.instance.time()
-
-        errors.put(AutomatonSpecs.uuid, uuid)
+        sshUuid = sshUuid ?: BasicUtils.instance.time()
+        
+        // TODO Move this to constructor
+        errHandler(sshUuid)
 
         if (!canRun){
             errRunCondition()
             return warns()
         }
 
-        grSsh = new GrSsh(uuid)
+        grSsh = new GrSsh(sshUuid)
 
         BasicUtils.instance.runClosure(sshSpecs, this)
 

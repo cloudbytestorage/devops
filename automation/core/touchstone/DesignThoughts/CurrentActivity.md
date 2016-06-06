@@ -31,9 +31,15 @@ then('verify if numeric', { isNumber() ? "'$it' is a number." : "'$it' is a stri
   - [] else parts,
   - [] user entries,
   - [] closures executed at runtime,
-  - [] default arguments,
-  - etc.
+  - [] default arguments,  
+  - [] try catch as decorators in AsErrHandler trait
 - [] Dependent tasks
 - [] Exit process on error
 - [] Dump output to a file
 - [] Verify the output & inject the verification results as a summary into the output itself.
+- [] Run Condition
+  - A immutable class that represents the condition to run. {onCondition}
+- [-] Sampling / Looping
+  - [] A immutable class that represents looping {repeat, interval, onCondition}
+  - [] Computations (avg, mean, median, percentile) of one or more properties (latency, value, etc.)
+- [] Threads / Parallel execution

@@ -38,10 +38,10 @@ class GrSsh implements AsErrHandler{
      * 
      * @param uuid
      */
-    GrSsh(String uuid){
-        assert uuid != null, "Nil uuid provided."
+    GrSsh(String sshUuid){
+        assert sshUuid != null, "Nil ssh uuid provided."
         
-        props.put(AutomatonSpecs.uuid, uuid)
+        props.put(AutomatonSpecs.uuid, sshUuid)
     }
 
     /**

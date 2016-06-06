@@ -32,9 +32,9 @@ class BasicUtils {
         Map warns = props?.subMap(MessageKey.warnings) ?: [:]
     }
 
-    def Map getWarnsOrInfo(Map props){
+    /*def Map getWarnsOrInfo(Map props){
         getWarnsOrEmpty(props) ?: props
-    }
+    }*/
 
     def void incr(Map props, BaseType key){
         assert props != null, "Nil props was provided."

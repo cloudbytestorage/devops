@@ -1,6 +1,7 @@
 package com.automaton.launcher
 
 import com.automaton.dsl.AsErrHandler
+import com.automaton.dsl.TaskRepeater
 import com.automaton.types.AutomatonSpecs
 import com.automaton.utils.BasicUtils
 import com.automaton.utils.Version
@@ -14,13 +15,24 @@ import com.automaton.utils.Version
  * The suffix *Runner* signifies the **run** phase of the specifications.
  * In other words this class is meant to run the specifications.
  * 
+ * <p>
+ * NOTE - This class is not threadsafe.
+ * 
  * @author amit.das@cloudbyte.com
  *
  */
 class AutomatonSpecsRunner implements AsErrHandler{
 
+    /**
+     * Will be used to add various properties & their values.
+     * 
+     */
     private Map<String, String> automatonTasks = [:]
 
+    /**
+     * A multi-property setter!!
+     * 
+     */
     private Closure defaultUseCase = {
         String usecaseName = Version.instance.defaultCaseName
         String usecaseVersion = Version.instance.defaultCaseVersion
@@ -38,11 +50,41 @@ class AutomatonSpecsRunner implements AsErrHandler{
      */
     def specification(Closure specs, Closure usecase){
 
-        specs ? BasicUtils.instance.runClosure(specs, this) : reportFailure("Nil specifications provided.")
+        String automatonUuid = BasicUtils.instance.time()
 
-        usecase ? BasicUtils.instance.runClosure(usecase, this) : reportFailure("Nil usecase provided.")
+        // TODO Move this to constructor 
+        errHandler(automatonUuid)
 
-        BasicUtils.instance.getWarnsOrInfo(automatonTasks)
+        specs ? BasicUtils.instance.runClosure(specs, this) : errNilValue("specifications")
+
+        usecase ? BasicUtils.instance.runClosure(usecase, this) : errNilValue("usecase")
+
+        //BasicUtils.instance.getWarnsOrInfo(automatonTasks)
+
+        //warns() ?: automatonTasks
+        def automatonWarns = warns()
+        automatonWarns ? automatonWarns << automatonTasks : automatonTasks 
+    }
+
+    /**
+     * A specification verb !!
+     * 
+     * @param repeater
+     * @param sshSpecs
+     * @return
+     */
+    private ssh(boolean canRun = true, Map repeater, Closure sshSpecs){
+
+        TaskRepeater taskRepeater = new TaskRepeater(repeater)
+
+        taskRepeater.repeat.times {
+
+            doSsh(canRun, sshSpecs)
+
+            if(it < taskRepeater.repeat) {
+                sleep(taskRepeater.interval)
+            }
+        }
     }
 
     /**
@@ -51,11 +93,21 @@ class AutomatonSpecsRunner implements AsErrHandler{
      * @param sshSpecs
      * @return
      */
-    private ssh(String uuid = null, boolean canRun = true, Closure sshSpecs){
+    private ssh(String sshUuid = null, boolean canRun = true, Closure sshSpecs){
 
-        def sshRunner = new SshSpecsRunner();
+        doSsh(sshUuid, canRun, sshSpecs)
+    }
 
-        BasicUtils.instance.appendTo(automatonTasks, AutomatonSpecs.ssh, sshRunner.runner(uuid, canRun, sshSpecs))
+    /**
+     * Makes actual ssh call & mutates the reports.
+     * 
+     * @return
+     */
+    private doSsh(String sshUuid = null, boolean canRun, Closure sshSpecs){
+
+        SshSpecsRunner sshRunner = new SshSpecsRunner();
+
+        BasicUtils.instance.appendTo(automatonTasks, AutomatonSpecs.sshRuns, sshRunner.runner(sshUuid, canRun, sshSpecs))
 
         BasicUtils.instance.incr(automatonTasks, AutomatonSpecs.sshCount)
     }

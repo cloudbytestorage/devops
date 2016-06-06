@@ -23,6 +23,8 @@ def Map container = [:]
 
 def automaton = {
     
+    ssh
+    
     ssh {
         to(elastistorMacOpts, 'Remove lock file @ elastistor')
         
@@ -55,7 +57,7 @@ def automaton = {
         
     }
 
-    ssh('task-004') {
+    ssh([repeat: 4, interval: 10000]) {
         to(cythonMacOpts, 'Verify cython test cases by sampling at periodic intervals')
         
         run('cd /cthon04 && cat abc.out')
