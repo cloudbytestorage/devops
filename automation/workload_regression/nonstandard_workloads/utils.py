@@ -591,6 +591,9 @@ def add_initator_group(account_id, initGrpName, InitIqn, ntw, stdurl):
 # copying getDiskAllocatedToISCSI, mount_iscsi method from volumeUtils.py
 # this meyhods are used in iscsi_mount_flow
 # to avoid circular dependancy copying this two method
+def ToExecuteCmdOnShellAndReturnOutput(cmdToBeExecuted):
+    output = subprocess.Popen(cmdToBeExecuted, shell=True, stdout=subprocess.PIPE)
+    return output.stdout.readlines()
 
 def getDiskAllocatedToISCSI(VSMIP,MountPoint):
     logging.info('Function execution starts')
@@ -662,10 +665,13 @@ def lazyumount(mnt_pt):
     call ("umount -l %s" %(mnt_pt), shell=True)
 
 def checkMountUser(mnt_pt):
-    res = check_output ("lsof %s | awk '{print $2}' | grep -v 'PID'" %(mnt_pt), shell=True)
-    list = str(res)
-    pidlist = list.split()
-    return pidlist
+    try:
+        res = check_output ("lsof %s | awk '{print $2}' | grep -v 'PID'" %(mnt_pt), shell=True)
+        list = str(res)
+        pidlist = list.split()
+        return pidlist
+    except subprocess.CalledProcessError as e:
+        return ['There is no process running, trying to unmount again']
 
 def killer(processes):
     for x in processes:
@@ -675,7 +681,7 @@ def killer(processes):
 def UMain(path):
     
     result = umount(path)
-    
+    print result
     if int(result) == 0:
          print "unmounted volume successfully"
          logging.debug('unmounted volume successfully')

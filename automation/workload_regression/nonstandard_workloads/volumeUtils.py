@@ -509,11 +509,12 @@ def edit_qos_grace(group_id, condition, stdurl):
 
 def mount_iscsi(device, vol_name):
     #this method will work only when you create a partion to your iscsi LUN
-    executeCmd('mkdir -p mount/%s' %(vol_name))
-    mount_result = executeCmd('mount /dev/%s1 mount/%s' %(device, vol_name))
+    mnt_point = 'mount/%s' %(vol_name)
+    executeCmd('mkdir -p %s' %(mnt_point))
+    mount_result = executeCmd('mount /dev/%s1 %s' %(device, mnt_point))
     if mount_result[0] == 'PASSED':
-        logging.debug('mounted %s at mount/%s successfully', vol_name, vol_name)
-        return ['PASSED', '']
+        logging.debug('mounted %s at %s successfully', vol_name, mnt_point)
+        return ['PASSED', mnt_point]
     logging.error('Not able to mount iscsi LUN: %s', mount_result)
     return ['FAILED', mount_result]
 
