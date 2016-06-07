@@ -543,11 +543,6 @@ def sshToOtherClient(ip, usrname, pwd, cmd):
     else:
        return error
 
-def sshToRemoteClient(ip, usrname, pwd, cmd):
-    ssh.connect(ip, username=usrname, password=pwd)
-    ssh.exec_command(cmd)
-    ssh.close()
-
 def getoutput(command):
     print command
     link = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, close_fds=True)

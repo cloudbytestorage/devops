@@ -9,6 +9,13 @@ from cbrequest import executeCmd, getoutput
 
 #make sure the standard file is present in templates folder to run vdbench
 
+def executeVdbench(confFile, outputFile):
+    logging.info('.....inside excecute_vdbench method....')
+    logging.info('executing vdbench command')
+    out = os.system('./vdbench/vdbench -f vdbench/%s -o vdbench/%s ' 
+            %(confFile, outputFile))
+    return
+
 ##To Execute vdbench
 def excecute_vdbench(volume):
     ##volume is dictionary

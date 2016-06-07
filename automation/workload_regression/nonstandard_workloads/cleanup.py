@@ -1,4 +1,3 @@
-import sys
 import json
 import md5
 import requests
