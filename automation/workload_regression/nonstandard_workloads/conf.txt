@@ -16,7 +16,7 @@
   "pool_iops": "500",
 
   "IP address": "IP for VSM",
-  "ipVSM1": "20.10.39.239",
+  "ipVSM1": "20.10.39.229",
   "ipVSM2": "20.10.31.124",
   "ipVSM3": "20.10.31.123",
   "ipVSM4": "20.10.31.122",
@@ -45,29 +45,20 @@
   "interfaceVSM5": "bge0",
   
   "localClient": "Info",
-  "Client_IP": "20.10.28.117",
+  "Client_IP": "20.10.57.252",
   "Client_user": "root",
-  "Client_pwd": "test123",
+  "Client_pwd": "test@124",
 
   "Client1": "Info",
-<<<<<<< .mine
   "Client1_IP": "20.10.57.252",
-=======
-  "Client1_IP": "20.10.93.11",
->>>>>>> .r45
   "Client1_user": "root",
-<<<<<<< .mine
   "Client1_pwd": "test@124",
-=======
-  "Client1_pwd": "test@321",
->>>>>>> .r45
 
   "Client2": "Info",
   "Client2_IP": "20.10.26.10",
   "Client2_user": "root",
   "Client2_pwd": "test123",
 
-<<<<<<< .mine
   "vdbench": "configuration",
   "workload_type": "Fconf1 Fconfn2 mardan raghuwanshi Fconfn7 Rconf3",
   "workload_typem": "All",
@@ -77,15 +68,6 @@
   "files": "50",
   "threads": "50",
 
-=======
-  "vdbench": "configuration",
-  "workload_type": "ALL",
-  "device_type": "file raw all",
-  "active_data_size": "5G",
-  "run_time": "3600",
-  "archival_location": "vdrun1",
-
->>>>>>> .r45
   "_JSON Configuration": "Ends Here"
 
 }
