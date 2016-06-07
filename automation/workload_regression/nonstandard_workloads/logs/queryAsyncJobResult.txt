@@ -1,0 +1,43 @@
+{ "queryasyncjobresultresponse" : {
+  "accountid": "3395d7ba-7e32-4ed5-ad39-a17ee7d0c6c4",
+  "userid": "46a34524-f253-4132-b894-afd49ca90af4",
+  "cmd": "com.cloudbyte.api.commands.CreateVolumeCmd",
+  "msg": "5",
+  "jobstatus": 1,
+  "jobprocstatus": 0,
+  "jobresultcode": 0,
+  "jobresulttype": "object",
+  "jobresult": {
+    "storage": {
+      "id": "3172c6e9-b168-3882-8bbf-c0997b3aa471",
+      "name": "Fconf1",
+      "simpleid": 438,
+      "compression": "off",
+      "sync": "always",
+      "noofcopies": 1,
+      "recordsize": "32k",
+      "quota": "10G",
+      "path": "PLTestVdb/ACC1VSMTestVdb1/Fconf1",
+      "tsmid": "1fb31028-d350-3a13-a61c-23eb834d000b",
+      "poolid": "3f49ce2e-13f4-36ec-a019-57a2e4fb485d",
+      "mountpoint": "ACC1Fconf1",
+      "currentUsedSpace": 0,
+      "currentAvailableSpace": 0,
+      "currentTotalSpace": 0,
+      "currentThroughput": 0,
+      "currentIOPS": 0,
+      "currentLatency": 0,
+      "currentThrottle": 0,
+      "tsmName": "VSMTestVdb1",
+      "hapoolname": "PLTestVdb",
+      "revisionnumber": 0,
+      "nfsenabled": true,
+      "cifsenabled": false,
+      "iscsienabled": false,
+      "fcenabled": false,
+      "backupqosgroupenabled": false
+    }
+  },
+  "created": "2016-06-07 15:58:16",
+  "jobid": "3e31971f-6c4c-4c37-b4d2-95a65d9eeafc"
+} }
