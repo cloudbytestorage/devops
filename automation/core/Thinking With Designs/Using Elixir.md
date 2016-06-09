@@ -1,6 +1,6 @@
 ##### References
 - http://elixir-lang.org/
-
+- @email - Latest Elixir news on the radar
 
 ##### Features
 - Code runs within lightweight threads of execution (called processes)
@@ -52,7 +52,7 @@
   # Tuple index starts from 0.
 
   elem(sometuple, 1)          # hello
-  tuple_size(sometuple)       # 2
+  tuple_size(sometuple)       # 2; a constant time operation
 
   put_elem(sometuple, 1, "world")     # {:ok, "world"}
 
@@ -163,3 +163,46 @@
   add_two = fn a -> add.(a, 2) end    # currying; rcurry
   (fn -> x = 0 end).()                # x is scoped within the closure
 ```
+
+
+##### Golden trinity of Erlang
+- fail fast ++ share nothing ++ failure handling
+- fail fast done effectively with pattern matching
+
+##### Crash Course
+- http://elixir-lang.org/crash-course.html
+
+
+##### OTP & Elixir
+- http://learningelixir.joekain.com/designing-with-otp-applications-in-elixir/?utm_campaign=elixir_radar_27&utm_medium=email&utm_source=RD+Station
+
+##### TCP & Elixir
+- http://dbeck.github.io/Wrapping-up-my-Elixir-TCP-experiments/?utm_campaign=elixir_radar_24&utm_medium=email&utm_source=RD+Station
+
+
+##### Breadth First Search
+- http://www.automatingthefuture.com/blog/2016/4/8/finding-the-needle-in-the-haystack-breadth-first-search?utm_campaign=elixir_radar_46&utm_medium=email&utm_source=RD+Station
+
+##### Binary search & concurrency
+- http://www.automatingthefuture.com/blog/2016/5/10/performing-searches-concurrently-when-one-thread-just-wont-do
+
+
+##### A process visualizer for remote BEAM nodes
+- https://github.com/koudelka/visualixir
+
+##### Process
+- http://eddwardo.github.io/elixir/2015/10/22/elixir-pingpong-table/
+- http://eddwardo.github.io/elixir/links/2015/11/04/links-in-elixir/?utm_campaign=elixir_radar_27&utm_medium=email&utm_source=RD+Station
+
+##### Distributed & Scalable nodes
+- http://dbeck.github.io/Scalesmall-Experiment-Begins/
+
+##### Static Typing
+- http://blog.johanwarlander.com/2015/07/19/on-elixir-and-static-typing
+
+
+##### C Binding
+- https://github.com/libguestfs/libguestfs/tree/master/erlang
+
+##### Hard Learnings
+- http://erlang.org/doc/getting_started/conc_prog.html

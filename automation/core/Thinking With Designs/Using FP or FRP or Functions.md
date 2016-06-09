@@ -1,17 +1,37 @@
-##### Introduction
-This is all about understanding the essence of functional programming. At the
-end of this article we shall see if we understood how logic built using functional
-techniques are effectively managed than that of imperative programming model. We
-shall also understand the differences between functional, reactive, compositional
-etc programming models.
-
-
 ###### References
 - http://www.slideshare.net/borgesleonardo/functional-reactive-programming-compositional-event-systems
 - http://guide.elm-lang.org/
 - http://fsharpforfunandprofit.com/
 - https://www.infoq.com/presentations/fp-design-patterns
 - http://blog.javaslang.io/functional-data-structures-in-java-8-with-javaslang/
+- http://typelevel.org/cats/tut/freemonad.html
+- http://degoes.net/articles/modern-fp
+
+
+
+##### Belief
+> A good programmer is one who reads others' code.
+> A good author is one who reads others' books.
+> A good hacker is one who steals others' ideas than copying the source.
+
+
+##### Introduction
+Readers may find this article to be a collage of information collected from
+various references. The entire credit goes to these geniuses who articulated
+their thoughts into above blog links. What I have tried here is to **connect the
+dots** so that writing programs or thinking with designs in any language becomes
+palatable. The sections will be very pragmatic & gear more towards logic than
+theory. I shall try to explain the theory whenever I get the easiest yet effective
+meaning.
+
+
+
+##### Tips while programming
+- Complexity is your enemy.
+  - Code that is hard to read.
+  - Code that is hard to understand.
+- Static typing so that refactoring need not be feared.
+
 
 
 ##### What is FRP ?
@@ -26,9 +46,15 @@ etc programming models.
 
 
 ##### Quotes that help us understand !!!
-- from ```Mario Fusco```
-> The goal of functional programming is not a world without side-effects or
-> mutability, but one where we don't have to directly deal with them.
+
+  > The goal of functional programming is not a world without side-effects or
+  > mutability, but one where we don't have to directly deal with them.
+  > ```Mario Fusco```
+
+
+  > In modern FP, we shouldn’t write programs — we should write descriptions of
+  > programs, which we can then introspect, transform, and interpret at will.
+  > ```http://degoes.net/articles/modern-fp```
 
 
 ##### Imperative vs. Functional debate !!!
@@ -39,6 +65,7 @@ etc programming models.
   - It describes what we want to do.
   - It **does not talk about how** we want it to be done.
   - There is no variables with local state
+
 
 ##### Core principles of FP design
 - Learn from mathematics.
@@ -59,8 +86,7 @@ etc programming models.
 - It can be executed parallelized.
 
 
-##### Benefits using Types
-- Use types to **represent constraints**
+##### Use types to **represent constraints**
 ```java
   // Types represent constraints on input & output.
   type Suit = Club|Diamond|Spade|Heart
@@ -68,37 +94,74 @@ etc programming models.
   type EmailAddress = //non-null, must contain @
 ```
 
-- Types are cheap
-```java
-  // New types can be composed from existing types
-```
-
+##### Types are cheap
+- New types can be composed from existing types
 - Use types to indicate errors
-```java
-  // Output types as error codes
-```
-
+  - Output types as error codes
 - Types can represent business rules
-```java
-  type StringTransformer = string->string
-  type GetCustomer = CustomerId->Customer option
-```
 
-- Use types instead of inheritance
-```java
-  type PaymentMethod =
-  | Cash
-  | Cheque
-  | Card
+  ```java
 
-  // vs. OO version
-  interface iPaymentMethod {}
-  class Cash implements iPaymentMethod {}
-  class Cheque implements iPaymentMethod {}
-  class Card implements iPaymentMethod {}
-```
+    type StringTransformer = string->string
+    type GetCustomer = CustomerId->Customer option
 
-- Use types for state machine
+  ```
+
+##### Use types instead of inheritance
+
+  ```java
+
+    type PaymentMethod =
+    | Cash
+    | Cheque
+    | Card
+
+    // vs. OO version
+    interface iPaymentMethod {}
+    class Cash implements iPaymentMethod {}
+    class Cheque implements iPaymentMethod {}
+    class Card implements iPaymentMethod {}
+  ```
+
+##### Use types for state machine
+
+
+##### Monoid === Associativity
+- This is not a Monad.
+- It means you can combine elements from a set.
+- This set can be used in a binary operation (i.e. arity = 2) in any order.
+- As the computations can be executed in any order, they can be executed in parallel
+- & the results can be combined
+- ```NOTE``` When you talk of parallel executions make sure that the structures are immutable.
+- **Associativity** comes in handy when we talk about parallelism.
+- You can scatter the operations through cores of your computer & join the results.
+
+
+##### Functor
+- It represents a wrapper with an ability.
+- The ability to apply a function to elements wrapped in the container
+- Functions are applied to the container & not against the value directly
+
+
+##### Monad
+- Pure way to represent & manipulate computations
+- In functional world **bind & return === monad**
+- bind receives a wrapped value & return returns a wrapped value
+
+##### Free Monad
+- An approach to club the sequential computations in a data structure
+  - Hence, it can be inspected
+  - & can be interpreted later
+- Lets us model arbitrary programs as a sequence of algebraic operations.
+- Its called free as we get a monad for free.
+- Build monad from any functor
+- A practical way to:
+  - stateful computations as data
+  - recursive computations
+  - build embedded DSL
+  - retarget a computation to another interpreter
+
+
 
 
 ##### Function that can decompose an object === Un-apply
@@ -119,3 +182,7 @@ etc programming models.
 - Some of these structures also allow updates as well as queries on any version.
 - Many operations perform small changes & thus full copy will not be efficient.
 - Hence the copying needs to diff the versions & share as much as possible.
+
+
+##### OCaml or F# in java
+- https://engineering.vena.io/2016/05/30/ocaml-mimicry-in-java-jocaml/?utm_content=bufferaf1ed&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer

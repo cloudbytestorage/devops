@@ -11,3 +11,8 @@
 - https://github.com/aol/cyclops-react
 - https://github.com/aol/cyclops-react/wiki
 - https://blog.jooq.org/tag/java-8/
+
+
+
+##### IntStream @ Java 8
+- http://www.deadcoderising.com/2015-05-19-java-8-replace-traditional-for-loops-with-intstreams/

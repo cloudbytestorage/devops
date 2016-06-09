@@ -395,17 +395,16 @@ mentioned below. The entire credit goes to these good folks.
   def cities = null
   def names = ['john', 'jeronimo', 'james']
 
-  // citiesResult == []
   def citiesResult = doSomething(cities)
-  // namesResult == ['JOHN', 'JERONIMO', 'JAMES']
+  // citiesResult == []
+
   def namesResult = doSomething(names)
+  // namesResult == ['JOHN', 'JERONIMO', 'JAMES']
 
 ```
 
-- Should developers use **findAll** & **collect** to avoid NullPointerException ?
-
-```NOTE: Anything in groovy can use collect() & hence method chain !!!```
-
+- Should developers use **findAll** & **collect** to avoid **NullPointerException** ?
+- NOTE: **Anything** in groovy can use **collect() & hence method chain** !!!
 - Groovy provides the **elvis** operator for providing default values.
 - Groovy also provides **Optional** pattern
 
@@ -424,3 +423,42 @@ mentioned below. The entire credit goes to these good folks.
       }
 
 ```
+
+
+##### Monad === a way to represent & manipulate computations
+- Monad via **with** & safe operator **?.**
+```java
+
+  // a custom Monad example
+  def map(Object o, Closure func){
+    o?.with(func)
+  }
+
+  def result =  map(input) {String xyz ->    
+    ...
+  }
+
+  // collect that transforms each item in a collection into something else
+  // seems like a Monad isn't ?
+  def result = input.collect { String xyz ->
+    ...
+  }
+
+  // combinations are also possible
+  def result = input.collect { String xyz ->
+    map(xyz) { String xyz ->
+      ...
+    }
+  }
+```
+
+
+##### MayBe Monad
+- MayBe object has two children: Maybe.Just & Maybe.Nothing
+
+
+##### Either Monad
+- Can represent a correct or error
+
+##### Try & TryOrElse Monad
+-
