@@ -3,6 +3,7 @@ package com.automaton.launcher
 import com.automaton.dsl.AsErrHandler
 import com.automaton.dsl.TaskRepeater
 import com.automaton.types.AutomatonSpecs
+import com.automaton.types.SshSpecs
 import com.automaton.utils.BasicUtils
 import com.automaton.utils.Version
 
@@ -16,7 +17,8 @@ import com.automaton.utils.Version
  * In other words this class is meant to run the specifications.
  * 
  * <p>
- * NOTE - This class is not threadsafe.
+ * NOTE - There is no variant Algebraic Data Type in Groovy. Hence, we
+ * need to use couple of overloaded ssh functions. 
  * 
  * @author amit.das@cloudbyte.com
  *
@@ -52,50 +54,79 @@ class AutomatonSpecsRunner implements AsErrHandler{
 
         String automatonUuid = BasicUtils.instance.time()
 
-        // TODO Move this to constructor 
+        // TODO Move this to constructor
         errHandler(automatonUuid)
 
         specs ? BasicUtils.instance.runClosure(specs, this) : errNilValue("specifications")
 
         usecase ? BasicUtils.instance.runClosure(usecase, this) : errNilValue("usecase")
 
-        //BasicUtils.instance.getWarnsOrInfo(automatonTasks)
-
-        //warns() ?: automatonTasks
         def automatonWarns = warns()
-        automatonWarns ? automatonWarns << automatonTasks : automatonTasks 
+        automatonWarns ? automatonWarns << automatonTasks : automatonTasks
     }
 
     /**
      * A specification verb !!
+     * Multiple variants exists.
      * 
      * @param repeater
      * @param sshSpecs
      * @return
      */
-    private ssh(boolean canRun = true, Map repeater, Closure sshSpecs){
+    private String ssh(boolean canRun = true, Map repeater, Closure sshSpecs){
 
         TaskRepeater taskRepeater = new TaskRepeater(repeater)
 
-        taskRepeater.repeat.times {
+        Map<String, String> results
 
-            doSsh(canRun, sshSpecs)
+        for(int i=1; i <= taskRepeater.repeat; i++){
 
-            if(it < taskRepeater.repeat) {
+            results = doSsh(canRun, sshSpecs)
+
+            /*
+             * Check the just executed repeat flag to break or repeat.  
+             */
+            if(null != results.get(SshSpecs.allowRepeat) && "false" == results.get(SshSpecs.allowRepeat)){
+                break
+            }
+
+            /*
+             * Sleep if it is not the last repetition
+             */
+            if(i < taskRepeater.repeat) {
                 sleep(taskRepeater.interval)
             }
         }
+
+        /*(1..taskRepeater.repeat)
+         .each {
+         uuid = doSsh(canRun, sshSpecs)
+         if(it < taskRepeater.repeat) {
+         sleep(taskRepeater.interval)
+         }
+         }*/
     }
 
     /**
      * A specification verb !!
+     * Multiple variants exists.
      * 
      * @param sshSpecs
      * @return
      */
-    private ssh(String sshUuid = null, boolean canRun = true, Closure sshSpecs){
+    private Map<String, String> ssh(String sshUuid = null, boolean canRun = true, Closure sshSpecs){
 
         doSsh(sshUuid, canRun, sshSpecs)
+    }
+
+    /**
+     * A specification verb !!
+     * Multiple variants exists.
+     * 
+     */
+    private Map<String, String> ssh(boolean canRun, Closure sshSpecs){
+
+        doSsh(canRun, sshSpecs)
     }
 
     /**
@@ -103,13 +134,17 @@ class AutomatonSpecsRunner implements AsErrHandler{
      * 
      * @return
      */
-    private doSsh(String sshUuid = null, boolean canRun, Closure sshSpecs){
+    private Map<String, String> doSsh(String sshUuid = null, boolean canRun, Closure sshSpecs){
 
         SshSpecsRunner sshRunner = new SshSpecsRunner();
 
-        BasicUtils.instance.appendTo(automatonTasks, AutomatonSpecs.sshRuns, sshRunner.runner(sshUuid, canRun, sshSpecs))
+        Map<String, String> runResults = sshRunner.runner(sshUuid, canRun, sshSpecs)
+
+        BasicUtils.instance.appendTo(automatonTasks, AutomatonSpecs.sshRuns, runResults)
 
         BasicUtils.instance.incr(automatonTasks, AutomatonSpecs.sshCount)
+
+        runResults
     }
 
     /**

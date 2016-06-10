@@ -1,6 +1,6 @@
-#### Design - 2
+#### Design - 3
 - start date - 16th May 2016
-- version - 0.0.2
+- version - 0.0.1
 
 #### Introduction
 The core theme remains the same. This is not a new idea or diverging from design 1.

@@ -14,9 +14,6 @@ import com.automaton.utils.BasicUtils
  * The suffix *Runner* signifies the **run** phase of the specifications.
  * In other words this class is meant to run the specifications.
  * 
- * <p>
- * NOTE - This class is not threadsafe.
- *
  * @author amit.das@cloudbyte.com
  *
  */
@@ -90,5 +87,14 @@ class SshSpecsRunner implements AsErrHandler{
      */
     private void storeAs(String key, Map container){
         grSsh.storeAs(key, container)
+    }
+    
+    /**
+     * A specification verb !!
+     * 
+     * @param repeatCondition
+     */
+    private void repeatIf(Closure repeatCondition){
+        grSsh.repeatIf(repeatCondition)
     }
 }

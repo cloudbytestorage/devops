@@ -104,7 +104,8 @@ class BasicUtils {
         // set delegate of closure to this object
         clsClone.delegate = context
         // only use this builder as the closure delegate
-        clsClone.resolveStrategy = Closure.DELEGATE_ONLY
+        //clsClone.resolveStrategy = Closure.DELEGATE_ONLY
+        clsClone.resolveStrategy = Closure.DELEGATE_FIRST
         // run the closure
         args ? clsClone(args) : clsClone()
     }

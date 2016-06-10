@@ -23,57 +23,61 @@ def Map container = [:]
 
 def automaton = {
     
-    ssh
-    
     ssh {
+        
         to(elastistorMacOpts, 'Remove lock file @ elastistor')
         
-        run('rm /tenants/f7ec4eb1486c3aa6a4bafaa12d93e084/PoolRaidz1/Account1TSM1/amit.has')
-        
+        run('rm /tenants/f7ec4eb1486c3aa6a4bafaa12d93e084/PoolRaidz1/Account1TSM1/amit.has')        
     }
 
     ssh('task-002') {
+        
         to(elastistorMacOpts, 'Restart lockd service @ elastistor')
         
         run('restart lockd')
         
-        storeAs('task-002.output', [])
+        storeAs('restart-lock.output', container)
     }
 
     ssh {
+        
         to(cythonMacOpts, 'Trigger cython test cases')
         
         run('cd /cthon04 && pwd')
         
-        storeAs('task-003.output', container)
+        storeAs('cython-trigger.output', container)
 
-        then('is it cthon05', { contains("cthon05") ? "'$it' contains cthon05." : "'$it' does not have cthon05." })
+        then('is it cthon05', { contains("cthon05") ? "It contains cthon05." : "It does not have cthon05." })
 
-        then('verify if numeric', { isNumber() ? "'$it' is a number." : "'$it' is a string." })
+        then('is numeric', { isNumber() ? "It is a number." : "It is a string." })
 
-        then('verify if empty', { isEmpty() ? "'$it' is an empty thing." : "'$it' is a filled stuff." })
+        then('is empty', { isEmpty() ? "'$it' is an empty thing." : "'$it' is a filled stuff." })
         
-        storeAs('task-003.output2', container)
-        
+        storeAs('cython-trigger.output2', container)        
     }
 
-    ssh([repeat: 4, interval: 10000]) {
+    ssh([repeat: 3, interval: 4000]) {
+        
         to(cythonMacOpts, 'Verify cython test cases by sampling at periodic intervals')
         
         run('cd /cthon04 && cat abc.out')
         
-        then { container.get('task-003.output').contains("cthon04") ? "Yes. It is cthon04." : "No. It is not cthon04." }
+        storeAs('cython-sampler.output', container)
+        
+        repeatIf({ contains("Nooop such file") })
+        
     }
 
-    ssh('task-005') {
+    ssh {
+        
         to(elastistorMacOpts, 'Enable lock file @ elastistor')
         
         run('touch /tenants/f7ec4eb1486c3aa6a4bafaa12d93e084/PoolRaidz1/Account1TSM1/amit.has')
         
-        storeAs('task-005.output', container)
+        storeAs('enable-lock.output', container)
     }
 
-    ssh('task-006', !container.get('task-005.output').contains('No such file')) {
+    ssh(!container?.get('enable-lock.output')?.contains('No such file')) {
         
         to(elastistorMacOpts, 'Restart lockd service @ elastistor')
         

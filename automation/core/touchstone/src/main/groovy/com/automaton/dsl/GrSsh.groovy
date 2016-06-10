@@ -40,7 +40,7 @@ class GrSsh implements AsErrHandler{
      */
     GrSsh(String sshUuid){
         assert sshUuid != null, "Nil ssh uuid provided."
-        
+
         props.put(AutomatonSpecs.uuid, sshUuid)
     }
 
@@ -98,7 +98,22 @@ class GrSsh implements AsErrHandler{
             container.put(key, it)
             it
         })
+    }
 
+    /**
+     * Indicates whether a repeated invocation of similar instances 
+     * is allowed or not. 
+     * <p>
+     * NOTE - The caller logic will exit or repeat the invocation 
+     * after the specified delay. 
+     * 
+     * @param repeatCondition
+     * @return
+     */
+    def repeatIf(Closure repeatCondition){
+        assert repeatCondition != null, "Repeat condition not provided."
+
+        operations.put(SshSpecs.allowRepeat, repeatCondition)
     }
 
     /**
@@ -160,6 +175,7 @@ class GrSsh implements AsErrHandler{
                     results.put(it.key, "Could not run function on nil value.")
 
         }
+
     }
 
     /**

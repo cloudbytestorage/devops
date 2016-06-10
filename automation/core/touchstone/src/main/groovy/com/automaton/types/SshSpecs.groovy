@@ -6,5 +6,6 @@ enum SshSpecs implements BaseType{
     result,
     sshRunner,
     taskName,
-    command
+    command,
+    allowRepeat
 }
