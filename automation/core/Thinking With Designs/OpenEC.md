@@ -1,0 +1,55 @@
+##### Discussions around OpenEC
+- Architectures - past & present
+  - Pets vs Cattles
+    - Limiting our thoughts by loving our pets.
+    - Solving the real world challenges by embracing a cattle based culture.
+- Will we have any pets at all ?
+  - Our file system can be our pet.
+  - Transforming it to a cattle
+    - e.g. we can think open sourcing as one of the many transformations
+  - Take a errant cattle, make it your pet & then transform it to an obedient cattle again :)
+- What can be OpenElastiCenter (OpenEC) ?
+  - where your own thing is a connector or plugin or an adapter.
+  - where your own thing is a function or callback.
+  - where your own thing does not know of the outside world.
+  - where your own thing does only one thing !!!
+  - You can have redundant connectors, or plugins or adapters.
+    - Business demands !!!
+- What feature(s) can not be considered as fit for OpenEC ?
+  - If you code your HA.
+  - If you code your Monitoring.
+  - If you code your Alerting.
+  - If you code your State i.e. DB
+  - If you script your Installers (ISOs etc.)
+  - If you code your XYZ feature rather than your `xyz function.
+- Any open datacenter implementations that we may refer ?
+  - OpenStack,
+  - Hashicorp,
+  - Cloud Foundry
+  - ???
+- Any other implementations that are not datacenter specific but can be transformed to one ?
+  - Riak Core - from Basho
+  - ???
+- Can we embrace one of above ecosystem ?
+  - What kind of architecture do you find in above implementations ?
+  - What are the short comings of above ?
+- Role of a message protocol is crucial when we expose our endpoints.
+  - JSON has been the de-facto protocol.
+    - NOTE - Folks from Lightbend (formerly TypeSafe) are against any forms of REST.
+    - Need to understand why ??
+  - We need to think of binary alternatives that are proven in industry.
+  - We really would not like to open sub-process as a medium of communication.
+  - Language binding offers some help but it couples the system.
+    - In other words, micro services goes for a toss.
+  - We really don't want to go for shared memory & guarded approaches (refer. Hack from FB)
+    - unless & until binary protocols fail to meet our SLAs.
+- How does programming languages matter w.r.t an architecture ?
+  - Imperative vs Functional
+    - => Design Patterns vs. Mathematical functions
+    - => Discipline vs Behavior
+  - Have you ever wondered why we were not taught of patterns in our schools ?
+  - Have you observed the difference between the Maths taught at schools vs engineering Maths?
+- Passing Comments
+> Dogs, cats & birds can talk together thanks to distribution built in xyz language
+> itself. We need to get it right while choosing our weapon (read programming
+> language)
