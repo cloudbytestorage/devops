@@ -125,3 +125,61 @@ def kill_process(process_name):
         print 'process are not killed'
         logging.debug('one or more process is not killed, Error: %s', \
                 res[1])
+
+def createRunTimeConfig(confFile, userValues):
+    # confFile is a template for creating config file
+    # userValues is a directory, that contains new values to... 
+    # ...updated in config file
+
+    FIRSTELEMENT = 0
+    EQUALOPERATOR = '='
+    QUOMAOPERATOR = ','
+   
+    # removing the dummy text file if it exits
+    os.system('rm -rf dummyConfFile.txt')
+    
+    # Opening source file(template)
+    with open(confFile, "r") as sourceFile:
+        for line in sourceFile:
+        
+            # creating a dummy file for newly updated values
+            with open("dummyConfFile.txt", "a") as dummyFile:
+
+                # making sure no empty line procede further
+                if not line.strip():
+                    continue
+                
+                # converting the line into a list, and will get only one value
+                line = line.split()
+
+                # In above code we converted whole line in a list with single element
+                # getting the only present element from the list
+                line = str(line[FIRSTELEMENT])
+
+                # splitting all the values by "," from the above string and getting list 
+                line = line.split(QUOMAOPERATOR)
+                
+                # proceding all the elements of the list
+                newLine = []
+                for element in line:
+                    
+                    # splitting elements by "=" into a sub list
+                    subList = element.split(EQUALOPERATOR)
+                    
+                    # matching all the values with the user given values and updating the same
+                    if subList[0] in userValues:
+                        subList[1] = userValues[subList[0]]
+                    
+                    newLine.append(subList[0] + EQUALOPERATOR + subList[1])
+                
+                newLine = ','.join(newLine) + "\n"
+
+                # writing newly created newLine into dummyFile
+                dummyFile.write(str(newLine))
+
+    # once dummy file is generated successfully, 
+    # updating source file with the latest values
+    with open("dummyConfFile.txt") as df:
+        with open(confFile, "w") as sf:
+            for line in df:
+                sf.write(line)
