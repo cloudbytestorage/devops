@@ -163,7 +163,6 @@ def createRunTimeConfig(confFile, userValues):
 
                 # splitting all the values by "," from the above string and getting list 
                 line = line.split(QUOMAOPERATOR)
-                
                 # proceding all the elements of the list
                 newLine = []
                 for element in line:
@@ -174,6 +173,9 @@ def createRunTimeConfig(confFile, userValues):
                     # matching all the values with the user given values and updating the same
                     if subList[0] in userValues:
                         subList[1] = userValues[subList[0]]
+		    if len(subList) == 1:
+		    	newLine.append(subList[0])
+			continue
                     
                     newLine.append(subList[0] + EQUALOPERATOR + subList[1])
                 
