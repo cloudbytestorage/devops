@@ -174,6 +174,9 @@ def createRunTimeConfig(confFile, userValues):
                     # matching all the values with the user given values and updating the same
                     if subList[0] in userValues:
                         subList[1] = userValues[subList[0]]
+		    if len(subList) == 1:
+		    	newLine.append(subList[0])
+			continue
                     
                     newLine.append(subList[0] + EQUALOPERATOR + subList[1])
                 
