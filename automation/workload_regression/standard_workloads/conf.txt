@@ -60,13 +60,12 @@
   "Client2_pwd": "test123",
 
   "vdbench": "configuration",
-  "workload_type": "Fconf1 Fconfn2 mardan raghuwanshi Fconfn7 Rconf3",
-  "workload_typem": "All",
+  "workload_type": "All",
   "device_type": "both",
-  "size": "5G",
-  "elapsed": "3600",
-  "files": "50",
-  "threads": "50",
+  "size": "10G",
+  "elapsed": "300",
+  "files": "10",
+  "threads": "10",
 
   "_JSON Configuration": "Ends Here"
 

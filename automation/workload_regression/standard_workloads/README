@@ -1,0 +1,75 @@
+# how to update conf.txt for executing vdbench----------------------------------
+################################################################################
+
+# for executing all the vdbench configration use following value... 
+"workload_type": "ALL",
+
+# for executing all the filesystem vdbench configration use following value...
+"workload_type": "filesystem",
+
+# for executing all the raw vdbench configration use following value...
+"workload_type": "raw",
+
+# for executing the perticular vdbench configration use following value...
+"workload_type": "Fconf1 Fconf7 Fconf16 Rconf5 Rconf7",
+
+# device type can be raw or filesystem or both
+"device_type": "filesystem",
+"device_type": "raw",
+"device_type": "both",
+
+# active data size for vdbench
+"active_data_size": "5G",
+
+# for how much seconds do you want to execute vdbench
+"run_time": "3600",
+
+# log folder for vdbench execution, 
+# it will create a direcotry with given name inside /root directory
+"archival_location": "vdrun1",
+
+### use the following variable to edit the conf.tct file to execute vdbench-----
+################################################################################
+
+### all for both raw and filesystem configuration-------------------------------
+all: use this(all/ALL) for both type of devices(raw/filesystem)
+--------------------------------------------------------------------------------
+
+### filesystem configuration templates------------------------------------------
+Fconf1: File-100-FSyncWrite-Random-RandomFileselect-Conf - fsync() before performing close()
+Fconf2: File-100-FSyncWrite-Random-SequentialFileselect-Conf - hot-spotting, multiple batch,
+processes fsync() before performing close() of files, instead of relying on OS sync
+Fconf3: File-100-Read-Random-RandomFileselect-Conf - web-server workload
+Fconf4: File-100-Read-Random-SequentialFileselect-Conf - hot-spotting, individual batch streams
+Fconf5: File-100-Read-Sequential-RandomFileselect-Conf - HDFS-like read workloads
+Fconf6: File-100-Read-Sequential-SequentialFileselect-Conf - Video On Demand, Database/Directory 
+Backup, Virus/Media scans on VDI environments
+Fconf7: File-100-SyncWrite-Random-RandomFileselect-Conf - Data Acquisition systems 
+Fconf8: File-100-SyncWrite-Random-SequentialFileselect-Conf - hot-spotting, multiple batch processes
+Fconf9: File-100-SyncWrite-Sequential-RandomFileselect-Conf - HDFS-like write
+Fconf10: File-100-SyncWrite-Sequential-SequentialFileselect-Conf - Image processing, 
+digital video editing, Restore , Log repositories 
+Fconf11: File-80R20W-Random-RandomFileselect-Conf - small-medium OLTP, File Servers 
+Fconf12: File-Attr-Test-Conf - low attribute cache timeouts, fopen()/fclose() calls also result in GetAttr
+Fconf13: File-Compression-Workload-Conf - Core dumps, image files
+Fconf14: File-Create-Write-Read-Delete-Conf - Home directory
+Fconf15: File-Dedupe-Workload-Conf - source code directories (svn/git repositories) , 
+home directory files , vmdk files
+Fconf16: File-Read-Shared-Access-Conf - attern-matching/text-processing
+Fconf17: File-Recursive-Structure-Write-Read-Conf - Batch operations to perform search/sort functions
+Fconf18: File-Write-Shared-Access-Conf - 
+--------------------------------------------------------------------------------
+
+### raw configuration templates--------------------------------------------------
+Rconf1: Raw-100-Read-Random-Conf - DBMS, performance evaluation 
+Rconf2: Raw-100-Read-Sequential-Conf - DBMS, performance evaluation
+Rconf3: Raw-100-Write-Random-Conf - DBMS, performance evaluation
+Rconf4: Raw-100-Write-Sequential-Conf - DBMS, performance evaluation
+Rconf5: Raw-80R20W-Random-Conf - DBMS, performance evaluation
+Rconf6: Raw-Access-Beyond-2TB-Conf - GPT
+Rconf7: Raw-Hot-Banding-Conf - Hot DB zones
+Rconf8: Raw-Random-Range-Workload-Conf - DBMS, performance evaluation
+Rconf9: Raw-Streamed-workload-Conf - Logging server, Torrent-like downloads / file construction
+Rconf10: Raw-Stride-Read-Write-Conf - Reading every N-th block
+--------------------------------------------------------------------------------
+################################################################################
