@@ -1,0 +1,5 @@
+data_errors=1,formatxfersize=4k,formatsds=yes
+sd=sd1,lun=/dev/sdb,openflags=o_direct
+wd=wd1,sd=sd*,rdpct=60,skew=100,seekpct=random,stride=(4k,128k)
+rd=rd1,wd=wd*,elapsed=3600,interval=1,iorate=max,forxfersize=(4k,8k,16k,32k,64k,128k,256k,512k,1M),pause=10
+
