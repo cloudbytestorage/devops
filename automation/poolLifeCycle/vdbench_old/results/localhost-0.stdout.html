@@ -1,0 +1,73 @@
+<pre>
+stdout/stderr for slave=localhost-0
+
+11:39:43.041 11:39:43.040 SlaveJvm execution parameter:  '-m localhost'
+11:39:43.041 11:39:43.041 SlaveJvm execution parameter:  '-n localhost-10-150122-11.39.42.848'
+11:39:43.041 11:39:43.041 SlaveJvm execution parameter:  '-l localhost-0'
+11:39:43.041 11:39:43.041 SlaveJvm execution parameter:  '-p 5570'
+11:39:43.042 11:39:43.041 SlaveJvm positional parameter: 'SlaveJvm'
+11:39:43.068 11:39:43.068 successfully connected to master localhost
+11:39:43.068 11:39:43.068 Connection to localhost using port 5570 successful
+11:39:43.339 11:39:43.339 execute(): /cloudbyte/mardan/vdbench12/linux/linux_clock.suse
+11:39:43.362 11:39:43.362 Error running /cloudbyte/mardan/vdbench12/linux/linux_clock.suse; trying redhat
+11:39:43.362 11:39:43.362 execute(): /cloudbyte/mardan/vdbench12/linux/linux_clock.redhat
+11:39:43.372 11:39:43.372 ticks_per_second: 100
+
+Link to Run Definitions:         <A HREF="#_14518194">File_format_or_append_for_sd= For loops: threads=2.0 iorate=5000</A>
+                                 <A HREF="#_33018164">rd1 For loops: None</A>
+
+11:39:43.526 11:39:43.526 Beginning of run setup
+11:39:43.526 11:39:43.526 **********************
+11:39:43.527 
+11:39:43.527 
+11:39:43.649 11:39:43.649 Opening sd=sd1,lun=/tmp/quick_vdbench_test; write: true; OpenFlags: 0x00000000 OtherFlags: 0x00000000
+11:39:43.651 11:39:43.651 Setting shared library to: /cloudbyte/mardan/vdbench12/linux/linux32.so
+11:39:43.659 11:39:43.659 wg: File_format_or_append_for_sd=sd1 sd1 200.0
+11:39:43.659 11:39:43.659 Started 1 Workload Generator threads.
+11:39:43.659 11:39:43.659 work.use_waiter: false
+11:39:43.664 11:39:43.664 Started 2 i/o threads for sd1
+11:39:43.664 11:39:43.664 Started a total of 2 i/o threads
+11:39:43.664 11:39:43.664 Waiting for task synchronization
+11:39:43.664 11:39:43.664 task_wait_start_complete() end
+
+<a name="_14518194"></a><i><b>11:39:44.004 Starting RD=File_format_or_append_for_sd=; I/O rate: 5000; elapsed=(none); For loops: threads=2.0 iorate=5000</b></i>
+
+11:39:44.006 11:39:44.006 task_run_all(): 3 tasks
+11:39:44.070 11:39:44.070 Reached eof in wg_task sd1
+11:39:44.122 11:39:44.122 SlaveWorker.getSequentialCount(): 1
+11:39:44.122 11:39:44.122 sequentials_lower(): 1
+11:39:44.122 11:39:44.122 All sequential runs reached EOF; Workload generation completed.
+11:39:46.113 11:39:46.113 Sent 2/2 interrupts to waiting IO_task threads
+11:39:46.216 11:39:46.213 Memory total Java heap:  309.504 MB; Free:  294.932 MB; Used:   14.572 MB;
+11:39:46.216 11:39:46.214 Maximum native memory allocation:       131072; Current allocation:            0
+11:39:46.216 11:39:46.215 End of run
+11:39:46.216 11:39:46.215 **********
+11:39:46.216 
+11:39:46.216 
+11:39:46.314 11:39:46.314 Beginning of run setup
+11:39:46.314 11:39:46.314 **********************
+11:39:46.314 
+11:39:46.314 
+11:39:46.315 11:39:46.314 Opening sd=sd1,lun=/tmp/quick_vdbench_test; write: true; OpenFlags: 0x00000000 OtherFlags: 0x00000000
+11:39:46.315 11:39:46.315 Started 1 Workload Generator threads.
+11:39:46.315 11:39:46.315 work.use_waiter: true
+11:39:46.315 11:39:46.315 wg: wd1 sd1 10000.0
+11:39:46.320 11:39:46.320 Started 8 i/o threads for sd1
+11:39:46.320 11:39:46.320 Started a total of 8 i/o threads
+11:39:46.320 11:39:46.320 Waiting for task synchronization
+11:39:46.321 11:39:46.321 task_wait_start_complete() end
+
+<a name="_33018164"></a><i><b>11:39:47.001 Starting RD=rd1; I/O rate: 100; elapsed=5; For loops: None</b></i>
+
+11:39:47.041 11:39:47.041 task_run_all(): 10 tasks
+11:39:52.100 11:39:52.100 Ended WT_task
+11:39:52.108 11:39:52.107 Sent 8/8 interrupts to waiting IO_task threads
+11:39:52.109 11:39:52.108 Memory total Java heap:  290.957 MB; Free:  278.974 MB; Used:   11.983 MB;
+11:39:52.109 11:39:52.108 Maximum native memory allocation:       524288; Current allocation:            0
+11:39:52.109 11:39:52.108 End of run
+11:39:52.109 11:39:52.108 **********
+11:39:52.109 
+11:39:52.109 
+11:39:52.482 11:39:52.481 Memory total Java heap:  290.957 MB; Free:  278.974 MB; Used:   11.983 MB;
+11:39:52.482 11:39:52.482 VdbCount statistics for End of SlaveJvm
+11:39:52.488 11:39:52.486 Java heap:  290.957 /  278.974 /   11.983

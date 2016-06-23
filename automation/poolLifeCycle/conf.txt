@@ -1,0 +1,65 @@
+{
+
+  "_JSON Configuration": "Starts Here",
+
+  "host": "20.10.96.90",
+  "username": "admin",
+  "password": "test",
+
+  "node1": "20.10.96.70",
+  "node1_user": "root",
+  "node1_passwd": "test",
+
+  "node2": "20.10.96.75",
+  "node2_user": "root",
+  "node2_passwd": "test",
+  
+  "Account Configuration": "Account Details",
+  "AccountName": "Account",
+
+  "IP address": "IP for VSM",
+  "ipVSM1": "20.10.57.222",
+  "ipVSM2": "20.10.93.142",
+  "ipVSM3": "20.10.93.43",
+  "ipVSM4": "20.10.93.44",
+  "ipVSM5": "20.10.93.111",
+  "ipVSM6": "20.10.93.145",
+  "ipVSM7": "20.10.93.146",
+
+  "router": "default router for VSM",
+  "routerVSM1": "20.10.1.1",
+  "routerVSM2": "20.10.1.1",
+  "routerVSM3": "20.10.1.1",
+  "routerVSM4": "20.10.1.1",
+  "routerVSM5": "20.10.1.1",
+
+  "DNS server": "DNS server for VSM",
+  "dnsVSM1": "8.8.8.8",
+  "dnsVSM1": "8.8.8.8",
+  "dnsVSM1": "8.8.8.8",
+  "dnsVSM1": "8.8.8.8",
+  "dnsVSM1": "8.8.8.8",
+
+  "interface": "interface of VSM",
+  "interfaceVSM1": "bce0",
+  "interfaceVSM2": "bce0",
+  "interfaceVSM3": "bce0",
+  "interfaceVSM4": "bce0",
+  "interfaceVSM5": "bce0",
+  "interfaceVSM6": "bce0",
+  "interfaceVSM7": "bce0",
+
+  "localClient": "Info",
+  "Client_IP": "20.10.93.155",
+  "Client_user": "root",
+  "Client_pwd": "test@123",
+
+  "Client1": "Info",
+  "Client1_IP": "20.10.57.252",
+  "Client1_user": "root",
+  "Client1_pwd": "test@124",
+
+
+  "_JSON Configuration": "Ends Here"
+
+}

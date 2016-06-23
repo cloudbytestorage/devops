@@ -1,0 +1,26 @@
+{ "queryasyncjobresultresponse" : {
+  "accountid": "2967e60d-a3cd-4363-af51-1e2510858709",
+  "userid": "e6c0bf6e-83ed-4349-b220-fa56b11e51fa",
+  "cmd": "com.cloudbyte.api.commands.AddDiskGroupCmd",
+  "msg": "3",
+  "jobstatus": 1,
+  "jobprocstatus": 0,
+  "jobresultcode": 0,
+  "jobresulttype": "object",
+  "jobresult": {
+    "diskgroup": {
+      "id": "cf9b0271-f030-3639-ad81-daee41d83469",
+      "name": "group1452666296589",
+      "poolid": "a4e65ff2-4c36-3e8a-ba76-cc7642a13993",
+      "hapoolname": "z1_pool",
+      "configurationstate": "init",
+      "type": "meta raidz1",
+      "sectorsize": 4096,
+      "clusterstatus": "Online",
+      "offlinenodes": "",
+      "diskgroupstateunderpool": "-"
+    }
+  },
+  "created": "2016-01-13 11:54:55",
+  "jobid": "f485d453-9630-4ff5-b9e3-939a04470ff3"
+} }

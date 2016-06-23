@@ -1,0 +1,38 @@
+-------------------POOL LIFECYCLE TESTCASES STARTS--------------------,,
+
+PROVISIONING AND DEPROVISIONING OF DIFFERRENT TYPES OF POOLS....,,
+Wed Jan 13 11:48:58 2016,stripe Pool creation,PASSED,,Wed Jan 13 11:49:30 2016
+Wed Jan 13 11:48:58 2016,stripe Pool deletion,PASSED,,Wed Jan 13 11:49:44 2016
+Wed Jan 13 11:49:44 2016,mirror Pool creation,PASSED,,Wed Jan 13 11:50:12 2016
+Wed Jan 13 11:49:44 2016,mirror Pool deletion,PASSED,,Wed Jan 13 11:50:25 2016
+Wed Jan 13 11:50:25 2016,raidz1 Pool creation,PASSED,,Wed Jan 13 11:50:56 2016
+Wed Jan 13 11:50:25 2016,raidz1 Pool deletion,PASSED,,Wed Jan 13 11:51:09 2016
+Wed Jan 13 11:51:09 2016,raidz2 Pool creation,PASSED,,Wed Jan 13 11:52:01 2016
+Wed Jan 13 11:51:09 2016,raidz2 Pool deletion,PASSED,,Wed Jan 13 11:52:27 2016
+Wed Jan 13 11:52:27 2016,raidz3 Pool creation,PASSED,,Wed Jan 13 11:53:25 2016
+Wed Jan 13 11:52:27 2016,raidz3 Pool deletion,PASSED,,Wed Jan 13 11:53:41 2016
+END OF PROVISIONING AND DEPROVISIONING OF DIFFERRENT TYPES OF POOLS....,,
+
+VERIFYING POOL PROVISIONING AND DEPROVISIONING WHEN HAGROUP IN DEGRADED STATE....,,
+HAGroup is in degraded state....,,
+Wed Jan 13 11:53:57 2016,mirror Pool creation,PASSED,,Wed Jan 13 11:54:19 2016
+Wed Jan 13 11:53:57 2016,mirror Pool deletion ,PASSED,,Wed Jan 13 11:54:31 2016
+Wed Jan 13 11:54:31 2016,raidz1 Pool creation,PASSED,,Wed Jan 13 11:54:57 2016
+Wed Jan 13 11:55:20 2016,raidz1 Pool deletion,PASSED,,Wed Jan 13 11:55:35 2016
+END OF VERIFYING POOL PROVISIONING AND DEPROVISIONING WHEN HAGROUP IN DEGRADED STATE....,,
+
+VERIFYING PROVISIONING AND DEPROVISIONING OF SPARE/ZIL/CACHE/METAVDEVS....,,
+Wed Jan 13 11:55:35 2016,raidz1 Pool creation,PASSED,,Wed Jan 13 11:55:56 2016
+Wed Jan 13 11:55:59 2016,"spare" disk Group addition,PASSED,,Wed Jan 13 11:56:14 2016
+Wed Jan 13 11:56:16 2016,"spare" disk Group deletion,PASSED,,Wed Jan 13 11:56:20 2016
+Wed Jan 13 11:56:20 2016,"log" disk Group addition,PASSED,,Wed Jan 13 11:56:35 2016
+Wed Jan 13 11:56:37 2016,"log" disk Group deletion,PASSED,,Wed Jan 13 11:56:41 2016
+Wed Jan 13 11:56:41 2016,"log_mirror" disk Group addition,PASSED,,Wed Jan 13 11:56:56 2016
+Wed Jan 13 11:56:58 2016,"log_mirror" disk Group deletion,PASSED,,Wed Jan 13 11:57:05 2016
+Wed Jan 13 11:57:05 2016,"cache" disk Group addition,PASSED,,Wed Jan 13 11:57:21 2016
+Wed Jan 13 11:57:23 2016,"cache" disk Group deletion,PASSED,,Wed Jan 13 11:57:26 2016
+Wed Jan 13 11:57:26 2016,Enabling metavdev in global setting,PASSED,,Wed Jan 13 11:57:26 2016
+Wed Jan 13 11:57:26 2016,"meta_raidz1" disk Group addition,PASSED,,Wed Jan 13 11:57:41 2016
+Wed Jan 13 11:57:41 2016,raidz1 Pool deletion,PASSED,,Wed Jan 13 11:57:50 2016
+Wed Jan 13 11:57:50 2016,Disabling metavdev in global setting,PASSED,,Wed Jan 13 11:57:51 2016
+END OF VERIFYING PROVISIONING AND DEPROVISIONING OF SPARE/ZIL/CACHE/METAVDEVS....,,

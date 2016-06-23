@@ -1,0 +1,35 @@
+<pre>
+* Run             : Name of run from RD=
+* Interval        : Reporting interval number
+* reqrate         : Requested i/o rate
+* rate            : Observed i/o rate
+* MB/sec          : Megabytes per second (MB=1024*1024)
+* bytes/io        : Average data transfersize
+* read%           : Observed read percentage
+* resp            : Observed response time
+* resp_max        : Observed maximum response time
+* resp_std        : Standard deviation
+* xfersize        : data transfer size requested
+* threads         : number of threads requested
+* rdpct           : read% requested
+* rhpct           : readhit% requested
+* whpct           : writehit% requested
+* seekpct         : seek% requested
+* lunsize         : Total amount of Gigabytes of all luns (GB= 1024*1024*1024)
+* version         : Vdbench version identifier
+* cpu_used        : kstat: cpu% user+sys
+* cpu_user        : kstat: cpu% user
+* cpu_kernel      : kstat: cpu% sys 
+* cpu_wait        : kstat: cpu% wait
+* cpu_idle        : kstat: cpu% idle
+* 'n/a'           : Data not available, or conflicting data. eg. multiple different xfersize parameters used.
+* 
+         tod        Run   Interval    reqrate       rate     MB/sec   bytes/io      read%       resp   resp_max   resp_std   xfersize    threads      rdpct      rhpct      whpct    seekpct    lunsize    version   cpu_used   cpu_user cpu_kernel   cpu_wait   cpu_idle 
+11:39:46.061 File_format_or_append_for_sd=          1  5000.0000   639.0000    39.9375      65536     0.0000     0.1524    20.0740     1.0892      65536     2.0000     0.0000     0.0000     0.0000        n/a     0.0391        n/a        n/a        n/a        n/a        n/a        n/a 
+11:39:46.076 File_format_or_append_for_sd=    avg_2-1  5000.0000     0.0000     0.0000          0     0.0000     0.0000     0.0000     0.0000      65536     2.0000     0.0000     0.0000     0.0000        n/a     0.0391        n/a � � � � � 
+11:39:48.019        rd1          1   100.0000    91.0000     0.0889       1024    53.8462     0.0260     1.2370     0.1286       1024          8    50.0000     0.0000     0.0000   100.0000     0.0391        n/a � � � � � 
+11:39:49.050        rd1          2   100.0000   103.0000     0.1006       1024    49.5146     0.0122     0.0300     0.0055       1024          8    50.0000     0.0000     0.0000   100.0000     0.0391        n/a � � � � � 
+11:39:50.050        rd1          3   100.0000    96.0000     0.0938       1024    54.1667     0.0112     0.0280     0.0048       1024          8    50.0000     0.0000     0.0000   100.0000     0.0391        n/a � � � � � 
+11:39:51.049        rd1          4   100.0000   116.0000     0.1133       1024    48.2759     0.0134     0.0880     0.0090       1024          8    50.0000     0.0000     0.0000   100.0000     0.0391        n/a � � � � � 
+11:39:52.052        rd1          5   100.0000   100.0000     0.0977       1024    52.0000     0.0127     0.0490     0.0071       1024          8    50.0000     0.0000     0.0000   100.0000     0.0391        n/a � � � � � 
+11:39:52.057        rd1    avg_2-5   100.0000   103.7500     0.1013       1024    50.8434     0.0124     0.0880     0.0069       1024          8    50.0000     0.0000     0.0000   100.0000     0.0391        n/a     1.4888     1.4888     0.0000     0.0000     0.0000 

@@ -1,0 +1,7 @@
+<pre>
+
+* Contents of parameter file: /cloudbyte/poolLifeCycle/vdbench/filesystem_config_new
+
+fsd=fsd1,anchor=/cloudbyte/poolLifeCycle/mount/AccountNFSvolz1,depth=1,width=1,files=20,size=3984M
+fwd=fwd1,fsd=fsd*,xfersize=4k,rdpct=50,fileio=random,threads=20
+rd=rd1,fwd=fwd*,elapsed=1200,interval=1,fwdrate=max,format=yes
