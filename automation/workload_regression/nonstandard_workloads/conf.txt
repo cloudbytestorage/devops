@@ -24,11 +24,11 @@
   "extra_VSMip": "172.16.60.126",
 
   "router": "default router for VSM",
-  "routerVSM1": "20.10.1.1",
-  "routerVSM2": "20.10.1.1",
-  "routerVSM3": "20.10.1.1",
-  "routerVSM4": "20.10.1.1",
-  "routerVSM5": "20.10.1.1",
+  "routerVSM1": "172.16.1.1",
+  "routerVSM2": "172.16.1.1",
+  "routerVSM3": "172.16.1.1",
+  "routerVSM4": "172.16.1.1",
+  "routerVSM5": "172.16.1.1",
 
   "DNS server": "DNS server for VSM",
   "dnsVSM1": "8.8.8.8",
