@@ -1,0 +1,88 @@
+<pre>
+11:39:42.894 input argument scanned: '-f/tmp/parmfile'
+11:39:42.896 input argument scanned: '-oresults'
+11:39:42.896 Vdbench distribution: vdbench502
+11:39:42.896 
+11:39:42.900 java.vendor                   Sun Microsystems Inc.
+11:39:42.900 java.home                     /usr/java/jre1.6.0_20
+11:39:42.901 java.vm.specification.version 1.0
+11:39:42.901 java.vm.version               16.3-b01
+11:39:42.901 java.vm.vendor                Sun Microsystems Inc.
+11:39:42.901 java.specification.version    1.6
+11:39:42.901 java.class.version            50.0
+11:39:42.901 user.name                     root
+11:39:42.901 user.dir                      /cloudbyte/mardan/vdbench12
+11:39:42.901 java.class.path               ./:./classes:./vdbench.jar
+11:39:42.901 os.name                       Linux
+11:39:42.901 os.arch                       i386
+11:39:42.901 sun.arch.data.model           32
+11:39:42.901 os.version                    2.6.27.19-5-pae
+11:39:42.941 
+11:39:42.942 
+11:39:42.957 Starting slave: /cloudbyte/mardan/vdbench12/vdbench SlaveJvm -m localhost -n localhost-10-150122-11.39.42.848 -l localhost-0 -p 5570   
+11:39:42.978 Setting shared library to: /cloudbyte/mardan/vdbench12/linux/linux32.so
+11:39:43.233 Slave localhost-0 connected
+11:39:43.273 All slaves are now connected
+11:39:43.381 sd=sd1,lun=/tmp/quick_vdbench_test lun size: 0 bytes; .0000 GB (1024**3); .0000 GB (1000**3)
+11:39:43.382 lun=/tmp/quick_vdbench_test does not exist or is too small. host=localhost
+11:39:43.383 Vdbench will attempt to expand a disk file if the requested file size is a multiple of 1mb
+11:39:43.388 
+11:39:43.388 
+
+Link to Run Definitions:         <A HREF="#_14518194">File_format_or_append_for_sd= For loops: threads=2.0 iorate=5000</A>
+                                 <A HREF="#_33018164">rd1 For loops: None</A>
+
+11:39:43.431 Sending to localhost-0  wd=File_format_or_append_for_sd=sd1,sd=sd1,lun=/tmp/quick_vdbench_test
+11:39:43.453 SlaveList.printWorkForSlaves() *
+11:39:43.454 slv=localhost-0 rd=File_format_or_append_for_sd= wd=File_format_or_append_for_sd=sd1 sd=sd1    rd=  0 sk=-001 sw=100.00 xf=  65536 rh=  0 hi=0 th=2 
+11:39:43.454 
+11:39:43.454 Waiting for synchronization of all slaves
+11:39:43.755 Synchronization of all slaves complete
+11:39:44.001 Starting RD=File_format_or_append_for_sd=; I/O rate: 5000; elapsed=(none); For loops: threads=2.0 iorate=5000
+
+<a name="_14518194"></a><i><b>11:39:44.004 Starting RD=File_format_or_append_for_sd=; I/O rate: 5000; elapsed=(none); For loops: threads=2.0 iorate=5000</b></i>
+
+11:39:44.123 All sequential workloads on all slaves are done.
+11:39:44.123 This triggers end of run inspite of possibly some non-sequential workloads that are still running.
+
+Jan 22, 2015  interval        i/o   MB/sec   bytes   read     resp     resp     resp    cpu%  cpu%
+                             rate  1024**2     i/o    pct     time      max   stddev sys+usr   sys
+11:39:46.050         1     639.00    39.94   65536   0.00    0.152   20.074    1.089    22.0   7.3
+11:39:46.064   avg_2-1       0.00     0.00       0   0.00    0.000    0.000    0.000 � �
+11:39:46.076 Total i/o for slave localhost-0:         639 100.00%
+11:39:46.276 
+11:39:46.281 Counts reported are for non-warmup intervals (0).
+11:39:46.282 I/O count for all WDs: 0
+11:39:46.282 Flushing all reports
+11:39:46.283 Memory total Java heap:   61.875 MB; Free:   50.046 MB; Used:   11.829 MB;
+11:39:46.303 Sending to localhost-0  wd=wd1,sd=sd1,lun=/tmp/quick_vdbench_test
+11:39:46.310 SlaveList.printWorkForSlaves() 
+11:39:46.311 slv=localhost-0 rd=rd1    wd=wd1    sd=sd1    rd= 50 sk=100 sw=100.00 xf=   1024 rh=  0 hi=0 th=8 
+11:39:46.311 
+11:39:46.311 Waiting for synchronization of all slaves
+11:39:46.411 Synchronization of all slaves complete
+11:39:47.001 Starting RD=rd1; I/O rate: 100; elapsed=5; For loops: None
+
+<a name="_33018164"></a><i><b>11:39:47.001 Starting RD=rd1; I/O rate: 100; elapsed=5; For loops: None</b></i>
+
+
+Jan 22, 2015  interval        i/o   MB/sec   bytes   read     resp     resp     resp    cpu%  cpu%
+                             rate  1024**2     i/o    pct     time      max   stddev sys+usr   sys
+11:39:48.017         1      91.00     0.09    1024  53.85    0.026    1.237    0.129     6.3   1.3
+11:39:49.047         2     103.00     0.10    1024  49.51    0.012    0.030    0.006     1.9   0.0
+11:39:50.048         3      96.00     0.09    1024  54.17    0.011    0.028    0.005     1.0   0.0
+11:39:51.046         4     116.00     0.11    1024  48.28    0.013    0.088    0.009     1.0   0.0
+11:39:52.049         5     100.00     0.10    1024  52.00    0.013    0.049    0.007     2.0   0.0
+11:39:52.056   avg_2-5     103.75     0.10    1024  50.84    0.012    0.088    0.007     1.5   0.0
+11:39:52.057 Total i/o for slave localhost-0:         506 100.00%
+11:39:52.157 
+11:39:52.158 Counts reported are for non-warmup intervals (4).
+11:39:52.158 I/O count for all WDs: 415
+11:39:52.158 Calculated skew for WD wd1         :          415          103/sec  (100.00%) Expected skew: 100.00%
+11:39:52.158 Flushing all reports
+11:39:52.159 Memory total Java heap:   61.938 MB; Free:   49.492 MB; Used:   12.446 MB;
+11:39:52.179 Ending Reporter
+11:39:52.492 SlaveOnMaster terminating: localhost-0
+11:39:52.545 Vdbench execution completed successfully. Output directory: /cloudbyte/mardan/vdbench12/results
+11:39:52.553 SlaveStarter terminating: localhost-0
+11:39:52.647 Memory total Java heap:   61.938 MB; Free:   50.805 MB; Used:   11.133 MB;

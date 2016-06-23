@@ -1,0 +1,3 @@
+fsd=fsd1,anchor=/mnt/nfs1,depth=1,width=1,files=5,size=100M
+fwd=fwd1,fsd=fsd*,xfersize=4k,rdpct=80,fileio=random,threads=5
+rd=rd1,fwd=fwd*,elapsed=60000,interval=1,fwdrate=max,format=yes

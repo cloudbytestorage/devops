@@ -1,0 +1,4 @@
+#iozone -l 19 -u 19 -r 4k -i 0 -i 1 -b 13Dec.xls -o -s 1g -F /mnt/basava1/test /mnt/basava2/test /mnt/basava3/test /mnt/basava4/test /mnt/basava5/test /mnt/basava6/test /mnt/basava7/test /mnt/basava8/test /mnt/basava9/test /mnt/basava10/test /mnt/basava21/test /mnt/basava22/test /mnt/basava23/test /mnt/basava24/test /mnt/basava25/test /mnt/basava26/test /mnt/basava27/test /mnt/basava28/test /mnt/basava29/test /mnt/basava210/test
+# /basava211/test /basava212/test /basava213/test /basava214/test /basava215/test /basava31/test /basava32/test /basava33/test /basava34/test /basava35/test /basava41/test /basava42/test /basava43/test /basava44/test /basava45/test
+
+iozone -l 5 -u 5 -r 4k -i 0 -i 1 -b 13Dec.xls -o -s 1g -F /mnt/basava1/test /mnt/basava2/test /mnt/basava21/test /mnt/basava22/test /mnt/basava23/test /basava31/test

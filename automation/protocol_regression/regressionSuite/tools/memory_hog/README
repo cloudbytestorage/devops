@@ -1,0 +1,11 @@
+SSH into build machine
+vitta@10.10.1.101
+pwd: vitta
+cd kernel
+
+1) Modify the size intialize the variable n with some number 
+2) Run the command make
+3) Copy hello_fsm.ko to destination machine(Where we have to run memory hog test)
+4) kldload /root/hello_fsm.ko
+5) kldstat
+6) kldunload hello_fsm

@@ -1,0 +1,31 @@
+#!/bin/sh
+Linux=1
+#ESX = 2
+echo "Please enter Remote host ip"
+read ip
+echo "Enter 1 for Linux or 2 for  ESX"
+read host
+
+if [ $host -eq $Linux ]; then
+	file=~/.ssh/id_rsa.pub
+	if [[ -s "$file" ]]; then
+		#ssh-keygen
+		ssh-copy-id -i ~/.ssh/id_rsa.pub $ip
+	else
+		ssh-keygen
+                ssh-copy-id -i ~/.ssh/id_rsa.pub $ip
+	fi
+
+		
+else
+	file=/root/.ssh/id_dsa.pub
+        if [[ -s "$file" ]]; then
+
+		#ssh-keygen -t dsa
+		cat /root/.ssh/id_dsa.pub | ssh root@$ip 'cat >> /etc/ssh/keys-root/authorized_keys'
+	else
+		ssh-keygen -t dsa
+                cat /root/.ssh/id_dsa.pub | ssh root@$ip 'cat >> /etc/ssh/keys-root/authorized_keys'
+	fi
+fi
+ 

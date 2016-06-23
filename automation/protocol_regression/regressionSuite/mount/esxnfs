@@ -1,0 +1,21 @@
+cp sample_esxnfs.sh esxnfs.sh
+
+echo "Enter the option 1 for add datastore and 2 for delete delete datastore"
+read option
+if [ $option -eq 1 ]; then
+
+	echo "Enter the tsm ip"
+	read ip
+	showmount -e $ip |cut -d ":" -f 2|cut -d " " -f 1 > esxtest
+	sed -i s/TSMIP/$ip/ esxnfs.sh
+	echo "Esx ipaddress"
+	read Esxip
+	scp esxtest esxnfs.sh root@$Esxip:/scripts/.
+	ssh root@$Esxip sh /scripts/esxnfs.sh 
+
+else 
+	echo "Esx ipaddress"
+        read Esxip
+        scp deletenfsshare.sh root@$Esxip:/scripts/.
+        ssh root@$Esxip sh /scripts/deletenfsshare.sh
+fi

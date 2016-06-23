@@ -1,0 +1,49 @@
+echo "Enter 1 for add NFS SR and 2 for delete NFS SR "
+read option
+
+if [ $option -eq 1 ]; then
+	echo "Enter TSM ip"
+	read ip
+	showmount -e $ip |cut -d ":" -f 2|cut -d " " -f 1 > /root/exports
+	uuid=`xe host-list |grep uuid |cut -d ":" -f 2|cut -d " " -f 2`
+	echo "Enter the SR name to be given"
+
+	read SRname
+	i=0
+	while read line
+	do
+		if [[ ! -z $line ]]; then
+	
+			xe sr-create host-uuid=$uuid name-label=${SRname}${i} type=nfs device-config:server=$ip device-config:serverpath=$line
+		fi
+	
+		i=$(( ${i} + 1 ))
+	done </root/exports
+else
+
+	echo "Enter the SR name to be to be destroyed"
+
+	read SRname
+	xe sr-list |grep $SRname|cut -d ":" -f 2|cut -d " " -f 2 > /root/deleteSR
+#i=0
+#i=$(( ${i} + 1 ))
+	while read line
+	do
+        	SRuuid=`xe sr-list name-label=$line |grep uuid |cut -d ":" -f 2 |cut -d " " -f 2`
+
+        	echo $SRuuid
+
+        	xe pbd-list sr-uuid=$SRuuid >/root/test
+
+        	Pbduuid=`awk 'NR < 2' /root/test |cut -d ":" -f 2 |cut -d " " -f 2`
+
+       	 	echo $Pbduuid
+
+        	xe pbd-unplug uuid=$Pbduuid
+
+        	xe sr-forget uuid=$SRuuid
+
+	done</root/deleteSR
+fi
+
+

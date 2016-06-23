@@ -1,0 +1,3 @@
+#./iotest_lin32 -t 10 -T 300 -s 136870912 -W 100 -b 4096 -r -l 1  /tmp/mount/test
+#./iotest_lin32 -t 10 -T 300 -s 1036870912 -W 100 -b 4096 -r -l 1  /tmp/mount/test
+./iotest_lin32_sync -t 10 -T 300 -s 136870912 -W 100 -b 4096 -r -l 1  /tmp/mount/test

@@ -1,0 +1,53 @@
+
+*
+*
+* Copyright 2010 Sun Microsystems, Inc. All rights reserved.
+*
+* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+*
+* The contents of this file are subject to the terms of the Common
+* Development and Distribution License("CDDL") (the "License").
+* You may not use this file except in compliance with the License.
+*
+* You can obtain a copy of the License at http://www.sun.com/cddl/cddl.html
+* or ../vdbench/license.txt. See the License for the
+* specific language governing permissions and limitations under the License.
+*
+* When distributing the software, include this License Header Notice
+* in each file and include the License file at ../vdbench/licensev1.0.txt.
+*
+* If applicable, add the following below the License Header, with the
+* fields enclosed by brackets [] replaced by your own identifying information:
+* "Portions Copyrighted [year] [name of copyright owner]"
+*
+
+*
+* Author: Henk Vandenbergh.
+*
+
+*
+* Delete numerous small files and its parent directories.
+* For Vdbench to be able to delete files of course it first needs to create
+* a bunch of files. It's all in here.
+*
+* Note: the thread count for the format is taken from fwd0
+*
+
+fsd=fsd1,anchor=/dir1,depth=1,width=1,files=1000,size=8k
+
+fwd=default,threads=16
+fwd=fwd0,fsd=fsd1,operation=read
+fwd=fwd1,fsd=fsd1,operation=delete
+fwd=fwd2,fsd=fsd1,operation=rmdir
+
+* This run serves as 'format only'. The 'fwd=fwd0,operation=read' is there to
+* bypass a bug in Vdbench500 where including a delete/rmdir in the FWDs
+* causes a loop during the format.
+rd=format,fwd=fwd0,fwdrate=1,format=yes,elapsed=3,interval=1
+
+* Vdbench will stop after the last file has been deleted
+rd=rd_delete,fwd=fwd1,fwdrate=max,elapsed=99999,interval=1
+
+* Vdbench will stop after the last directory has been deleted
+rd=rd_rmdir,fwd=fwd2,fwdrate=max,elapsed=99999,interval=1
+

@@ -1,0 +1,2 @@
+scsi1.present = "TRUE"
+scsi1.sharedBus = "none"

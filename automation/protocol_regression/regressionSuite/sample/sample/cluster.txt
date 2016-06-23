@@ -1,0 +1,6 @@
+  "_Cluster Configuration" : "Details for Cluster#NUM$...",	
+  "clusterName#NUM$": "Cluster#NUM$",
+  "clusterDescription#NUM$": "ClusterDescription#NUM$",
+  "clusterStartIP#NUM$": "20.10.57.11",
+  "clusterEndIP#NUM$": "20.10.57.12",
+

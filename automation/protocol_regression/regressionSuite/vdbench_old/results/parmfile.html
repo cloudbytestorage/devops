@@ -1,0 +1,13 @@
+<pre>
+
+* Contents of parameter file: /tmp/parmfile
+
+*
+* This sample parameter file first creates a temporary file
+* if this is the first time the file is referenced.
+* It then does a five second 4k 50% read, 50% write test.
+* (This file is too small to be used for data validation.)
+*
+sd=sd1,lun=/tmp/quick_vdbench_test,size=40m
+wd=wd1,sd=sd1,xf=1k,rdpct=50
+rd=rd1,wd=wd1,iorate=100,elapsed=5,interval=1

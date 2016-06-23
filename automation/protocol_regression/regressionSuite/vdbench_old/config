@@ -1,0 +1,4 @@
+fsd=fsd1,anchor=/mnt/iscsi1/level2,depth=2,width=10,files=15,size=1G,openflags=o_direct
+fwd=fwd1,fsd=fsd*,readpct=20,xfersize=1M,fileio=random,threads=15
+rd=rd1,fwd=fwd*,fwdrate=max,format=yes,elapsed=10,interval=1
+

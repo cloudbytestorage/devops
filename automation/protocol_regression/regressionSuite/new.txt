@@ -1,0 +1,54 @@
+{
+
+  "_JSON Configuration": "Starts Here",
+
+  "host": "20.10.26.50",
+  "username": "admin",
+  "password": "test",
+  
+  "Account Configuration": "Account Details",
+  "AccountName": "Account",
+
+  "IP address": "IP for VSM",
+  "ipVSM1": "18.10.30.1",
+  "ipVSM2": "18.10.30.1",
+  "ipVSM3": "18.10.30.1",
+  "ipVSM4": "18.10.30.1",
+  "ipVSM5": "18.10.30.11",
+  "extra_VSMip": "20.10.31.79",
+
+  "router": "default router for VSM",
+  "routerVSM1": "20.10.1.1",
+  "routerVSM2": "20.10.1.1",
+  "routerVSM3": "20.10.1.1",
+  "routerVSM4": "20.10.1.1",
+  "routerVSM5": "20.10.1.1",
+
+  "DNS server": "DNS server for VSM",
+  "dnsVSM1": "8.8.8.8",
+  "dnsVSM2": "8.8.8.8",
+  "dnsVSM3": "8.8.8.8",
+  "dnsVSM4": "8.8.8.8",
+  "dnsVSM5": "8.8.8.8",
+
+  "interface": "interface of VSM",
+  "interfaceVSM1": "vlan18",
+  "interfaceVSM2": "vlan18",
+  "interfaceVSM3": "vlan18",
+  "interfaceVSM4": "vlan18",
+  "interfaceVSM5": "vlan18",
+  
+  "localClient": "Info",
+  "Client_IP": "20.10.57.252",
+  "Client_user": "root",
+  "Client_pwd": "test@124",
+
+  "Client1": "Info",
+  "Client1_IP": "20.10.57.100",
+  "Client1_user": "root",
+  "Client1_pwd": "test@123",
+
+
+  "_JSON Configuration": "Ends Here"
+
+}
