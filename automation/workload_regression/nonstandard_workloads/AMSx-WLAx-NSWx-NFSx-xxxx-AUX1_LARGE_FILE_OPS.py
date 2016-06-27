@@ -11,7 +11,7 @@ location = '%s/%s' %(mount_point, FileDir)
 
 test_log = '/root/LargeSingleFileCreateRMWDelete.log'
 
-FileSize = 460 #in GB
+FileSize = 20 #in GB
 ddBlockSize = 1 # in M
 ddCountValue = FileSize * 1024 / ddBlockSize
 bSize = '%sM' %(ddBlockSize)

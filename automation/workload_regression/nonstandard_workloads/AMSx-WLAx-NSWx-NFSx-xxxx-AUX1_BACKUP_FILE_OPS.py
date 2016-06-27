@@ -13,7 +13,7 @@ location = '%s/%s' %(mount_point_1, FileDir)
 backup_location = '%s' %(mount_point_2) 
 test_log = '/root/RSync.log'
 
-FileSize = 200 #in GB
+FileSize = 20 #in GB
 ddBlockSize = 1 # in M
 ddCountValue = FileSize * 1024 / ddBlockSize
 bSize = '%sM' %(ddBlockSize)

@@ -9,11 +9,11 @@ print mount_point
 
 test_log = '/root/FileCreateReadModifyWriteDelete.log' 
 
-No2kFiles=200
-No4kFiles=200
-No8kFiles=200
-No16kFiles=200
-No32kFiles=200
+No2kFiles=50
+No4kFiles=50
+No8kFiles=50
+No16kFiles=50
+No32kFiles=50
 
 dir_recursive = ['a', 'b', 'c', 'd']
 

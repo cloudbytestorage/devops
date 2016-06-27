@@ -12,11 +12,11 @@ test_log = '/root/FileCreateReadModifyWriteDelete.log'
 
 # Total file no : 16 * (No2kFiles+No4kFiles+No8kFiles+No16kFiles+No32kFiles)
 
-No2kFiles=500 
-No4kFiles=500 
-No8kFiles=500 
-No16kFiles=500 
-No32kFiles=500
+No2kFiles=50 
+No4kFiles=50 
+No8kFiles=50 
+No16kFiles=50 
+No32kFiles=50
 
 # Total dir no : square {length(dir_recursive)}
 

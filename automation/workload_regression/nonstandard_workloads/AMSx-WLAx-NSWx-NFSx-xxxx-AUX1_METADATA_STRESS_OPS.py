@@ -11,11 +11,16 @@ mount_point = sys.argv[3]
 
 test_log = '/root/NFSMetaDataStress.log' 
 
-No2kFiles=10
-No4kFiles=10
-No8kFiles=10
-No16kFiles=10
-No32kFiles=10
+#No2kFiles=10
+#No2kFiles=10
+#No4kFiles=10
+#No8kFiles=10
+#No16kFiles=10
+No32kFiles=50
+No4kFiles=50
+No8kFiles=50
+No16kFiles=50
+No32kFiles=50
 
 dir_recursive = ['a', 'b', 'c', 'd']
 

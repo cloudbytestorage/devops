@@ -28,6 +28,7 @@ else:
         init_grp = filesystem.get('initiatorgroup')
         if init_grp == 'ALL':
             assign_iniator_gp_to_LUN(stdurl, filesystem_id, acct_id, 'None')
+            time.sleep(1)
         querycommand = 'command=deleteFileSystem&id=%s&forcedelete=true' %(filesystem_id)
         print querycommand
         resp_delete_volume = sendrequest(stdurl, querycommand)
@@ -36,6 +37,7 @@ else:
         print "Deleted the Volume", filesystem_name
 
 ##########Delete TSMs
+time.sleep(5)
 querycommand = 'command=listTsm'
 resp_listTsm = sendrequest(stdurl, querycommand)
 filesave("logs/listTSM.txt", "w", resp_listTsm)
@@ -54,6 +56,7 @@ else:
         print "Deleted the TSM", tsm_name
 
 ##########Delete HAPool
+time.sleep(5)
 querycommand = 'command=listHAPool'
 resp_listHAPool = sendrequest(stdurl, querycommand)
 filesave("logs/listHAPool.txt", "w", resp_listHAPool)
