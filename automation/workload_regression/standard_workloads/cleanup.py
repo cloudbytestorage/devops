@@ -1,5 +1,6 @@
 import json
 import md5
+import sys
 import requests
 import time
 from cbrequest import configFile, sendrequest, filesave, get_apikey, get_url
