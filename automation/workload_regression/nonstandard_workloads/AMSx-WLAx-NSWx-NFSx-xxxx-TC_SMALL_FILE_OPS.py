@@ -27,8 +27,7 @@ import json
 import logging
 from time import ctime
 from cbrequest import get_url, configFile, sendrequest, resultCollection, \
-        get_apikey, mountNFS, executeCmd, sshToOtherClient, putFileToController, \
-        sshToRemoteClient
+        get_apikey, mountNFS, executeCmd, sshToOtherClient, putFileToController 
 from utils import check_mendatory_arguments, is_blocked, get_logger_footer, UMain
 from haUtils import get_controller_info, list_controller, get_value, get_node_IP
 from poolUtils import listPool, get_pool_info, getFreeDisk, getDiskToAllocate, \
