@@ -11,12 +11,12 @@
   "AccountName": "Account",
   
   "pool_type": "stripe",
-  "num_pool_disks": "4",
+  "num_pool_disks": "3",
   "pool_disk_type": "SAS",
   "pool_iops": "500",
 
   "IP address": "IP for VSM",
-  "ipVSM1": "172.16.60.121",
+  "ipVSM1": "20.16.60.121",
   "ipVSM2": "172.16.60.122",
   "ipVSM3": "172.16.60.123",
   "ipVSM4": "172.16.60.124",
@@ -24,7 +24,7 @@
   "extra_VSMip": "172.16.60.126",
 
   "router": "default router for VSM",
-  "routerVSM1": "172.16.1.1",
+  "routerVSM1": "20.10.1.1",
   "routerVSM2": "172.16.1.1",
   "routerVSM3": "172.16.1.1",
   "routerVSM4": "172.16.1.1",
@@ -38,7 +38,7 @@
   "dnsVSM5": "8.8.8.8",
 
   "interface": "interface of VSM",
-  "interfaceVSM1": "em1",
+  "interfaceVSM1": "em0",
   "interfaceVSM2": "em1",
   "interfaceVSM3": "em1",
   "interfaceVSM4": "em1",
@@ -60,12 +60,13 @@
   "Client2_pwd": "test123",
 
   "vdbench": "configuration",
-  "workload_type": "All",
+  "workload_type1": "All",
+  "workload_type": "Fconf1 Fconf2 Rconf1 Rconf2",
   "device_type": "both",
-  "size": "3G",
+  "size": "5M",
   "elapsed": "360",
-  "files": "50",
-  "threads": "50",
+  "files": "1",
+  "threads": "1",
 
   "_JSON Configuration": "Ends Here"
 

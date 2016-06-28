@@ -215,6 +215,7 @@ def getSelectedConfig(WORKLOAD_TYPE, allConfigFiles):
     for values in WORKLOAD_TYPE:
         if values in allConfigFiles:
             newConfigFiles[values] = allConfigFiles[values]
+            print values
     return newConfigFiles
 
 def verify_list_controller(list_cntrl, startTime):
@@ -296,7 +297,8 @@ def verify_execute_mkfs(result):
 
 def getiSCSIDevice(volName, vsm_id, POOL_IOPS, vsm_dataset_id, STDURL):
     volumeDict = {'name': volName, 'tsmid': vsm_id, 'datasetid': \
-            vsm_dataset_id, 'protocoltype': 'ISCSI', 'iops': POOL_IOPS}
+            vsm_dataset_id, 'protocoltype': 'ISCSI', 'iops': POOL_IOPS, \
+            'quotasize': '20G'}
     result = create_volume(volumeDict, STDURL)
     verify_create_volume(result)
     logging.info('listing volume...')
@@ -365,20 +367,17 @@ if freedisk[0] == 'FAILED':
 freedisk = freedisk[1]
 
 # Steps to get allocatable disks for pool (based on size, type etc..,)
-
 allocatable_diskidlist = getDiskToAllocate(freedisk, NUM_POOL_DISKS, POOL_DISK_TYPE)
 if allocatable_diskidlist[0] == 'FAILED':
     logging.error('Testcase %s is blocked due to' \
             ': %s', tcName, allocatable_diskidlist[1])
     is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
 allocatable_diskidlist = allocatable_diskidlist[1]
-
 # Get params for pool creation (Needs controller, pool info etc..,)
 
 pool_params = {'name': POOL_NAME, 'siteid': site_id, 'clusterid': ctrl_cluster_id, \
         'controllerid': ctrl_id, 'iops': POOL_IOPS, 'diskslist': allocatable_diskidlist, \
         'grouptype': POOL_TYPE}
-
 # creating pool
 pool_creation = create_pool(pool_params, STDURL)
 if pool_creation[0] == 'FAILED':
@@ -386,7 +385,6 @@ if pool_creation[0] == 'FAILED':
            ' : %s', tcName, pool_creation[1])
     is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
 # Obtain the Pool list for before extracting the name
-
 pool_list = listPool(STDURL)
 if pool_list[0] == 'FAILED':
     logging.error('Testcase %s is blocked due to' \
@@ -421,14 +419,14 @@ vsm_dict = {'name': VSM_NAME, 'accountid': account_id, 'poolid': \
         VSM_INTERFACE, 'dnsserver': VSM_DNS, \
         'ipaddress': VSM_IP, 'totalthroughput': 4*int(POOL_IOPS)}
 # Create VSM using the pool_id and the params received from conf file
-
+#'''
 result = create_tsm(vsm_dict, STDURL) # This  method is an aberration, ... 
                                       # ...elsewhere STDURL is 1st param
 if result[0] == 'FAILED':
     logging.error('Testcase %s is blocked due to' \
             ': %s', tcName, result[1])
     is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
-
+#'''
 # Get the info for the VSM created above (this list method response...
 # ...contains id, not create, so needed)
 vsm = listTSMWithIP_new(STDURL, VSM_IP)
@@ -478,7 +476,7 @@ if PROTOCOL_TYPE == 'nfs':
 
         # Provide variables for Volume creation (from conf & hardcode) in dict format
         volumeDict = {'name': VOL_NAME, 'tsmid': vsm_id, 'iops': POOL_IOPS, \
-                'datasetid': vsm_dataset_id, 'protocoltype': 'NFS'}
+                'datasetid': vsm_dataset_id, 'protocoltype': 'NFS', 'quotasize': '20G'}
 
         # Create Volume using the vsm_ids and params specified 
         result = create_volume(volumeDict, STDURL)
