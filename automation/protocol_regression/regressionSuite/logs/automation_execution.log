@@ -1763,3 +1763,770 @@ Write units 730620
 2016-06-28 15:23:11,025 Replacing the std path with volume mountpoint
 2016-06-28 15:23:11,030 executing vdbench....
 2016-06-28 15:23:11,217 Waiting for 30s before changing node state
+2016-06-28 15:23:41,258 Performing HA Failover....
+2016-06-28 15:23:41,258 Inside the change_node_state method...
+2016-06-28 15:23:41,259 Node status would change to Maintenance
+2016-06-28 15:23:41,259 Executing listController...
+2016-06-28 15:23:41,260 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:23:41,676 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listController HTTP/1.1" 200 None
+2016-06-28 15:23:41,693 Able to ping IP: 20.10.112.71
+2016-06-28 15:23:41,693 Node detals... current_status: Available, name: NODE1, ip: 20.10.112.71, id: 145fa585-985e-39a2-b0f1-fdfc2b947ea0
+2016-06-28 15:23:41,693 Node NODE1 is in Available state so moving to Maintenance state
+2016-06-28 15:23:41,694 Executing changeControllerState...
+2016-06-28 15:23:41,695 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:23:42,332 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=changeControllerState&id=145fa585-985e-39a2-b0f1-fdfc2b947ea0&state=Maintenance HTTP/1.1" 200 207
+2016-06-28 15:23:42,337 Executing listHAJobActivities...
+2016-06-28 15:23:42,339 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:23:42,429 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listHAJobActivities&hajobid=1c5d11ba-3d13-11e6-9203-0015176d03fc HTTP/1.1" 200 89
+2016-06-28 15:23:42,431 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:23:42,551 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=0c357225-3540-4ac4-ad3a-32c9a478a27d HTTP/1.1" 200 356
+2016-06-28 15:23:44,556 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:23:44,770 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=0c357225-3540-4ac4-ad3a-32c9a478a27d HTTP/1.1" 200 499
+2016-06-28 15:23:46,775 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:23:46,881 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=0c357225-3540-4ac4-ad3a-32c9a478a27d HTTP/1.1" 200 909
+2016-06-28 15:23:48,889 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:23:48,991 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=0c357225-3540-4ac4-ad3a-32c9a478a27d HTTP/1.1" 200 None
+2016-06-28 15:23:51,000 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:23:51,117 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=0c357225-3540-4ac4-ad3a-32c9a478a27d HTTP/1.1" 200 None
+2016-06-28 15:23:53,123 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:23:53,292 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=0c357225-3540-4ac4-ad3a-32c9a478a27d HTTP/1.1" 200 None
+2016-06-28 15:23:55,300 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:23:55,492 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=0c357225-3540-4ac4-ad3a-32c9a478a27d HTTP/1.1" 200 None
+2016-06-28 15:23:57,497 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:23:57,585 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=0c357225-3540-4ac4-ad3a-32c9a478a27d HTTP/1.1" 200 None
+2016-06-28 15:23:59,590 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:23:59,795 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=0c357225-3540-4ac4-ad3a-32c9a478a27d HTTP/1.1" 200 None
+2016-06-28 15:24:01,800 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:01,879 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=0c357225-3540-4ac4-ad3a-32c9a478a27d HTTP/1.1" 200 None
+2016-06-28 15:24:03,886 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:03,922 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=0c357225-3540-4ac4-ad3a-32c9a478a27d HTTP/1.1" 200 None
+2016-06-28 15:24:03,923 Executing listHAJob...
+2016-06-28 15:24:03,924 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:03,940 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listHAJob&jobstatus=running HTTP/1.1" 200 176
+2016-06-28 15:24:03,941 response for listHAJob... <Response [200]>
+2016-06-28 15:24:03,941 executing queryAsyncJobResult method for job: 0c357225-3540-4ac4-ad3a-32c9a478a27d
+2016-06-28 15:24:03,942 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:03,975 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=0c357225-3540-4ac4-ad3a-32c9a478a27d HTTP/1.1" 200 None
+2016-06-28 15:24:03,976 Node NODE1 moved to Maintenance successfully
+2016-06-28 15:24:03,976 Node with IP:20.10.112.71 moved to Maintenance successfully
+2016-06-28 15:24:08,982 Checking whether vdbench is still running or not after node is moved to maintanence mode....
+2016-06-28 15:24:08,982 Vdbench is still running after node state change....
+2016-06-28 15:24:08,982 Verifying lun attributes modification after HA failover....
+2016-06-28 15:24:08,982 Editing IOPS....
+2016-06-28 15:24:08,982 .....inside edit_qos_iops method....
+2016-06-28 15:24:08,982 getting REST API for editing QoS group IOPS properties...
+2016-06-28 15:24:08,982 REST API for editing QoS group IOPS properties: https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=updateQosGroup&id=e5328e1b-c6b3-38a1-bac8-2e1b1389e554&iops=300
+2016-06-28 15:24:08,982 Executing command sendrequest...
+2016-06-28 15:24:08,983 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:09,266 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=updateQosGroup&id=e5328e1b-c6b3-38a1-bac8-2e1b1389e554&iops=300 HTTP/1.1" 200 None
+2016-06-28 15:24:09,267 Response for editing QoS group IOPS properties: {u'updateqosresponse': {u'count': 1, u'qosgroup': [{u'offlinenodes': u'[NODE1],', u'blocksize': u'4k', u'controllerid': u'c12004c5-ab48-3c1f-8111-5a70ef962304', u'operatingblocksize': 0, u'iops': u'300', u'standardproviops': 0, u'poolid': u'45a6614f-910f-33a0-8818-b575e11cc4b0', u'id': u'e5328e1b-c6b3-38a1-bac8-2e1b1389e554', u'latency': u'15', u'graceallowed': False, u'operatingcachehit': 0, u'tsmName': u'T1002', u'sitename': u'SITE1', u'tpcontrol': u'false', u'configurationstate': u'sync', u'tsmid': u'179ccddd-7b6f-3295-8678-be666398dc6f', u'type': u'1', u'throughputvalue': u'(0/0)', u'status': u'Online', u'iopscontrol': u'true', u'managedstate': u'Available', u'iopsvalue': u'(0/300)', u'currentIOPS': 0, u'operatingiops': 0, u'parentid': u'a14edafc-19a5-3887-ba70-bd1a951a502f', u'currentLatency': 0, u'currentThroughput': 0, u'name': u'QoS_iscsiHAAccountT1002', u'clustername': u'HAG1', u'standardoperatingiops': 0, u'currentThrottle': 0, u'throughput': u'0', u'controllerName': u'NODE2', u'clusterstatus': u'Degraded', u'revisionnumber': 2}]}}
+2016-06-28 15:24:09,267 Getting  new ipos value
+2016-06-28 15:24:09,267 new  iops value is 300
+2016-06-28 15:24:09,267 PASSED: {u'updateqosresponse': {u'count': 1, u'qosgroup': [{u'offlinenodes': u'[NODE1],', u'blocksize': u'4k', u'controllerid': u'c12004c5-ab48-3c1f-8111-5a70ef962304', u'operatingblocksize': 0, u'iops': u'300', u'standardproviops': 0, u'poolid': u'45a6614f-910f-33a0-8818-b575e11cc4b0', u'id': u'e5328e1b-c6b3-38a1-bac8-2e1b1389e554', u'latency': u'15', u'graceallowed': False, u'operatingcachehit': 0, u'tsmName': u'T1002', u'sitename': u'SITE1', u'tpcontrol': u'false', u'configurationstate': u'sync', u'tsmid': u'179ccddd-7b6f-3295-8678-be666398dc6f', u'type': u'1', u'throughputvalue': u'(0/0)', u'status': u'Online', u'iopscontrol': u'true', u'managedstate': u'Available', u'iopsvalue': u'(0/300)', u'currentIOPS': 0, u'operatingiops': 0, u'parentid': u'a14edafc-19a5-3887-ba70-bd1a951a502f', u'currentLatency': 0, u'currentThroughput': 0, u'name': u'QoS_iscsiHAAccountT1002', u'clustername': u'HAG1', u'standardoperatingiops': 0, u'currentThrottle': 0, u'throughput': u'0', u'controllerName': u'NODE2', u'clusterstatus': u'Degraded', u'revisionnumber': 2}]}}
+2016-06-28 15:24:09,268 Unexpected Result: Successfully updated iops during HA failover
+2016-06-28 15:24:09,268 Editing Quota....
+2016-06-28 15:24:09,268 Inside edit volume quota method...
+2016-06-28 15:24:09,268 REST API for editing quota: https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=updateFileSystem&id=42cbdccf-bf5a-3d30-8a81-e6c6750a9dca&quotasize=12G
+2016-06-28 15:24:09,269 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:09,381 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=updateFileSystem&id=42cbdccf-bf5a-3d30-8a81-e6c6750a9dca&quotasize=12G HTTP/1.1" 530 276
+2016-06-28 15:24:09,383 response for editing volume quota: {u'updatefilesystemresponse': {u'errorcode': 530, u'uuidList': [], u'licensetype': u'trial', u'errortext': u'Not able to update Storage volume(iscsiHA) because primary node(NODE1) of that pool is down,current pool:regressionPL1 is provisioned to secondary node(NODE2)'}}
+2016-06-28 15:24:09,383 Not able to update Storage volume(iscsiHA) because primary node(NODE1) of that pool is down,current pool:regressionPL1 is provisioned to secondary node(NODE2)
+2016-06-28 15:24:09,383 Expected Result: Failed to update quota due to HA failover
+2016-06-28 15:24:09,383 Modifying Compression state....
+2016-06-28 15:24:09,383 Inside edit_qos_compressionmethod....
+2016-06-28 15:24:09,383 getting REST API for editing QoS group compression property...
+2016-06-28 15:24:09,383 REST API for editing QoS group compression property: https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=updateFileSystem&id=42cbdccf-bf5a-3d30-8a81-e6c6750a9dca&compression=on
+2016-06-28 15:24:09,384 Executing command sendrequest...
+2016-06-28 15:24:09,385 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:09,453 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=updateFileSystem&id=42cbdccf-bf5a-3d30-8a81-e6c6750a9dca&compression=on HTTP/1.1" 530 276
+2016-06-28 15:24:09,453 Response for editing QoS group compression property: {u'updatefilesystemresponse': {u'errorcode': 530, u'uuidList': [], u'licensetype': u'trial', u'errortext': u'Not able to update Storage volume(iscsiHA) because primary node(NODE1) of that pool is down,current pool:regressionPL1 is provisioned to secondary node(NODE2)'}}
+2016-06-28 15:24:09,454 Expected Result: Failed to update compression due to HA failover
+2016-06-28 15:24:09,475 Performing HA Giveback....
+2016-06-28 15:24:09,475 Inside the change_node_state method...
+2016-06-28 15:24:09,475 Node status would change to Available
+2016-06-28 15:24:09,475 Executing listController...
+2016-06-28 15:24:09,478 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:09,885 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listController HTTP/1.1" 200 None
+2016-06-28 15:24:09,893 Able to ping IP: 20.10.112.71
+2016-06-28 15:24:09,893 Node detals... current_status: Maintenance, name: NODE1, ip: 20.10.112.71, id: 145fa585-985e-39a2-b0f1-fdfc2b947ea0
+2016-06-28 15:24:09,893 Node NODE1 is in Maintenance state so moving to Available state
+2016-06-28 15:24:09,893 Executing changeControllerState...
+2016-06-28 15:24:09,894 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:10,939 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=changeControllerState&id=145fa585-985e-39a2-b0f1-fdfc2b947ea0&state=Available HTTP/1.1" 200 205
+2016-06-28 15:24:10,940 Executing listHAJobActivities...
+2016-06-28 15:24:10,941 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:10,991 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listHAJobActivities&hajobid=2d29b06e-3d13-11e6-9b60-0015176d03fc HTTP/1.1" 200 89
+2016-06-28 15:24:10,994 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:11,096 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=1ac6d137-5f72-448d-9918-c842b5c53881 HTTP/1.1" 200 482
+2016-06-28 15:24:13,101 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:13,170 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=1ac6d137-5f72-448d-9918-c842b5c53881 HTTP/1.1" 200 497
+2016-06-28 15:24:15,176 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:15,242 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=1ac6d137-5f72-448d-9918-c842b5c53881 HTTP/1.1" 200 497
+2016-06-28 15:24:17,246 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:17,305 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=1ac6d137-5f72-448d-9918-c842b5c53881 HTTP/1.1" 200 497
+2016-06-28 15:24:19,310 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:19,529 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=1ac6d137-5f72-448d-9918-c842b5c53881 HTTP/1.1" 200 None
+2016-06-28 15:24:21,536 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:21,610 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=1ac6d137-5f72-448d-9918-c842b5c53881 HTTP/1.1" 200 None
+2016-06-28 15:24:23,618 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:23,831 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=1ac6d137-5f72-448d-9918-c842b5c53881 HTTP/1.1" 200 None
+2016-06-28 15:24:25,839 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:25,915 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=1ac6d137-5f72-448d-9918-c842b5c53881 HTTP/1.1" 200 None
+2016-06-28 15:24:27,921 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:28,007 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=1ac6d137-5f72-448d-9918-c842b5c53881 HTTP/1.1" 200 None
+2016-06-28 15:24:30,014 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:30,575 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=1ac6d137-5f72-448d-9918-c842b5c53881 HTTP/1.1" 200 None
+2016-06-28 15:24:32,579 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:32,670 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=1ac6d137-5f72-448d-9918-c842b5c53881 HTTP/1.1" 200 None
+2016-06-28 15:24:34,675 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:34,972 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=1ac6d137-5f72-448d-9918-c842b5c53881 HTTP/1.1" 200 None
+2016-06-28 15:24:36,976 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:37,039 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=1ac6d137-5f72-448d-9918-c842b5c53881 HTTP/1.1" 200 None
+2016-06-28 15:24:39,045 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:39,131 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=1ac6d137-5f72-448d-9918-c842b5c53881 HTTP/1.1" 200 None
+2016-06-28 15:24:41,137 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:41,174 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=1ac6d137-5f72-448d-9918-c842b5c53881 HTTP/1.1" 200 None
+2016-06-28 15:24:41,178 Executing listHAJob...
+2016-06-28 15:24:41,181 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:41,199 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listHAJob&jobstatus=running HTTP/1.1" 200 176
+2016-06-28 15:24:41,201 response for listHAJob... <Response [200]>
+2016-06-28 15:24:41,202 executing queryAsyncJobResult method for job: 1ac6d137-5f72-448d-9918-c842b5c53881
+2016-06-28 15:24:41,204 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:41,241 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=1ac6d137-5f72-448d-9918-c842b5c53881 HTTP/1.1" 200 None
+2016-06-28 15:24:41,244 Node NODE1 moved to Available successfully
+2016-06-28 15:24:41,245 Node with IP:20.10.112.71 moved to Available successfully
+2016-06-28 15:24:46,251 Checking whether vdbench is still running or not after node is moved to available mode....
+2016-06-28 15:24:46,251 Vdbench is still running after node state change....
+2016-06-28 15:24:46,252 Verifying lun attributes modification after HA giveback....
+2016-06-28 15:24:46,252 Editing IOPS....
+2016-06-28 15:24:46,252 .....inside edit_qos_iops method....
+2016-06-28 15:24:46,252 getting REST API for editing QoS group IOPS properties...
+2016-06-28 15:24:46,252 REST API for editing QoS group IOPS properties: https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=updateQosGroup&id=e5328e1b-c6b3-38a1-bac8-2e1b1389e554&iops=500
+2016-06-28 15:24:46,253 Executing command sendrequest...
+2016-06-28 15:24:46,256 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:46,518 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=updateQosGroup&id=e5328e1b-c6b3-38a1-bac8-2e1b1389e554&iops=500 HTTP/1.1" 200 None
+2016-06-28 15:24:46,531 Response for editing QoS group IOPS properties: {u'updateqosresponse': {u'count': 1, u'qosgroup': [{u'offlinenodes': u'', u'blocksize': u'4k', u'controllerid': u'145fa585-985e-39a2-b0f1-fdfc2b947ea0', u'operatingblocksize': 0, u'iops': u'500', u'standardproviops': 0, u'poolid': u'45a6614f-910f-33a0-8818-b575e11cc4b0', u'id': u'e5328e1b-c6b3-38a1-bac8-2e1b1389e554', u'latency': u'15', u'graceallowed': False, u'operatingcachehit': 0, u'tsmName': u'T1002', u'sitename': u'SITE1', u'tpcontrol': u'false', u'configurationstate': u'sync', u'tsmid': u'179ccddd-7b6f-3295-8678-be666398dc6f', u'type': u'1', u'throughputvalue': u'(0/0)', u'status': u'Online', u'iopscontrol': u'true', u'managedstate': u'Available', u'iopsvalue': u'(0/500)', u'currentIOPS': 0, u'operatingiops': 0, u'parentid': u'a14edafc-19a5-3887-ba70-bd1a951a502f', u'currentLatency': 0, u'currentThroughput': 0, u'name': u'QoS_iscsiHAAccountT1002', u'clustername': u'HAG1', u'standardoperatingiops': 0, u'currentThrottle': 0, u'throughput': u'0', u'controllerName': u'NODE1', u'clusterstatus': u'Online', u'revisionnumber': 3}]}}
+2016-06-28 15:24:46,532 Getting  new ipos value
+2016-06-28 15:24:46,532 new  iops value is 500
+2016-06-28 15:24:46,532 PASSED: {u'updateqosresponse': {u'count': 1, u'qosgroup': [{u'offlinenodes': u'', u'blocksize': u'4k', u'controllerid': u'145fa585-985e-39a2-b0f1-fdfc2b947ea0', u'operatingblocksize': 0, u'iops': u'500', u'standardproviops': 0, u'poolid': u'45a6614f-910f-33a0-8818-b575e11cc4b0', u'id': u'e5328e1b-c6b3-38a1-bac8-2e1b1389e554', u'latency': u'15', u'graceallowed': False, u'operatingcachehit': 0, u'tsmName': u'T1002', u'sitename': u'SITE1', u'tpcontrol': u'false', u'configurationstate': u'sync', u'tsmid': u'179ccddd-7b6f-3295-8678-be666398dc6f', u'type': u'1', u'throughputvalue': u'(0/0)', u'status': u'Online', u'iopscontrol': u'true', u'managedstate': u'Available', u'iopsvalue': u'(0/500)', u'currentIOPS': 0, u'operatingiops': 0, u'parentid': u'a14edafc-19a5-3887-ba70-bd1a951a502f', u'currentLatency': 0, u'currentThroughput': 0, u'name': u'QoS_iscsiHAAccountT1002', u'clustername': u'HAG1', u'standardoperatingiops': 0, u'currentThrottle': 0, u'throughput': u'0', u'controllerName': u'NODE1', u'clusterstatus': u'Online', u'revisionnumber': 3}]}}
+2016-06-28 15:24:46,533 Successfully updated iops after HA giveback
+2016-06-28 15:24:46,534 Modifying Compression state....
+2016-06-28 15:24:46,534 Inside edit_qos_compressionmethod....
+2016-06-28 15:24:46,534 getting REST API for editing QoS group compression property...
+2016-06-28 15:24:46,534 REST API for editing QoS group compression property: https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=updateFileSystem&id=42cbdccf-bf5a-3d30-8a81-e6c6750a9dca&compression=on
+2016-06-28 15:24:46,534 Executing command sendrequest...
+2016-06-28 15:24:46,537 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:49,038 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=updateFileSystem&id=42cbdccf-bf5a-3d30-8a81-e6c6750a9dca&compression=on HTTP/1.1" 200 None
+2016-06-28 15:24:49,039 Response for editing QoS group compression property: {u'updatefilesystemresponse': {u'count': 1, u'filesystem': [{u'iqnname': u'iqn.2016-05.Account.T1002:AccountiscsiHA', u'noofcopies': 1, u'offlinenodes': u'', u'blocksize': u'4k', u'controllerid': u'145fa585-985e-39a2-b0f1-fdfc2b947ea0', u'hapoolname': u'regressionPL1', u'sync': u'always', u'accountname': u'Account', u'nfsenabled': False, u'groupname': u'QoS_iscsiHAAccountT1002', u'iops': u'500', u'unicode': u'off', u'poolid': u'45a6614f-910f-33a0-8818-b575e11cc4b0', u'mountpoint': u'AccountiscsiHA', u'Tsmid': u'179ccddd-7b6f-3295-8678-be666398dc6f', u'currentReferenced': 636, u'id': u'42cbdccf-bf5a-3d30-8a81-e6c6750a9dca', u'fcenabled': False, u'graceallowed': False, u'compression': u'on', u'tsmName': u'T1002', u'sitename': u'SITE1', u'tpcontrol': u'false', u'accesstime': u'on', u'clusterid': u'1a77e159-28ef-48ca-bee8-7e160560dd97', u'currentUsedByDataset': 636, u'iscsienabled': True, u'configurationstate': u'sync', u'volumeaccessible': u'true', u'readonly': False, u'currentThroughput': 665, u'type': u'volume', u'groupid': u'e5328e1b-c6b3-38a1-bac8-2e1b1389e554', u'status': u'Online', u'iopscontrol': u'true', u'managedstate': u'Available', u'controllerName': u'NODE1', u'tsmcontrolgrace': u'false', u'latency': u'15', u'casesensitivity': u'sensitive', u'currentIOPS': 354, u'quota': u'10G', u'tsmgrace': True, u'currentUsedSpace': 636, u'initiatorgroup': u'ALL', u'parentid': u'a14edafc-19a5-3887-ba70-bd1a951a502f', u'path': u'iqn.2016-05.Account.T1002:AccountiscsiHA', u'tsmAvailIops': u'500', u'ipaddress': u'20.10.60.122', u'currentLatency': 974342, u'recordsize': u'32k', u'name': u'iscsiHA', u'currentUsedBySnapshots': 0, u'tsmCifsAuth': u'user', u'simpleid': 610, u'clustername': u'HAG1', u'minrecommendedvolblocksize': 0, u'currentTotalSpace': 10240, u'currentAvailableSpace': 9604, u'currentThrottle': 297, u'blocklength': u'512B', u'cifsenabled': False, u'throughput': u'0', u'hapoolgrace': True, u'numericquota': 10240.0, u'clusterstatus': u'Online', u'localschedulecount': 0, u'tsmType': u'1', u'tsmAvailTput': u'2000', u'revisionnumber': 1, u'accountid': u'c7195113-83c7-4054-b659-b2dd151bcc12'}]}}
+2016-06-28 15:24:49,039 Getting  new compression condition...
+2016-06-28 15:24:49,040 new  compression condition  is on
+2016-06-28 15:24:49,040 Successfully updated compression state after HA giveback
+2016-06-28 15:24:49,065 vdbench is running, going to kill the vdbench process...
+2016-06-28 15:24:49,066 inside kill_vdbench...
+2016-06-28 15:24:49,084 vdbench process going to be killed...: ['32294\n', '32309\n', '32344\n', '32354\n', '32363\n', '32505\n', '32507\n']
+2016-06-28 15:24:49,084 vdbench process ids...: ['32294', '32309', '32344', '32354', '32363', '32505', '32507']
+2016-06-28 15:24:49,098 vdbench process are killed
+2016-06-28 15:24:51,131 Successfully killed vdbench process
+2016-06-28 15:24:51,131 unmounting the volume iscsiHA
+2016-06-28 15:24:53,355 Successfully Unmounted ISCSI lun "dev/sdc1"
+2016-06-28 15:24:53,356 logging out from iscsi session
+2016-06-28 15:24:53,356 inside the iscsi_login_logout method...
+2016-06-28 15:24:53,356 executing command: iscsiadm -m node --targetname iqn.2016-05.Account.T1002:AccountiscsiHA --portal 20.10.60.122:3260 --logout
+2016-06-28 15:24:53,378 iscsi logout result: ('PASSED', '')
+2016-06-28 15:24:53,378 logout successfully for iSCSI LUN iscsiHA
+2016-06-28 15:24:53,378 REST API for listVolumeiSCSIService...https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listVolumeiSCSIService&storageid=42cbdccf-bf5a-3d30-8a81-e6c6750a9dca
+2016-06-28 15:24:53,378 executing sendrequest command...
+2016-06-28 15:24:53,380 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:53,428 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listVolumeiSCSIService&storageid=42cbdccf-bf5a-3d30-8a81-e6c6750a9dca HTTP/1.1" 200 663
+2016-06-28 15:24:53,429 listVolumeiSCSIService response...{u'listVolumeiSCSIServiceResponse': {u'count': 1, u'iSCSIService': [{u'status': True, u'workerthreads': 6, u'unmap': True, u'blocklength': u'512B', u'usn': u'42cbdccfbf5a3d308a81e6c6750a9dca', u'authmethod': u'None', u'physrecordlength': u'4k', u'xcopy': u'false', u'ag_id': u'7fc5ae12-9600-3995-845c-e616d88d7a1e', u'queuedepth': u'32', u'initialdigest': u'Auto', u'inqproduct': 0, u'iqnname': u'iqn.2016-05.Account.T1002:AccountiscsiHA', u'volume_id': u'42cbdccf-bf5a-3d30-8a81-e6c6750a9dca', u'wzero': False, u'ig_id': u'0b7de92e-ee1a-399f-a41c-1945357f3a43', u'inqrevision': 0, u'id': u'9494fefe-85b4-3ed7-9714-371026cd0f14', u'ats': u'false'}]}}
+2016-06-28 15:24:53,429 iscsi service id: 9494fefe-85b4-3ed7-9714-371026cd0f14
+2016-06-28 15:24:53,429 ag_id: 7fc5ae12-9600-3995-845c-e616d88d7a1e
+2016-06-28 15:24:53,430 unmap status: true
+2016-06-28 15:24:53,430 physrecordlength: 4k
+2016-06-28 15:24:53,430 queuedepth: 32
+2016-06-28 15:24:53,430 workerthreads 6
+2016-06-28 15:24:53,430 RESP API for listiSCSIInitiator...https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listiSCSIInitiator&accountid=c7195113-83c7-4054-b659-b2dd151bcc12
+2016-06-28 15:24:53,433 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:53,459 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listiSCSIInitiator&accountid=c7195113-83c7-4054-b659-b2dd151bcc12 HTTP/1.1" 200 408
+2016-06-28 15:24:53,461 listiSCSIInitiator response...{u'listInitiatorsResponse': {u'count': 2, u'initiator': [{u'netmask': u'ALL', u'initiatorgroup': u'ALL', u'id': u'0b7de92e-ee1a-399f-a41c-1945357f3a43', u'name': u'ALL', u'accountid': u'c7195113-83c7-4054-b659-b2dd151bcc12'}, {u'netmask': u'None', u'initiatorgroup': u'None', u'id': u'9e8e0e34-0680-3207-992c-0c42e984223e', u'name': u'None', u'accountid': u'c7195113-83c7-4054-b659-b2dd151bcc12'}]}}
+2016-06-28 15:24:53,461 getting initiator id...
+2016-06-28 15:24:53,461 REST API for updateVolumeiSCSIService...https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=updateVolumeiSCSIService&status=true&authmethod=None&authgroupid=7fc5ae12-9600-3995-845c-e616d88d7a1e&igid=9e8e0e34-0680-3207-992c-0c42e984223e&initialdigest=Auto&queuedepth=32&workerthreads=6&unmap=true&physrecordlength=4k&id=9494fefe-85b4-3ed7-9714-371026cd0f14
+2016-06-28 15:24:53,464 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:54,392 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=updateVolumeiSCSIService&status=true&authmethod=None&authgroupid=7fc5ae12-9600-3995-845c-e616d88d7a1e&igid=9e8e0e34-0680-3207-992c-0c42e984223e&initialdigest=Auto&queuedepth=32&workerthreads=6&unmap=true&physrecordlength=4k&id=9494fefe-85b4-3ed7-9714-371026cd0f14 HTTP/1.1" 200 646
+2016-06-28 15:24:54,394 updateVolumeiSCSIService response...{u'updatingvolumeiscsidetails': {u'viscsioptions': {u'status': True, u'workerthreads': 6, u'unmap': True, u'blocklength': u'512B', u'usn': u'42cbdccfbf5a3d308a81e6c6750a9dca', u'authmethod': u'None', u'physrecordlength': u'4k', u'xcopy': u'false', u'ag_id': u'7fc5ae12-9600-3995-845c-e616d88d7a1e', u'queuedepth': u'32', u'initialdigest': u'Auto', u'inqproduct': 0, u'iqnname': u'iqn.2016-05.Account.T1002:AccountiscsiHA', u'volume_id': u'42cbdccf-bf5a-3d30-8a81-e6c6750a9dca', u'wzero': False, u'ig_id': u'9e8e0e34-0680-3207-992c-0c42e984223e', u'inqrevision': 0, u'id': u'9494fefe-85b4-3ed7-9714-371026cd0f14', u'ats': u'false'}}}
+2016-06-28 15:24:54,394 iniator group <None> added successfully to volume
+2016-06-28 15:24:54,394 Initiator group is set to "none"
+2016-06-28 15:24:54,395 Deleting volume "iscsiHA"
+2016-06-28 15:24:54,395 Inside the delete_volume method...
+2016-06-28 15:24:54,395 REST API for deleting volume: https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=deleteFileSystem&id=42cbdccf-bf5a-3d30-8a81-e6c6750a9dca
+2016-06-28 15:24:54,398 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:54,481 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=deleteFileSystem&id=42cbdccf-bf5a-3d30-8a81-e6c6750a9dca HTTP/1.1" 200 86
+2016-06-28 15:24:54,482 response for deleting volume: {u'deleteFileSystemResponse': {u'jobid': u'fb07548c-d18a-460e-9c2b-c36556257b2b'}}
+2016-06-28 15:24:54,483 getting job_id for deleting volume...
+2016-06-28 15:24:54,483 job_id for delet volume: fb07548c-d18a-460e-9c2b-c36556257b2b
+2016-06-28 15:24:54,483 calling queryAsyncJobResult method...
+2016-06-28 15:24:54,486 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:54,589 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=fb07548c-d18a-460e-9c2b-c36556257b2b HTTP/1.1" 200 353
+2016-06-28 15:24:56,597 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:56,668 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=fb07548c-d18a-460e-9c2b-c36556257b2b HTTP/1.1" 200 384
+2016-06-28 15:24:58,675 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:58,707 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=fb07548c-d18a-460e-9c2b-c36556257b2b HTTP/1.1" 200 457
+2016-06-28 15:24:58,710 delete_volume_status: ('PASSED', '')
+2016-06-28 15:24:58,710 result of delete_volume: ['PASSED', 'Volume deleted successfuly']
+2016-06-28 15:24:58,710 Volume "iscsiHA" Deleted successfully
+2016-06-28 15:24:58,711 ----End of testcase "Edit lun attributes and save changes after HA failover and giveback"----
+
+2016-06-28 15:24:58,840 ----Start of testcase "Create a initiator group using all the mandatory feilds"----
+2016-06-28 15:24:58,848 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:24:58,924 "POST /client/api?response=json& HTTP/1.1" 200 449
+2016-06-28 15:24:58,955 "GET /client/api?response=json&command=listUsers HTTP/1.1" 200 None
+2016-06-28 15:24:58,957 Getting local client IP
+2016-06-28 15:25:10,989 local client IP : "20.10.28.117"
+2016-06-28 15:25:10,990 Network to be provided during initiator grp creation is: 20.10.28.117/8
+2016-06-28 15:25:10,990 Getting Intiator IQN of local machine from /etc/iscsi Directory
+2016-06-28 15:25:10,995 Got client IQN : "iqn.1988-12.com.oracle:e815140a66c"
+2016-06-28 15:25:10,996 Listing Tsm for given TSMIP "20.10.60.121" to get its ID
+2016-06-28 15:25:10,996 REST API for Listing Tsm with IP: https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listTsm&ipaddress=20.10.60.121
+2016-06-28 15:25:10,998 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:11,146 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listTsm&ipaddress=20.10.60.121 HTTP/1.1" 200 None
+2016-06-28 15:25:11,150 response for Listing Tsm with IP: {u'listTsmResponse': {u'count': 1, u'listTsm': [{u'qosgrouplist': [{u'latency': u'15', u'name': u'QoS_IscsiIopsVol1AccountT1001', u'memlimit': u'0', u'iops': u'70', u'throughput': u'0', u'id': u'9e80eff1-602c-3bba-832d-7c866f3d0f4b', u'networkspeed': u'0'}, {u'latency': u'15', u'name': u'QoS_IscsiTpVolAccountT1001', u'memlimit': u'0', u'iops': u'0', u'throughput': u'1000', u'id': u'c915c7f3-ec8a-31ee-8dbd-a0cd7fb1cca4', u'networkspeed': u'0'}], u'iqnname': u'iqn.2016-05.Account.T1001', u'offlinenodes': u'', u'blocksize': u'4', u'controllerid': u'145fa585-985e-39a2-b0f1-fdfc2b947ea0', u'hapoolavailiops': 2000, u'totalprovisionquota': u'23068672', u'accountname': u'Account', u'volumeslist': [{u'controllerid': u'145fa585-985e-39a2-b0f1-fdfc2b947ea0', u'iops': u'70', u'poolid': u'45a6614f-910f-33a0-8818-b575e11cc4b0', u'id': u'edd03c15-8b6e-3d6f-825f-2d06b5faae97', u'latency': u'15', u'iscsi': u'true', u'clusterid': u'1a77e159-28ef-48ca-bee8-7e160560dd97', u'volumegrace': u'false', u'throughput': u'0', u'tsmid': u'52e3fc6d-3045-32ae-8078-473e8f7b087a', u'type': u'volume', u'groupid': u'9e80eff1-602c-3bba-832d-7c866f3d0f4b', u'cifs': u'false', u'totalspace': u'10240', u'quota': u'10G', u'fc': u'false', u'parentid': u'dc0b73c2-0f3b-301f-95b4-429d0e538b08', u'path': u'regressionPL1/AccountT1001/IscsiIopsVol1', u'name': u'IscsiIopsVol1', u'usedspace': u'1781', u'availspace': u'8459', u'nfs': u'false', u'numericquota': u'10240.0'}, {u'controllerid': u'145fa585-985e-39a2-b0f1-fdfc2b947ea0', u'iops': u'0', u'poolid': u'45a6614f-910f-33a0-8818-b575e11cc4b0', u'id': u'30782084-f14d-3a36-8b12-f195aa05291c', u'latency': u'15', u'iscsi': u'true', u'clusterid': u'1a77e159-28ef-48ca-bee8-7e160560dd97', u'volumegrace': u'false', u'throughput': u'1000', u'tsmid': u'52e3fc6d-3045-32ae-8078-473e8f7b087a', u'type': u'volume', u'groupid': u'c915c7f3-ec8a-31ee-8dbd-a0cd7fb1cca4', u'cifs': u'false', u'totalspace': u'10240', u'quota': u'10G', u'fc': u'false', u'parentid': u'dc0b73c2-0f3b-301f-95b4-429d0e538b08', u'path': u'regressionPL1/AccountT1001/IscsiTpVol', u'name': u'IscsiTpVol', u'usedspace': u'0', u'availspace': u'10240', u'nfs': u'false', u'numericquota': u'10240.0'}], u'iops': u'1000', u'poolid': u'45a6614f-910f-33a0-8818-b575e11cc4b0', u'usedIOPS': u'320', u'hapooldeduplication': u'off', u'cifsauthentication': u'user', u'id': u'52e3fc6d-3045-32ae-8078-473e8f7b087a', u'latency': u'15', u'graceallowed': True, u'sitename': u'SITE1', u'tpcontrol': u'true', u'configurationstate': u'sync', u'availThroughput': u'2720', u'interfaceName': u'em0', u'usedThroughput': u'1280', u'hapoolstatus': u'ONLINE', u'type': u'1', u'haNodeStatus': u'Available', u'availIOPS': u'680', u'status': u'Online', u'iopscontrol': u'true', u'managedstate': u'Available', u'currentIOPS': 54, u'volumes': [{u'controllerid': u'145fa585-985e-39a2-b0f1-fdfc2b947ea0', u'iops': u'70', u'poolid': u'45a6614f-910f-33a0-8818-b575e11cc4b0', u'id': u'edd03c15-8b6e-3d6f-825f-2d06b5faae97', u'latency': u'15', u'iscsi': u'true', u'clusterid': u'1a77e159-28ef-48ca-bee8-7e160560dd97', u'volumegrace': u'false', u'throughput': u'0', u'tsmid': u'52e3fc6d-3045-32ae-8078-473e8f7b087a', u'type': u'volume', u'groupid': u'9e80eff1-602c-3bba-832d-7c866f3d0f4b', u'cifs': u'false', u'totalspace': u'10240', u'quota': u'10G', u'fc': u'false', u'parentid': u'dc0b73c2-0f3b-301f-95b4-429d0e538b08', u'path': u'regressionPL1/AccountT1001/IscsiIopsVol1', u'name': u'IscsiIopsVol1', u'usedspace': u'1781', u'availspace': u'8459', u'nfs': u'false', u'numericquota': u'10240.0'}, {u'controllerid': u'145fa585-985e-39a2-b0f1-fdfc2b947ea0', u'iops': u'0', u'poolid': u'45a6614f-910f-33a0-8818-b575e11cc4b0', u'id': u'30782084-f14d-3a36-8b12-f195aa05291c', u'latency': u'15', u'iscsi': u'true', u'clusterid': u'1a77e159-28ef-48ca-bee8-7e160560dd97', u'volumegrace': u'false', u'throughput': u'1000', u'tsmid': u'52e3fc6d-3045-32ae-8078-473e8f7b087a', u'type': u'volume', u'groupid': u'c915c7f3-ec8a-31ee-8dbd-a0cd7fb1cca4', u'cifs': u'false', u'totalspace': u'10240', u'quota': u'10G', u'fc': u'false', u'parentid': u'dc0b73c2-0f3b-301f-95b4-429d0e538b08', u'path': u'regressionPL1/AccountT1001/IscsiTpVol', u'name': u'IscsiTpVol', u'usedspace': u'0', u'availspace': u'10240', u'nfs': u'false', u'numericquota': u'10240.0'}], u'subnet': u'8', u'hapoolname': u'regressionPL1', u'controllerName': u'NODE1', u'numericquota': 1048576.0, u'currentUsedSpace': 1781, u'storageBuckets': [{u'controllerid': u'145fa585-985e-39a2-b0f1-fdfc2b947ea0', u'cifs': u'null', u'iscsi': u'null', u'numericquota': u'1048576.0', u'clusterid': u'1a77e159-28ef-48ca-bee8-7e160560dd97', u'quota': u'1T', u'fc': u'null', u'nfs': u'null', u'poolid': u'45a6614f-910f-33a0-8818-b575e11cc4b0', u'path': u'regressionPL1/AccountT1001', u'tsmid': u'52e3fc6d-3045-32ae-8078-473e8f7b087a', u'type': u'bucket', u'id': u'dc0b73c2-0f3b-301f-95b4-429d0e538b08', u'name': u'AccountT1001'}], u'minrecommendedvolblocksize': 0, u'ipaddress': u'20.10.60.121', u'currentLatency': 46156, u'currentnumericquota': 20480.0, u'simpleid': 212, u'gracecontrol': u'false', u'currentThroughput': 8393, u'name': u'T1001', u'clustername': u'HAG1', u'pooltakeover': u'noTakeOver', u'revisionnumber': 0, u'hapoolavailtput': 628000, u'availablequota': 1028096.0, u'currentTotalSpace': 20480, u'currentAvailableSpace': 18699, u'currentThrottle': 8, u'throughput': u'4000', u'controlleripaddress': u'20.10.112.71', u'hapoolgrace': True, u'poollatency': 3, u'clusterstatus': u'Online', u'ispooltakeoveronpartialfailure': True, u'datasetid': u'dc0b73c2-0f3b-301f-95b4-429d0e538b08', u'accountid': u'c7195113-83c7-4054-b659-b2dd151bcc12'}]}}
+2016-06-28 15:25:11,151 TSM present with the given IP "20.10.60.121"
+2016-06-28 15:25:11,151 Getting tsm_name, tsm_id, and dataset_id...
+2016-06-28 15:25:11,151 tsm_name: T1001, tsm_id: 52e3fc6d-3045-32ae-8078-473e8f7b087a, dataset_id: dc0b73c2-0f3b-301f-95b4-429d0e538b08
+2016-06-28 15:25:11,151 Getting account Name and ID
+2016-06-28 15:25:11,151 account_Name: Account, account_id: c7195113-83c7-4054-b659-b2dd151bcc12
+2016-06-28 15:25:11,152 Inside the add_initiator_group method...
+2016-06-28 15:25:11,152 REST API for addiSCSI_initatorGroup...https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=addiSCSIInitiator&accountid=c7195113-83c7-4054-b659-b2dd151bcc12&name=InitNewGrp&initiatorgroup=iqn.1988-12.com.oracle:e815140a66c&netmask=20.10.28.117/8
+2016-06-28 15:25:11,155 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:11,755 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=addiSCSIInitiator&accountid=c7195113-83c7-4054-b659-b2dd151bcc12&name=InitNewGrp&initiatorgroup=iqn.1988-12.com.oracle:e815140a66c&netmask=20.10.28.117/8 HTTP/1.1" 200 277
+2016-06-28 15:25:11,757 Response for addiSCSI_initatorGroup : {u'tsmiSCSIInitiatorResponse': {u'iscsiInitiator': {u'netmask': u'20.10.28.117/8', u'initiatorgroup': u'iqn.1988-12.com.oracle:e815140a66c', u'id': u'5459294e-db69-3cf9-bb32-22a681ac9859', u'name': u'InitNewGrp', u'accountid': u'c7195113-83c7-4054-b659-b2dd151bcc12'}}}
+2016-06-28 15:25:11,757 %s
+2016-06-28 15:25:11,757 Created initiator grp, now validating it by logging into client
+2016-06-28 15:25:11,757 inside create_volume method...
+2016-06-28 15:25:11,758 getting default parameters for creating QoS group
+2016-06-28 15:25:11,758 default parameters for creating QoS group: {'iopscontrol': 'true', 'memlimit': 0, 'blocksize': '4k', 'iops': 2, 'networkspeed': 0, 'latency': 15, 'graceallowed': 'false', 'name': '', 'tpcontrol': 'false', 'throughput': 0, 'tsmid': ''}
+2016-06-28 15:25:11,758 getting final parametrs for creating QoS group
+2016-06-28 15:25:11,758 getting REST API for creating QoS group...
+2016-06-28 15:25:11,758 REST API for creating QoS group: https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=addQosGroup&iopscontrol=true&memlimit=0&blocksize=4k&iops=100&networkspeed=0&latency=15&graceallowed=false&name=QoS_iscsiNewInit&tpcontrol=false&throughput=0&tsmid=52e3fc6d-3045-32ae-8078-473e8f7b087a
+2016-06-28 15:25:11,759 Executing command sendrequest...
+2016-06-28 15:25:11,761 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:11,972 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=addQosGroup&iopscontrol=true&memlimit=0&blocksize=4k&iops=100&networkspeed=0&latency=15&graceallowed=false&name=QoS_iscsiNewInit&tpcontrol=false&throughput=0&tsmid=52e3fc6d-3045-32ae-8078-473e8f7b087a HTTP/1.1" 200 None
+2016-06-28 15:25:11,974 response for add QoS group: {u'addqosgroupresponse': {u'qosgroup': {u'offlinenodes': u'', u'blocksize': u'4k', u'controllerid': u'145fa585-985e-39a2-b0f1-fdfc2b947ea0', u'operatingblocksize': 0, u'iops': u'100', u'standardproviops': 0, u'poolid': u'45a6614f-910f-33a0-8818-b575e11cc4b0', u'id': u'5a8fd805-fb5a-3967-81da-40d6ba7353d4', u'latency': u'15', u'graceallowed': False, u'operatingcachehit': 0, u'tsmName': u'T1001', u'sitename': u'SITE1', u'tpcontrol': u'false', u'configurationstate': u'init', u'tsmid': u'52e3fc6d-3045-32ae-8078-473e8f7b087a', u'type': u'1', u'throughputvalue': u'(0/0)', u'iopscontrol': u'true', u'managedstate': u'Available', u'iopsvalue': u'(0/100)', u'currentIOPS': 0, u'operatingiops': 0, u'parentid': u'dc0b73c2-0f3b-301f-95b4-429d0e538b08', u'currentLatency': 0, u'currentThroughput': 0, u'name': u'QoS_iscsiNewInitAccountT1001', u'clustername': u'HAG1', u'standardoperatingiops': 0, u'currentThrottle': 0, u'throughput': u'0', u'controllerName': u'NODE1', u'clusterstatus': u'Online', u'revisionnumber': 0}}}
+2016-06-28 15:25:11,975 Getting qosgroupid...
+2016-06-28 15:25:11,975 qosgroupid: 5a8fd805-fb5a-3967-81da-40d6ba7353d4
+2016-06-28 15:25:11,975 getting defaults parameters for create volume...
+2016-06-28 15:25:11,975 defaults parameters for create volume: {'datasetid': '', 'tsmid': '', 'compression': 'off', 'protocoltype': '', 'blocklength': '512B', 'quotasize': '10G', 'accesstime': 'on', 'sync': 'always', 'recordsize': '32k', 'name': ''}
+2016-06-28 15:25:11,976 getting final parametrs for creating volume...
+2016-06-28 15:25:11,976 REST API for creating volume: https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=createVolume&qosgroupid=5a8fd805-fb5a-3967-81da-40d6ba7353d4&datasetid=dc0b73c2-0f3b-301f-95b4-429d0e538b08&tsmid=52e3fc6d-3045-32ae-8078-473e8f7b087a&compression=off&protocoltype=ISCSI&blocklength=512B&quotasize=10G&accesstime=on&sync=always&recordsize=32k&name=iscsiNewInit
+2016-06-28 15:25:11,979 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:12,062 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=createVolume&qosgroupid=5a8fd805-fb5a-3967-81da-40d6ba7353d4&datasetid=dc0b73c2-0f3b-301f-95b4-429d0e538b08&tsmid=52e3fc6d-3045-32ae-8078-473e8f7b087a&compression=off&protocoltype=ISCSI&blocklength=512B&quotasize=10G&accesstime=on&sync=always&recordsize=32k&name=iscsiNewInit HTTP/1.1" 200 82
+2016-06-28 15:25:12,063 response for create volume: {u'createvolumeresponse': {u'jobid': u'd15a0f02-444f-45cb-85e9-b57fe63ddfe0'}}
+2016-06-28 15:25:12,064 getting create volume job id...
+2016-06-28 15:25:12,064 create volume job id: d15a0f02-444f-45cb-85e9-b57fe63ddfe0
+2016-06-28 15:25:12,064 calling queryAsyncJobResult method...
+2016-06-28 15:25:12,067 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:12,155 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=d15a0f02-444f-45cb-85e9-b57fe63ddfe0 HTTP/1.1" 200 349
+2016-06-28 15:25:14,163 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:14,234 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=d15a0f02-444f-45cb-85e9-b57fe63ddfe0 HTTP/1.1" 200 363
+2016-06-28 15:25:16,242 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:16,320 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=d15a0f02-444f-45cb-85e9-b57fe63ddfe0 HTTP/1.1" 200 363
+2016-06-28 15:25:18,328 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:18,641 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=d15a0f02-444f-45cb-85e9-b57fe63ddfe0 HTTP/1.1" 200 363
+2016-06-28 15:25:20,649 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:20,689 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=d15a0f02-444f-45cb-85e9-b57fe63ddfe0 HTTP/1.1" 200 None
+2016-06-28 15:25:20,692 create_volume_status: ('PASSED', '')
+2016-06-28 15:25:20,692 result of create_volume: ['PASSED', 'Volume created successfuly']
+2016-06-28 15:25:20,693 Listing volumes in the TSM "T1001" w.r.t its TSM ID
+2016-06-28 15:25:20,693 REST API for listing volume with Tsm ID: https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listFileSystem&tsmid=52e3fc6d-3045-32ae-8078-473e8f7b087a
+2016-06-28 15:25:20,696 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:20,882 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listFileSystem&tsmid=52e3fc6d-3045-32ae-8078-473e8f7b087a HTTP/1.1" 200 None
+2016-06-28 15:25:20,885 REST API for listing volume with Tsm ID: https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listFileSystem&tsmid=52e3fc6d-3045-32ae-8078-473e8f7b087a
+2016-06-28 15:25:20,886 Volumes present in the TSM "T1001"
+2016-06-28 15:25:20,886 volname: iscsiNewInit, volid: 235fcf9d-a3eb-33ca-b638-072122c29ded, vol_mntPoint: AccountiscsiNewInit, vol_IqnName: iqn.2016-05.Account.T1001:AccountiscsiNewInit
+2016-06-28 15:25:20,886 REST API for listVolumeiSCSIService...https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listVolumeiSCSIService&storageid=235fcf9d-a3eb-33ca-b638-072122c29ded
+2016-06-28 15:25:20,886 executing sendrequest command...
+2016-06-28 15:25:20,889 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:20,924 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listVolumeiSCSIService&storageid=235fcf9d-a3eb-33ca-b638-072122c29ded HTTP/1.1" 200 668
+2016-06-28 15:25:20,926 listVolumeiSCSIService response...{u'listVolumeiSCSIServiceResponse': {u'count': 1, u'iSCSIService': [{u'status': True, u'workerthreads': 6, u'unmap': True, u'blocklength': u'512B', u'usn': u'235fcf9da3eb33cab638072122c29ded', u'authmethod': u'None', u'physrecordlength': u'4k', u'xcopy': u'false', u'ag_id': u'7fc5ae12-9600-3995-845c-e616d88d7a1e', u'queuedepth': u'32', u'initialdigest': u'Auto', u'inqproduct': 0, u'iqnname': u'iqn.2016-05.Account.T1001:AccountiscsiNewInit', u'volume_id': u'235fcf9d-a3eb-33ca-b638-072122c29ded', u'wzero': False, u'ig_id': u'9e8e0e34-0680-3207-992c-0c42e984223e', u'inqrevision': 0, u'id': u'826fd673-0bd0-32f8-a5c9-29de331f67b7', u'ats': u'false'}]}}
+2016-06-28 15:25:20,927 iscsi service id: 826fd673-0bd0-32f8-a5c9-29de331f67b7
+2016-06-28 15:25:20,927 ag_id: 7fc5ae12-9600-3995-845c-e616d88d7a1e
+2016-06-28 15:25:20,927 unmap status: true
+2016-06-28 15:25:20,927 physrecordlength: 4k
+2016-06-28 15:25:20,928 queuedepth: 32
+2016-06-28 15:25:20,928 workerthreads 6
+2016-06-28 15:25:20,928 RESP API for listiSCSIInitiator...https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listiSCSIInitiator&accountid=c7195113-83c7-4054-b659-b2dd151bcc12
+2016-06-28 15:25:20,931 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:20,959 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listiSCSIInitiator&accountid=c7195113-83c7-4054-b659-b2dd151bcc12 HTTP/1.1" 200 628
+2016-06-28 15:25:20,961 listiSCSIInitiator response...{u'listInitiatorsResponse': {u'count': 3, u'initiator': [{u'netmask': u'ALL', u'initiatorgroup': u'ALL', u'id': u'0b7de92e-ee1a-399f-a41c-1945357f3a43', u'name': u'ALL', u'accountid': u'c7195113-83c7-4054-b659-b2dd151bcc12'}, {u'netmask': u'None', u'initiatorgroup': u'None', u'id': u'9e8e0e34-0680-3207-992c-0c42e984223e', u'name': u'None', u'accountid': u'c7195113-83c7-4054-b659-b2dd151bcc12'}, {u'netmask': u'20.10.28.117/8', u'initiatorgroup': u'iqn.1988-12.com.oracle:e815140a66c', u'id': u'5459294e-db69-3cf9-bb32-22a681ac9859', u'name': u'InitNewGrp', u'accountid': u'c7195113-83c7-4054-b659-b2dd151bcc12'}]}}
+2016-06-28 15:25:20,962 getting initiator id...
+2016-06-28 15:25:20,962 REST API for updateVolumeiSCSIService...https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=updateVolumeiSCSIService&status=true&authmethod=None&authgroupid=7fc5ae12-9600-3995-845c-e616d88d7a1e&igid=5459294e-db69-3cf9-bb32-22a681ac9859&initialdigest=Auto&queuedepth=32&workerthreads=6&unmap=true&physrecordlength=4k&id=826fd673-0bd0-32f8-a5c9-29de331f67b7
+2016-06-28 15:25:20,965 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:21,515 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=updateVolumeiSCSIService&status=true&authmethod=None&authgroupid=7fc5ae12-9600-3995-845c-e616d88d7a1e&igid=5459294e-db69-3cf9-bb32-22a681ac9859&initialdigest=Auto&queuedepth=32&workerthreads=6&unmap=true&physrecordlength=4k&id=826fd673-0bd0-32f8-a5c9-29de331f67b7 HTTP/1.1" 200 651
+2016-06-28 15:25:21,517 updateVolumeiSCSIService response...{u'updatingvolumeiscsidetails': {u'viscsioptions': {u'status': True, u'workerthreads': 6, u'unmap': True, u'blocklength': u'512B', u'usn': u'235fcf9da3eb33cab638072122c29ded', u'authmethod': u'None', u'physrecordlength': u'4k', u'xcopy': u'false', u'ag_id': u'7fc5ae12-9600-3995-845c-e616d88d7a1e', u'queuedepth': u'32', u'initialdigest': u'Auto', u'inqproduct': 0, u'iqnname': u'iqn.2016-05.Account.T1001:AccountiscsiNewInit', u'volume_id': u'235fcf9d-a3eb-33ca-b638-072122c29ded', u'wzero': False, u'ig_id': u'5459294e-db69-3cf9-bb32-22a681ac9859', u'inqrevision': 0, u'id': u'826fd673-0bd0-32f8-a5c9-29de331f67b7', u'ats': u'false'}}}
+2016-06-28 15:25:21,518 iniator group <InitNewGrp> added successfully to volume
+2016-06-28 15:25:21,518 Successfully updated initiator group "InitNewGrp" for volume "iscsiNewInit"
+2016-06-28 15:25:21,518 executing command for discover iSCSI LUN: iscsiadm -m discovery -t st -p 20.10.60.121 | grep iqn.2016-05.Account.T1001:AccountiscsiNewInit | awk {'print $2'}
+2016-06-28 15:25:21,544 lun discovered : iqn.2016-05.Account.T1001:AccountiscsiNewInit
+2016-06-28 15:25:21,545 inside the iscsi_login_logout method...
+2016-06-28 15:25:21,545 executing command: iscsiadm -m node --targetname iqn.2016-05.Account.T1001:AccountiscsiNewInit --portal 20.10.60.121:3260 --login
+2016-06-28 15:25:21,599 iscsi login result: ('PASSED', '')
+2016-06-28 15:25:21,600 Login successfully for iSCSI LUN iscsiNewInit
+2016-06-28 15:25:21,600 getting iSCSI LUN logged device...
+2016-06-28 15:25:23,603 Function execution starts
+2016-06-28 15:25:25,631 20.10.60.121 and AccountiscsiNewInit
+2016-06-28 15:25:25,632 iSCSI LUN logged in device: ['PASSED', {'AccountiscsiNewInit': 'sdc'}]
+2016-06-28 15:25:25,632 inside the iscsi_login_logout method...
+2016-06-28 15:25:25,632 executing command: iscsiadm -m node --targetname iqn.2016-05.Account.T1001:AccountiscsiNewInit --portal 20.10.60.121:3260 --logout
+2016-06-28 15:25:25,642 iscsi logout result: ('PASSED', '')
+2016-06-28 15:25:25,642 Setting initiator group to "None"
+2016-06-28 15:25:25,642 REST API for listVolumeiSCSIService...https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listVolumeiSCSIService&storageid=235fcf9d-a3eb-33ca-b638-072122c29ded
+2016-06-28 15:25:25,642 executing sendrequest command...
+2016-06-28 15:25:25,644 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:25,682 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listVolumeiSCSIService&storageid=235fcf9d-a3eb-33ca-b638-072122c29ded HTTP/1.1" 200 727
+2016-06-28 15:25:25,685 listVolumeiSCSIService response...{u'listVolumeiSCSIServiceResponse': {u'count': 1, u'iSCSIService': [{u'status': True, u'workerthreads': 6, u'unmap': True, u'blocklength': u'512B', u'usn': u'235fcf9da3eb33cab638072122c29ded', u'authmethod': u'None', u'physrecordlength': u'4k', u'xcopy': u'false', u'ag_id': u'7fc5ae12-9600-3995-845c-e616d88d7a1e', u'queuedepth': u'32', u'initialdigest': u'Auto', u'inqproduct': 0, u'iqnname': u'iqn.2016-05.Account.T1001:AccountiscsiNewInit', u'volume_id': u'235fcf9d-a3eb-33ca-b638-072122c29ded', u'wzero': False, u'ig_id': u'5459294e-db69-3cf9-bb32-22a681ac9859', u'inqrevision': 0, u'id': u'826fd673-0bd0-32f8-a5c9-29de331f67b7', u'ats': u'false'}], u'alerts': [{u'alert': u'ISCSI Volume Connected'}]}}
+2016-06-28 15:25:25,685 iscsi service id: 826fd673-0bd0-32f8-a5c9-29de331f67b7
+2016-06-28 15:25:25,685 ag_id: 7fc5ae12-9600-3995-845c-e616d88d7a1e
+2016-06-28 15:25:25,685 unmap status: true
+2016-06-28 15:25:25,686 physrecordlength: 4k
+2016-06-28 15:25:25,686 queuedepth: 32
+2016-06-28 15:25:25,686 workerthreads 6
+2016-06-28 15:25:25,686 RESP API for listiSCSIInitiator...https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listiSCSIInitiator&accountid=c7195113-83c7-4054-b659-b2dd151bcc12
+2016-06-28 15:25:25,689 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:25,717 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listiSCSIInitiator&accountid=c7195113-83c7-4054-b659-b2dd151bcc12 HTTP/1.1" 200 628
+2016-06-28 15:25:25,718 listiSCSIInitiator response...{u'listInitiatorsResponse': {u'count': 3, u'initiator': [{u'netmask': u'ALL', u'initiatorgroup': u'ALL', u'id': u'0b7de92e-ee1a-399f-a41c-1945357f3a43', u'name': u'ALL', u'accountid': u'c7195113-83c7-4054-b659-b2dd151bcc12'}, {u'netmask': u'None', u'initiatorgroup': u'None', u'id': u'9e8e0e34-0680-3207-992c-0c42e984223e', u'name': u'None', u'accountid': u'c7195113-83c7-4054-b659-b2dd151bcc12'}, {u'netmask': u'20.10.28.117/8', u'initiatorgroup': u'iqn.1988-12.com.oracle:e815140a66c', u'id': u'5459294e-db69-3cf9-bb32-22a681ac9859', u'name': u'InitNewGrp', u'accountid': u'c7195113-83c7-4054-b659-b2dd151bcc12'}]}}
+2016-06-28 15:25:25,719 getting initiator id...
+2016-06-28 15:25:25,719 REST API for updateVolumeiSCSIService...https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=updateVolumeiSCSIService&status=true&authmethod=None&authgroupid=7fc5ae12-9600-3995-845c-e616d88d7a1e&igid=9e8e0e34-0680-3207-992c-0c42e984223e&initialdigest=Auto&queuedepth=32&workerthreads=6&unmap=true&physrecordlength=4k&id=826fd673-0bd0-32f8-a5c9-29de331f67b7
+2016-06-28 15:25:25,722 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:26,463 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=updateVolumeiSCSIService&status=true&authmethod=None&authgroupid=7fc5ae12-9600-3995-845c-e616d88d7a1e&igid=9e8e0e34-0680-3207-992c-0c42e984223e&initialdigest=Auto&queuedepth=32&workerthreads=6&unmap=true&physrecordlength=4k&id=826fd673-0bd0-32f8-a5c9-29de331f67b7 HTTP/1.1" 200 651
+2016-06-28 15:25:26,465 updateVolumeiSCSIService response...{u'updatingvolumeiscsidetails': {u'viscsioptions': {u'status': True, u'workerthreads': 6, u'unmap': True, u'blocklength': u'512B', u'usn': u'235fcf9da3eb33cab638072122c29ded', u'authmethod': u'None', u'physrecordlength': u'4k', u'xcopy': u'false', u'ag_id': u'7fc5ae12-9600-3995-845c-e616d88d7a1e', u'queuedepth': u'32', u'initialdigest': u'Auto', u'inqproduct': 0, u'iqnname': u'iqn.2016-05.Account.T1001:AccountiscsiNewInit', u'volume_id': u'235fcf9d-a3eb-33ca-b638-072122c29ded', u'wzero': False, u'ig_id': u'9e8e0e34-0680-3207-992c-0c42e984223e', u'inqrevision': 0, u'id': u'826fd673-0bd0-32f8-a5c9-29de331f67b7', u'ats': u'false'}}}
+2016-06-28 15:25:26,466 iniator group <None> added successfully to volume
+2016-06-28 15:25:26,466 Initiator group is set to "none"
+2016-06-28 15:25:26,466 Deleting initator group "InitNewGrp"
+2016-06-28 15:25:26,467 REST API for listiSCSIInitiator...https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listiSCSIInitiator&accountid=c7195113-83c7-4054-b659-b2dd151bcc12
+2016-06-28 15:25:26,467 executing sendrequest command...
+2016-06-28 15:25:26,470 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:26,503 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listiSCSIInitiator&accountid=c7195113-83c7-4054-b659-b2dd151bcc12 HTTP/1.1" 200 690
+2016-06-28 15:25:26,505 REST API for deleteIscsiInitiator... https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=deleteiSCSIInitiator&accountid=c7195113-83c7-4054-b659-b2dd151bcc12&id=5459294e-db69-3cf9-bb32-22a681ac9859
+2016-06-28 15:25:26,508 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:26,820 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=deleteiSCSIInitiator&accountid=c7195113-83c7-4054-b659-b2dd151bcc12&id=5459294e-db69-3cf9-bb32-22a681ac9859 HTTP/1.1" 200 59
+2016-06-28 15:25:26,823 Deleted iscsiInitator Group "InitNewGrp"
+2016-06-28 15:25:26,823 Successfully deleted initiator group "InitNewGrp"
+2016-06-28 15:25:26,823 Deleting volume "iscsiNewInit"
+2016-06-28 15:25:26,824 Inside the delete_volume method...
+2016-06-28 15:25:26,824 REST API for deleting volume: https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=deleteFileSystem&id=235fcf9d-a3eb-33ca-b638-072122c29ded
+2016-06-28 15:25:26,827 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:26,880 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=deleteFileSystem&id=235fcf9d-a3eb-33ca-b638-072122c29ded HTTP/1.1" 200 86
+2016-06-28 15:25:26,881 response for deleting volume: {u'deleteFileSystemResponse': {u'jobid': u'ed65d0d5-12aa-4cab-b213-613c270b745e'}}
+2016-06-28 15:25:26,882 getting job_id for deleting volume...
+2016-06-28 15:25:26,882 job_id for delet volume: ed65d0d5-12aa-4cab-b213-613c270b745e
+2016-06-28 15:25:26,882 calling queryAsyncJobResult method...
+2016-06-28 15:25:26,885 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:26,976 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=ed65d0d5-12aa-4cab-b213-613c270b745e HTTP/1.1" 200 353
+2016-06-28 15:25:28,984 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:29,024 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=ed65d0d5-12aa-4cab-b213-613c270b745e HTTP/1.1" 200 457
+2016-06-28 15:25:29,026 delete_volume_status: ('PASSED', '')
+2016-06-28 15:25:29,027 result of delete_volume: ['PASSED', 'Volume deleted successfuly']
+2016-06-28 15:25:29,027 Volume "iscsiNewInit" Deleted successfully
+2016-06-28 15:25:29,027 ----End of testcase "Create a initiator group using all the mandatory feilds"----
+
+2016-06-28 15:25:29,151 -------iSCSI login with CHAP method test case started--------
+
+2016-06-28 15:25:29,158 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:29,221 "POST /client/api?response=json& HTTP/1.1" 200 449
+2016-06-28 15:25:29,251 "GET /client/api?response=json&command=listUsers HTTP/1.1" 200 None
+2016-06-28 15:25:29,254 DEVMAN_IP: 20.10.112.70
+2016-06-28 15:25:29,254 USER: admin
+2016-06-28 15:25:29,254 PASSWORD: test
+2016-06-28 15:25:29,254 VSM_IP: 20.10.60.121
+2016-06-28 15:25:29,255 APIKEY: OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA
+2016-06-28 15:25:29,255 STDURL: https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&
+2016-06-28 15:25:29,255 listing TSMs with IP...
+2016-06-28 15:25:29,255 REST API for Listing Tsm with IP: https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listTsm&ipaddress=20.10.60.121
+2016-06-28 15:25:29,258 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:29,591 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listTsm&ipaddress=20.10.60.121 HTTP/1.1" 200 None
+2016-06-28 15:25:29,595 response for Listing Tsm with IP: {u'listTsmResponse': {u'count': 1, u'listTsm': [{u'qosgrouplist': [{u'latency': u'15', u'name': u'QoS_IscsiIopsVol1AccountT1001', u'memlimit': u'0', u'iops': u'70', u'throughput': u'0', u'id': u'9e80eff1-602c-3bba-832d-7c866f3d0f4b', u'networkspeed': u'0'}, {u'latency': u'15', u'name': u'QoS_IscsiTpVolAccountT1001', u'memlimit': u'0', u'iops': u'0', u'throughput': u'1000', u'id': u'c915c7f3-ec8a-31ee-8dbd-a0cd7fb1cca4', u'networkspeed': u'0'}], u'iqnname': u'iqn.2016-05.Account.T1001', u'offlinenodes': u'', u'blocksize': u'4', u'controllerid': u'145fa585-985e-39a2-b0f1-fdfc2b947ea0', u'hapoolavailiops': 2000, u'totalprovisionquota': u'23068672', u'accountname': u'Account', u'volumeslist': [{u'controllerid': u'145fa585-985e-39a2-b0f1-fdfc2b947ea0', u'iops': u'70', u'poolid': u'45a6614f-910f-33a0-8818-b575e11cc4b0', u'id': u'edd03c15-8b6e-3d6f-825f-2d06b5faae97', u'latency': u'15', u'iscsi': u'true', u'clusterid': u'1a77e159-28ef-48ca-bee8-7e160560dd97', u'volumegrace': u'false', u'throughput': u'0', u'tsmid': u'52e3fc6d-3045-32ae-8078-473e8f7b087a', u'type': u'volume', u'groupid': u'9e80eff1-602c-3bba-832d-7c866f3d0f4b', u'cifs': u'false', u'totalspace': u'10240', u'quota': u'10G', u'fc': u'false', u'parentid': u'dc0b73c2-0f3b-301f-95b4-429d0e538b08', u'path': u'regressionPL1/AccountT1001/IscsiIopsVol1', u'name': u'IscsiIopsVol1', u'usedspace': u'1781', u'availspace': u'8459', u'nfs': u'false', u'numericquota': u'10240.0'}, {u'controllerid': u'145fa585-985e-39a2-b0f1-fdfc2b947ea0', u'iops': u'0', u'poolid': u'45a6614f-910f-33a0-8818-b575e11cc4b0', u'id': u'30782084-f14d-3a36-8b12-f195aa05291c', u'latency': u'15', u'iscsi': u'true', u'clusterid': u'1a77e159-28ef-48ca-bee8-7e160560dd97', u'volumegrace': u'false', u'throughput': u'1000', u'tsmid': u'52e3fc6d-3045-32ae-8078-473e8f7b087a', u'type': u'volume', u'groupid': u'c915c7f3-ec8a-31ee-8dbd-a0cd7fb1cca4', u'cifs': u'false', u'totalspace': u'10240', u'quota': u'10G', u'fc': u'false', u'parentid': u'dc0b73c2-0f3b-301f-95b4-429d0e538b08', u'path': u'regressionPL1/AccountT1001/IscsiTpVol', u'name': u'IscsiTpVol', u'usedspace': u'0', u'availspace': u'10240', u'nfs': u'false', u'numericquota': u'10240.0'}], u'iops': u'1000', u'poolid': u'45a6614f-910f-33a0-8818-b575e11cc4b0', u'usedIOPS': u'320', u'hapooldeduplication': u'off', u'cifsauthentication': u'user', u'id': u'52e3fc6d-3045-32ae-8078-473e8f7b087a', u'latency': u'15', u'graceallowed': True, u'sitename': u'SITE1', u'tpcontrol': u'true', u'configurationstate': u'sync', u'availThroughput': u'2720', u'interfaceName': u'em0', u'usedThroughput': u'1280', u'hapoolstatus': u'ONLINE', u'type': u'1', u'haNodeStatus': u'Available', u'availIOPS': u'680', u'status': u'Online', u'iopscontrol': u'true', u'managedstate': u'Available', u'currentIOPS': 54, u'volumes': [{u'controllerid': u'145fa585-985e-39a2-b0f1-fdfc2b947ea0', u'iops': u'70', u'poolid': u'45a6614f-910f-33a0-8818-b575e11cc4b0', u'id': u'edd03c15-8b6e-3d6f-825f-2d06b5faae97', u'latency': u'15', u'iscsi': u'true', u'clusterid': u'1a77e159-28ef-48ca-bee8-7e160560dd97', u'volumegrace': u'false', u'throughput': u'0', u'tsmid': u'52e3fc6d-3045-32ae-8078-473e8f7b087a', u'type': u'volume', u'groupid': u'9e80eff1-602c-3bba-832d-7c866f3d0f4b', u'cifs': u'false', u'totalspace': u'10240', u'quota': u'10G', u'fc': u'false', u'parentid': u'dc0b73c2-0f3b-301f-95b4-429d0e538b08', u'path': u'regressionPL1/AccountT1001/IscsiIopsVol1', u'name': u'IscsiIopsVol1', u'usedspace': u'1781', u'availspace': u'8459', u'nfs': u'false', u'numericquota': u'10240.0'}, {u'controllerid': u'145fa585-985e-39a2-b0f1-fdfc2b947ea0', u'iops': u'0', u'poolid': u'45a6614f-910f-33a0-8818-b575e11cc4b0', u'id': u'30782084-f14d-3a36-8b12-f195aa05291c', u'latency': u'15', u'iscsi': u'true', u'clusterid': u'1a77e159-28ef-48ca-bee8-7e160560dd97', u'volumegrace': u'false', u'throughput': u'1000', u'tsmid': u'52e3fc6d-3045-32ae-8078-473e8f7b087a', u'type': u'volume', u'groupid': u'c915c7f3-ec8a-31ee-8dbd-a0cd7fb1cca4', u'cifs': u'false', u'totalspace': u'10240', u'quota': u'10G', u'fc': u'false', u'parentid': u'dc0b73c2-0f3b-301f-95b4-429d0e538b08', u'path': u'regressionPL1/AccountT1001/IscsiTpVol', u'name': u'IscsiTpVol', u'usedspace': u'0', u'availspace': u'10240', u'nfs': u'false', u'numericquota': u'10240.0'}], u'subnet': u'8', u'hapoolname': u'regressionPL1', u'controllerName': u'NODE1', u'numericquota': 1048576.0, u'currentUsedSpace': 1781, u'storageBuckets': [{u'controllerid': u'145fa585-985e-39a2-b0f1-fdfc2b947ea0', u'cifs': u'null', u'iscsi': u'null', u'numericquota': u'1048576.0', u'clusterid': u'1a77e159-28ef-48ca-bee8-7e160560dd97', u'quota': u'1T', u'fc': u'null', u'nfs': u'null', u'poolid': u'45a6614f-910f-33a0-8818-b575e11cc4b0', u'path': u'regressionPL1/AccountT1001', u'tsmid': u'52e3fc6d-3045-32ae-8078-473e8f7b087a', u'type': u'bucket', u'id': u'dc0b73c2-0f3b-301f-95b4-429d0e538b08', u'name': u'AccountT1001'}], u'minrecommendedvolblocksize': 0, u'ipaddress': u'20.10.60.121', u'currentLatency': 46156, u'currentnumericquota': 20480.0, u'simpleid': 212, u'gracecontrol': u'false', u'currentThroughput': 8393, u'name': u'T1001', u'clustername': u'HAG1', u'pooltakeover': u'noTakeOver', u'revisionnumber': 0, u'hapoolavailtput': 628000, u'availablequota': 1028096.0, u'currentTotalSpace': 20480, u'currentAvailableSpace': 18699, u'currentThrottle': 8, u'throughput': u'4000', u'controlleripaddress': u'20.10.112.71', u'hapoolgrace': True, u'poollatency': 3, u'clusterstatus': u'Online', u'ispooltakeoveronpartialfailure': True, u'datasetid': u'dc0b73c2-0f3b-301f-95b4-429d0e538b08', u'accountid': u'c7195113-83c7-4054-b659-b2dd151bcc12'}]}}
+2016-06-28 15:25:29,595 getting tsm_name, tsm_id, and dataset_id...
+2016-06-28 15:25:29,595 tsm_name:T1001, tsm_id:52e3fc6d-3045-32ae-8078-473e8f7b087a, dataset_id:dc0b73c2-0f3b-301f-95b4-429d0e538b08, controllerid:145fa585-985e-39a2-b0f1-fdfc2b947ea0, accName:Account, poolName:regressionPL1
+2016-06-28 15:25:29,595 inside create_volume method...
+2016-06-28 15:25:29,595 getting default parameters for creating QoS group
+2016-06-28 15:25:29,596 default parameters for creating QoS group: {'iopscontrol': 'true', 'memlimit': 0, 'blocksize': '4k', 'iops': 2, 'networkspeed': 0, 'latency': 15, 'graceallowed': 'false', 'name': '', 'tpcontrol': 'false', 'throughput': 0, 'tsmid': ''}
+2016-06-28 15:25:29,596 getting final parametrs for creating QoS group
+2016-06-28 15:25:29,596 getting REST API for creating QoS group...
+2016-06-28 15:25:29,596 REST API for creating QoS group: https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=addQosGroup&iopscontrol=true&memlimit=0&blocksize=4k&iops=500&networkspeed=0&latency=15&graceallowed=false&name=QoS_chapiSCSI1&tpcontrol=false&throughput=0&tsmid=52e3fc6d-3045-32ae-8078-473e8f7b087a
+2016-06-28 15:25:29,596 Executing command sendrequest...
+2016-06-28 15:25:29,599 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:30,410 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=addQosGroup&iopscontrol=true&memlimit=0&blocksize=4k&iops=500&networkspeed=0&latency=15&graceallowed=false&name=QoS_chapiSCSI1&tpcontrol=false&throughput=0&tsmid=52e3fc6d-3045-32ae-8078-473e8f7b087a HTTP/1.1" 200 None
+2016-06-28 15:25:30,412 response for add QoS group: {u'addqosgroupresponse': {u'qosgroup': {u'offlinenodes': u'', u'blocksize': u'4k', u'controllerid': u'145fa585-985e-39a2-b0f1-fdfc2b947ea0', u'operatingblocksize': 0, u'iops': u'500', u'standardproviops': 0, u'poolid': u'45a6614f-910f-33a0-8818-b575e11cc4b0', u'id': u'e3c910c1-02cf-33dc-85a3-3e83bc3e2025', u'latency': u'15', u'graceallowed': False, u'operatingcachehit': 0, u'tsmName': u'T1001', u'sitename': u'SITE1', u'tpcontrol': u'false', u'configurationstate': u'init', u'tsmid': u'52e3fc6d-3045-32ae-8078-473e8f7b087a', u'type': u'1', u'throughputvalue': u'(0/0)', u'iopscontrol': u'true', u'managedstate': u'Available', u'iopsvalue': u'(0/500)', u'currentIOPS': 0, u'operatingiops': 0, u'parentid': u'dc0b73c2-0f3b-301f-95b4-429d0e538b08', u'currentLatency': 0, u'currentThroughput': 0, u'name': u'QoS_chapiSCSI1AccountT1001', u'clustername': u'HAG1', u'standardoperatingiops': 0, u'currentThrottle': 0, u'throughput': u'0', u'controllerName': u'NODE1', u'clusterstatus': u'Online', u'revisionnumber': 0}}}
+2016-06-28 15:25:30,412 Getting qosgroupid...
+2016-06-28 15:25:30,413 qosgroupid: e3c910c1-02cf-33dc-85a3-3e83bc3e2025
+2016-06-28 15:25:30,413 getting defaults parameters for create volume...
+2016-06-28 15:25:30,413 defaults parameters for create volume: {'datasetid': '', 'tsmid': '', 'compression': 'off', 'protocoltype': '', 'blocklength': '512B', 'quotasize': '10G', 'accesstime': 'on', 'sync': 'always', 'recordsize': '32k', 'name': ''}
+2016-06-28 15:25:30,413 getting final parametrs for creating volume...
+2016-06-28 15:25:30,413 REST API for creating volume: https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=createVolume&qosgroupid=e3c910c1-02cf-33dc-85a3-3e83bc3e2025&datasetid=dc0b73c2-0f3b-301f-95b4-429d0e538b08&tsmid=52e3fc6d-3045-32ae-8078-473e8f7b087a&compression=off&protocoltype=ISCSI&blocklength=512B&quotasize=10G&accesstime=on&sync=always&recordsize=32k&name=chapiSCSI1
+2016-06-28 15:25:30,416 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:30,591 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=createVolume&qosgroupid=e3c910c1-02cf-33dc-85a3-3e83bc3e2025&datasetid=dc0b73c2-0f3b-301f-95b4-429d0e538b08&tsmid=52e3fc6d-3045-32ae-8078-473e8f7b087a&compression=off&protocoltype=ISCSI&blocklength=512B&quotasize=10G&accesstime=on&sync=always&recordsize=32k&name=chapiSCSI1 HTTP/1.1" 200 82
+2016-06-28 15:25:30,594 response for create volume: {u'createvolumeresponse': {u'jobid': u'9b43c027-b86a-434a-b4f5-e83e6dbfadcb'}}
+2016-06-28 15:25:30,595 getting create volume job id...
+2016-06-28 15:25:30,595 create volume job id: 9b43c027-b86a-434a-b4f5-e83e6dbfadcb
+2016-06-28 15:25:30,595 calling queryAsyncJobResult method...
+2016-06-28 15:25:30,598 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:30,980 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=9b43c027-b86a-434a-b4f5-e83e6dbfadcb HTTP/1.1" 200 349
+2016-06-28 15:25:32,987 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:33,057 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=9b43c027-b86a-434a-b4f5-e83e6dbfadcb HTTP/1.1" 200 363
+2016-06-28 15:25:35,065 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:35,274 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=9b43c027-b86a-434a-b4f5-e83e6dbfadcb HTTP/1.1" 200 363
+2016-06-28 15:25:37,281 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:37,320 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=9b43c027-b86a-434a-b4f5-e83e6dbfadcb HTTP/1.1" 200 None
+2016-06-28 15:25:37,323 create_volume_status: ('PASSED', '')
+2016-06-28 15:25:37,324 result of create_volume: ['PASSED', 'Volume created successfuly']
+2016-06-28 15:25:37,324 listing volume...
+2016-06-28 15:25:37,324 REST API for listing volume with Tsm ID: https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listFileSystem&tsmid=52e3fc6d-3045-32ae-8078-473e8f7b087a
+2016-06-28 15:25:37,327 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:37,501 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listFileSystem&tsmid=52e3fc6d-3045-32ae-8078-473e8f7b087a HTTP/1.1" 200 None
+2016-06-28 15:25:37,504 REST API for listing volume with Tsm ID: https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listFileSystem&tsmid=52e3fc6d-3045-32ae-8078-473e8f7b087a
+2016-06-28 15:25:37,504 volumes listed successfullly
+2016-06-28 15:25:37,505 volume_id: 9a558a0d-8b3a-3f70-b34b-02ec4b30ee72, aacount_id: c7195113-83c7-4054-b659-b2dd151bcc12, mountpoint: AccountchapiSCSI1 and vol_iqn: iqn.2016-05.Account.T1001:AccountchapiSCSI1
+2016-06-28 15:25:37,505 Inside the add_auth_group method...
+2016-06-28 15:25:37,505 REST API for addiSCSIAuthGroup...https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=addiSCSIAuthGroup&comment=AuthGoup&accountid=c7195113-83c7-4054-b659-b2dd151bcc12&name=chap1&chapusername=chapuser1&chappassword=123456789123&mutualchapusername=mchapuser1&mutualchappassword=123456789012
+2016-06-28 15:25:37,505 executing sendrequest command...
+2016-06-28 15:25:37,508 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:37,718 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=addiSCSIAuthGroup&comment=AuthGoup&accountid=c7195113-83c7-4054-b659-b2dd151bcc12&name=chap1&chapusername=chapuser1&chappassword=123456789123&mutualchapusername=mchapuser1&mutualchappassword=123456789012 HTTP/1.1" 200 153
+2016-06-28 15:25:37,719 iSCSI authentication group chap1 added successfully
+2016-06-28 15:25:37,719 REST API for listVolumeiSCSIService...https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listVolumeiSCSIService&storageid=9a558a0d-8b3a-3f70-b34b-02ec4b30ee72
+2016-06-28 15:25:37,720 executing sendrequest command...
+2016-06-28 15:25:37,721 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:37,755 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listVolumeiSCSIService&storageid=9a558a0d-8b3a-3f70-b34b-02ec4b30ee72 HTTP/1.1" 200 666
+2016-06-28 15:25:37,757 listVolumeiSCSIService response...{u'listVolumeiSCSIServiceResponse': {u'count': 1, u'iSCSIService': [{u'status': True, u'workerthreads': 6, u'unmap': True, u'blocklength': u'512B', u'usn': u'9a558a0d8b3a3f70b34b02ec4b30ee72', u'authmethod': u'None', u'physrecordlength': u'4k', u'xcopy': u'false', u'ag_id': u'7fc5ae12-9600-3995-845c-e616d88d7a1e', u'queuedepth': u'32', u'initialdigest': u'Auto', u'inqproduct': 0, u'iqnname': u'iqn.2016-05.Account.T1001:AccountchapiSCSI1', u'volume_id': u'9a558a0d-8b3a-3f70-b34b-02ec4b30ee72', u'wzero': False, u'ig_id': u'9e8e0e34-0680-3207-992c-0c42e984223e', u'inqrevision': 0, u'id': u'e51c69fc-277e-3cb7-ac66-67d23ae73477', u'ats': u'false'}]}}
+2016-06-28 15:25:37,758 iscsi service id: e51c69fc-277e-3cb7-ac66-67d23ae73477
+2016-06-28 15:25:37,758 unmap status: true
+2016-06-28 15:25:37,758 physrecordlength: 4k
+2016-06-28 15:25:37,758 queuedepth: 32
+2016-06-28 15:25:37,759 workerthreads 6
+2016-06-28 15:25:37,759 RESP API for listiSCSIAuthGroup...https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listiSCSIAuthGroup&accountid=c7195113-83c7-4054-b659-b2dd151bcc12
+2016-06-28 15:25:37,762 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:37,784 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listiSCSIAuthGroup&accountid=c7195113-83c7-4054-b659-b2dd151bcc12 HTTP/1.1" 200 254
+2016-06-28 15:25:37,785 listiSCSIAuthGroup response...{u'listiSCSIAuthGroupResponse': {u'count': 2, u'authgroup': [{u'comment': u'None', u'id': u'7fc5ae12-9600-3995-845c-e616d88d7a1e', u'name': u'None'}, {u'comment': u'AuthGoup', u'id': u'a14f57fd-3ade-3593-b64e-052bf6c709b3', u'name': u'chap1'}]}}
+2016-06-28 15:25:37,785 getting authgroup id...
+2016-06-28 15:25:37,785 authgroup_id: a14f57fd-3ade-3593-b64e-052bf6c709b3
+2016-06-28 15:25:37,785 RESP API for listiSCSIInitiator...https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listiSCSIInitiator&accountid=c7195113-83c7-4054-b659-b2dd151bcc12
+2016-06-28 15:25:37,786 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:37,810 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listiSCSIInitiator&accountid=c7195113-83c7-4054-b659-b2dd151bcc12 HTTP/1.1" 200 408
+2016-06-28 15:25:37,813 listiSCSIInitiator response...{u'listInitiatorsResponse': {u'count': 2, u'initiator': [{u'netmask': u'ALL', u'initiatorgroup': u'ALL', u'id': u'0b7de92e-ee1a-399f-a41c-1945357f3a43', u'name': u'ALL', u'accountid': u'c7195113-83c7-4054-b659-b2dd151bcc12'}, {u'netmask': u'None', u'initiatorgroup': u'None', u'id': u'9e8e0e34-0680-3207-992c-0c42e984223e', u'name': u'None', u'accountid': u'c7195113-83c7-4054-b659-b2dd151bcc12'}]}}
+2016-06-28 15:25:37,813 getting initiator id...
+2016-06-28 15:25:37,814 initiator_group_id: 0b7de92e-ee1a-399f-a41c-1945357f3a43
+2016-06-28 15:25:37,814 REST API for updateVolumeiSCSIService...https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=updateVolumeiSCSIService&status=true&authmethod=CHAP&authgroupid=a14f57fd-3ade-3593-b64e-052bf6c709b3&igid=0b7de92e-ee1a-399f-a41c-1945357f3a43&initialdigest=Auto&queuedepth=32&workerthreads=6&unmap=true&physrecordlength=4k&id=e51c69fc-277e-3cb7-ac66-67d23ae73477
+2016-06-28 15:25:37,817 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:38,521 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=updateVolumeiSCSIService&status=true&authmethod=CHAP&authgroupid=a14f57fd-3ade-3593-b64e-052bf6c709b3&igid=0b7de92e-ee1a-399f-a41c-1945357f3a43&initialdigest=Auto&queuedepth=32&workerthreads=6&unmap=true&physrecordlength=4k&id=e51c69fc-277e-3cb7-ac66-67d23ae73477 HTTP/1.1" 200 649
+2016-06-28 15:25:38,523 updateVolumeiSCSIService response...{u'updatingvolumeiscsidetails': {u'viscsioptions': {u'status': True, u'workerthreads': 6, u'unmap': True, u'blocklength': u'512B', u'usn': u'9a558a0d8b3a3f70b34b02ec4b30ee72', u'authmethod': u'CHAP', u'physrecordlength': u'4k', u'xcopy': u'false', u'ag_id': u'a14f57fd-3ade-3593-b64e-052bf6c709b3', u'queuedepth': u'32', u'initialdigest': u'Auto', u'inqproduct': 0, u'iqnname': u'iqn.2016-05.Account.T1001:AccountchapiSCSI1', u'volume_id': u'9a558a0d-8b3a-3f70-b34b-02ec4b30ee72', u'wzero': False, u'ig_id': u'0b7de92e-ee1a-399f-a41c-1945357f3a43', u'inqrevision': 0, u'id': u'e51c69fc-277e-3cb7-ac66-67d23ae73477', u'ats': u'false'}}}
+2016-06-28 15:25:38,524 iSCSI services updated successfully to volume
+2016-06-28 15:25:38,538 Successfully taken bakup of iscsid.conf
+2016-06-28 15:25:39,273 getting iqn for volume chapiSCSI1
+2016-06-28 15:25:39,273 executing command for discover iSCSI LUN: iscsiadm -m discovery -t st -p 20.10.60.121 | grep iqn.2016-05.Account.T1001:AccountchapiSCSI1 | awk {'print $2'}
+2016-06-28 15:25:39,291 iqn for discovered iSCSI LUN... iqn.2016-05.Account.T1001:AccountchapiSCSI1
+2016-06-28 15:25:39,292 inside the iscsi_login_logout method...
+2016-06-28 15:25:39,292 executing command: iscsiadm -m node --targetname iqn.2016-05.Account.T1001:AccountchapiSCSI1 --portal 20.10.60.121:3260 --login
+2016-06-28 15:25:39,389 iscsi login result: ('PASSED', '')
+2016-06-28 15:25:39,390 iSCSI login with CHAP method test case is passed...
+2016-06-28 15:25:39,390 getting iSCSI LUN legged device...
+2016-06-28 15:25:41,393 Function execution starts
+2016-06-28 15:25:43,423 20.10.60.121 and AccountchapiSCSI1
+2016-06-28 15:25:43,423 iSCSI LUN logged in device: ['PASSED', {'AccountchapiSCSI1': 'sdc'}]
+2016-06-28 15:25:43,428 iscsid.conf has been revert back to original file
+2016-06-28 15:25:43,428 iSCSI login CHAP execution done, removing configuration...
+2016-06-28 15:25:43,428 inside the iscsi_login_logout method...
+2016-06-28 15:25:43,428 executing command: iscsiadm -m node --targetname iqn.2016-05.Account.T1001:AccountchapiSCSI1 --portal 20.10.60.121:3260 --logout
+2016-06-28 15:25:43,438 iscsi logout result: ('PASSED', '')
+2016-06-28 15:25:43,439 REST API for listVolumeiSCSIService...https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listVolumeiSCSIService&storageid=9a558a0d-8b3a-3f70-b34b-02ec4b30ee72
+2016-06-28 15:25:43,439 executing sendrequest command...
+2016-06-28 15:25:43,440 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:43,488 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listVolumeiSCSIService&storageid=9a558a0d-8b3a-3f70-b34b-02ec4b30ee72 HTTP/1.1" 200 725
+2016-06-28 15:25:43,491 listVolumeiSCSIService response...{u'listVolumeiSCSIServiceResponse': {u'count': 1, u'iSCSIService': [{u'status': True, u'workerthreads': 6, u'unmap': True, u'blocklength': u'512B', u'usn': u'9a558a0d8b3a3f70b34b02ec4b30ee72', u'authmethod': u'CHAP', u'physrecordlength': u'4k', u'xcopy': u'false', u'ag_id': u'a14f57fd-3ade-3593-b64e-052bf6c709b3', u'queuedepth': u'32', u'initialdigest': u'Auto', u'inqproduct': 0, u'iqnname': u'iqn.2016-05.Account.T1001:AccountchapiSCSI1', u'volume_id': u'9a558a0d-8b3a-3f70-b34b-02ec4b30ee72', u'wzero': False, u'ig_id': u'0b7de92e-ee1a-399f-a41c-1945357f3a43', u'inqrevision': 0, u'id': u'e51c69fc-277e-3cb7-ac66-67d23ae73477', u'ats': u'false'}], u'alerts': [{u'alert': u'ISCSI Volume Connected'}]}}
+2016-06-28 15:25:43,491 iscsi service id: e51c69fc-277e-3cb7-ac66-67d23ae73477
+2016-06-28 15:25:43,491 ag_id: a14f57fd-3ade-3593-b64e-052bf6c709b3
+2016-06-28 15:25:43,492 unmap status: true
+2016-06-28 15:25:43,492 physrecordlength: 4k
+2016-06-28 15:25:43,492 queuedepth: 32
+2016-06-28 15:25:43,492 workerthreads 6
+2016-06-28 15:25:43,492 RESP API for listiSCSIInitiator...https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listiSCSIInitiator&accountid=c7195113-83c7-4054-b659-b2dd151bcc12
+2016-06-28 15:25:43,495 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:43,667 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listiSCSIInitiator&accountid=c7195113-83c7-4054-b659-b2dd151bcc12 HTTP/1.1" 200 408
+2016-06-28 15:25:43,669 listiSCSIInitiator response...{u'listInitiatorsResponse': {u'count': 2, u'initiator': [{u'netmask': u'ALL', u'initiatorgroup': u'ALL', u'id': u'0b7de92e-ee1a-399f-a41c-1945357f3a43', u'name': u'ALL', u'accountid': u'c7195113-83c7-4054-b659-b2dd151bcc12'}, {u'netmask': u'None', u'initiatorgroup': u'None', u'id': u'9e8e0e34-0680-3207-992c-0c42e984223e', u'name': u'None', u'accountid': u'c7195113-83c7-4054-b659-b2dd151bcc12'}]}}
+2016-06-28 15:25:43,669 getting initiator id...
+2016-06-28 15:25:43,670 REST API for updateVolumeiSCSIService...https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=updateVolumeiSCSIService&status=true&authmethod=None&authgroupid=a14f57fd-3ade-3593-b64e-052bf6c709b3&igid=9e8e0e34-0680-3207-992c-0c42e984223e&initialdigest=Auto&queuedepth=32&workerthreads=6&unmap=true&physrecordlength=4k&id=e51c69fc-277e-3cb7-ac66-67d23ae73477
+2016-06-28 15:25:43,673 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:46,559 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=updateVolumeiSCSIService&status=true&authmethod=None&authgroupid=a14f57fd-3ade-3593-b64e-052bf6c709b3&igid=9e8e0e34-0680-3207-992c-0c42e984223e&initialdigest=Auto&queuedepth=32&workerthreads=6&unmap=true&physrecordlength=4k&id=e51c69fc-277e-3cb7-ac66-67d23ae73477 HTTP/1.1" 200 649
+2016-06-28 15:25:46,561 updateVolumeiSCSIService response...{u'updatingvolumeiscsidetails': {u'viscsioptions': {u'status': True, u'workerthreads': 6, u'unmap': True, u'blocklength': u'512B', u'usn': u'9a558a0d8b3a3f70b34b02ec4b30ee72', u'authmethod': u'None', u'physrecordlength': u'4k', u'xcopy': u'false', u'ag_id': u'a14f57fd-3ade-3593-b64e-052bf6c709b3', u'queuedepth': u'32', u'initialdigest': u'Auto', u'inqproduct': 0, u'iqnname': u'iqn.2016-05.Account.T1001:AccountchapiSCSI1', u'volume_id': u'9a558a0d-8b3a-3f70-b34b-02ec4b30ee72', u'wzero': False, u'ig_id': u'9e8e0e34-0680-3207-992c-0c42e984223e', u'inqrevision': 0, u'id': u'e51c69fc-277e-3cb7-ac66-67d23ae73477', u'ats': u'false'}}}
+2016-06-28 15:25:46,562 iniator group <None> added successfully to volume
+2016-06-28 15:25:46,562 Go and delete the volume
+2016-06-28 15:25:46,562 Inside the delete_volume method...
+2016-06-28 15:25:46,563 REST API for deleting volume: https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=deleteFileSystem&id=9a558a0d-8b3a-3f70-b34b-02ec4b30ee72
+2016-06-28 15:25:46,566 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:46,639 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=deleteFileSystem&id=9a558a0d-8b3a-3f70-b34b-02ec4b30ee72 HTTP/1.1" 200 86
+2016-06-28 15:25:46,641 response for deleting volume: {u'deleteFileSystemResponse': {u'jobid': u'b6967358-d573-4bb1-9fd3-a4de38d881d3'}}
+2016-06-28 15:25:46,642 getting job_id for deleting volume...
+2016-06-28 15:25:46,642 job_id for delet volume: b6967358-d573-4bb1-9fd3-a4de38d881d3
+2016-06-28 15:25:46,642 calling queryAsyncJobResult method...
+2016-06-28 15:25:46,645 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:46,757 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=b6967358-d573-4bb1-9fd3-a4de38d881d3 HTTP/1.1" 200 353
+2016-06-28 15:25:48,764 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:48,874 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=b6967358-d573-4bb1-9fd3-a4de38d881d3 HTTP/1.1" 200 386
+2016-06-28 15:25:50,881 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:50,927 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=b6967358-d573-4bb1-9fd3-a4de38d881d3 HTTP/1.1" 200 457
+2016-06-28 15:25:50,929 delete_volume_status: ('PASSED', '')
+2016-06-28 15:25:50,930 result of delete_volume: ['PASSED', 'Volume deleted successfuly']
+2016-06-28 15:25:50,930 ----------- iSCSI login with CHAP method test case is completed -------------
+2016-06-28 15:25:51,055 ------------------------------snapshot on iSCSI LUN test started------------------------------
+2016-06-28 15:25:51,063 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:51,127 "POST /client/api?response=json& HTTP/1.1" 200 449
+2016-06-28 15:25:51,161 "GET /client/api?response=json&command=listUsers HTTP/1.1" 200 None
+2016-06-28 15:25:51,163 DEVMAN_IP: 20.10.112.70
+2016-06-28 15:25:51,163 USER: admin
+2016-06-28 15:25:51,164 PASSWORD: test
+2016-06-28 15:25:51,164 VSM_IP: 20.10.60.121
+2016-06-28 15:25:51,164 APIKEY: OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA
+2016-06-28 15:25:51,164 STDURL: https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&
+2016-06-28 15:25:51,164 listing TSMs with IP...
+2016-06-28 15:25:51,165 REST API for Listing Tsm with IP: https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listTsm&ipaddress=20.10.60.121
+2016-06-28 15:25:51,167 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:51,330 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listTsm&ipaddress=20.10.60.121 HTTP/1.1" 200 None
+2016-06-28 15:25:51,333 response for Listing Tsm with IP: {u'listTsmResponse': {u'count': 1, u'listTsm': [{u'qosgrouplist': [{u'latency': u'15', u'name': u'QoS_IscsiIopsVol1AccountT1001', u'memlimit': u'0', u'iops': u'70', u'throughput': u'0', u'id': u'9e80eff1-602c-3bba-832d-7c866f3d0f4b', u'networkspeed': u'0'}, {u'latency': u'15', u'name': u'QoS_IscsiTpVolAccountT1001', u'memlimit': u'0', u'iops': u'0', u'throughput': u'1000', u'id': u'c915c7f3-ec8a-31ee-8dbd-a0cd7fb1cca4', u'networkspeed': u'0'}], u'iqnname': u'iqn.2016-05.Account.T1001', u'offlinenodes': u'', u'blocksize': u'4', u'controllerid': u'145fa585-985e-39a2-b0f1-fdfc2b947ea0', u'hapoolavailiops': 2000, u'totalprovisionquota': u'23068672', u'accountname': u'Account', u'volumeslist': [{u'controllerid': u'145fa585-985e-39a2-b0f1-fdfc2b947ea0', u'iops': u'70', u'poolid': u'45a6614f-910f-33a0-8818-b575e11cc4b0', u'id': u'edd03c15-8b6e-3d6f-825f-2d06b5faae97', u'latency': u'15', u'iscsi': u'true', u'clusterid': u'1a77e159-28ef-48ca-bee8-7e160560dd97', u'volumegrace': u'false', u'throughput': u'0', u'tsmid': u'52e3fc6d-3045-32ae-8078-473e8f7b087a', u'type': u'volume', u'groupid': u'9e80eff1-602c-3bba-832d-7c866f3d0f4b', u'cifs': u'false', u'totalspace': u'10240', u'quota': u'10G', u'fc': u'false', u'parentid': u'dc0b73c2-0f3b-301f-95b4-429d0e538b08', u'path': u'regressionPL1/AccountT1001/IscsiIopsVol1', u'name': u'IscsiIopsVol1', u'usedspace': u'1781', u'availspace': u'8459', u'nfs': u'false', u'numericquota': u'10240.0'}, {u'controllerid': u'145fa585-985e-39a2-b0f1-fdfc2b947ea0', u'iops': u'0', u'poolid': u'45a6614f-910f-33a0-8818-b575e11cc4b0', u'id': u'30782084-f14d-3a36-8b12-f195aa05291c', u'latency': u'15', u'iscsi': u'true', u'clusterid': u'1a77e159-28ef-48ca-bee8-7e160560dd97', u'volumegrace': u'false', u'throughput': u'1000', u'tsmid': u'52e3fc6d-3045-32ae-8078-473e8f7b087a', u'type': u'volume', u'groupid': u'c915c7f3-ec8a-31ee-8dbd-a0cd7fb1cca4', u'cifs': u'false', u'totalspace': u'10240', u'quota': u'10G', u'fc': u'false', u'parentid': u'dc0b73c2-0f3b-301f-95b4-429d0e538b08', u'path': u'regressionPL1/AccountT1001/IscsiTpVol', u'name': u'IscsiTpVol', u'usedspace': u'0', u'availspace': u'10240', u'nfs': u'false', u'numericquota': u'10240.0'}], u'iops': u'1000', u'poolid': u'45a6614f-910f-33a0-8818-b575e11cc4b0', u'usedIOPS': u'320', u'hapooldeduplication': u'off', u'cifsauthentication': u'user', u'id': u'52e3fc6d-3045-32ae-8078-473e8f7b087a', u'latency': u'15', u'graceallowed': True, u'sitename': u'SITE1', u'tpcontrol': u'true', u'configurationstate': u'sync', u'availThroughput': u'2720', u'interfaceName': u'em0', u'usedThroughput': u'1280', u'hapoolstatus': u'ONLINE', u'type': u'1', u'haNodeStatus': u'Available', u'availIOPS': u'680', u'status': u'Online', u'iopscontrol': u'true', u'managedstate': u'Available', u'currentIOPS': 54, u'volumes': [{u'controllerid': u'145fa585-985e-39a2-b0f1-fdfc2b947ea0', u'iops': u'70', u'poolid': u'45a6614f-910f-33a0-8818-b575e11cc4b0', u'id': u'edd03c15-8b6e-3d6f-825f-2d06b5faae97', u'latency': u'15', u'iscsi': u'true', u'clusterid': u'1a77e159-28ef-48ca-bee8-7e160560dd97', u'volumegrace': u'false', u'throughput': u'0', u'tsmid': u'52e3fc6d-3045-32ae-8078-473e8f7b087a', u'type': u'volume', u'groupid': u'9e80eff1-602c-3bba-832d-7c866f3d0f4b', u'cifs': u'false', u'totalspace': u'10240', u'quota': u'10G', u'fc': u'false', u'parentid': u'dc0b73c2-0f3b-301f-95b4-429d0e538b08', u'path': u'regressionPL1/AccountT1001/IscsiIopsVol1', u'name': u'IscsiIopsVol1', u'usedspace': u'1781', u'availspace': u'8459', u'nfs': u'false', u'numericquota': u'10240.0'}, {u'controllerid': u'145fa585-985e-39a2-b0f1-fdfc2b947ea0', u'iops': u'0', u'poolid': u'45a6614f-910f-33a0-8818-b575e11cc4b0', u'id': u'30782084-f14d-3a36-8b12-f195aa05291c', u'latency': u'15', u'iscsi': u'true', u'clusterid': u'1a77e159-28ef-48ca-bee8-7e160560dd97', u'volumegrace': u'false', u'throughput': u'1000', u'tsmid': u'52e3fc6d-3045-32ae-8078-473e8f7b087a', u'type': u'volume', u'groupid': u'c915c7f3-ec8a-31ee-8dbd-a0cd7fb1cca4', u'cifs': u'false', u'totalspace': u'10240', u'quota': u'10G', u'fc': u'false', u'parentid': u'dc0b73c2-0f3b-301f-95b4-429d0e538b08', u'path': u'regressionPL1/AccountT1001/IscsiTpVol', u'name': u'IscsiTpVol', u'usedspace': u'0', u'availspace': u'10240', u'nfs': u'false', u'numericquota': u'10240.0'}], u'subnet': u'8', u'hapoolname': u'regressionPL1', u'controllerName': u'NODE1', u'numericquota': 1048576.0, u'currentUsedSpace': 1781, u'storageBuckets': [{u'controllerid': u'145fa585-985e-39a2-b0f1-fdfc2b947ea0', u'cifs': u'null', u'iscsi': u'null', u'numericquota': u'1048576.0', u'clusterid': u'1a77e159-28ef-48ca-bee8-7e160560dd97', u'quota': u'1T', u'fc': u'null', u'nfs': u'null', u'poolid': u'45a6614f-910f-33a0-8818-b575e11cc4b0', u'path': u'regressionPL1/AccountT1001', u'tsmid': u'52e3fc6d-3045-32ae-8078-473e8f7b087a', u'type': u'bucket', u'id': u'dc0b73c2-0f3b-301f-95b4-429d0e538b08', u'name': u'AccountT1001'}], u'minrecommendedvolblocksize': 0, u'ipaddress': u'20.10.60.121', u'currentLatency': 46156, u'currentnumericquota': 20480.0, u'simpleid': 212, u'gracecontrol': u'false', u'currentThroughput': 8393, u'name': u'T1001', u'clustername': u'HAG1', u'pooltakeover': u'noTakeOver', u'revisionnumber': 0, u'hapoolavailtput': 628000, u'availablequota': 1028096.0, u'currentTotalSpace': 20480, u'currentAvailableSpace': 18699, u'currentThrottle': 8, u'throughput': u'4000', u'controlleripaddress': u'20.10.112.71', u'hapoolgrace': True, u'poollatency': 3, u'clusterstatus': u'Online', u'ispooltakeoveronpartialfailure': True, u'datasetid': u'dc0b73c2-0f3b-301f-95b4-429d0e538b08', u'accountid': u'c7195113-83c7-4054-b659-b2dd151bcc12'}]}}
+2016-06-28 15:25:51,334 getting tsm_name, tsm_id, and dataset_id...
+2016-06-28 15:25:51,334 tsm_name: T1001, tsm_id: 52e3fc6d-3045-32ae-8078-473e8f7b087a, dataset_id: dc0b73c2-0f3b-301f-95b4-429d0e538b08
+2016-06-28 15:25:51,334 REST API for listController... https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listController&id=145fa585-985e-39a2-b0f1-fdfc2b947ea0
+2016-06-28 15:25:51,334 getting controllers IP...
+2016-06-28 15:25:51,337 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:51,617 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listController&id=145fa585-985e-39a2-b0f1-fdfc2b947ea0 HTTP/1.1" 200 None
+2016-06-28 15:25:51,622 inside create_volume method...
+2016-06-28 15:25:51,622 getting default parameters for creating QoS group
+2016-06-28 15:25:51,622 default parameters for creating QoS group: {'iopscontrol': 'true', 'memlimit': 0, 'blocksize': '4k', 'iops': 2, 'networkspeed': 0, 'latency': 15, 'graceallowed': 'false', 'name': '', 'tpcontrol': 'false', 'throughput': 0, 'tsmid': ''}
+2016-06-28 15:25:51,623 getting final parametrs for creating QoS group
+2016-06-28 15:25:51,623 getting REST API for creating QoS group...
+2016-06-28 15:25:51,623 REST API for creating QoS group: https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=addQosGroup&iopscontrol=true&memlimit=0&blocksize=4k&iops=500&networkspeed=0&latency=15&graceallowed=false&name=QoS_snpiSCSI9&tpcontrol=false&throughput=0&tsmid=52e3fc6d-3045-32ae-8078-473e8f7b087a
+2016-06-28 15:25:51,623 Executing command sendrequest...
+2016-06-28 15:25:51,626 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:51,802 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=addQosGroup&iopscontrol=true&memlimit=0&blocksize=4k&iops=500&networkspeed=0&latency=15&graceallowed=false&name=QoS_snpiSCSI9&tpcontrol=false&throughput=0&tsmid=52e3fc6d-3045-32ae-8078-473e8f7b087a HTTP/1.1" 200 None
+2016-06-28 15:25:51,805 response for add QoS group: {u'addqosgroupresponse': {u'qosgroup': {u'offlinenodes': u'', u'blocksize': u'4k', u'controllerid': u'145fa585-985e-39a2-b0f1-fdfc2b947ea0', u'operatingblocksize': 0, u'iops': u'500', u'standardproviops': 0, u'poolid': u'45a6614f-910f-33a0-8818-b575e11cc4b0', u'id': u'e4b73970-0afb-325b-88fb-9597008795e3', u'latency': u'15', u'graceallowed': False, u'operatingcachehit': 0, u'tsmName': u'T1001', u'sitename': u'SITE1', u'tpcontrol': u'false', u'configurationstate': u'init', u'tsmid': u'52e3fc6d-3045-32ae-8078-473e8f7b087a', u'type': u'1', u'throughputvalue': u'(0/0)', u'iopscontrol': u'true', u'managedstate': u'Available', u'iopsvalue': u'(0/500)', u'currentIOPS': 0, u'operatingiops': 0, u'parentid': u'dc0b73c2-0f3b-301f-95b4-429d0e538b08', u'currentLatency': 0, u'currentThroughput': 0, u'name': u'QoS_snpiSCSI9AccountT1001', u'clustername': u'HAG1', u'standardoperatingiops': 0, u'currentThrottle': 0, u'throughput': u'0', u'controllerName': u'NODE1', u'clusterstatus': u'Online', u'revisionnumber': 0}}}
+2016-06-28 15:25:51,805 Getting qosgroupid...
+2016-06-28 15:25:51,805 qosgroupid: e4b73970-0afb-325b-88fb-9597008795e3
+2016-06-28 15:25:51,805 getting defaults parameters for create volume...
+2016-06-28 15:25:51,806 defaults parameters for create volume: {'datasetid': '', 'tsmid': '', 'compression': 'off', 'protocoltype': '', 'blocklength': '512B', 'quotasize': '10G', 'accesstime': 'on', 'sync': 'always', 'recordsize': '32k', 'name': ''}
+2016-06-28 15:25:51,806 getting final parametrs for creating volume...
+2016-06-28 15:25:51,806 REST API for creating volume: https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=createVolume&qosgroupid=e4b73970-0afb-325b-88fb-9597008795e3&datasetid=dc0b73c2-0f3b-301f-95b4-429d0e538b08&tsmid=52e3fc6d-3045-32ae-8078-473e8f7b087a&compression=off&protocoltype=ISCSI&blocklength=512B&quotasize=10G&accesstime=on&sync=always&recordsize=32k&name=snpiSCSI9
+2016-06-28 15:25:51,809 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:51,887 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=createVolume&qosgroupid=e4b73970-0afb-325b-88fb-9597008795e3&datasetid=dc0b73c2-0f3b-301f-95b4-429d0e538b08&tsmid=52e3fc6d-3045-32ae-8078-473e8f7b087a&compression=off&protocoltype=ISCSI&blocklength=512B&quotasize=10G&accesstime=on&sync=always&recordsize=32k&name=snpiSCSI9 HTTP/1.1" 200 82
+2016-06-28 15:25:51,888 response for create volume: {u'createvolumeresponse': {u'jobid': u'd4561a52-53fc-42fa-bc16-c8100a9b25ec'}}
+2016-06-28 15:25:51,889 getting create volume job id...
+2016-06-28 15:25:51,889 create volume job id: d4561a52-53fc-42fa-bc16-c8100a9b25ec
+2016-06-28 15:25:51,889 calling queryAsyncJobResult method...
+2016-06-28 15:25:51,892 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:51,967 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=d4561a52-53fc-42fa-bc16-c8100a9b25ec HTTP/1.1" 200 349
+2016-06-28 15:25:53,974 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:54,072 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=d4561a52-53fc-42fa-bc16-c8100a9b25ec HTTP/1.1" 200 363
+2016-06-28 15:25:56,080 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:56,144 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=d4561a52-53fc-42fa-bc16-c8100a9b25ec HTTP/1.1" 200 363
+2016-06-28 15:25:58,152 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:25:58,225 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=d4561a52-53fc-42fa-bc16-c8100a9b25ec HTTP/1.1" 200 363
+2016-06-28 15:26:00,232 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:26:00,270 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=d4561a52-53fc-42fa-bc16-c8100a9b25ec HTTP/1.1" 200 None
+2016-06-28 15:26:00,273 create_volume_status: ('PASSED', '')
+2016-06-28 15:26:00,274 result of create_volume: ['PASSED', 'Volume created successfuly']
+2016-06-28 15:26:00,274 listing volume...
+2016-06-28 15:26:00,274 REST API for listing volume with Tsm ID: https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listFileSystem&tsmid=52e3fc6d-3045-32ae-8078-473e8f7b087a
+2016-06-28 15:26:00,277 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:26:00,466 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listFileSystem&tsmid=52e3fc6d-3045-32ae-8078-473e8f7b087a HTTP/1.1" 200 None
+2016-06-28 15:26:00,469 REST API for listing volume with Tsm ID: https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listFileSystem&tsmid=52e3fc6d-3045-32ae-8078-473e8f7b087a
+2016-06-28 15:26:00,469 volumes listed successfullly
+2016-06-28 15:26:00,469 volume_id: 624f0afc-ce92-3bad-b595-5c632c52108b, aacount_id: c7195113-83c7-4054-b659-b2dd151bcc12, mountpoint: AccountsnpiSCSI9 and vol_iqn: iqn.2016-05.Account.T1001:AccountsnpiSCSI9
+2016-06-28 15:26:00,470 REST API for listVolumeiSCSIService...https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listVolumeiSCSIService&storageid=624f0afc-ce92-3bad-b595-5c632c52108b
+2016-06-28 15:26:00,470 executing sendrequest command...
+2016-06-28 15:26:00,473 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:26:00,522 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listVolumeiSCSIService&storageid=624f0afc-ce92-3bad-b595-5c632c52108b HTTP/1.1" 200 665
+2016-06-28 15:26:00,524 listVolumeiSCSIService response...{u'listVolumeiSCSIServiceResponse': {u'count': 1, u'iSCSIService': [{u'status': True, u'workerthreads': 6, u'unmap': True, u'blocklength': u'512B', u'usn': u'624f0afcce923badb5955c632c52108b', u'authmethod': u'None', u'physrecordlength': u'4k', u'xcopy': u'false', u'ag_id': u'7fc5ae12-9600-3995-845c-e616d88d7a1e', u'queuedepth': u'32', u'initialdigest': u'Auto', u'inqproduct': 0, u'iqnname': u'iqn.2016-05.Account.T1001:AccountsnpiSCSI9', u'volume_id': u'624f0afc-ce92-3bad-b595-5c632c52108b', u'wzero': False, u'ig_id': u'9e8e0e34-0680-3207-992c-0c42e984223e', u'inqrevision': 0, u'id': u'80b5b581-f2bd-3a90-aef1-212bec74947d', u'ats': u'false'}]}}
+2016-06-28 15:26:00,524 iscsi service id: 80b5b581-f2bd-3a90-aef1-212bec74947d
+2016-06-28 15:26:00,524 ag_id: 7fc5ae12-9600-3995-845c-e616d88d7a1e
+2016-06-28 15:26:00,525 unmap status: true
+2016-06-28 15:26:00,525 physrecordlength: 4k
+2016-06-28 15:26:00,525 queuedepth: 32
+2016-06-28 15:26:00,525 workerthreads 6
+2016-06-28 15:26:00,525 RESP API for listiSCSIInitiator...https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listiSCSIInitiator&accountid=c7195113-83c7-4054-b659-b2dd151bcc12
+2016-06-28 15:26:00,528 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:26:00,557 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listiSCSIInitiator&accountid=c7195113-83c7-4054-b659-b2dd151bcc12 HTTP/1.1" 200 408
+2016-06-28 15:26:00,559 listiSCSIInitiator response...{u'listInitiatorsResponse': {u'count': 2, u'initiator': [{u'netmask': u'ALL', u'initiatorgroup': u'ALL', u'id': u'0b7de92e-ee1a-399f-a41c-1945357f3a43', u'name': u'ALL', u'accountid': u'c7195113-83c7-4054-b659-b2dd151bcc12'}, {u'netmask': u'None', u'initiatorgroup': u'None', u'id': u'9e8e0e34-0680-3207-992c-0c42e984223e', u'name': u'None', u'accountid': u'c7195113-83c7-4054-b659-b2dd151bcc12'}]}}
+2016-06-28 15:26:00,559 getting initiator id...
+2016-06-28 15:26:00,559 REST API for updateVolumeiSCSIService...https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=updateVolumeiSCSIService&status=true&authmethod=None&authgroupid=7fc5ae12-9600-3995-845c-e616d88d7a1e&igid=0b7de92e-ee1a-399f-a41c-1945357f3a43&initialdigest=Auto&queuedepth=32&workerthreads=6&unmap=true&physrecordlength=4k&id=80b5b581-f2bd-3a90-aef1-212bec74947d
+2016-06-28 15:26:00,563 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:26:01,684 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=updateVolumeiSCSIService&status=true&authmethod=None&authgroupid=7fc5ae12-9600-3995-845c-e616d88d7a1e&igid=0b7de92e-ee1a-399f-a41c-1945357f3a43&initialdigest=Auto&queuedepth=32&workerthreads=6&unmap=true&physrecordlength=4k&id=80b5b581-f2bd-3a90-aef1-212bec74947d HTTP/1.1" 200 648
+2016-06-28 15:26:01,686 updateVolumeiSCSIService response...{u'updatingvolumeiscsidetails': {u'viscsioptions': {u'status': True, u'workerthreads': 6, u'unmap': True, u'blocklength': u'512B', u'usn': u'624f0afcce923badb5955c632c52108b', u'authmethod': u'None', u'physrecordlength': u'4k', u'xcopy': u'false', u'ag_id': u'7fc5ae12-9600-3995-845c-e616d88d7a1e', u'queuedepth': u'32', u'initialdigest': u'Auto', u'inqproduct': 0, u'iqnname': u'iqn.2016-05.Account.T1001:AccountsnpiSCSI9', u'volume_id': u'624f0afc-ce92-3bad-b595-5c632c52108b', u'wzero': False, u'ig_id': u'0b7de92e-ee1a-399f-a41c-1945357f3a43', u'inqrevision': 0, u'id': u'80b5b581-f2bd-3a90-aef1-212bec74947d', u'ats': u'false'}}}
+2016-06-28 15:26:01,686 iniator group <ALL> added successfully to volume
+2016-06-28 15:26:01,687 getting iqn for volume snpiSCSI9
+2016-06-28 15:26:01,687 executing command for discover iSCSI LUN: iscsiadm -m discovery -t st -p 20.10.60.121 | grep iqn.2016-05.Account.T1001:AccountsnpiSCSI9 | awk {'print $2'}
+2016-06-28 15:26:01,712 iqn for discovered iSCSI LUN... iqn.2016-05.Account.T1001:AccountsnpiSCSI9
+2016-06-28 15:26:01,712 inside the iscsi_login_logout method...
+2016-06-28 15:26:01,712 executing command: iscsiadm -m node --targetname iqn.2016-05.Account.T1001:AccountsnpiSCSI9 --portal 20.10.60.121:3260 --login
+2016-06-28 15:26:01,734 iscsi login result: ('PASSED', '')
+2016-06-28 15:26:01,735 login successfully for iSCSI LUN snpiSCSI9
+2016-06-28 15:26:03,737 Function execution starts
+2016-06-28 15:26:05,763 20.10.60.121 and AccountsnpiSCSI9
+2016-06-28 15:26:05,763 iscsi logged device... sdc
+2016-06-28 15:26:05,763 creating the partion on device sdc
+2016-06-28 15:26:05,763 command: fdisk /dev/sdc < fdisk_response_file
+2016-06-28 15:26:05,836 result for making partion: ('PASSED', '')
+2016-06-28 15:26:05,837 writing ext3 on device sdc
+2016-06-28 15:26:31,327 filesystem has been written successfully
+2016-06-28 15:26:31,417 mounted snpiSCSI9 at mount/snpiSCSI9 successfully
+2016-06-28 15:26:31,417 inside copy_file method...
+2016-06-28 15:26:31,417 taking md5sum of textfile...
+2016-06-28 15:26:31,542 md5sum at source of textfile:  f1da3e7bfe5f3b244b004d9aee4dc7a1
+2016-06-28 15:26:31,625 copied file to mounted directory successfully
+2016-06-28 15:26:31,661 md5sum at destination of textfile:  f1da3e7bfe5f3b244b004d9aee4dc7a1
+2016-06-28 15:26:31,662 md5sum check is passed
+2016-06-28 15:26:31,662 sleeping for 20 seconds before taking snapshot...
+2016-06-28 15:27:31,722 Inside create_snapshot method...
+2016-06-28 15:27:31,727 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:27:32,400 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=createStorageSnapshot&id=624f0afc-ce92-3bad-b595-5c632c52108b&name=snp1_snpiSCSI9 HTTP/1.1" 200 310
+2016-06-28 15:27:32,403 createStorageSnapshot executed successfully
+2016-06-28 15:27:32,405 starting thread (client mode): 0x2c26310L
+2016-06-28 15:27:32,406 Local version/idstring: SSH-2.0-paramiko_1.16.0
+2016-06-28 15:27:32,409 Remote version/idstring: SSH-2.0-OpenSSH_6.2_hpn13v11 FreeBSD-20130515
+2016-06-28 15:27:32,409 Connected (version 2.0, client OpenSSH_6.2_hpn13v11)
+2016-06-28 15:27:32,411 kex algos:[u'ecdh-sha2-nistp256', u'ecdh-sha2-nistp384', u'ecdh-sha2-nistp521', u'diffie-hellman-group-exchange-sha256', u'diffie-hellman-group-exchange-sha1', u'diffie-hellman-group14-sha1', u'diffie-hellman-group1-sha1'] server key:[u'ssh-rsa', u'ssh-dss', u'ecdsa-sha2-nistp256'] client encrypt:[u'aes128-ctr', u'aes192-ctr', u'aes256-ctr', u'arcfour256', u'arcfour128', u'aes128-gcm@openssh.com', u'aes256-gcm@openssh.com', u'aes128-cbc', u'3des-cbc', u'blowfish-cbc', u'cast128-cbc', u'aes192-cbc', u'aes256-cbc', u'arcfour', u'rijndael-cbc@lysator.liu.se'] server encrypt:[u'aes128-ctr', u'aes192-ctr', u'aes256-ctr', u'arcfour256', u'arcfour128', u'aes128-gcm@openssh.com', u'aes256-gcm@openssh.com', u'aes128-cbc', u'3des-cbc', u'blowfish-cbc', u'cast128-cbc', u'aes192-cbc', u'aes256-cbc', u'arcfour', u'rijndael-cbc@lysator.liu.se'] client mac:[u'hmac-md5-etm@openssh.com', u'hmac-sha1-etm@openssh.com', u'umac-64-etm@openssh.com', u'umac-128-etm@openssh.com', u'hmac-sha2-256-etm@openssh.com', u'hmac-sha2-512-etm@openssh.com', u'hmac-ripemd160-etm@openssh.com', u'hmac-sha1-96-etm@openssh.com', u'hmac-md5-96-etm@openssh.com', u'hmac-md5', u'hmac-sha1', u'umac-64@openssh.com', u'umac-128@openssh.com', u'hmac-sha2-256', u'hmac-sha2-512', u'hmac-ripemd160', u'hmac-ripemd160@openssh.com', u'hmac-sha1-96', u'hmac-md5-96'] server mac:[u'hmac-md5-etm@openssh.com', u'hmac-sha1-etm@openssh.com', u'umac-64-etm@openssh.com', u'umac-128-etm@openssh.com', u'hmac-sha2-256-etm@openssh.com', u'hmac-sha2-512-etm@openssh.com', u'hmac-ripemd160-etm@openssh.com', u'hmac-sha1-96-etm@openssh.com', u'hmac-md5-96-etm@openssh.com', u'hmac-md5', u'hmac-sha1', u'umac-64@openssh.com', u'umac-128@openssh.com', u'hmac-sha2-256', u'hmac-sha2-512', u'hmac-ripemd160', u'hmac-ripemd160@openssh.com', u'hmac-sha1-96', u'hmac-md5-96'] client compress:[u'none', u'zlib@openssh.com'] server compress:[u'none', u'zlib@openssh.com'] client lang:[u''] server lang:[u''] kex follows?False
+2016-06-28 15:27:32,412 Kex agreed: diffie-hellman-group1-sha1
+2016-06-28 15:27:32,412 Cipher agreed: aes128-ctr
+2016-06-28 15:27:32,412 MAC agreed: hmac-sha2-256
+2016-06-28 15:27:32,412 Compression agreed: none
+2016-06-28 15:27:32,539 kex engine KexGroup1 specified hash_algo <built-in function openssl_sha1>
+2016-06-28 15:27:32,539 Switch to new keys ...
+2016-06-28 15:27:32,549 Adding ssh-rsa host key for 20.10.112.71: 79a22bc81b28372d7a4f9262874faa87
+2016-06-28 15:27:32,551 Trying discovered key f883c0714bed72175cd34225c9328410 in /root/.ssh/id_rsa
+2016-06-28 15:27:32,639 userauth is OK
+2016-06-28 15:27:42,754 Authentication (publickey) failed.
+2016-06-28 15:27:42,769 userauth is OK
+2016-06-28 15:27:42,776 Authentication (password) successful!
+2016-06-28 15:27:42,778 [chan 0] Max packet in: 32768 bytes
+2016-06-28 15:27:42,779 [chan 0] Max packet out: 32768 bytes
+2016-06-28 15:27:42,779 Secsh channel 0 opened.
+2016-06-28 15:27:42,781 [chan 0] Sesch channel 0 request ok
+2016-06-28 15:27:42,855 [chan 0] EOF received (0)
+2016-06-28 15:27:42,856 [chan 0] EOF sent (0)
+2016-06-28 15:27:42,957 EOF in transport thread
+2016-06-28 15:27:42,985 snapshot snp1_snpiSCSI9 created successfully at Controller
+2016-06-28 15:27:42,986 creating new directory at mount/snpiSCSI9 after snapshot creation
+2016-06-28 15:27:42,993 New directory created successfully
+2016-06-28 15:27:43,000 textfile file removed successfully from mount/snpiSCSI9
+2016-06-28 15:27:43,000 umount and iscsi logout commads before snapshot restore
+2016-06-28 15:27:43,122 umounted sdc successfully
+2016-06-28 15:27:43,123 inside the iscsi_login_logout method...
+2016-06-28 15:27:43,123 executing command: iscsiadm -m node --targetname iqn.2016-05.Account.T1001:AccountsnpiSCSI9 --portal 20.10.60.121:3260 --logout
+2016-06-28 15:27:43,151 iscsi logout result: ('PASSED', '')
+2016-06-28 15:27:43,151 logout successfully for iSCSI LUN snpiSCSI9
+2016-06-28 15:27:43,151 sleeping for 1 second before setting initiator group to None...
+2016-06-28 15:27:44,152 setting iscsi initiator group to None before restoring snapshot
+2016-06-28 15:27:44,152 REST API for listVolumeiSCSIService...https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listVolumeiSCSIService&storageid=624f0afc-ce92-3bad-b595-5c632c52108b
+2016-06-28 15:27:44,153 executing sendrequest command...
+2016-06-28 15:27:44,158 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:27:44,197 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listVolumeiSCSIService&storageid=624f0afc-ce92-3bad-b595-5c632c52108b HTTP/1.1" 200 774
+2016-06-28 15:27:44,199 listVolumeiSCSIService response...{u'listVolumeiSCSIServiceResponse': {u'count': 1, u'iSCSIService': [{u'status': True, u'workerthreads': 6, u'unmap': True, u'blocklength': u'512B', u'usn': u'624f0afcce923badb5955c632c52108b', u'authmethod': u'None', u'physrecordlength': u'4k', u'xcopy': u'false', u'ag_id': u'7fc5ae12-9600-3995-845c-e616d88d7a1e', u'queuedepth': u'32', u'initialdigest': u'Auto', u'inqproduct': 0, u'iqnname': u'iqn.2016-05.Account.T1001:AccountsnpiSCSI9', u'volume_id': u'624f0afc-ce92-3bad-b595-5c632c52108b', u'wzero': False, u'ig_id': u'0b7de92e-ee1a-399f-a41c-1945357f3a43', u'inqrevision': 0, u'id': u'80b5b581-f2bd-3a90-aef1-212bec74947d', u'ats': u'false'}], u'alerts': [{u'alert': u'ISCSI Volume Connected'}, {u'alert': u'ISCSI Volume Disconnected'}]}}
+2016-06-28 15:27:44,200 iscsi service id: 80b5b581-f2bd-3a90-aef1-212bec74947d
+2016-06-28 15:27:44,200 ag_id: 7fc5ae12-9600-3995-845c-e616d88d7a1e
+2016-06-28 15:27:44,200 unmap status: true
+2016-06-28 15:27:44,200 physrecordlength: 4k
+2016-06-28 15:27:44,201 queuedepth: 32
+2016-06-28 15:27:44,201 workerthreads 6
+2016-06-28 15:27:44,201 RESP API for listiSCSIInitiator...https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listiSCSIInitiator&accountid=c7195113-83c7-4054-b659-b2dd151bcc12
+2016-06-28 15:27:44,204 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:27:44,229 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listiSCSIInitiator&accountid=c7195113-83c7-4054-b659-b2dd151bcc12 HTTP/1.1" 200 408
+2016-06-28 15:27:44,231 listiSCSIInitiator response...{u'listInitiatorsResponse': {u'count': 2, u'initiator': [{u'netmask': u'ALL', u'initiatorgroup': u'ALL', u'id': u'0b7de92e-ee1a-399f-a41c-1945357f3a43', u'name': u'ALL', u'accountid': u'c7195113-83c7-4054-b659-b2dd151bcc12'}, {u'netmask': u'None', u'initiatorgroup': u'None', u'id': u'9e8e0e34-0680-3207-992c-0c42e984223e', u'name': u'None', u'accountid': u'c7195113-83c7-4054-b659-b2dd151bcc12'}]}}
+2016-06-28 15:27:44,231 getting initiator id...
+2016-06-28 15:27:44,232 REST API for updateVolumeiSCSIService...https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=updateVolumeiSCSIService&status=true&authmethod=None&authgroupid=7fc5ae12-9600-3995-845c-e616d88d7a1e&igid=9e8e0e34-0680-3207-992c-0c42e984223e&initialdigest=Auto&queuedepth=32&workerthreads=6&unmap=true&physrecordlength=4k&id=80b5b581-f2bd-3a90-aef1-212bec74947d
+2016-06-28 15:27:44,235 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:27:45,258 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=updateVolumeiSCSIService&status=true&authmethod=None&authgroupid=7fc5ae12-9600-3995-845c-e616d88d7a1e&igid=9e8e0e34-0680-3207-992c-0c42e984223e&initialdigest=Auto&queuedepth=32&workerthreads=6&unmap=true&physrecordlength=4k&id=80b5b581-f2bd-3a90-aef1-212bec74947d HTTP/1.1" 200 648
+2016-06-28 15:27:45,261 updateVolumeiSCSIService response...{u'updatingvolumeiscsidetails': {u'viscsioptions': {u'status': True, u'workerthreads': 6, u'unmap': True, u'blocklength': u'512B', u'usn': u'624f0afcce923badb5955c632c52108b', u'authmethod': u'None', u'physrecordlength': u'4k', u'xcopy': u'false', u'ag_id': u'7fc5ae12-9600-3995-845c-e616d88d7a1e', u'queuedepth': u'32', u'initialdigest': u'Auto', u'inqproduct': 0, u'iqnname': u'iqn.2016-05.Account.T1001:AccountsnpiSCSI9', u'volume_id': u'624f0afc-ce92-3bad-b595-5c632c52108b', u'wzero': False, u'ig_id': u'9e8e0e34-0680-3207-992c-0c42e984223e', u'inqrevision': 0, u'id': u'80b5b581-f2bd-3a90-aef1-212bec74947d', u'ats': u'false'}}}
+2016-06-28 15:27:45,261 iniator group <None> added successfully to volume
+2016-06-28 15:27:45,261 Inside revert_snapshot...
+2016-06-28 15:27:45,262 Executing listStorageSnapshots method...
+2016-06-28 15:27:45,264 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:27:45,523 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listStorageSnapshots&id=624f0afc-ce92-3bad-b595-5c632c52108b HTTP/1.1" 200 384
+2016-06-28 15:27:45,525 Executing rollbackToSnapshot method...
+2016-06-28 15:27:45,528 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:27:47,080 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=rollbackToSnapshot&id=624f0afc-ce92-3bad-b595-5c632c52108b&path=regressionPL1/AccountT1001/snpiSCSI9@snp1_snpiSCSI9 HTTP/1.1" 200 75
+2016-06-28 15:27:47,082 snapshot snp1_snpiSCSI9 reverted successfully
+2016-06-28 15:27:52,088 setting iscsi initiator group to All...
+2016-06-28 15:27:52,088 REST API for listVolumeiSCSIService...https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listVolumeiSCSIService&storageid=624f0afc-ce92-3bad-b595-5c632c52108b
+2016-06-28 15:27:52,088 executing sendrequest command...
+2016-06-28 15:27:52,092 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:27:52,129 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listVolumeiSCSIService&storageid=624f0afc-ce92-3bad-b595-5c632c52108b HTTP/1.1" 200 665
+2016-06-28 15:27:52,132 listVolumeiSCSIService response...{u'listVolumeiSCSIServiceResponse': {u'count': 1, u'iSCSIService': [{u'status': True, u'workerthreads': 6, u'unmap': True, u'blocklength': u'512B', u'usn': u'624f0afcce923badb5955c632c52108b', u'authmethod': u'None', u'physrecordlength': u'4k', u'xcopy': u'false', u'ag_id': u'7fc5ae12-9600-3995-845c-e616d88d7a1e', u'queuedepth': u'32', u'initialdigest': u'Auto', u'inqproduct': 0, u'iqnname': u'iqn.2016-05.Account.T1001:AccountsnpiSCSI9', u'volume_id': u'624f0afc-ce92-3bad-b595-5c632c52108b', u'wzero': False, u'ig_id': u'9e8e0e34-0680-3207-992c-0c42e984223e', u'inqrevision': 0, u'id': u'80b5b581-f2bd-3a90-aef1-212bec74947d', u'ats': u'false'}]}}
+2016-06-28 15:27:52,132 iscsi service id: 80b5b581-f2bd-3a90-aef1-212bec74947d
+2016-06-28 15:27:52,132 ag_id: 7fc5ae12-9600-3995-845c-e616d88d7a1e
+2016-06-28 15:27:52,132 unmap status: true
+2016-06-28 15:27:52,132 physrecordlength: 4k
+2016-06-28 15:27:52,133 queuedepth: 32
+2016-06-28 15:27:52,133 workerthreads 6
+2016-06-28 15:27:52,133 RESP API for listiSCSIInitiator...https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listiSCSIInitiator&accountid=c7195113-83c7-4054-b659-b2dd151bcc12
+2016-06-28 15:27:52,136 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:27:52,161 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listiSCSIInitiator&accountid=c7195113-83c7-4054-b659-b2dd151bcc12 HTTP/1.1" 200 408
+2016-06-28 15:27:52,162 listiSCSIInitiator response...{u'listInitiatorsResponse': {u'count': 2, u'initiator': [{u'netmask': u'ALL', u'initiatorgroup': u'ALL', u'id': u'0b7de92e-ee1a-399f-a41c-1945357f3a43', u'name': u'ALL', u'accountid': u'c7195113-83c7-4054-b659-b2dd151bcc12'}, {u'netmask': u'None', u'initiatorgroup': u'None', u'id': u'9e8e0e34-0680-3207-992c-0c42e984223e', u'name': u'None', u'accountid': u'c7195113-83c7-4054-b659-b2dd151bcc12'}]}}
+2016-06-28 15:27:52,163 getting initiator id...
+2016-06-28 15:27:52,163 REST API for updateVolumeiSCSIService...https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=updateVolumeiSCSIService&status=true&authmethod=None&authgroupid=7fc5ae12-9600-3995-845c-e616d88d7a1e&igid=0b7de92e-ee1a-399f-a41c-1945357f3a43&initialdigest=Auto&queuedepth=32&workerthreads=6&unmap=true&physrecordlength=4k&id=80b5b581-f2bd-3a90-aef1-212bec74947d
+2016-06-28 15:27:52,166 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:27:52,643 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=updateVolumeiSCSIService&status=true&authmethod=None&authgroupid=7fc5ae12-9600-3995-845c-e616d88d7a1e&igid=0b7de92e-ee1a-399f-a41c-1945357f3a43&initialdigest=Auto&queuedepth=32&workerthreads=6&unmap=true&physrecordlength=4k&id=80b5b581-f2bd-3a90-aef1-212bec74947d HTTP/1.1" 200 648
+2016-06-28 15:27:52,645 updateVolumeiSCSIService response...{u'updatingvolumeiscsidetails': {u'viscsioptions': {u'status': True, u'workerthreads': 6, u'unmap': True, u'blocklength': u'512B', u'usn': u'624f0afcce923badb5955c632c52108b', u'authmethod': u'None', u'physrecordlength': u'4k', u'xcopy': u'false', u'ag_id': u'7fc5ae12-9600-3995-845c-e616d88d7a1e', u'queuedepth': u'32', u'initialdigest': u'Auto', u'inqproduct': 0, u'iqnname': u'iqn.2016-05.Account.T1001:AccountsnpiSCSI9', u'volume_id': u'624f0afc-ce92-3bad-b595-5c632c52108b', u'wzero': False, u'ig_id': u'0b7de92e-ee1a-399f-a41c-1945357f3a43', u'inqrevision': 0, u'id': u'80b5b581-f2bd-3a90-aef1-212bec74947d', u'ats': u'false'}}}
+2016-06-28 15:27:52,646 iniator group <ALL> added successfully to volume
+2016-06-28 15:27:52,646 inside the iscsi_login_logout method...
+2016-06-28 15:27:52,646 executing command: iscsiadm -m node --targetname iqn.2016-05.Account.T1001:AccountsnpiSCSI9 --portal 20.10.60.121:3260 --login
+2016-06-28 15:27:52,675 iscsi login result: ('PASSED', '')
+2016-06-28 15:27:52,675 login successfully for iSCSI LUN snpiSCSI9
+2016-06-28 15:27:55,676 Function execution starts
+2016-06-28 15:27:57,702 20.10.60.121 and AccountsnpiSCSI9
+2016-06-28 15:27:57,702 iscsi logged device... sdc
+2016-06-28 15:27:57,886 mounted snpiSCSI9 at mount/snpiSCSI9 successfully
+2016-06-28 15:27:57,941 files or directory created before taking snapshot should be there: PASSED
+2016-06-28 15:27:57,941 files or directory created after taking snapshot should not be be there: PASSED
+2016-06-28 15:27:57,941 files or directory create after revert snapshot should create: PASSED
+2016-06-28 15:27:57,942 snapshot functionality on iSCSI LUN is working fine...
+2016-06-28 15:27:57,942 snapshot execution done: going to umount, logged out, set initiator group to None and delete the iSCSI LUN
+2016-06-28 15:27:58,064 LUN /dev/sdc1 umounted successfully
+2016-06-28 15:27:58,065 inside the iscsi_login_logout method...
+2016-06-28 15:27:58,065 executing command: iscsiadm -m node --targetname iqn.2016-05.Account.T1001:AccountsnpiSCSI9 --portal 20.10.60.121:3260 --logout
+2016-06-28 15:27:58,086 iscsi logout result: ('PASSED', '')
+2016-06-28 15:27:58,086 iSCSI LUN logged out successfully
+2016-06-28 15:27:58,086 sleeping for 1 second before setting initiator group to None...
+2016-06-28 15:27:59,086 REST API for listVolumeiSCSIService...https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listVolumeiSCSIService&storageid=624f0afc-ce92-3bad-b595-5c632c52108b
+2016-06-28 15:27:59,087 executing sendrequest command...
+2016-06-28 15:27:59,088 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:27:59,128 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listVolumeiSCSIService&storageid=624f0afc-ce92-3bad-b595-5c632c52108b HTTP/1.1" 200 665
+2016-06-28 15:27:59,129 listVolumeiSCSIService response...{u'listVolumeiSCSIServiceResponse': {u'count': 1, u'iSCSIService': [{u'status': True, u'workerthreads': 6, u'unmap': True, u'blocklength': u'512B', u'usn': u'624f0afcce923badb5955c632c52108b', u'authmethod': u'None', u'physrecordlength': u'4k', u'xcopy': u'false', u'ag_id': u'7fc5ae12-9600-3995-845c-e616d88d7a1e', u'queuedepth': u'32', u'initialdigest': u'Auto', u'inqproduct': 0, u'iqnname': u'iqn.2016-05.Account.T1001:AccountsnpiSCSI9', u'volume_id': u'624f0afc-ce92-3bad-b595-5c632c52108b', u'wzero': False, u'ig_id': u'0b7de92e-ee1a-399f-a41c-1945357f3a43', u'inqrevision': 0, u'id': u'80b5b581-f2bd-3a90-aef1-212bec74947d', u'ats': u'false'}]}}
+2016-06-28 15:27:59,129 iscsi service id: 80b5b581-f2bd-3a90-aef1-212bec74947d
+2016-06-28 15:27:59,129 ag_id: 7fc5ae12-9600-3995-845c-e616d88d7a1e
+2016-06-28 15:27:59,129 unmap status: true
+2016-06-28 15:27:59,129 physrecordlength: 4k
+2016-06-28 15:27:59,129 queuedepth: 32
+2016-06-28 15:27:59,129 workerthreads 6
+2016-06-28 15:27:59,129 RESP API for listiSCSIInitiator...https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listiSCSIInitiator&accountid=c7195113-83c7-4054-b659-b2dd151bcc12
+2016-06-28 15:27:59,130 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:27:59,153 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=listiSCSIInitiator&accountid=c7195113-83c7-4054-b659-b2dd151bcc12 HTTP/1.1" 200 408
+2016-06-28 15:27:59,153 listiSCSIInitiator response...{u'listInitiatorsResponse': {u'count': 2, u'initiator': [{u'netmask': u'ALL', u'initiatorgroup': u'ALL', u'id': u'0b7de92e-ee1a-399f-a41c-1945357f3a43', u'name': u'ALL', u'accountid': u'c7195113-83c7-4054-b659-b2dd151bcc12'}, {u'netmask': u'None', u'initiatorgroup': u'None', u'id': u'9e8e0e34-0680-3207-992c-0c42e984223e', u'name': u'None', u'accountid': u'c7195113-83c7-4054-b659-b2dd151bcc12'}]}}
+2016-06-28 15:27:59,153 getting initiator id...
+2016-06-28 15:27:59,153 REST API for updateVolumeiSCSIService...https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=updateVolumeiSCSIService&status=true&authmethod=None&authgroupid=7fc5ae12-9600-3995-845c-e616d88d7a1e&igid=9e8e0e34-0680-3207-992c-0c42e984223e&initialdigest=Auto&queuedepth=32&workerthreads=6&unmap=true&physrecordlength=4k&id=80b5b581-f2bd-3a90-aef1-212bec74947d
+2016-06-28 15:27:59,155 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:27:59,849 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=updateVolumeiSCSIService&status=true&authmethod=None&authgroupid=7fc5ae12-9600-3995-845c-e616d88d7a1e&igid=9e8e0e34-0680-3207-992c-0c42e984223e&initialdigest=Auto&queuedepth=32&workerthreads=6&unmap=true&physrecordlength=4k&id=80b5b581-f2bd-3a90-aef1-212bec74947d HTTP/1.1" 200 648
+2016-06-28 15:27:59,851 updateVolumeiSCSIService response...{u'updatingvolumeiscsidetails': {u'viscsioptions': {u'status': True, u'workerthreads': 6, u'unmap': True, u'blocklength': u'512B', u'usn': u'624f0afcce923badb5955c632c52108b', u'authmethod': u'None', u'physrecordlength': u'4k', u'xcopy': u'false', u'ag_id': u'7fc5ae12-9600-3995-845c-e616d88d7a1e', u'queuedepth': u'32', u'initialdigest': u'Auto', u'inqproduct': 0, u'iqnname': u'iqn.2016-05.Account.T1001:AccountsnpiSCSI9', u'volume_id': u'624f0afc-ce92-3bad-b595-5c632c52108b', u'wzero': False, u'ig_id': u'9e8e0e34-0680-3207-992c-0c42e984223e', u'inqrevision': 0, u'id': u'80b5b581-f2bd-3a90-aef1-212bec74947d', u'ats': u'false'}}}
+2016-06-28 15:27:59,852 iniator group <None> added successfully to volume
+2016-06-28 15:27:59,852 Go and delete the volume
+2016-06-28 15:27:59,852 Inside the delete_volume method...
+2016-06-28 15:27:59,852 REST API for deleting volume: https://20.10.112.70/client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=deleteFileSystem&id=624f0afc-ce92-3bad-b595-5c632c52108b
+2016-06-28 15:27:59,855 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:27:59,913 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=deleteFileSystem&id=624f0afc-ce92-3bad-b595-5c632c52108b HTTP/1.1" 200 86
+2016-06-28 15:27:59,914 response for deleting volume: {u'deleteFileSystemResponse': {u'jobid': u'c1d83585-7e53-46a0-b957-91f560a94530'}}
+2016-06-28 15:27:59,915 getting job_id for deleting volume...
+2016-06-28 15:27:59,915 job_id for delet volume: c1d83585-7e53-46a0-b957-91f560a94530
+2016-06-28 15:27:59,915 calling queryAsyncJobResult method...
+2016-06-28 15:27:59,918 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:28:00,018 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=c1d83585-7e53-46a0-b957-91f560a94530 HTTP/1.1" 200 353
+2016-06-28 15:28:02,025 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:28:02,095 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=c1d83585-7e53-46a0-b957-91f560a94530 HTTP/1.1" 200 384
+2016-06-28 15:28:04,103 Starting new HTTPS connection (1): 20.10.112.70
+2016-06-28 15:28:04,160 "GET /client/api?apikey=OjvktW98EGI6QkGicGh40Pd4FevWXo2jLQePg1fSMx4QXwQedR5Xkrm_yphF1Hk_63kpOfwjvAeX7YQHoajevA&response=json&command=queryAsyncJobResult&jobId=c1d83585-7e53-46a0-b957-91f560a94530 HTTP/1.1" 200 457
+2016-06-28 15:28:04,163 delete_volume_status: ('PASSED', '')
+2016-06-28 15:28:04,163 result of delete_volume: ['PASSED', 'Volume deleted successfuly']
+2016-06-28 15:28:04,163 ----------- snapshot on iSCSI test completed -------------

@@ -16,7 +16,7 @@
   "pool_iops": "500",
 
   "IP address": "IP for VSM",
-  "ipVSM1": "20.16.60.121",
+  "ipVSM1": "172.16.60.121",
   "ipVSM2": "172.16.60.122",
   "ipVSM3": "172.16.60.123",
   "ipVSM4": "172.16.60.124",
@@ -24,7 +24,7 @@
   "extra_VSMip": "172.16.60.126",
 
   "router": "default router for VSM",
-  "routerVSM1": "20.10.1.1",
+  "routerVSM1": "172.16.1.1",
   "routerVSM2": "172.16.1.1",
   "routerVSM3": "172.16.1.1",
   "routerVSM4": "172.16.1.1",
@@ -38,19 +38,19 @@
   "dnsVSM5": "8.8.8.8",
 
   "interface": "interface of VSM",
-  "interfaceVSM1": "em0",
+  "interfaceVSM1": "em1",
   "interfaceVSM2": "em1",
   "interfaceVSM3": "em1",
   "interfaceVSM4": "em1",
   "interfaceVSM5": "em1",
   
   "localClient": "Info",
-  "Client_IP": "20.10.112.11",
+  "Client_IP": "20.10.112.15",
   "Client_user": "root",
   "Client_pwd": "test123",
 
   "Client1": "Info",
-  "Client1_IP": "20.10.112.12",
+  "Client1_IP": "20.10.112.16",
   "Client1_user": "root",
   "Client1_pwd": "test123",
 

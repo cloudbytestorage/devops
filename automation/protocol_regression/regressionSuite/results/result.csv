@@ -35,3 +35,21 @@ Tue Jun 28 15:20:46 2016,creation of volume failed,BLOCKED,,Tue Jun 28 15:20:47 
 Tue Jun 28 15:20:48 2016,creation of volume failed,BLOCKED,,Tue Jun 28 15:20:48 2016
 
 "Edit lun attributes and save changes after HA failover and giveback" testcase starts....,,
+Verifying lun attributes modification after HA failover....,,
+Tue Jun 28 15:24:08 2016,Edit lun attributes and save changes after HA failover and giveback ,testcase is,BLOCKED,,Tue Jun 28 15:24:09 2016
+Tue Jun 28 15:24:09 2016,Quota update unsuccessful during HA failover,PASSED,,Tue Jun 28 15:24:09 2016
+Tue Jun 28 15:24:09 2016,Compression update unsuccessful during HA failover,PASSED,,Tue Jun 28 15:24:09 2016
+Verifying lun attributes modification after HA Giveback....,,
+Tue Jun 28 15:24:46 2016,Successfully updated IOPS after HA giveback,PASSED,,Tue Jun 28 15:24:46 2016
+Tue Jun 28 15:24:46 2016,Successfully updated compression state after HA giveback,PASSED,,Tue Jun 28 15:24:49 2016
+Tue Jun 28 15:24:46 2016,Edit lun attributes and save changes after HA failover and giveback, testcase is,PASSED, ,Tue Jun 28 15:24:49 2016
+"Edit lun attributes and save changes after HA failover and giveback" testcase ends....,,
+
+
+"Create a initiator group using all the mandatory feilds" testcase starts....,,
+Tue Jun 28 15:25:21 2016,Create a initiator group using all the mandatory feilds, testcase is,PASSED, ,Tue Jun 28 15:25:21 2016
+"Create a initiator group using all the mandatory feilds" testcase ends....,,
+
+Tue Jun 28 15:25:29 2016,iSCSI login with CHAP method test case is,PASSED,,Tue Jun 28 15:25:39 2016
+Tue Jun 28 15:25:51 2016,Snapshot created successfully on iSCSI LUN,PASSED,,Tue Jun 28 15:27:42 2016
+Tue Jun 28 15:25:51 2016,snapshot functionality on iSCSI LUN is working fine...,PASSED,,Tue Jun 28 15:27:57 2016

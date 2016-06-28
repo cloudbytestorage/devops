@@ -415,6 +415,7 @@ if TpEnable_flag ==1:
     logging.info('logging out from iscsi session')
     login_result = iscsi_login_logout(iqn, tsm_ip, 'logout')
     logging.debug('unmounting the volume %s', (tp_volname))
+    time.sleep(10)
     nfsUmount2 = umountVolume(mount_dir)
     logging.debug('unmounting volume result is %s', (nfsUmount2))
     if nfsUmount2 == 'PASSED':
