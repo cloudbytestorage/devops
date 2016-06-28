@@ -252,7 +252,7 @@ verify_mountNFS(mount_result, volume_dir)
 mount_dir = 'mount/%s' %(mnt_point)
 mount_dir2 = {'name': volumeDict['name'], 'mountPoint': volumeDict['name']}
 logging.info('...executing vdbench....')
-executeVdbenchFile(mount_dir2, filesystem_nfs)
+executeVdbenchFile(mount_dir2, 'filesystem_nfs')
 time.sleep(20)
 logging.info('verifying the IOPS before Node goes to maintenance...')
 iops_datapath = poolName+'/'+accName+tsm_name+'/'+volumeDict['name']

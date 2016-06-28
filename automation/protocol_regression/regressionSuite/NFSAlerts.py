@@ -1,6 +1,7 @@
 import sys
 import os 
 import json
+import time
 import subprocess
 import logging
 from time import ctime
@@ -112,7 +113,8 @@ logging.debug('Mount alerts from devd.log is: %s', logs)
 print logs
 
 #unmounting the NFS volume
-nfsUnmount = umountVolume(volume)
+time.sleep(10)
+nfsUnmount = umountVolume_new(volume)
 if nfsUnmount == 'FAILED':
     endTime = ctime()
     msg = 'failed to Unmount NFS share "%s"' %(volume['name'])
@@ -132,7 +134,7 @@ resultCollection('NFS share mount/umount alerts(devd logs), '\
     'testcase is', ['PASSED',' '],startTime, endTime)
 resultCollectionNew('"%s" testcase ends....' %testcase, ['', '\n'])
 
-delvol = delete_volume(filesystem_id, stdurl)
+delvol = delete_volume(volid, stdurl)
 if 'FAILED' in delvol:
     print 'Failed to deleted the volume \"%s\"' %(volume['name'])
     logging.debug('Failed to deleted the volume \"%s\"', \

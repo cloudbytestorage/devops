@@ -1,7 +1,7 @@
 <pre>
 
-* Contents of parameter file: /cloudbyte/regressionSuite/vdbench/iscsiPD3
+* Contents of parameter file: /root/mardan/automation/protocol_regression/regressionSuite/vdbench/iscsiHA
 
-fsd=fsd1,anchor=/cloudbyte/regressionSuite/mount/iscsiPD3,depth=1,width=1,files=1,size=1G
-fwd=fwd1,fsd=fsd*,xfersize=4k,rdpct=50,fileio=random,threads=1
-rd=rd1,fwd=fwd*,elapsed=1200,interval=1,fwdrate=max,format=yes
+fsd=fsd1,anchor=/root/mardan/automation/protocol_regression/regressionSuite/mount/iscsiHA,depth=2,width=10,files=1,size=1G,openflags=o_direct
+fwd=fwd1,fsd=fsd*,readpct=20,xfersize=1M,fileio=random,threads=1
+rd=rd1,fwd=fwd*,fwdrate=max,format=yes,elapsed=100,interval=1

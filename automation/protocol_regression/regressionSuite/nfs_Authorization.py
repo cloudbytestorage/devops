@@ -154,7 +154,7 @@ if STEP2:
                 'mount, PASSED')
         resultCollection('Mount NFS when Network set to perticular N/W test '\
                 'case:', ['PASSED', ''], startTime, endTime)
-        time.sleep(1)
+        time.sleep(5)
         logging.debug('Going to umount the NFS share...')
         result = umountVolume_new(volume_dir)
     else:
@@ -199,6 +199,7 @@ else:
             ['FAILED', ''], startTime, endTime)
 
 logging.debug('Going to umount the NFS share...%s', volumeDict['name'])
+time.sleep(5)
 result = umountVolume_new(volume_dir)
 print 'going to delete NFS share created for final test for Authorization(ALL)'
 logging.debug('going to delete NFS share %s created for final test for '

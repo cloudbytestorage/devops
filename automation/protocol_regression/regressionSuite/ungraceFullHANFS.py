@@ -291,7 +291,7 @@ verify_mountNFS(mount_result, volume_dir)
 mount_dir = 'mount/%s' %(mnt_point)
 mount_dir2 = {'name': volumeDict['name'], 'mountPoint': volumeDict['name']}
 logging.info('...executing vdbench....')
-executeVdbenchFile(mount_dir2, filesystem_nfs)
+executeVdbenchFile(mount_dir2, 'filesystem_nfs')
 time.sleep(20)
 logging.info('verifying the IOPS before Node goes to reset...')
 iops_datapath = poolName+'/'+accName+tsm_name+'/'+volumeDict['name']
@@ -326,6 +326,7 @@ while ping_result[0] == 'FAILED':
     ping_result = ping_machine(NODE1_IP)
 
 logging.debug('ungracefull HA test case(NFS) completed, executing umount')
+time.sleep(10)
 umount_result = executeCmd('umount %s' %(mount_dir))
 if umount_result[0] == 'FAILED':
     logging.error('Not able to umount %s, still go ahead and delete '\
