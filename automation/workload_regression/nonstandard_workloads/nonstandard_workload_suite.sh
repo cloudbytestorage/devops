@@ -11,22 +11,22 @@ python cleanup.py conf.txt
 python AMSx-WLAx-NSWx-NFSx-xxxx-TC_LARGE_FILE_OPS.py conf.txt
 
 # CLEAN
-python cleanup.py conf.txt
+#python cleanup.py conf.txt
 
 # TC3 : NFS ARCHIVAL FILE OPS
-python AMSx-WLAx-NSWx-NFSx-xxxx-TC_ARCHIVAL_FILE_OPS.py conf.txt
+#python AMSx-WLAx-NSWx-NFSx-xxxx-TC_ARCHIVAL_FILE_OPS.py conf.txt
 
 # CLEAN 
-python cleanup.py conf.txt
+#python cleanup.py conf.txt
 
 # TC4 : NFS BACKUP FILE OPS
-python AMSx-WLAx-NSWx-NFSx-xxxx-TC_BACKUP_FILE_OPS.py conf.txt
+#python AMSx-WLAx-NSWx-NFSx-xxxx-TC_BACKUP_FILE_OPS.py conf.txt
 
 # CLEAN
-python cleanup.py conf.txt
+#python cleanup.py conf.txt
 
 # TC5 : NFS METADATA STRESS OPS
-python AMSx-WLAx-NSWx-NFSx-xxxx_TC_METADATA_STRESS_OPS.py conf.txt
+#python AMSx-WLAx-NSWx-NFSx-xxxx_TC_METADATA_STRESS_OPS.py conf.txt
 
 # CLEAN
 python cleanup.py conf.txt

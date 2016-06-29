@@ -50,7 +50,7 @@
   "Client_pwd": "test123",
 
   "Client1": "Info",
-  "Client1_IP": "20.10.112.12",
+  "Client1_IP": "20.10.28.117",
   "Client1_user": "root",
   "Client1_pwd": "test123",
 

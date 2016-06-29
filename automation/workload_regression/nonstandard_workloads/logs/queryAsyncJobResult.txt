@@ -9,18 +9,18 @@
   "jobresulttype": "object",
   "jobresult": {
     "storage": {
-      "id": "3172c6e9-b168-3882-8bbf-c0997b3aa471",
-      "name": "Fconf1",
-      "simpleid": 438,
+      "id": "8aeedba0-5430-3d6b-a9cd-55e711a2b2ae",
+      "name": "VolTest1",
+      "simpleid": 639,
       "compression": "off",
       "sync": "always",
       "noofcopies": 1,
       "recordsize": "32k",
-      "quota": "10G",
-      "path": "PLTestVdb/ACC1VSMTestVdb1/Fconf1",
-      "tsmid": "1fb31028-d350-3a13-a61c-23eb834d000b",
-      "poolid": "3f49ce2e-13f4-36ec-a019-57a2e4fb485d",
-      "mountpoint": "ACC1Fconf1",
+      "quota": "500G",
+      "path": "POOLTEST/AccountVSMTEST/VolTest1",
+      "tsmid": "3d05239d-7657-3ea0-baff-5b6c97134fd0",
+      "poolid": "cb2d9a05-5f24-38c7-bd87-8cf0fee0a72c",
+      "mountpoint": "AccountVolTest1",
       "currentUsedSpace": 0,
       "currentAvailableSpace": 0,
       "currentTotalSpace": 0,
@@ -28,8 +28,8 @@
       "currentIOPS": 0,
       "currentLatency": 0,
       "currentThrottle": 0,
-      "tsmName": "VSMTestVdb1",
-      "hapoolname": "PLTestVdb",
+      "tsmName": "VSMTEST",
+      "hapoolname": "POOLTEST",
       "revisionnumber": 0,
       "nfsenabled": true,
       "cifsenabled": false,
@@ -38,6 +38,6 @@
       "backupqosgroupenabled": false
     }
   },
-  "created": "2016-06-07 15:58:16",
-  "jobid": "3e31971f-6c4c-4c37-b4d2-95a65d9eeafc"
+  "created": "2016-06-29 11:03:22",
+  "jobid": "acfec1ca-80a9-473b-a6eb-d6047c2ef57e"
 } }

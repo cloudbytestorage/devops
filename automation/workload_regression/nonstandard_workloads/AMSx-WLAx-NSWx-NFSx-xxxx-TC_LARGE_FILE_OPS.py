@@ -331,14 +331,10 @@ test_result = sshToOtherClient(CLIENT1_IP, CLIENT1_USER, CLIENT1_PASSWORD, \
         'grep -w "CREATED\|MODIFIED\|DELETED" LargeSingleFileCreateRMWDelete.log | wc -l')
 if int(test_result) == 3:
     print "Workload has run successfully"
-
-
-logging.info('Testcase %s is successfully completed', tcName)
-    resultCollection('Testcase %s is:' %tcName, \
-            ['PASSED', ''], startTime, endTime)
+    logging.info('Testcase %s is successfully completed', tcName)
+    resultCollection('Testcase %s is:' %tcName, ['PASSED', ''], startTime, endTime)
 else:
-    logging.error('Testcase %s is failed,' \
-            'look at client logs',tcName)
+    logging.error('Testcase %s is failed, look at client logs',tcName)
     resultCollection('Testcase %s is:' %tcName, \
             ['FAILED', ''], startTime, endTime)
 
