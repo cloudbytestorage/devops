@@ -1,43 +1,15 @@
 { "queryasyncjobresultresponse" : {
   "accountid": "3395d7ba-7e32-4ed5-ad39-a17ee7d0c6c4",
   "userid": "46a34524-f253-4132-b894-afd49ca90af4",
-  "cmd": "com.cloudbyte.api.commands.CreateVolumeCmd",
-  "msg": "5",
+  "cmd": "com.cloudbyte.api.commands.DeleteFileSystemCmd",
+  "msg": "Deleted Successfully",
   "jobstatus": 1,
   "jobprocstatus": 0,
   "jobresultcode": 0,
   "jobresulttype": "object",
   "jobresult": {
-    "storage": {
-      "id": "8aeedba0-5430-3d6b-a9cd-55e711a2b2ae",
-      "name": "VolTest1",
-      "simpleid": 639,
-      "compression": "off",
-      "sync": "always",
-      "noofcopies": 1,
-      "recordsize": "32k",
-      "quota": "500G",
-      "path": "POOLTEST/AccountVSMTEST/VolTest1",
-      "tsmid": "3d05239d-7657-3ea0-baff-5b6c97134fd0",
-      "poolid": "cb2d9a05-5f24-38c7-bd87-8cf0fee0a72c",
-      "mountpoint": "AccountVolTest1",
-      "currentUsedSpace": 0,
-      "currentAvailableSpace": 0,
-      "currentTotalSpace": 0,
-      "currentThroughput": 0,
-      "currentIOPS": 0,
-      "currentLatency": 0,
-      "currentThrottle": 0,
-      "tsmName": "VSMTEST",
-      "hapoolname": "POOLTEST",
-      "revisionnumber": 0,
-      "nfsenabled": true,
-      "cifsenabled": false,
-      "iscsienabled": false,
-      "fcenabled": false,
-      "backupqosgroupenabled": false
-    }
+    "success": true
   },
-  "created": "2016-06-29 11:03:22",
-  "jobid": "acfec1ca-80a9-473b-a6eb-d6047c2ef57e"
+  "created": "2016-06-30 12:55:46",
+  "jobid": "525b666f-49cb-4ed0-b87e-9dff2c243047"
 } }

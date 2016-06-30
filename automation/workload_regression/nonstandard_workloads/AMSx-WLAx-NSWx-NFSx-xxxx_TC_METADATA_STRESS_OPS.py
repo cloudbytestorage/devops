@@ -337,6 +337,3 @@ else:
             'look at client logs')
     resultCollection('Testcase %s is :' %tcName, \
             ['FAILED', ''], startTime, endTime)
-
-
-

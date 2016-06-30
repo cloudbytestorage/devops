@@ -5,7 +5,7 @@ import math
 import json
 import time
 import numpy
-import dislin
+#import dislin
 import logging
 import argparse
 import subprocess

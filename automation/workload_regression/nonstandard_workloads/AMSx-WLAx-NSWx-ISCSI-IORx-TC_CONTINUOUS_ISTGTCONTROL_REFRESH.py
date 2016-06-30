@@ -395,7 +395,7 @@ getControllerInfo(controllerIP, NODE_PSWD, cmd, 'istgtcontrolRefresh.txt')
 # verying IOPS after multiple istgtcontrol refresh
 iops = get_iops_by_api(volId, STDURL)
 if iops[0] == 'FAILED':
-    logging.error('estcase AMSx-WLAx-NSWx-ISCSI-IORx-TC_CONTINUOUS_ISTGTCONTROL_REFRESH is '\
+    logging.error('Testcase AMSx-WLAx-NSWx-ISCSI-IORx-TC_CONTINUOUS_ISTGTCONTROL_REFRESH is '\
             'blocked due to: %s', iops[1])
     is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
 
