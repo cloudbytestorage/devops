@@ -297,19 +297,6 @@ if fsqos[0] == 'FAILED':
 after_grace_iops = get_iops_value(fsqos[1])
 logging.debug('After enabling grace, the iops value is: %s',after_grace_iops)
 
-'''
-####----------Comparing before and after enabling grace values-------------####
-if int(after_grace_iops) > int(before_grace_iops):
-    logging.debug('Validated Grace, remainning Iops of pool has be used')
-    endTime = ctime()
-    resultCollection('%s, testcase is' %tcName, ['PASSED',' '], startTime, endTime)
-else:
-    kill_process(volname)
-    endTime = ctime()
-    msg = 'Pool iops are not utilized even after enabling grace'
-    logAndresult(tcName, 'FAILED', msg, startTime, endTime)
-'''
-
 ####-------------------Killing the vdbench process-------------------------####
 kill_process(volname)
 logging.info('waiting for 10s')

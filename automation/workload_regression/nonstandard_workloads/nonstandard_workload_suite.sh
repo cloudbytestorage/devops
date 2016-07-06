@@ -11,22 +11,22 @@ python cleanup.py conf.txt
 python AMSx-WLAx-NSWx-NFSx-xxxx-TC_LARGE_FILE_OPS.py conf.txt
 
 # CLEAN
-#python cleanup.py conf.txt
+python cleanup.py conf.txt
 
-# TC3 : NFS ARCHIVAL FILE OPS -> taking more time, will include in long run test suite
-#python AMSx-WLAx-NSWx-NFSx-xxxx-TC_ARCHIVAL_FILE_OPS.py conf.txt
+# TC3 : NFS ARCHIVAL FILE OPS
+python AMSx-WLAx-NSWx-NFSx-xxxx-TC_ARCHIVAL_FILE_OPS.py conf.txt
 
 # CLEAN 
-#python cleanup.py conf.txt
+python cleanup.py conf.txt
 
-# TC4 : NFS BACKUP FILE OPS -> taking more time, will include in long run test suite
-#python AMSx-WLAx-NSWx-NFSx-xxxx-TC_BACKUP_FILE_OPS.py conf.txt
+# TC4 : NFS BACKUP FILE OPS
+python AMSx-WLAx-NSWx-NFSx-xxxx-TC_BACKUP_FILE_OPS.py conf.txt
 
 # CLEAN
-#python cleanup.py conf.txt
+python cleanup.py conf.txt
 
-# TC5 : NFS METADATA STRESS OPS -> Need to check error
-#python AMSx-WLAx-NSWx-NFSx-xxxx_TC_METADATA_STRESS_OPS.py conf.txt
+# TC5 : NFS METADATA STRESS OPS
+python AMSx-WLAx-NSWx-NFSx-xxxx_TC_METADATA_STRESS_OPS.py conf.txt
 
 # CLEAN
 python cleanup.py conf.txt
@@ -53,22 +53,22 @@ python cleanup.py conf.txt
 python AMSx-WLAx-NSWx-NFSx-VOLx-TC_PROVISION_DEPROVISION_OPS.py conf.txt
 
 # CLEAN
-#python cleanup.py conf.txt
+python cleanup.py conf.txt
 
-# TC10 : NFS CLIENT BOOT OPS -> Needs one more client to execute this test case
-#python AMSx-WLAx-NSWx-NFSx-VOLx-TC_CLIENT_BOOT_OPS.py conf.txt
-
-# CLEAN
-#python cleanup.py conf.txt
-
-# TC11 : ISCSI QUOTA CHANGE OPS -> There is an error while executing this test case
-#python AMSx-WLAx-NSWx-ISCSI-VOLx-TC_QUOTA_CHANGE_OPS.py conf.txt
+# TC10 : NFS CLIENT BOOT OPS
+python AMSx-WLAx-NSWx-NFSx-VOLx-TC_CLIENT_BOOT_OPS.py conf.txt
 
 # CLEAN
-#python cleanup.py conf.txt
+python cleanup.py conf.txt
 
-# TC12 : ISCSI QoS GRACE CHANGE OPS -> Need to check logic 
-#python AMSx-WLAx-NSWx-ISCSI-VOLx-TC_QoS_GRACE_CHANGE_OPS.py conf.txt
+# TC11 : ISCSI QUOTA CHANGE OPS
+python AMSx-WLAx-NSWx-ISCSI-VOLx-TC_QUOTA_CHANGE_OPS.py conf.txt
+
+# CLEAN
+python cleanup.py conf.txt
+
+# TC12 : ISCSI QoS GRACE CHANGE OPS
+python AMSx-WLAx-NSWx-ISCSI-VOLx-TC_QoS_GRACE_CHANGE_OPS.py conf.txt
 
 # CLEAN
 python cleanup.py conf.txt
@@ -79,8 +79,8 @@ python AMSx-WLAx-NSWx-ISCSI-VOLx-TC_PROVISION_DEPROVISION_OPS.py conf.txt
 # CLEAN
 python cleanup.py conf.txt
 
-# TC14 : ISCSI CONTINUOUS ISTGTCONTROL REFRESH -> Need to revisit the code
-#python AMSx-WLAx-NSWx-ISCSI-IORx-TC_CONTINUOUS_ISTGTCONTROL_REFRESH.py conf.txt
+# TC14 : ISCSI CONTINUOUS ISTGTCONTROL REFRESH
+python AMSx-WLAx-NSWx-ISCSI-IORx-TC_CONTINUOUS_ISTGTCONTROL_REFRESH.py conf.txt
 
 # CLEAN
 python cleanup.py conf.txt
