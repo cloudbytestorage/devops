@@ -253,17 +253,8 @@ resultCollection('%s, testcase is' %tcName, ['PASSED',' '], \
 #*************************Clear Configurations*********************************
 
 ####--------------------------Unmount lun----------------------------------####
-mount_point =  getoutput('mount | grep %s | awk \'{print $3}\'' \
-                             %(volume['name']))
-mount_point = mount_point[0].strip('\n')
-umount_other = UMain(mount_point)
 
-umount_output = executeCmd('umount /dev/%s1' %device)
-if umount_output[0] == 'FAILED':
-    logging.error('Not able to umount %s, still go ahead and delete '\
-        'the Iscsi volume', volname)
-else:
-    logging.debug('Iscsi volume %s umounted successfully', volname)
+umount_other = UMain('/dev/%s1' %device)
 
 ####---------------------Logout from session-------------------------------####
 logout_result = iscsi_login_logout(iqn, tsmIP, 'logout')

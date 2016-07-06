@@ -19,7 +19,7 @@ ddCountValue = FileSize * 1024 / ddBlockSize
 bSize = '%sM' %(ddBlockSize)
 
 NumFiles = 2
-iterations = 5
+iterations = 3
 
 def CreateFiles(loc, bs, count):
     c = 1

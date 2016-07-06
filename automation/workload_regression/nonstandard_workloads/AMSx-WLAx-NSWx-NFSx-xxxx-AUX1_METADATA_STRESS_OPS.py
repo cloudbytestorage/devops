@@ -12,11 +12,11 @@ mount_point = sys.argv[3]
 test_log = '/root/NFSMetaDataStress.log' 
 
 #No2kFiles=10
-#No2kFiles=10
 #No4kFiles=10
 #No8kFiles=10
 #No16kFiles=10
-No32kFiles=50
+#No32kFiles=10
+No2kFiles=50
 No4kFiles=50
 No8kFiles=50
 No16kFiles=50
@@ -24,7 +24,7 @@ No32kFiles=50
 
 dir_recursive = ['a', 'b', 'c', 'd']
 
-iterations = 5
+ITERATIONS = 5
 
 def mount(server_ip, share_loc, mount_point):
     
@@ -254,12 +254,13 @@ def UMain(path):
 
 def mountUmountLoop():
     it = 1
-    while (it <= iterations):
+    print 'Starting of mount umount loop for fsinfo'
+    while (it <= ITERATIONS):
         mount(server_ip, share_loc, mount_point)
         sleep(5)
-        #umount(server_ip, share_loc, mount_point)
         UMain(mount_point)
         it = it + 1
+    print 'End of mount umount loop for fsinfo'
 
 def main():
     mountUmountLoop()
@@ -267,7 +268,6 @@ def main():
     CreateWithLinks(dir_recursive)
     ReadModifyWrite(dir_recursive)
     UnlinkAndDelete(dir_recursive)
-    #umount(server_ip, share_loc, mount_point)
     UMain(mount_point)
 
 main()

@@ -97,13 +97,13 @@ def monitorFilesystemQoS(stdurl, volid):
 #..........Parameter details...........
 #...fsqos => o/p of monitorFilesystemQoS method
 def get_iops_value(fsqos):
-    latest_qos = fsqos[-5:-1]
-    logging.debug('latest 4 monitor qos details are : %s', latest_qos)
+    latest_qos = fsqos[-11:-1]
+    logging.debug('latest monitor qos details are : %s', latest_qos)
     latest_iops = [x.get('iops') for x in latest_qos]
     latest_iops = [int(v) for v in latest_iops]
-    logging.debug('latest 4 iops values are : %s', latest_iops)
+    logging.debug('latest iops values are : %s', latest_iops)
     timestamp = [y.get('timestamp') for y in latest_qos]
-    logging.debug('latest 4 time stamp taken are : %s', timestamp)
+    logging.debug('latest time stamp taken are : %s', timestamp)
     logging.info('get mean value of IOPS taken')
     mean_iops = int(sum(latest_iops) / float(len(latest_iops)))
     return mean_iops
@@ -139,7 +139,14 @@ logging.debug('Pool "%s" is created successfully', poolName)
 ####--------------------------Vsm creation---------------------------------####
 startTime = ctime()
 acctName = 'Account'
-tsm_params = {'name': 'iTsmGrace', 'ipaddress': tsmIP, 'totaliops': (pool_iops - 50), \
+
+tsmIops = pool_iops - 50
+if tsmIops <= 0:
+    endTime = ctime()
+    print 'pool iops should be more than 50, recommended for minimum value 100'
+    logAndresult(tcName, 'BLOCKED', 'iops are less', startTime, endTime)
+
+tsm_params = {'name': 'iTsmGrace', 'ipaddress': tsmIP, 'totaliops': tsmIops, \
         'tntinterface': tsmInterface}
 tsm_create = tsm_creation_flow(stdurl, poolName, acctName, tsm_params)
 endTime = ctime()
@@ -168,9 +175,11 @@ logging.debug('tsm_name:%s, tsm_id:%s, dataset_id:%s', \
 #***************************Volume Operations**********************************
 
 ####----------------------Volume Creation----------------------------------####
+volIops = tsmIops/3
+
 startTime = ctime()
 vol = {'name': 'iscsiGrace' , 'tsmid': tsmID, 'datasetid': datasetID, \
-        'protocoltype': 'ISCSI', 'iops': (pool_iops-50), 'quotasize': '5G'}
+        'protocoltype': 'ISCSI', 'iops': volIops, 'quotasize': '5G'}
 volname = vol['name']
 result = create_volume(vol, stdurl)
 endTime = ctime()
@@ -211,7 +220,7 @@ device, iqn = mnt_iscsi[3], mnt_iscsi[2]
 
 logging.info('Iops details of pool and Volume is as follows:')
 logging.info('Pool iops : %s, volume iops : %s, remaining pool iops : %s', \
-        pool_iops, (pool_iops - 50), (pool_iops - (pool_iops - 50)))
+        pool_iops, volIops, (pool_iops - volIops))
 		
 #***************Operations during Vdbench Execution****************************
 
@@ -288,14 +297,18 @@ if fsqos[0] == 'FAILED':
 after_grace_iops = get_iops_value(fsqos[1])
 logging.debug('After enabling grace, the iops value is: %s',after_grace_iops)
 
+'''
 ####----------Comparing before and after enabling grace values-------------####
 if int(after_grace_iops) > int(before_grace_iops):
     logging.debug('Validated Grace, remainning Iops of pool has be used')
+    endTime = ctime()
+    resultCollection('%s, testcase is' %tcName, ['PASSED',' '], startTime, endTime)
 else:
     kill_process(volname)
     endTime = ctime()
     msg = 'Pool iops are not utilized even after enabling grace'
     logAndresult(tcName, 'FAILED', msg, startTime, endTime)
+'''
 
 ####-------------------Killing the vdbench process-------------------------####
 kill_process(volname)
@@ -303,11 +316,6 @@ logging.info('waiting for 10s')
 time.sleep(10)
 #******************************************************************************
 
-#**********************Update result in result.csv*****************************
-endTime = ctime()
-resultCollection('%s, testcase is' %tcName, ['PASSED',' '], \
-                startTime, endTime)
-#******************************************************************************
 
 #***************Clear Configurations*******************************************
 
@@ -361,6 +369,17 @@ if del_pool[0] == 'FAILED':
 logging.debug('%s', del_pool[1])
 
 #******************************************************************************
+
+####----------Comparing before and after enabling grace values-------------####
+if int(after_grace_iops) > int(before_grace_iops):
+    logging.debug('Validated Grace, remainning Iops of pool has be used')
+    endTime = ctime()
+    resultCollection('%s, testcase is' %tcName, ['PASSED',' '], startTime, endTime)
+else:
+    #kill_process(volname)
+    endTime = ctime()
+    msg = 'Pool iops are not utilized even after enabling grace'
+    logAndresult(tcName, 'FAILED', msg, startTime, endTime)
 
 logging.info('----End of testcase "%s"----', tcName)
 
