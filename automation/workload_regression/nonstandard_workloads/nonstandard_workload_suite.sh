@@ -1,3 +1,6 @@
+# cleaning results file
+echo > results/result.csv
+
 # CLEAN
 python cleanup.py conf.txt
 
