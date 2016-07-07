@@ -117,6 +117,7 @@ poolName = 'nPoolspace'
 pool_paras = {'name': poolName, 'grouptype': pool_type, \
                 'iops': pool_iops}
 
+startTime = ctime()
 pool_create =  pool_creation_flow(stdurl, pool_paras, no_of_disk, disk_type)
 endTime = ctime()
 if pool_create[0] == 'FAILED':
