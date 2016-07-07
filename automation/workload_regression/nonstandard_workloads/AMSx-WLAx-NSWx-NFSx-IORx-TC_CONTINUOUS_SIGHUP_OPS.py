@@ -31,25 +31,13 @@ from volumeUtils import create_volume, delete_volume, addNFSclient, \
         listVolumeWithTSMId_new
 from haUtils import get_controller_info, list_controller, get_value, get_node_IP
 from cbrequest import get_url, configFile, sendrequest, mountNFS, get_apikey, \
-        executeCmd, sshToOtherClient, resultCollection, getControllerInfo, \
-        putFileToController
+        executeCmd, resultCollection, getControllerInfo, putFileToController, \
+        mountNFS_new
 from utils import check_mendatory_arguments, is_blocked, get_logger_footer, \
         get_iops_by_api, UMain
 from poolUtils import listPool, get_pool_info, getFreeDisk, getDiskToAllocate, \
         create_pool, listDiskGroup, delete_pool
 
-# Clear configuration before this test begins
-
-'''
-CleanUpResult = CleanUp(STDURL)
-if CleanUpResult[0] == 'FAILED':
-    logging.error('Cleanup before starting testcase Multiple_Sighups_During_File_IO')
-    is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
-'''
-
-# Clear the log file before execution starts
-
-#executeCmd('> logs/automation_execution.log')
 
 # Initialization for Logging location 
 tcName = sys.argv[0]
@@ -61,6 +49,10 @@ logging.basicConfig(format='%(asctime)s %(levelname)s: %(message)s',\
 logging.basicConfig(format = '%(asctime)s %(message)s', filename = \
         'logs/Multiple_Sighups_During_File_IO.log', filemode = 'a', \
         level = logging.DEBUG)
+
+# Clear the log file before execution starts
+executeCmd('> logs/%s' %logFile)
+
 # Initialization for few common global variables
 
 startTime = ctime()
@@ -104,7 +96,7 @@ CLIENT1_IP = conf['Client1_IP']
 CLIENT1_USER = conf['Client1_user'] 
 CLIENT1_PASSWORD = conf['Client1_pwd']
 
-CLIENT_NFS_MOUNT_PNT = '/mnt/nfs_cont_file_ops_multiple_small'
+CLIENT_NFS_MOUNT_PNT = '/mnt/multiple_sighup_during_io'
 
 logging.debug('DEVMAN_IP: %s', DEVMAN_IP)
 logging.debug('USER: %s', USER)
@@ -135,6 +127,12 @@ def verify_create_volume(result):
         return
     logging.error('Testcase Multiple_Sighups_During_File_IO is blocked due to' \
             ': %s', result[1])
+    is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
+
+def verify_mount(mountResult):
+    if mountResult[0] == 'PASSED':
+        return
+    logging.error('Testcase %s is blocked due to: %s', tcName, mountResult[1])
     is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
 
 # Getting controller info and state before creating pool
@@ -298,28 +296,14 @@ if result[0] == 'FAILED':
             ': %s', result[1])
     is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
 
-
-# Form the command to mount, will be sent to client for execution
-
-mkdir_cmd = 'mkdir %s' %(CLIENT_NFS_MOUNT_PNT) # Way to assign string where using %s
-mount_cmd = 'mount -o mountproto=tcp,sync %s:/%s %s' %(VSM_IP, vol_mnt_pt, CLIENT_NFS_MOUNT_PNT)
-check_mount_cmd = 'mount | grep %s' %(vol_mnt_pt)
-
-# Perform the nfs mount on the client machine
-
-mkdir_result = sshToOtherClient(CLIENT1_IP, CLIENT1_USER, CLIENT1_PASSWORD, mkdir_cmd)
-mount_result = sshToOtherClient(CLIENT1_IP, CLIENT1_USER, CLIENT1_PASSWORD, mount_cmd)
-check_mount_result = sshToOtherClient(CLIENT1_IP, CLIENT1_USER, CLIENT1_PASSWORD, check_mount_cmd)
-if '%s' %(vol_mnt_pt) in str(check_mount_result):
-    print "Volume is mounted successfully"
-else:
-    print "Volume is not mounted successfully" 
-    logging.error('Testcase Multiple_Sighups_During_File_IO is blocked due to' \
-            ': %s', mount_result)
-    is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
+volDir = {'mountPoint': vol_mnt_pt, 'TSMIPAddress': VSM_IP, 'name': \
+        VOL_NAME}
+mountResult = mountNFS_new(volDir)
+verify_mount(mountResult)
+volMntPoint = 'mount/%s' %(vol_mnt_pt)
 
 # Creating Dictionary for vdbench use
-dic_for_vdbench_use = {'name': VOL_NAME, 'mountPoint': CLIENT_NFS_MOUNT_PNT}
+dic_for_vdbench_use = {'name': VOL_NAME, 'mountPoint': volMntPoint}
 
 # Executing vdbench
 logging.info('...executing vdbench....')
