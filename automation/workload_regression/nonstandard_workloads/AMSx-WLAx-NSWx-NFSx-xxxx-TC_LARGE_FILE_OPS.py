@@ -287,15 +287,15 @@ if result[0] == 'FAILED':
 
 mkdir_cmd = 'mkdir %s' %(CLIENT_NFS_MOUNT_PNT) # Way to assign string where using %s
 mount_cmd = 'mount -o mountproto=tcp,sync %s:/%s %s' %(VSM_IP, vol_mnt_pt, CLIENT_NFS_MOUNT_PNT)
-check_mount_cmd = 'df -h | grep %s' %(vol_mnt_pt)
-
+check_mount_cmd = 'df -h | grep %s | awk {\'print $NF\'}' %(vol_mnt_pt) #printing last column
 # Perform the nfs mount on the client machine
 
 mkdir_result = sshToOtherClient(CLIENT1_IP, CLIENT1_USER, CLIENT1_PASSWORD, mkdir_cmd)
 mount_result = sshToOtherClient(CLIENT1_IP, CLIENT1_USER, CLIENT1_PASSWORD, mount_cmd)
 check_mount_result = sshToOtherClient(CLIENT1_IP, CLIENT1_USER, CLIENT1_PASSWORD, check_mount_cmd)
+check_mount_result = check_mount_result.strip('\n')
 
-if '%s' %(vol_mnt_pt) in str(check_mount_result):
+if CLIENT_NFS_MOUNT_PNT == check_mount_result:
     print "Volume is mounted successfully"
 else:
     print "Volume is not mounted successfully" 

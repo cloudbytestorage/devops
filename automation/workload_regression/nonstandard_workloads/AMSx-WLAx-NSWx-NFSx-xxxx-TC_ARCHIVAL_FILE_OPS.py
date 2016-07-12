@@ -314,19 +314,20 @@ if result[0] == 'FAILED':
 
 source_mkdir_cmd = 'mkdir %s' %(CLIENT_NFS_MOUNT_PNT_1) # Way to assign string where using %s
 source_mount_cmd = 'mount -o mountproto=tcp,sync %s:/%s %s' %(VSM_IP, vol1_mnt_pt, CLIENT_NFS_MOUNT_PNT_1)
-source_check_mount_cmd = 'df -h | grep %s' %(vol1_mnt_pt)
+source_check_mount_cmd = 'df -h | grep %s | awk {\'print $NF\'}' %(vol1_mnt_pt)
 
 dest_mkdir_cmd = 'mkdir %s' %(CLIENT_NFS_MOUNT_PNT_2) # Way to assign string where using %s
 dest_mount_cmd = 'mount -o mountproto=tcp,sync %s:/%s %s' %(VSM_IP, vol2_mnt_pt, CLIENT_NFS_MOUNT_PNT_2)
-dest_check_mount_cmd = 'df -h | grep %s' %(vol2_mnt_pt)
+dest_check_mount_cmd = 'df -h | grep %s | awk {\'print $NF\'}' %(vol2_mnt_pt)
 
 # Perform the source nfs mount on the client machine
 
 mkdir_result = sshToOtherClient(CLIENT1_IP, CLIENT1_USER, CLIENT1_PASSWORD, source_mkdir_cmd)
 mount_result = sshToOtherClient(CLIENT1_IP, CLIENT1_USER, CLIENT1_PASSWORD, source_mount_cmd)
 check_mount_result = sshToOtherClient(CLIENT1_IP, CLIENT1_USER, CLIENT1_PASSWORD, source_check_mount_cmd)
+check_mount_result = check_mount_result.strip('\n') # printing last column
 
-if '%s' %(vol1_mnt_pt) in str(check_mount_result):
+if CLIENT_NFS_MOUNT_PNT_1 == check_mount_result:
     print "Source Volume is mounted successfully"
 else:
     print "Source Volume is not mounted successfully" 
@@ -339,8 +340,9 @@ else:
 mkdir_result = sshToOtherClient(CLIENT1_IP, CLIENT1_USER, CLIENT1_PASSWORD, dest_mkdir_cmd)
 mount_result = sshToOtherClient(CLIENT1_IP, CLIENT1_USER, CLIENT1_PASSWORD, dest_mount_cmd)
 check_mount_result = sshToOtherClient(CLIENT1_IP, CLIENT1_USER, CLIENT1_PASSWORD, dest_check_mount_cmd)
+check_mount_result = check_mount_result.strip('\n') # printing last column
 
-if '%s' %(vol2_mnt_pt) in str(check_mount_result):
+if CLIENT_NFS_MOUNT_PNT_2 == check_mount_result:
     print "Destination Volume is mounted successfully"
 else:
     print "Destination Volume is not mounted successfully"

@@ -302,11 +302,15 @@ logging.debug('iqn for discovered iSCSI LUN: %s', discoverIqn)
 
 # going to login newly discovered iSCSI LUN
 login_result = iscsi_login_logout(discoverIqn, VSM_IP, 'login')
-if login_result[0] == 'FAILED':
+if login_result[0] == 'FAILED' and 'already' in str(login_result[1]):
+    print 'iscsi LUN with iqn: %s already logged-in' %discoverIqn
+elif login_result[0] == 'FAILED':
     print 'Not able to login iSCSI LUN with iqn: %s' %(discoverIqn)
     logging.debug('Testcase AMSx-WLAx-NSWx-ISCSI-IORx-TC_CONTINUOUS_ISTGTCONTROL_REFRESH is '\
             'blocked, not able to login iSCSI LUN, Error: %s', login_result[1])
     is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
+else:
+    print 'iscsi LUN with iqn: %s logged-in successfully' %discoverIqn
 
 # sleeping for 2 seconds before getting assigned device to newly...
 # ...logged-in iscsi LUJN

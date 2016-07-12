@@ -36,7 +36,7 @@ from cbrequest import get_url, configFile, sendrequest, mountNFS, get_apikey, \
 from utils import check_mendatory_arguments, is_blocked, get_logger_footer, \
         get_iops_by_api, UMain
 from poolUtils import listPool, get_pool_info, getFreeDisk, getDiskToAllocate, \
-        create_pool, listDiskGroup, delete_pool
+        create_pool, listDiskGroup, delete_pool, UMain
 
 
 # Initialization for Logging location 
@@ -379,12 +379,8 @@ else:
 # 1 killing vdbench
 kill_vdbench()
 
-# sleeping for 20 seconds after killing vdbench, 
-#it wil take some time to erlease the mount point
-#time.sleep(20)
-
 # umount the NFS share
-umount_result = executeCmd('umount %s' %(CLIENT_NFS_MOUNT_PNT))
+UMain(CLIENT_NFS_MOUNT_PNT)
 
 # going to delete the nfs share
 delete_vol = delete_volume(vol_id, STDURL)
