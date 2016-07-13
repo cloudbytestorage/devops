@@ -4,7 +4,7 @@ import json
 import time
 import subprocess
 from time import ctime
-from tabulate import tabulate #using this to represent o/p in form of table
+#from tabulate import tabulate #using this to represent o/p in form of table
 import logging
 from cbrequest import get_apikey, get_url, umountVolume_new, mountNFS, \
     resultCollection, resultCollectionNew, configFile, getoutput, executeCmd

@@ -332,7 +332,7 @@ if TpEnable_flag ==1:
                 startTime, endTime)
         exit()
     for vol in vol_list[1]:
-        if vol['name'] == volume1['name']:
+        if vol['name'] == volume2['name']:
             tp_volid = vol.get('id')
             tp_volname = vol.get('name')
             tpgroup_id = vol.get('groupid')

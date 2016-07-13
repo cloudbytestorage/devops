@@ -4,7 +4,7 @@ import json
 import time
 import subprocess
 from time import ctime
-from tabulate import tabulate #using this to represent o/p in form of table
+#from tabulate import tabulate #using this to represent o/p in form of table
 import logging
 from cbrequest import get_apikey, get_url, umountVolume_new, mountNFS, \
     resultCollection, resultCollectionNew, configFile, getoutput, executeCmd
@@ -156,13 +156,13 @@ totalSize, usedSize, availableSize, usepercentage = mountDetails[1], \
 
 print 'Before adding file(s), the used space is' 
 space_data = [[totalSize, usedSize, availableSize, usepercentage]]
-initial_data = tabulate(space_data, \
-        headers=['Size', 'Used', 'Avail', 'Use%'], tablefmt="psql") 
+#initial_data = tabulate(space_data, \
+#        headers=['Size', 'Used', 'Avail', 'Use%'], tablefmt="psql") 
 
 #returning o/p in the form of table
-print initial_data
-logging.info('Before adding file(s), the  space details is shown below')
-logging.debug('\n%s', initial_data)
+#print initial_data
+#logging.info('Before adding file(s), the  space details is shown below')
+#logging.debug('\n%s', initial_data)
 
 # filing 5GB of data into the share
 vol_size = '5G'
@@ -199,12 +199,12 @@ mountDetails = mountPointDetails('-h',mount_point)
 totalSize, usedSize, availableSize, usepercentage = mountDetails[1], \
     mountDetails[2], mountDetails[3], mountDetails[4]
 space_data2 = [[totalSize, usedSize, availableSize, usepercentage]]
-later_data = tabulate(space_data2, \
-        headers=['Size', 'Used', 'Avail', 'Use%'], tablefmt="psql") 
+#later_data = tabulate(space_data2, \
+#        headers=['Size', 'Used', 'Avail', 'Use%'], tablefmt="psql") 
 #returning o/p in the form of table..
-print later_data
-logging.info('After adding file(s), the space details is shown below')
-logging.debug('\n%s', later_data)
+#print later_data
+#logging.info('After adding file(s), the space details is shown below')
+#logging.debug('\n%s', later_data)
 
 # collecting results
 endTime = ctime()

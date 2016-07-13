@@ -3,7 +3,7 @@ import json
 import logging
 import time
 from time import ctime
-from tabulate import tabulate
+#from tabulate import tabulate
 from volumeUtils import create_volume, delete_volume, listVolumeWithTSMId_new, \
         get_volume_info
 from tsmUtils import listTSMWithIP_new, get_tsm_info
@@ -89,11 +89,11 @@ logs = getControllerInfoAppend(nodeIP, passwd, command, \
 print 'Details given during volume creation'
 creation_details = [['iops', volume['iops']], ['quota', vol_quota],\
     ['compression', volume['compression']],['recordsize', volume['recordsize']]]
-creation_table = tabulate(creation_details, headers=['Property', 'value'], \
-        tablefmt="psql")
-print creation_table
-logging.info('Details given during volume creation')
-logging.debug('\n%s', creation_table)
+#creation_table = tabulate(creation_details, headers=['Property', 'value'], \
+#        tablefmt="psql")
+#print creation_table
+#logging.info('Details given during volume creation')
+#logging.debug('\n%s', creation_table)
 
 print 'verifying the parameters given during volume creation using '\
         '"%s" cmd in controller' %command
