@@ -17,7 +17,7 @@ python iscsiCreateInitGrp.py conf.txt
 
 python iscsi_with_CHAP.py conf.txt chap1 chapuser1 123456789123 mchapuser1 123456789012 ALL
 python snpISCSIVolume.py conf.txt
-#python graceFullHAiSCSI.py conf.txt
-#python ungraceFullHAiSCSI.py conf.txt
-#python partial_fail_over_iscsi.py conf.txt
-#python ISCSIOvernightio.py conf.txt moreVol #has to change the logic for IOPS 
+python graceFullHAiSCSI.py conf.txt
+python ungraceFullHAiSCSI.py conf.txt
+python partial_fail_over_iscsi.py conf.txt
+python ISCSIOvernightio.py conf.txt moreVol #has to change the logic for IOPS 

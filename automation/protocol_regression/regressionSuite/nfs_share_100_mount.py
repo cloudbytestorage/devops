@@ -6,10 +6,13 @@ import logging
 from time import ctime
 from tsmUtils import create_tsm
 from accountUtils import get_account_id
-from poolUtils import get_pool_info, listPool
+from tsmUtils import create_tsm, delete_tsm, listTSMWithIP_new
+from poolUtils import get_pool_info, listPool, getFreeDisk, getDiskToAllocate, \
+        create_pool, listDiskGroup
 from volumeUtils import create_volume, addNFSclient, delete_volume, \
         listVolumeWithTSMId_new
-from tsmUtils import create_tsm, delete_tsm, listTSMWithIP_new
+from haUtils import get_controller_info, list_controller, get_value, \
+        get_node_IP
 from utils import check_mendatory_arguments, is_blocked, get_logger_footer
 from cbrequest import configFile, sendrequest, mountNFS_new, umountVolume, \
         get_url, get_apikey, queryAsyncJobResult, resultCollection, \
@@ -51,6 +54,13 @@ APIKEY = get_apikey(conf)
 APIKEY = APIKEY[1]
 STDURL = get_url(conf, APIKEY)
 
+POOL_NAME = 'mountPL1'
+POOL_IOPS = '100000'
+POOL_DISK_TYPE = 'SAS'
+NUM_POOL_DISKS = '3'
+POOL_TYPE = 'raidz1'
+account_name = None
+
 TSM_IPs = ['None', 'None', 'None', 'None', 'None']
 TSM_interface = ['None', 'None', 'None', 'None', 'None']
 TSM_dnsserver = ['None', 'None', 'None', 'None', 'None']
@@ -71,6 +81,18 @@ def verify_create_volume(result):
             'creation failed')
     is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
 
+def verify_list_controller(list_cntrl, startTime):
+    if list_cntrl[0] == 'PASSED':
+        return list_cntrl[1]
+    logging.error('mount/umount 100 NFS volumes test case is blocked due to: %s', list_cntrl[1])
+    is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
+
+def verify_get_controller_info(get_info, startTime):
+    if get_info[0] == 'PASSED':
+        return
+    ogging.error('mount/umount 100 NFS volumes test case is blocked due to: %s', get_info[1])
+    is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
+
 def update_volid_mntpoint(volumes):
     for volume in volumes:
         vol_id = volume.get('id')
@@ -83,7 +105,6 @@ def update_volid_mntpoint(volumes):
             logging.debug('vol id or mountpoint is None...')
             logging.debug('mount/umount 100 NFS volumes test case is blocked')
             is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
-
 
 for x in range(0, 5):
         #try:
@@ -116,6 +137,64 @@ APIKEY = APIKEY[1]
 STDURL = get_url(conf, APIKEY)
 
 ###---getting pool id----------------------------------------------------------
+startTime = ctime()
+list_cntrl = list_controller(STDURL)
+controllers = verify_list_controller(list_cntrl, startTime)
+controllers_ip, num_of_Nodes = get_node_IP(controllers)
+
+if num_of_Nodes == 1:
+    NODE1_IP = controllers_ip[0]
+elif num_of_Nodes == 2:
+    NODE1_IP = controllers_ip[0]
+    NODE2_IP = controllers_ip[1]
+else:
+    logging.debug('No support yet for clusters with greater than 2 nodes')
+    exit()
+
+get_info = get_controller_info(NODE1_IP, controllers)
+verify_get_controller_info(get_info, startTime)
+status, ctrl_name, ctrl_id, ctrl_ip, ctrl_cluster_id, ctrl_disks, \
+        site_id = get_value(get_info)
+
+if status.lower() == 'maintenance' and num_of_Nodes == 2:
+    logging.debug('Node1 is in maintenance, checking status of Node2')
+    get_info = get_controller_info(NODE2_IP, controllers)
+    verify_get_controller_info(get_info, startTime)
+    status, ctrl_name, ctrl_id, ctrl_ip, ctrl_cluster_id, ctrl_disks, \
+            site_id = get_value(get_info)
+    if status.lower() == 'maintenance':
+        logging.error('Both nodes are in maintenance, testcase cannot proceed')
+        is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
+elif status.lower() == 'maintenance' and num_of_Nodes == 1:
+    logging.error('The single node in HAgroup is in maintenance, testcase '\
+            'cannot proceed')
+    is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
+
+# Steps to get free disk list for pool creation
+freedisk = getFreeDisk(ctrl_disks)
+if freedisk[0] == 'FAILED':
+    logging.error('Testcase %s is blocked due to' \
+            ': %s', tcName, freedisk[1])
+    is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
+freedisk = freedisk[1]
+
+# Steps to get allocatable disks for pool (based on size, type etc..,)
+allocatable_diskidlist = getDiskToAllocate(freedisk, NUM_POOL_DISKS, POOL_DISK_TYPE)
+if allocatable_diskidlist[0] == 'FAILED':
+    logging.error('Testcase %s is blocked due to' \
+            ': %s', tcName, allocatable_diskidlist[1])
+    is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
+allocatable_diskidlist = allocatable_diskidlist[1]
+# Get params for pool creation (Needs controller, pool info etc..,)
+pool_params = {'name': POOL_NAME, 'siteid': site_id, 'clusterid': \
+        ctrl_cluster_id, 'controllerid': ctrl_id, 'iops': POOL_IOPS, \
+        'diskslist': allocatable_diskidlist, 'grouptype': POOL_TYPE}
+pool_creation = create_pool(pool_params, STDURL)
+if pool_creation[0] == 'FAILED':
+    logging.error('Testcase %s is blocked due to' \
+            ' : %s', tcName, pool_creation[1])
+    is_blocked(startTime, FOOTER_MSG, BLOCKED_MSG)
+
 pool_result = listPool(STDURL)
 if pool_result[0] == 'FAILED':
     print 'Not able to get Pools...'
@@ -151,7 +230,7 @@ print account_id
 
 ###creating 5 TSM--------------------------------------------------------------
 for x in range(1, 6):
-    tsm_dict = {'name': 'T100%s' %(x), 'accountid': account_id, 'poolid': \
+    tsm_dict = {'name': 'T200%s' %(x), 'accountid': account_id, 'poolid': \
             pool_id, 'totaliops': '2000', 'quotasize': '1T', 'tntinterface': \
             str(TSM_interface[x-1]), 'dnsserver': str(TSM_dnsserver[x-1]), \
             'ipaddress': str(TSM_IPs[x-1]), 'totalthroughput': '8000'}
