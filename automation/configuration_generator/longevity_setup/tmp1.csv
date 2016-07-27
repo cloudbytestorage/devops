@@ -1,0 +1,3 @@
+smoketest.txt,Y,TSM1,Mpool,Account1,20.10.49.195,igb0,8.8.8.8,20.10.1.1,8,Y,2,TSM1NFS,Y,2,TSM1ISCSI,Y,2,TSM1CIFS,n,initiator,1,FC,Y
+smoketest.txt,Y,TSM2,Mpool,Account1,20.10.49.196,igb0,8.8.8.8,20.10.1.1,8,Y,2,TSM2NFS,Y,2,TSM2ISCSI,Y,2,TSM2CIFS,n,initiator,1,FC,Y
+dummy.txt,n,DonotDeleteTSM,PoolRaidz1,Account1,0.0.0.0,em0,0.0.0.0,0.0.0.0,8,n,2,TSM3NFS,n,2,TSM3ISCSI,n,2,TSM3CIFS,n,initiator,2,FC,n

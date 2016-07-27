@@ -1,0 +1,43 @@
+{ "queryasyncjobresultresponse" : {
+  "accountid": "232d2d0b-56bf-4067-a752-5101710f390f",
+  "userid": "de16130c-a030-4093-a5fb-755f5904b54f",
+  "cmd": "com.cloudbyte.api.commands.CreateVolumeCmd",
+  "msg": "5",
+  "jobstatus": 1,
+  "jobprocstatus": 0,
+  "jobresultcode": 0,
+  "jobresulttype": "object",
+  "jobresult": {
+    "storage": {
+      "id": "e3995467-2da3-34e0-b52e-ffec623ccf5f",
+      "name": "TSM2CIFS3",
+      "simpleid": 20,
+      "compression": "off",
+      "sync": "always",
+      "noofcopies": 1,
+      "recordsize": "4k",
+      "quota": "1G",
+      "path": "Mpool/Account1TSM2/TSM2CIFS3",
+      "tsmid": "463ac524-f1f2-3653-9d2b-1f27782fe481",
+      "poolid": "61a41158-f090-3a4d-ae64-5f1edc5bf0d8",
+      "mountpoint": "Account1TSM2CIFS3",
+      "currentUsedSpace": 0,
+      "currentAvailableSpace": 0,
+      "currentTotalSpace": 0,
+      "currentThroughput": 0,
+      "currentIOPS": 0,
+      "currentLatency": 0,
+      "currentThrottle": 0,
+      "tsmName": "TSM2",
+      "hapoolname": "Mpool",
+      "revisionnumber": 0,
+      "nfsenabled": false,
+      "cifsenabled": true,
+      "iscsienabled": false,
+      "fcenabled": false,
+      "backupqosgroupenabled": false
+    }
+  },
+  "created": "2016-04-25 16:11:28",
+  "jobid": "76fef47c-4669-4a0e-bc44-4a0d067f12ab"
+} }

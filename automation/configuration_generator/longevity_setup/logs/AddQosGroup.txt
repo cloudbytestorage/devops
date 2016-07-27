@@ -1,0 +1,6 @@
+{ "addqosgroupresponse" : {
+  "uuidList": [],
+  "errorcode": 530,
+  "errortext": "Failed to provision Qos group due to : [IOPS] : Iops value should not exceed VSM's available IOPS: 0",
+  "licensetype": "trial"
+} }

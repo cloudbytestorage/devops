@@ -1,0 +1,21 @@
+{ "updatingvolumeiscsidetails" :  { "viscsioptions" : {
+  "id": "0827ba48-5a6d-34da-be30-7b96e8fae4a3",
+  "volume_id": "f7e00acc-79c5-33bb-865b-700b63cfca73",
+  "ag_id": "9fe311f2-d6c1-3432-b053-0221950c6b27",
+  "ig_id": "5eaad66a-4317-3c0d-a19f-10ac03d5ddbe",
+  "iqnname": "iqn.2016-04.Account1.TSM2:Account1TSM2ISCSI4",
+  "authmethod": "None",
+  "status": true,
+  "usn": "f7e00acc79c533bb865b700b63cfca73",
+  "initialdigest": "Auto",
+  "queuedepth": "32",
+  "inqproduct": 0,
+  "inqrevision": 0,
+  "blocklength": "512B",
+  "workerthreads": 0,
+  "unmap": true,
+  "wzero": false,
+  "physrecordlength": "4k",
+  "ats": "false",
+  "xcopy": "false"
+} }  }

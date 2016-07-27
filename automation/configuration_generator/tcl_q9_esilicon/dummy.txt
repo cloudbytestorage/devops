@@ -1,0 +1,38 @@
+{
+
+  "_JSON Configuration": "Starts Here",
+
+  "_Global Configuration" : "Configuration for Devman Access... Where Host is the Devmand IP",	
+  "host": "20.10.39.20", 
+  "admin_org_password": "password",
+  "admin_set_password": "test",
+  "firstname": "a",
+  "lastname": "b",
+  "email": "ab%40cb.com",
+  "mobile": "1234567890",
+  "apikey": "MyApiKey",
+  "response": "json",
+
+  "Number_of_Sites": "3", 
+
+  "Number_of_Clusters": "3",
+
+
+
+  "Number_of_Nodes": "1",
+
+
+
+  "Number_of_Pools": "1",
+  "Number_of_Accounts": "3", 
+
+  "Number_of_Vlans": "1",
+  "Number_of_StaticIPs": "1",
+  "Number_of_TSMs": "0",
+  "Number_of_NFSVolumes": "0",
+  "Number_of_ISCSIVolumes": "0",
+  "Number_of_CIFSVolumes": "0",
+  "Number_of_fcVolumes": "0",
+
+  "_JSON Configuration": "Ends Here"
+}

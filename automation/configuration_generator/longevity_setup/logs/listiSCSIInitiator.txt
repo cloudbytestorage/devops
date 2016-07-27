@@ -1,0 +1,13 @@
+{ "listInitiatorsResponse" : { "count":2 ,"initiator" : [  {
+  "id": "5eaad66a-4317-3c0d-a19f-10ac03d5ddbe",
+  "accountid": "15e5ac26-67be-4203-bf18-579c86fc9066",
+  "name": "ALL",
+  "netmask": "ALL",
+  "initiatorgroup": "ALL"
+}, {
+  "id": "c2a8db91-912c-32f9-8044-bb4af91b1439",
+  "accountid": "15e5ac26-67be-4203-bf18-579c86fc9066",
+  "name": "None",
+  "netmask": "None",
+  "initiatorgroup": "None"
+} ] } }

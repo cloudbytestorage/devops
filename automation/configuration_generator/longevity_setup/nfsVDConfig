@@ -1,0 +1,4 @@
+fsd=fsd1,anchor=/mnt/Account1TSM3NFS3,depth=1,width=1,files=1,size=500MB
+fsd=fsd2,anchor=/mnt/Account1snpNFS1,depth=1,width=1,files=1,size=500MB
+fwd=fwd1,fsd=fsd*,xfersize=4k,rdpct=80,fileio=random,threads=1
+rd=rd1,fwd=fwd*,elapsed=360000,interval=1,fwdrate=max,format=yes
