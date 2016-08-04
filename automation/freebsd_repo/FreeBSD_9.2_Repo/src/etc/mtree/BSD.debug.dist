@@ -1,0 +1,48 @@
+# $FreeBSD: releng/9.2/etc/mtree/BSD.debug.dist 252827 2013-07-05 19:35:51Z emaste $
+#
+# Please see the file src/etc/mtree/README before making changes to this file.
+#
+
+/set type=dir uname=root gname=wheel mode=0755
+.
+    debug
+        bin
+        ..
+        boot
+        ..
+        lib
+            geom
+            ..
+        ..
+        libexec
+        ..
+        sbin
+        ..
+        usr
+            bin
+            ..
+            games
+            ..
+            lib
+                engines
+                ..
+            ..
+            lib32
+            ..
+            libexec
+                bsdinstall
+                ..
+                lpr
+                    ru
+                    ..
+                ..
+                sendmail
+                ..
+                sm.bin
+                ..
+            ..
+            sbin
+            ..
+        ..
+    ..
+..

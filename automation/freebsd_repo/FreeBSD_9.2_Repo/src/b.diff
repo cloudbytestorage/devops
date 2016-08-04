@@ -1,0 +1,37 @@
+diff --git a/sys/nlm/nlm_prot_clnt.c b/sys/nlm/nlm_prot_clnt.c
+index a268e63..6265551 100644
+--- a/sys/nlm/nlm_prot_clnt.c
++++ b/sys/nlm/nlm_prot_clnt.c
+@@ -7,6 +7,7 @@
+ #include <sys/lock.h>
+ #include <sys/mutex.h>
+ #include <sys/systm.h>
++#include <sys/syscallsubr.h>
+ 
+ #include <nlm/nlm_prot.h>
+ #include <sys/cdefs.h>
+@@ -17,6 +18,9 @@ __RCSID("$NetBSD: nlm_prot.x,v 1.6 2000/06/07 14:30:15 bouyer Exp $");
+ #endif /* not lint */
+ __FBSDID("$FreeBSD$");
+
++static int nlm_debug_delay_granted_res = 0;
++SYSCTL_INT(_debug, OID_AUTO, nlm_debug_delay_granted_res, CTLFLAG_RW, &nlm_debug_delay_granted_res, 0, "");
++
+ enum clnt_stat
+ nlm_sm_notify_0(struct nlm_sm_status *argp, void *clnt_res, CLIENT *clnt, struct rpc_callextra *ext, struct timeval timo)
+ {
+@@ -326,6 +330,13 @@ nlm4_unlock_res_4(nlm4_res *argp, void *clnt_res, CLIENT *clnt, struct rpc_calle
+ enum clnt_stat
+ nlm4_granted_res_4(nlm4_res *argp, void *clnt_res, CLIENT *clnt, struct rpc_callextra *ext, struct timeval timo)
+ {
++       if (nlm_debug_delay_granted_res > 0) {
++               struct timespec rqt = {
++                                                               .tv_sec = nlm_debug_delay_granted_res,
++                                                               .tv_nsec = 0
++                                                         };
++               (void) kern_nanosleep(curthread, &rqt, NULL);
++       }
+        return (CLNT_CALL_EXT(clnt, ext, NLM4_GRANTED_RES,
+                (xdrproc_t) xdr_nlm4_res, (caddr_t) argp,
+                (xdrproc_t) xdr_void, (caddr_t) clnt_res,
+

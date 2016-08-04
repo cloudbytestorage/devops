@@ -1,0 +1,4 @@
+# $FreeBSD: releng/9.2/tools/regression/bin/sh/execution/subshell3.0 252613 2013-07-03 21:43:41Z jilles $
+
+(false; exit) && exit 3
+exit 0

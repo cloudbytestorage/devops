@@ -1,0 +1,6 @@
+# $FreeBSD: releng/9.2/sbin/Makefile.i386 252222 2013-06-25 23:52:39Z jimharris $
+
+SUBDIR += bsdlabel
+SUBDIR += fdisk
+SUBDIR += nvmecontrol
+SUBDIR += sconfig

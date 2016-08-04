@@ -1,0 +1,10 @@
+# $FreeBSD: releng/9.2/tools/regression/bin/sh/execution/subshell2.0 252613 2013-07-03 21:43:41Z jilles $
+
+f() {
+	x=2
+}
+(
+	x=1
+	f
+	[ "$x" = 2 ]
+)

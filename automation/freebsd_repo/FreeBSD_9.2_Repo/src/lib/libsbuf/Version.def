@@ -1,0 +1,7 @@
+# $FreeBSD: releng/9.2/lib/libsbuf/Version.def 250308 2013-05-06 20:32:14Z trociny $
+
+FBSD_1.2 {
+};
+
+FBSD_1.3 {
+} FBSD_1.2;
