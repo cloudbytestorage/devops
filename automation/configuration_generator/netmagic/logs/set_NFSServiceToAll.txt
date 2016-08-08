@@ -1,0 +1,5 @@
+{ "nfsserviceprotocolresponse" : {
+  "uuidList": [],
+  "errorcode": 530,
+  "errortext": "Network All already exists."
+} }

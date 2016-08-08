@@ -1,0 +1,5 @@
+{ "errorresponse" : {
+  "uuidList": [],
+  "errorcode": 432,
+  "errortext": "The given command does not exist"
+} }

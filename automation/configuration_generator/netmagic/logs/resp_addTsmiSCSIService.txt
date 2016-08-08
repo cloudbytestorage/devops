@@ -1,0 +1,11 @@
+{ "tsmCifsserviceResponse" :  { "cifsService" : {
+  "id": "17074910-5f32-346f-855f-3df16fb3e695",
+  "tsmid": "d1f39bd9-8ed9-3e4e-9681-61dee70ae6d5",
+  "authentication": "user",
+  "netbiosname": "tsm5",
+  "workgroup": "workgroup",
+  "doscharset": "CP437",
+  "unixcharset": "UTF-8",
+  "loglevel": "Minimum",
+  "timeserver": false
+} }  }

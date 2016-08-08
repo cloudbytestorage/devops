@@ -1,0 +1,15 @@
+{
+
+  "_JSON Configuration": "Starts Here",
+
+  "_Global Configuration" : "Configuration for Devman Access... Where Host is the Devmand IP",	
+  "host": "20.10.82.120", 
+  "admin_org_password": "password",
+  "admin_set_password": "test",
+  "firstname": "a",
+  "lastname": "b",
+  "email": "ab%40cb.com",
+  "mobile": "1234567890",
+  "apikey": "MyApiKey",
+  "response": "json",
+

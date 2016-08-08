@@ -1,0 +1,10 @@
+{ "nfsserviceprotocolresponse" :  { "nfs" : {
+  "id": "d13713fc-3b0b-3e5f-a2b9-0b63c3675157",
+  "STORAGEID": "160092e6-4889-335d-b479-b9b45fdb9b36",
+  "controllerid": "828b4749-84f6-3f01-9ccd-3104bab1642b",
+  "authnetwork": "All",
+  "alldirs": "Yes",
+  "mapuserstoroot": "yes",
+  "readonly": "No",
+  "managedstate": true
+} }  }

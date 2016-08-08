@@ -1,0 +1,12 @@
+{ "fsCifsserviceResponse" :  { "cifsService" : {
+  "id": "b5e56ee8-821a-3c41-bfd3-c8022ccc08bc",
+  "storageid": "3ff5b7e0-a072-32ff-8563-80169a1c6405",
+  "name": "tsm5",
+  "description": "default",
+  "status": true,
+  "readonly": false,
+  "browseable": true,
+  "inheritpermissions": true,
+  "recyclebin": true,
+  "hidedotfiles": true
+} }  }

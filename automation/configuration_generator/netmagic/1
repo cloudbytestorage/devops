@@ -1,0 +1,36 @@
+import os
+import md5
+import csv
+import sys
+import time
+import json
+from cbrequest import configFile, sendrequest, get_apikey, get_url, resultCollection
+
+
+def get_hostIP(configfile):
+    count = 0
+    with open(configfile, 'rb') as f:
+        mycsv = csv.reader(f)
+        for row in mycsv:
+            if count == 1:
+                text = row[1]
+                return text
+            count = count + 1
+
+if len(sys.argv) < 2:
+    print 'Please provide csv file also as parameter...'
+    exit()
+
+configfile = sys.argv[1]
+host = get_hostIP(configfile)
+user = 'root'
+m = md5.new()
+m.update('test')
+md5_pwd =  m.hexdigest()
+conf = {'host': '%s' %(host), 'password': '%s' %(md5_pwd), 'username': '%s' %(user)}
+print conf
+exit()
+APIKEY = get_apikey(conf)
+APIKEY = APIKEY[1]
+STDURL = get_url(conf, APIKEY)
+print STDURL

@@ -1,0 +1,17 @@
+{ "volumeiSCSIserviceresponse" :  { "viscsioptions" : {
+  "id": "5d55c4eb-1643-3092-9381-9b8816a36b82",
+  "volume_id": "00197b77-c90e-356d-92bd-532460a1f6cd",
+  "ag_id": "-1",
+  "ig_id": "1allcloudbyte234a",
+  "iqnname": "iqn.2016-04.act1.tsm5:act1TSM5ISCSI5",
+  "authmethod": "None",
+  "status": true,
+  "usn": "00197b77c90e356d92bd532460a1f6cd",
+  "initialdigest": "Auto",
+  "queuedepth": "32",
+  "inqproduct": 0,
+  "inqrevision": 0,
+  "blocklength": "512B",
+  "unmap": true,
+  "physrecordlength": "4k"
+} }  }

@@ -1,0 +1,9 @@
+Tools Used : Shell Script and Python
+
+1. Files used to generate a response file --  ConfigurationCreation_CSV.sh  ConfigurationFromCSV.sh
+2. Sample Directory -- Where python scripts are located, This will be copied to current directory and executed. (If you are fixing any script ensure you copy to sample directory)
+3. Logs Directory -- Used to collect logs
+4. Results Directory -- For Storing Results
+5. Creation.py -- This script is used to configure the Elastistor -- Files like Account.py, TSM.py, NFS.py  etc are branched out of creation.py. (If you are creating a new python files for creation the same needs to be added to creation.py)
+6. Execution.py -- This script is used for functional Test Case execution. 
+

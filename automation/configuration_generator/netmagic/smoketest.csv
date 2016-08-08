@@ -1,0 +1,53 @@
+Devman Configuration Begins,
+Begins,20.10.94.20,Ends,,,,,,,,,, 
+Site Configuration Begins,Create Site?,#Sites,SiteName,SiteConf,,,,,,,,,,,,,
+Begins,y,3,Site,End,,,,,,,,,,,,,
+Site Configuration Ends,,,,,,,,,,,,,,,,,
+Cluster Configuration Begins,StaticValue,Cluster Name,Site Name,ClusterDescription,Cluster StartIP,Cluster EndIP,Continue ClusterConf ,ClusterConf,,,,,,,,,
+Begins,y,Cluster1,Site1,ClusterDescription1,20.10.94.111,20.10.94.112,y,End
+Begins,y,Cluster2,Site1,ClusterDescription2,20.10.94.113,20.10.94.114,y,End
+Begins,y,Cluster3,Site3,ClusterDescription3,20.10.94.113,20.10.94.113,y,End
+Begins,n,DonotDeleteCluster,Site,ClusterDescription,0.0.0.0,0.0.0.0,n,End
+Cluster Configuration Ends,,,,,,,,,,,,,,,,,
+Node Configuration Begins,StaticValue,Node Name,Site Name,Cluster Name,Node IP,Password,Continue NodeConf,NodeConf,,,,,,,,
+Begins,y,Node1,Site1,Cluster1,20.10.94.22,test,y,End
+Begins,y,Node2,Site1,Cluster1,20.10.94.24,test,y,End
+Begins,n,DonotDeleteNode,Site,Cluster,0.0.0.0,dummypasswd,n,End
+Node Configuration Ends,,,,,,,,,,,,,,,,,
+JBOD Configuration Begins,StaticValue,JBOD Name,No. of Disks,JbodConf,,,,,,,
+Begins,y,Enc1,11,End
+JBOD Configuration Ends,,,,,,,,,,,,,,,,,
+Pool Configuration Begins,StaticValue,Pool Name,Site Name,Cluster Name,Node Name,Continue PoolConf,PoolConf,,,,,,,
+Begins,y,PoolRaidz1,Site1,Cluster1,Node1,y,End
+Begins,y,DonotDeletePool,Site,Cluster,Node,n,End
+Pool Configuration Ends,,,,,,,,,,,,,,,,,
+Account Configuration Begins,Create Account?,#Account,Account Name,AccountConf,,,,,,,,,,,,,
+Begins,y,3,Account,End,,,,,,,,,,,,,
+Account Configuration Ends,,,,,,,,,,,,,,,,,
+Vlan Configuration Begins,StaticValue,Interface Name, Tag Value,Cluster Name,Continue VlanConf,VlanConf,,,,,,,,,
+Begins,y,re0,1,HA,y,End
+Begins,n,em2,2,Cluster1,y,End
+Begins,n,em3,3,Cluster1,y,End
+Begins,n,DonotDeleteem00,0,Cluster,n,End
+Vlan Configuration Ends,,,,,,,,,,,,,,,,,
+Static IP Configuration Begins,StaticValue,Interface Name,Static IP,Subnet,Gateway,Nodename,Continue StaticIPConf,StaticIPConf,,,,,
+Begins,y,re0,1.1.1.1,8,1.1.1.254,Node1,y,End
+Begins,n,em2,2.2.2.2,16,2.2.2.1,Node2,y,End
+Begins,n,em3,31.31.31.33,24,31.31.31.254,Node2,y,End
+Begins,n,DonotDeleteem00,0.0.0.0,8,0.0.0.0,Node,n,End
+Static IP Configuration Ends,,,,,,,,,,,,,,,,,
+File Name,TSM Configuration Begins,StaticValue,TSM NAME,Pool Name,Account,IP,Interface,DNS Server IP,Router,Subnet,Create NFS Volume?,#NFS Volume,NFS VolumeName,Create ISCSI Volume?,#ISCSI Volume,ISCSI VolumeName,Create CIFS Volume?,#CIFS Volume,CIFS VolumeName,Continue TSMConf,TSMConf,,,,,,,,,,,
+smoketest.txt,Begins,Y,tsm1,N1P1,act1,20.10.49.124,em1,8.8.8.8,20.10.1.1,8,Y,1,TSM1NFS,Y,1,TSM1ISCSI,Y,1,TSM1CIFS,y,initiator,2,FC,Y,End
+smoketest.txt,Begins,Y,tsm2,N1P1,act1,20.10.49.125,em1,8.8.8.8,20.10.1.1,8,Y,1,TSM2NFS,Y,1,TSM2ISCSI,Y,1,TSM2CIFS,y,initiator,2,FC,Y,End
+smoketest.txt,Begins,Y,tsm3,N1P1,act1,20.10.49.126,em1,8.8.8.8,20.10.1.1,8,Y,1,TSM3NFS,Y,1,TSM3ISCSI,Y,1,TSM3CIFS,y,initiator,2,FC,Y,End
+smoketest.txt,Begins,Y,tsm4,N1P1,act1,20.10.49.127,em1,8.8.8.8,20.10.1.1,8,Y,1,TSM4NFS,Y,1,TSM4ISCSI,Y,1,TSM4CIFS,y,initiator,2,FC,Y,End
+smoketest.txt,Begins,Y,tsm5,N1P1,act1,20.10.49.128,em1,8.8.8.8,20.10.1.1,8,Y,1,TSM5NFS,Y,1,TSM5ISCSI,Y,1,TSM5CIFS,y,initiator,2,FC,Y,End
+TSM Configuration Ends,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+Definition,,,,,,,,,,,,,,,,,
+Which ever is in green requires value,,,,,,,,,,,,,,,,,
+If y is given after Begins of each row that will be created,,,,,,,,,,,,,,,,,
+if n is given after Begins of each row that will not be created,,,,,,,,,,,,,,,,,
+To create a new cluster copy a row and paste below the existing one,,,,,,,,,,,,,,,,,
+To create a new TSM copy a row and paste below the existing one,,,,,,,,,,,,,,,,,
+Do not modify or delete the last row of cluster-node-pool-vlan-staticip-tsm configurations where it is mentioned not to delete it,,,,,,,,

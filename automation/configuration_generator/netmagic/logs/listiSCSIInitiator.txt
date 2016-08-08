@@ -1,0 +1,13 @@
+{ "listInitiatorsResponse" : { "count":2 ,"initiator" : [  {
+  "id": "1allcloudbyte234a",
+  "accountid": "38304ecb-eb4c-4fbc-ae9a-00ebdba39851",
+  "name": "ALL",
+  "netmask": "ALL",
+  "initiatorgroup": "ALL"
+}, {
+  "id": "1nonecloudbyte234a",
+  "accountid": "38304ecb-eb4c-4fbc-ae9a-00ebdba39851",
+  "name": "None",
+  "netmask": "None",
+  "initiatorgroup": "None"
+} ] } }
