@@ -34,7 +34,7 @@ check_mendatory_arguments(sys.argv,2, EXECUTE_SYNTAX, FOOTER_MSG, \
 conf = configFile(sys.argv)
 
 POOL_NAME = 'regressionPL1'
-POOL_IOPS = '5000'
+POOL_IOPS = '7000'
 POOL_DISK_TYPE = 'SAS'
 NUM_POOL_DISKS = '3'
 POOL_TYPE = 'raidz1'
@@ -198,9 +198,9 @@ print account_id
 ###creating 5 TSM--------------------------------------------------------------
 for x in range(1, 4):
     tsm_dict = {'name': 'T100%s' %(x), 'accountid': account_id, 'poolid': \
-            pool_id, 'totaliops': '1000', 'quotasize': '1T', 'tntinterface': \
+            pool_id, 'totaliops': '1500', 'quotasize': '1T', 'tntinterface': \
             str(TSM_interface[x-1]), 'dnsserver': str(TSM_dnsserver[x-1]), \
-            'ipaddress': str(TSM_IPs[x-1]), 'totalthroughput': '4000'}
+            'ipaddress': str(TSM_IPs[x-1]), 'totalthroughput': '6000'}
     #calling create TSM method...
     result = create_tsm(tsm_dict, STDURL)
     if result[0] == 'FAILED':
