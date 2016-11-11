@@ -1,0 +1,34 @@
+README FOR RUNNING ISCSI AND NFS PROTOCOL REGRESSION SUITE
+##########################################################
+
+Pre-Requisites :
+--------------
+
+1. Ensure the build is installed on the EC/ES boxes with appropriate network configuration 
+
+2. On Elasticenter -  Create Site, HAgroup and construct the disk array
+
+3. Setup the linux client (I/O host, either a physical machine OR VM on a hypervisor) with both management access and data network
+
+4. Setup a working directory of the devops repository on linux client ("git clone https://github.com/cloudbytestorage/devops.git")
+
+Steps to Run the regression suites : 
+----------------------------------
+
+Navigate to "devops/automation/protocol_regression/regressionSuite/" 
+
+  Edit the json file "conf.txt" with appropriate values for all keys (mainly, the EC details, VSM and client info)
+  View the values set for TSM and Volumes in sample/tsm.txt and nfsvolume.txt/iscsivolume.txt. Edit based on setup capabilities if desired
+  Run "sh NfsRegression.sh" & "sh IscsiRegression.sh" to initiate the nfs regression suite and iscsi regression suite 
+  (The order is left to the user. The suites need to be run sequentially - i.e., one after another OR on different clients)
+
+Results : 
+-------
+
+The results of individual tests will be logged in the devops/automation/protocol_regression/regressionSuite/results/result.csv
+
+Reporting Issues :
+----------------
+
+Any issues found while setting up or during execution of tests can be reported cb-support@cloudbyte.com
+
