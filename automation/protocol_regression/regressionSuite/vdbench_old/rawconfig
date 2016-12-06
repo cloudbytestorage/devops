@@ -1,8 +1,0 @@
-data_errors=1
-sd=sd1,lun=/dev/sdc,openflags=o_direct
-sd=sd2,lun=/dev/sdd,openflags=o_direct
-sd=sd3,lun=/dev/sde,openflags=o_direct
-sd=sd4,lun=/dev/sdf,openflags=o_direct
-sd=sd5,lun=/dev/sdg,openflags=o_direct
-wd=wd1,sd=sd*,xfersize=32k,rdpct=0,skew=100
-rd=rd1,wd=wd1,elapsed=10800,interval=1,iorate=max

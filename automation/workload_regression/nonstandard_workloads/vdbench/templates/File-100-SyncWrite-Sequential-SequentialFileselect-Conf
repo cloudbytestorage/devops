@@ -1,4 +1,0 @@
-data_errors=1,formatxfersize=4k
-fsd=fsd1,anchor=/mnt/nfs1,depth=1,width=1,files=50,size=1G,openflags=o_sync
-fwd=fwd1,fsd=fsd*,rdpct=0,xfersize=(4k,10,8k,10,16k,10,32k,10,64k,10,128k,10,256k,10,512k,10,1M,20),fileio=sequential,threads=50,fileselect=seq
-rd=rd1,fwd=fwd*,elapsed=3600,interval=1,fwdrate=max,format=yes

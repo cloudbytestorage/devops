@@ -1,3 +1,0 @@
-sd=sd1,lun=/mnt/nfs1
-wd=wd1,sd=sd1,xfersize=(256K),seekpct=100, compression=20
-rd=rd1,wd=wd1,iorate=max,forthreads=128,forrdpct=80,elapsed=300,interval=1,openflags=o_direct

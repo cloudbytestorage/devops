@@ -1,5 +1,0 @@
-  "_Site Configuration" : "Details for Site_#MyVaLuE#_....",	
-  "siteName_#MyVaLuE#_": "Site_#MyVaLuE#_",
-  "siteLocation_#MyVaLuE#_": "SiteLocation_#MyVaLuE#_",
-  "siteDescription_#MyVaLuE#_": "SiteDescription_#MyVaLuE#_",
-

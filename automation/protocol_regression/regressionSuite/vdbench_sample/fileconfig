@@ -1,3 +1,0 @@
-fsd=fsd1,anchor=mountDirectory,depth=1,width=1,files=1,size=100M
-fwd=fwd1,fsd=fsd*,xfersize=4k,rdpct=60,fileio=random,threads=1
-rd=rd1,fwd=fwd*,elapsed=80,interval=1,fwdrate=max,format=yes
