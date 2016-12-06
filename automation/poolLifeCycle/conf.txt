@@ -1,0 +1,65 @@
+{
+
+  "_JSON Configuration": "Starts Here",
+
+  "host": "172.16.20.30",
+  "username": "admin",
+  "password": "test",
+
+  "node1": "172.16.20.31",
+  "node1_user": "root",
+  "node1_passwd": "test",
+
+  "node2": "172.16.20.32",
+  "node2_user": "root",
+  "node2_passwd": "test",
+  
+  "Account Configuration": "Account Details",
+  "AccountName": "Account",
+
+  "IP address": "IP for VSM",
+  "ipVSM1": "10.10.3.131",
+  "ipVSM2": "10.10.3.132",
+  "ipVSM3": "10.10.3.133",
+  "ipVSM4": "10.10.3.134",
+  "ipVSM5": "10.10.3.135",
+  "ipVSM6": "10.10.3.136",
+  "ipVSM7": "10.10.3.137",
+
+  "router": "default router for VSM",
+  "routerVSM1": "172.16.1.1",
+  "routerVSM2": "172.16.1.1",
+  "routerVSM3": "172.16.1.1",
+  "routerVSM4": "172.16.1.1",
+  "routerVSM5": "172.16.1.1",
+
+  "DNS server": "DNS server for VSM",
+  "dnsVSM1": "8.8.8.8",
+  "dnsVSM1": "8.8.8.8",
+  "dnsVSM1": "8.8.8.8",
+  "dnsVSM1": "8.8.8.8",
+  "dnsVSM1": "8.8.8.8",
+
+  "interface": "interface of VSM",
+  "interfaceVSM1": "vlan3",
+  "interfaceVSM2": "vlan3",
+  "interfaceVSM3": "vlan3",
+  "interfaceVSM4": "vlan3",
+  "interfaceVSM5": "vlan3",
+  "interfaceVSM6": "vlan3",
+  "interfaceVSM7": "vlan3",
+
+  "localClient": "Info",
+  "Client_IP": "172.16.250.72",
+  "Client_user": "root",
+  "Client_pwd": "test123",
+
+  "Client1": "Info",
+  "Client1_IP": "172.16.51.70",
+  "Client1_user": "root",
+  "Client1_pwd": "test@123",
+
+
+  "_JSON Configuration": "Ends Here"
+
+}

@@ -1,0 +1,8 @@
+data_errors=1
+sd=sd1,lun=/dev/sdb,openflags=o_direct,range=(0,20)
+sd=sd2,lun=/dev/sdb,openflags=o_direct,range=(20,40)
+sd=sd3,lun=/dev/sdb,openflags=o_direct,range=(40,60)
+sd=sd4,lun=/dev/sdb,openflags=o_direct,range=(60,80)
+sd=sd5,lun=/dev/sdc,openflags=o_direct,range=(80,100)
+wd=wd1,sd=sd*,rdpct=0,skew=100,seekpct=random
+rd=rd1,wd=wd*,elapsed=3600,interval=1,iorate=max,forxfersize=(4k,8k,16k,32k,64k,128k,512k,1M),pause=10

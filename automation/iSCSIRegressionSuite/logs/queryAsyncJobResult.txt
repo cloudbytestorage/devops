@@ -1,0 +1,24 @@
+{ "queryasyncjobresultresponse" : {
+  "accountid": "40fcccde-abb2-4d93-80d3-c93cf6076110",
+  "userid": "abea49c6-9604-4577-b0b8-31d9abfd9483",
+  "cmd": "com.cloudbyte.api.commands.AddHAPoolCmd",
+  "msg": "1",
+  "jobstatus": 2,
+  "jobprocstatus": 0,
+  "jobresultcode": 530,
+  "jobresulttype": "object",
+  "jobresult": {
+    "success": false,
+    "errorcode": 530,
+    "errortext": "[CLEARPOOL] An unused Pool with the name regressionPL1 already exists on the disks. To proceed, specify a unique name for the Pool or clear the unused Pool.",
+    "licensetype": "premium",
+    "errordata": {
+      "debug_data": {
+        "pool": "regressionPL1",
+        "name": "regressionPL1"
+      }
+    }
+  },
+  "created": "2016-12-06 14:41:14",
+  "jobid": "f88ce951-b6ad-427e-b6c9-53d90d6ddb47"
+} }

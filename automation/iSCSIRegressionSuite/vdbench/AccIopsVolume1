@@ -1,0 +1,3 @@
+fsd=fsd1,anchor=/home/regressionSuite/mount/AccIopsVolume1,depth=1,width=1,files=1,size=1G
+fwd=fwd1,fsd=fsd*,xfersize=4k,rdpct=50,fileio=random,threads=1
+rd=rd1,fwd=fwd*,elapsed=1200,interval=1,fwdrate=max,format=yes
