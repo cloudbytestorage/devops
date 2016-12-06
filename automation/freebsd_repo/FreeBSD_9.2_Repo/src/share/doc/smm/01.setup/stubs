@@ -1,6 +1,0 @@
-.\" $FreeBSD: releng/9.2/share/doc/smm/01.setup/stubs 69280 2000-11-27 18:00:51Z ru $
-.\"
-.if n \{\
-.	ftr CW R
-.	ftr C R
-.\}

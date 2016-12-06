@@ -1,7 +1,0 @@
-# $FreeBSD: releng/9.2/usr.bin/truncate/Makefile 204654 2010-03-03 19:25:28Z sobomax $
-
-PROG=		truncate
-DPADD=		${LIBUTIL}
-LDADD=		-lutil
-
-.include <bsd.prog.mk>

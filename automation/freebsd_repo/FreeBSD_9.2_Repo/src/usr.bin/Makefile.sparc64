@@ -1,3 +1,0 @@
-# $FreeBSD: releng/9.2/usr.bin/Makefile.sparc64 212526 2010-09-13 02:23:03Z imp $
-
-SUBDIR+=	smbutil
