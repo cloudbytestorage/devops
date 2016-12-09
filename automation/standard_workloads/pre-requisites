@@ -1,0 +1,41 @@
+Objective : Simulate multiple real-world workloads through vdbench tool. This tests the stability of the build under different I/O profiles. A write-up on the workloads considered can be found here : https://cloudbyte.atlassian.net/wiki/pages/viewpage.action?pageId=86343684
+
+Pre-requisites : 
+
+a) EC and ES needs to be installed and configured with Site, HAgroup, DiskArray and vlan (if applicable) (The scripts shall create pool, vsm, volumes, mount the volumes on the client and run workloads defined) 
+
+b) Setup a linux client (preferably CentOS7) with all basic development tools and python. Execute the following commands to install some important packages (if not already installed). This shall be box on which the tests are launched - and also acts as the I/O client during the tests. 
+
+yum install openssl-devel
+yum install python-devel
+yum install iscsi-initiator-utils
+yum install nfs-utils nfs-utils-lib
+yum install java-1.8.0-openjdk
+yum install csh
+curl -O https://bootstrap.pypa.io/get-pip.py
+python get-pip.py
+pip install --upgrade setuptools
+pip install requests
+pip install paramiko
+pip install pycrypto
+pip install ecdsa
+pip install numpy
+
+c) Setup the data network connectivity on the linux client (so as to reach the ES VSM network)
+
+d) Place the standard workload suite into the above linux box - from this link (https://www.dropbox.com/s/z7l6spix3vn21mj/standard_workloads.rar?dl=0)
+
+Steps to run the suite :
+
+a) Edit the conf.txt file in the standard_workloads folder. It is a config file in json format from which the scripts parse the env data. Here are some hints (Most keys are self explanatory, few hints are listed below)
+
+i) "host" refers to EC IP
+ii) Select "pool_type" and other pool params as per choice. Ensure the "pool_disk_type" is set correctly to SSD or SAS depending on the available disks
+ii) ipVSM : Single IP is also sufficient. This suite creates 1 for each run
+iii) "localClient" : Refers to the linux box where this file is being edited. Ensure that it has all packages installed. For this suite, ignore the client 1,2.
+iv) The vdbench "workload_type" and "device type" is set to "All". It means this suite will run all available workloads (defined in vdbench/template) and run it on both FS & Block device (for iSCSI)
+
+b) Run "sh standard_workload_suite.sh" on the linux command line. The test first runs all FS workloads on NFS volumes (With a new volume created for each run). This is followed by all FS workloads on iSCSI volumes (ext3). Lastly, all Block workloads on raw iSCSI volumes.
+The test takes between 4-4.5 hours to complete all runs
+
+c) The "logs/AMSx-WLAx-SWxx-GENx-VDBx-TC_WORKLOAD_SIMULATION_TEST.log" can be viewed for current action. 

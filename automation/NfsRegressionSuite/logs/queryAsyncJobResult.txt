@@ -1,0 +1,15 @@
+{ "queryasyncjobresultresponse" : {
+  "accountid": "fb6b4aef-7a76-4e3a-8ada-35be4fc05b29",
+  "userid": "12694334-960b-462c-aa0c-3c07dfbbdda0",
+  "cmd": "com.cloudbyte.api.commands.DeleteFileSystemCmd",
+  "msg": "Deleted Successfully",
+  "jobstatus": 1,
+  "jobprocstatus": 0,
+  "jobresultcode": 0,
+  "jobresulttype": "object",
+  "jobresult": {
+    "success": true
+  },
+  "created": "2016-11-29 15:36:15",
+  "jobid": "e6b6536c-dc3a-4943-b9ed-99b6415808eb"
+} }

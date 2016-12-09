@@ -1,3 +1,0 @@
-sd=sd1,lun=/mnt/nfs3/test5,size=5G
-wd=wd1,sd=sd*,xfersize=4k,rdpct=50,skew=100
-rd=run1,wd=wd*,iorate=max,elapsed=6000,interval=10

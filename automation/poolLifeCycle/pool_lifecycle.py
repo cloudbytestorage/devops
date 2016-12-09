@@ -66,7 +66,9 @@ node_ip = config["node1"]
 #--------------------------------UPDATE HERE-----------------------------------
 #disk type to verify all type of pool creation
 #minimum disk requried is 4
-pool_disk_type = 'SAS'
+
+#pool_disk_type = 'SAS'
+pool_disk_type = 'SSD'
 
 #disk type for cache, log, log_mirror creation(SSD must)
 ##by default SSD for metavdev creation
@@ -74,7 +76,9 @@ grp_disk = 'SSD'
 
 #for main  pool creation(2), vdev(2) specify one type of disk
 #minimum disk requried is 4
-final_disk_type = 'SAS'
+
+#final_disk_type = 'SAS'
+final_disk_type = 'SSD'
 final_pool_type = 'raidz1'
 final_no_of_disk = 2  #for pool creation and vdev
 
@@ -897,8 +901,8 @@ path = pool_name+'/'+acct_name+tsm_name+'/'+volname
 #this path is used in reng cmd in method get_IOPS_values_from_node
 
 logging.info('Writing vdbench file')
-VdbFile = 'filesystem_config'
-vdbNewFile = 'filesystem_config'
+VdbFile = 'filesystem_nfs'
+vdbNewFile = 'filesystem_nfs'
 executeCmd('yes | cp -rf vdbench/templates/%s vdbench/%s' %(VdbFile, vdbNewFile))
 vol_size = '256M' #Give size in multiple of xfersize...\
         #creating 20 files and 20 threads through vdbench, 
@@ -1072,7 +1076,7 @@ remove_vdb_file = os.system('rm -rf %s/*' %new_str)
 ##running vdbench
 logging.info('Writing vdbench file')
 VdbFile = 'filesystem_config'
-vdbNewFile = 'filesystem_config_new'
+vdbNewFile = 'filesystem_config'
 executeCmd('yes | cp -rf vdbench/templates/%s vdbench/%s' %(VdbFile, vdbNewFile))
 vol_size = int(floor((float(vol['quotasize'].strip('M')))*(0.85)))
 vol_size = int(vol_size/20) #Give size in multiple of xfersize, \

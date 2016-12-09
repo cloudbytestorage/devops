@@ -1,0 +1,288 @@
+
+"Verify NFS share mount/umount alerts(devd logs)" testcase starts....,,
+Tue Jun 28 13:56:01 2016 : !system=NFS_VOLUME subsystem=20.10.28.117,/AccountnfsMountUmount type=mount
+Tue Jun 28 14:23:52 2016 : !system=NFS_VOLUME subsystem=20.10.28.117,/AccountnfsMountUmount type=mount
+Tue Jun 28 14:31:48 2016 : !system=NFS_VOLUME subsystem=20.10.28.117,/AccountnfsMountUmount type=mount
+Tue Jun 28 14:32:45 2016 : !system=NFS_VOLUME subsystem=20.10.28.117,/AccountnfsMountUmount type=mount
+Tue Jun 28 14:34:15 2016 : !system=NFS_VOLUME subsystem=20.10.28.117,/AccountnfsMountUmount type=mount
+Tue Jun 28 14:38:24 2016 : !system=NFS_VOLUME subsystem=20.10.28.117,/AccountnfsMountUmount type=mount
+Tue Jun 28 14:06:29 2016 : !system=NFS_VOLUME subsystem=20.10.28.117,/AccountnfsMountUmount type=unmount
+Tue Jun 28 14:30:32 2016 : !system=NFS_VOLUME subsystem=20.10.28.117,/AccountnfsMountUmount type=unmount
+Tue Jun 28 14:32:26 2016 : !system=NFS_VOLUME subsystem=20.10.28.117,/AccountnfsMountUmount type=unmount
+Tue Jun 28 14:33:01 2016 : !system=NFS_VOLUME subsystem=20.10.28.117,/AccountnfsMountUmount type=unmount
+Tue Jun 28 14:34:25 2016 : !system=NFS_VOLUME subsystem=20.10.28.117,/AccountnfsMountUmount type=unmount
+Tue Jun 28 14:38:35 2016 : !system=NFS_VOLUME subsystem=20.10.28.117,/AccountnfsMountUmount type=unmount
+Tue Jun 28 15:00:29 2016,NFS share mount/umount alerts(devd logs), testcase is,PASSED, ,Tue Jun 28 15:00:40 2016
+"Verify NFS share mount/umount alerts(devd logs)" testcase ends....,,
+
+Tue Jun 28 15:00:45 2016,Mount NFS when Network set to None test case:,PASSED,,Tue Jun 28 15:00:50 2016
+Tue Jun 28 15:00:45 2016,Mount NFS when Network set to perticular N/W test case:,PASSED,,Tue Jun 28 15:01:02 2016
+Tue Jun 28 15:00:45 2016,Mount NFS when Network set to ALL test case:,PASSED,,Tue Jun 28 15:01:02 2016
+Tue Jun 28 15:01:27 2016,Gracefull HA test case(NFS) passed,PASSED,,Tue Jun 28 15:02:30 2016
+Tue Jun 28 15:07:46 2016,Ungracefull HA test case(NFS) passed,PASSED,,Tue Jun 28 15:09:10 2016
+
+"Adding more initiator in host allow" testcase starts....,,
+
+"Verify iSCSI login/logout alerts(devd logs)" testcase starts....,,
+Tue Jun 28 14:54:55 2016 : !system=ISCSI_VOLUME subsystem=20.10.28.117,iqn.1988-12.com.oracle:e815140a66c,20.10.60.122,iqn.2016-05.account.t1002:accountiscsimountumount type=logout
+Tue Jun 28 15:16:58 2016,ISCSI login/logout alerts(devd logs), testcase is,PASSED, ,Tue Jun 28 15:17:00 2016
+"Verify iSCSI login/logout alerts(devd logs)" testcase ends....,,
+
+Tue Jun 28 15:17:04 2016,updating QOS property is Passed in ISCSI,PASSED,,Tue Jun 28 15:18:15 2016
+Tue Jun 28 15:17:04 2016,Iops value are different after updating the value in ISCSI,PASSED,,Tue Jun 28 15:18:26 2016
+Tue Jun 28 15:17:04 2016,umounting volume failed,BLOCKED,,Tue Jun 28 15:20:36 2016
+Tue Jun 28 15:20:46 2016,creation of volume failed,BLOCKED,,Tue Jun 28 15:20:47 2016
+Tue Jun 28 15:20:48 2016,creation of volume failed,BLOCKED,,Tue Jun 28 15:20:48 2016
+
+"Edit lun attributes and save changes after HA failover and giveback" testcase starts....,,
+Verifying lun attributes modification after HA failover....,,
+Tue Jun 28 15:24:08 2016,Edit lun attributes and save changes after HA failover and giveback ,testcase is,BLOCKED,,Tue Jun 28 15:24:09 2016
+Tue Jun 28 15:24:09 2016,Quota update unsuccessful during HA failover,PASSED,,Tue Jun 28 15:24:09 2016
+Tue Jun 28 15:24:09 2016,Compression update unsuccessful during HA failover,PASSED,,Tue Jun 28 15:24:09 2016
+Verifying lun attributes modification after HA Giveback....,,
+Tue Jun 28 15:24:46 2016,Successfully updated IOPS after HA giveback,PASSED,,Tue Jun 28 15:24:46 2016
+Tue Jun 28 15:24:46 2016,Successfully updated compression state after HA giveback,PASSED,,Tue Jun 28 15:24:49 2016
+Tue Jun 28 15:24:46 2016,Edit lun attributes and save changes after HA failover and giveback, testcase is,PASSED, ,Tue Jun 28 15:24:49 2016
+"Edit lun attributes and save changes after HA failover and giveback" testcase ends....,,
+
+
+"Create a initiator group using all the mandatory feilds" testcase starts....,,
+Tue Jun 28 15:25:21 2016,Create a initiator group using all the mandatory feilds, testcase is,PASSED, ,Tue Jun 28 15:25:21 2016
+"Create a initiator group using all the mandatory feilds" testcase ends....,,
+
+Tue Jun 28 15:25:29 2016,iSCSI login with CHAP method test case is,PASSED,,Tue Jun 28 15:25:39 2016
+Tue Jun 28 15:25:51 2016,Snapshot created successfully on iSCSI LUN,PASSED,,Tue Jun 28 15:27:42 2016
+Tue Jun 28 15:25:51 2016,snapshot functionality on iSCSI LUN is working fine...,PASSED,,Tue Jun 28 15:27:57 2016
+Mon Nov 21 10:24:16 2016,create pool, create vsms for regression test is,BLOCKED,,Mon Nov 21 10:24:17 2016
+
+"Remove clients from exports while IOs are running" testcase starts....,,
+Mon Nov 21 12:04:53 2016,Remove clients from exports while IOs are running, testcase is,PASSED, ,Mon Nov 21 12:04:59 2016
+"Remove clients from exports while IOs are running" testcase ends....,,
+
+
+"Nfs soft/hard mount" testcase starts....,,
+Mon Nov 21 12:06:23 2016,NFS soft/hard mount, testcase is,PASSED, ,Mon Nov 21 12:06:23 2016
+"Nfs soft/hard mount" testcase ends....,,
+
+
+"Nfs soft/hard mount" testcase starts....,,
+Mon Nov 21 12:06:45 2016,NFS soft/hard mount, testcase is,PASSED, ,Mon Nov 21 12:06:45 2016
+"Nfs soft/hard mount" testcase ends....,,
+
+
+"Set all dir to no while IOs are running" testcase starts....,,
+Mon Nov 21 12:09:38 2016,Set all dir to no, testcase is,PASSED, ,Mon Nov 21 12:09:48 2016
+"Set all dir to no while IOs are running" testcase ends....,,
+
+
+"Change Tenant IP of the NFS dataset" testcase starts....,,
+
+"Change Tenant IP of the NFS dataset" testcase starts....,,
+Mon Nov 21 12:15:46 2016,Change Tenant IP of the NFS datasettestcase is,PASSED, ,Mon Nov 21 12:15:48 2016
+"Change Tenant IP of the NFS dataset" testcase ends....,,
+
+
+"Change Tenant IP of the NFS dataset" testcase starts....,,
+
+"Change Tenant IP of the NFS dataset" testcase starts....,,
+Mon Nov 21 12:33:37 2016,"Change Tenant IP of the NFS dataset" testcase is ,BLOCKED, ,Mon Nov 21 12:33:37 2016
+
+"Verify NFS share mount/umount alerts(devd logs)" testcase starts....,,
+Mon Nov 21 12:35:33 2016 : !system=NFS_VOLUME subsystem=10.10.250.72,/AccnfsMountUmount type=mount
+Mon Nov 21 12:35:43 2016 : !system=NFS_VOLUME subsystem=10.10.250.72,/AccnfsMountUmount type=unmount
+Mon Nov 21 12:35:33 2016,NFS share mount/umount alerts(devd logs), testcase is,PASSED, ,Mon Nov 21 12:35:44 2016
+"Verify NFS share mount/umount alerts(devd logs)" testcase ends....,,
+
+
+"Mount NFS share on home directory" testcase starts....,,
+Mon Nov 21 12:36:16 2016,Mount NFS share on home directory, testcase is,PASSED, ,Mon Nov 21 12:36:24 2016
+Mon Nov 21 12:37:35 2016,Unmount the mount point when the file from the mount point is in use, testcase is,PASSED, ,Mon Nov 21 12:38:01 2016
+Mon Nov 21 12:38:47 2016,Verify the usedspace and available space of the mountpoint by adding files to the mountpoint, testcase is,PASSED, ,Mon Nov 21 12:43:00 2016
+Mon Nov 21 12:44:01 2016,Enable NFS on a Read-only Dataset and try adding files to that after mounting, testcase is,PASSED, ,Mon Nov 21 12:44:01 2016
+Mon Nov 21 12:45:02 2016,Successfully updated quota while IOs are running,PASSED,,Mon Nov 21 12:45:03 2016
+Mon Nov 21 12:45:13 2016,Successfully updated IOPS while IOs are running,PASSED,,Mon Nov 21 12:45:13 2016
+Mon Nov 21 12:45:23 2016,Successfully updated nfs threads while IOs are running,PASSED,,Mon Nov 21 12:45:24 2016
+Mon Nov 21 12:45:23 2016,Edit the properties of the dataset while IOs are running, testcase is,PASSED, ,Mon Nov 21 12:45:34 2016
+
+"Specify the NFS mount to use the TCP/UDP protocol" testcase starts....,,
+
+"Specify the NFS mount to use the TCP/UDP protocol" testcase starts....,,
+
+"Specify the NFS mount to use the TCP/UDP protocol" testcase starts....,,
+
+"Specify the NFS mount to use the TCP/UDP protocol" testcase starts....,,
+Mon Nov 21 14:13:13 2016,"Specify the NFS mount to use the TCP/UDP protocol" testcase is ,FAILED, ,Mon Nov 21 14:13:14 2016
+
+"Specify the NFS mount to use the TCP/UDP protocol" testcase starts....,,
+Mon Nov 21 14:16:43 2016,"Specify the NFS mount to use the TCP/UDP protocol" testcase is ,FAILED, ,Mon Nov 21 14:16:44 2016
+
+"Specify the NFS mount to use the TCP/UDP protocol" testcase starts....,,
+Mon Nov 21 14:19:29 2016,Specify the NFS mount to use the TCP/UDP protocol, testcase is,PASSED, ,Mon Nov 21 14:19:30 2016
+"Specify the NFS mount to use the TCP/UDP protocol" testcase ends....,,
+
+
+"Specify the NFS mount to use the TCP/UDP protocol" testcase starts....,,
+Mon Nov 21 14:21:51 2016,Specify the NFS mount to use the TCP/UDP protocol, testcase is,PASSED, ,Mon Nov 21 14:21:52 2016
+"Specify the NFS mount to use the TCP/UDP protocol" testcase ends....,,
+
+Mon Nov 21 14:29:31 2016,creation of volume failed,BLOCKED,,Mon Nov 21 14:29:32 2016
+Mon Nov 21 14:43:09 2016,Mounting volume is failed,BLOCKED,,Mon Nov 21 14:43:15 2016
+Mon Nov 21 14:44:27 2016,updating QOS property is Passed,PASSED,,Mon Nov 21 14:44:58 2016
+Mon Nov 21 14:44:27 2016,Iops value are different after updating thevalue,PASSED,,Mon Nov 21 14:45:09 2016
+Mon Nov 21 14:44:27 2016,umounting volume failed,BLOCKED,,Mon Nov 21 14:47:28 2016
+Mon Nov 21 15:12:35 2016,Mounting volume is failed,BLOCKED,,Mon Nov 21 15:12:38 2016
+Mon Nov 21 15:13:09 2016,updating QOS property is Passed,PASSED,,Mon Nov 21 15:13:42 2016
+Mon Nov 21 15:13:09 2016,Iops value are different after updating thevalue,PASSED,,Mon Nov 21 15:13:52 2016
+Mon Nov 21 15:17:40 2016,updating QOS property is Passed,PASSED,,Mon Nov 21 15:18:11 2016
+Mon Nov 21 15:17:40 2016,Iops value are different after updating thevalue,PASSED,,Mon Nov 21 15:18:21 2016
+Mon Nov 21 15:17:40 2016,umounting volume failed,BLOCKED,,Mon Nov 21 15:20:41 2016
+Mon Nov 21 15:41:42 2016,Volume is Unmounted Succesfully is,PASSED,,Mon Nov 21 15:41:46 2016
+Mon Nov 21 15:42:30 2016,Mount NFS when Network set to None test case:,PASSED,,Mon Nov 21 15:42:35 2016
+Mon Nov 21 15:42:30 2016,Mount NFS when Network set to perticular N/W test case:,PASSED,,Mon Nov 21 15:42:59 2016
+Mon Nov 21 15:42:30 2016,Mount NFS when Network set to ALL test case:,PASSED,,Mon Nov 21 15:42:59 2016
+Mon Nov 21 15:47:57 2016,Snapshot created successfully on NFS share,PASSED,,Mon Nov 21 15:49:05 2016
+Mon Nov 21 15:47:57 2016,snapshot functionality on NFS share is working fine...,PASSED,,Mon Nov 21 15:49:12 2016
+Mon Nov 21 15:57:03 2016,mount/umount 100 NFS volumes test case is,BLOCKED,,Mon Nov 21 15:57:03 2016
+Mon Nov 21 15:58:43 2016,mount/umount 100 NFS volumes test case is,BLOCKED,,Mon Nov 21 15:58:43 2016
+Mon Nov 21 15:59:50 2016,mount/umount 100 NFS volumes test case is,PASSED,,Mon Nov 21 16:17:17 2016
+Mon Nov 21 16:38:39 2016,Gracefull HA test case(NFS) passed,PASSED,,Mon Nov 21 16:39:58 2016
+Mon Nov 21 18:38:46 2016,Gracefull HA test case(NFS) is blocked,BLOCKED,,Mon Nov 21 18:38:46 2016
+Mon Nov 21 18:39:32 2016,Gracefull HA test case(NFS) passed,PASSED,,Mon Nov 21 18:40:39 2016
+Mon Nov 21 18:46:42 2016,Gracefull HA test case(NFS) passed,PASSED,,Mon Nov 21 18:47:51 2016
+Mon Nov 21 18:46:42 2016,Gracefull HA test case(NFS) passed,PASSED,,Mon Nov 21 18:50:44 2016
+Mon Nov 21 19:03:10 2016,partial fail over test case(NFS) failed,FAILED,,Mon Nov 21 19:03:49 2016
+Mon Nov 21 19:03:10 2016,partial fail over test case(NFS) failed,FAILED,,Mon Nov 21 19:04:04 2016
+Mon Nov 21 20:06:53 2016,Mounting volume is failed,BLOCKED,,Mon Nov 21 20:06:55 2016
+Mon Nov 21 20:08:25 2016,updating QOS property is Passed,PASSED,,Mon Nov 21 20:08:59 2016
+Mon Nov 21 20:08:25 2016,Iops value are different after updating thevalue,PASSED,,Mon Nov 21 20:09:24 2016
+Mon Nov 21 20:08:25 2016,umounting volume failed,BLOCKED,,Mon Nov 21 20:10:24 2016
+Mon Nov 21 20:31:14 2016,Mounting volume is failed,BLOCKED,,Mon Nov 21 20:31:17 2016
+Mon Nov 21 20:31:44 2016,creation of volume failed,BLOCKED,,Mon Nov 21 20:31:45 2016
+Mon Nov 21 20:31:55 2016,Mounting volume is failed,BLOCKED,,Mon Nov 21 20:32:00 2016
+Mon Nov 21 20:33:21 2016,updating QOS property is Passed,PASSED,,Mon Nov 21 20:36:38 2016
+Mon Nov 21 20:33:21 2016,Iops value are different after updating thevalue,PASSED,,Mon Nov 21 20:37:03 2016
+Mon Nov 21 20:33:21 2016,umounting volume failed,BLOCKED,,Mon Nov 21 20:37:19 2016
+Fri Nov 25 14:22:31 2016,updating QOS property is Passed,PASSED,,Fri Nov 25 14:25:50 2016
+Fri Nov 25 14:22:31 2016,Iops value are different after updating thevalue,PASSED,,Fri Nov 25 14:26:15 2016
+Fri Nov 25 14:22:31 2016,umounting volume failed,BLOCKED,,Fri Nov 25 14:26:31 2016
+Fri Nov 25 14:34:32 2016,updating QOS property is Passed,PASSED,,Fri Nov 25 14:37:50 2016
+Fri Nov 25 14:34:32 2016,Iops value are different after updating thevalue,PASSED,,Fri Nov 25 14:38:15 2016
+Fri Nov 25 14:34:32 2016,umounting volume failed,BLOCKED,,Fri Nov 25 14:38:33 2016
+Fri Nov 25 14:56:36 2016,updating QOS property is Passed,PASSED,,Fri Nov 25 14:59:54 2016
+Fri Nov 25 14:56:36 2016,Iops value are different after updating thevalue,PASSED,,Fri Nov 25 15:00:20 2016
+Fri Nov 25 14:56:36 2016,umounting volume failed,BLOCKED,,Fri Nov 25 15:00:37 2016
+Fri Nov 25 15:28:29 2016,updating QOS property is Passed,PASSED,,Fri Nov 25 15:31:45 2016
+Fri Nov 25 15:28:29 2016,Iops value are different after updating thevalue,PASSED,,Fri Nov 25 15:32:10 2016
+Fri Nov 25 15:28:29 2016,umounting volume failed,BLOCKED,,Fri Nov 25 15:32:33 2016
+Fri Nov 25 15:34:58 2016,updating QOS property is Passed,PASSED,,Fri Nov 25 15:38:15 2016
+Fri Nov 25 15:34:58 2016,Iops value are different after updating thevalue,PASSED,,Fri Nov 25 15:38:40 2016
+Fri Nov 25 15:34:58 2016,umounting volume failed,BLOCKED,,Fri Nov 25 15:39:15 2016
+Fri Nov 25 15:56:18 2016,updating QOS property is Passed,PASSED,,Fri Nov 25 15:59:35 2016
+Fri Nov 25 15:56:18 2016,Iops value are different after updating thevalue,PASSED,,Fri Nov 25 16:00:00 2016
+Fri Nov 25 15:56:18 2016,umounting volume failed,BLOCKED,,Fri Nov 25 16:00:39 2016
+Fri Nov 25 16:57:15 2016,updating QOS property is Passed,PASSED,,Fri Nov 25 17:00:31 2016
+Fri Nov 25 16:57:15 2016,Iops value are different after updating thevalue,PASSED,,Fri Nov 25 17:00:56 2016
+Fri Nov 25 22:51:23 2016,updating QOS property is Passed,PASSED,,Fri Nov 25 22:54:40 2016
+Fri Nov 25 22:51:23 2016,Iops value are different after updating thevalue,PASSED,,Fri Nov 25 22:55:05 2016
+Fri Nov 25 23:10:02 2016,updating QOS property is Passed,PASSED,,Fri Nov 25 23:13:20 2016
+Fri Nov 25 23:10:02 2016,Iops value are different after updating thevalue,PASSED,,Fri Nov 25 23:13:45 2016
+Fri Nov 25 23:15:29 2016,updating QOS property is Passed,PASSED,,Fri Nov 25 23:18:46 2016
+Fri Nov 25 23:15:29 2016,Iops value are different after updating thevalue,PASSED,,Fri Nov 25 23:19:11 2016
+Fri Nov 25 23:40:27 2016,updating QOS property is Passed,PASSED,,Fri Nov 25 23:43:45 2016
+Fri Nov 25 23:40:27 2016,Iops value are different after updating thevalue,PASSED,,Fri Nov 25 23:44:11 2016
+Fri Nov 25 23:51:10 2016,updating QOS property is Passed,PASSED,,Fri Nov 25 23:54:26 2016
+Fri Nov 25 23:51:10 2016,Iops value are different after updating thevalue,PASSED,,Fri Nov 25 23:54:51 2016
+Fri Nov 25 23:56:16 2016,updating QOS property is Passed,PASSED,,Fri Nov 25 23:56:59 2016
+Fri Nov 25 23:56:16 2016,Throughput value are different after updatingthe value and iops are running,PASSED,,Fri Nov 25 23:57:24 2016
+Sat Nov 26 11:10:19 2016,updating QOS property is Passed,PASSED,,Sat Nov 26 11:11:04 2016
+Sat Nov 26 11:10:19 2016,Throughput value are different after updatingthe value and iops are running,PASSED,,Sat Nov 26 11:11:29 2016
+Mon Nov 28 15:52:57 2016,updating QOS property is Passed,PASSED,,Mon Nov 28 15:53:31 2016
+Mon Nov 28 15:52:57 2016,Throughput value are different after updatingthe value and iops are running,PASSED,,Mon Nov 28 15:53:56 2016
+Mon Nov 28 15:56:44 2016,updating QOS property is Passed,PASSED,,Mon Nov 28 16:00:03 2016
+Mon Nov 28 15:56:44 2016,Iops value are different after updating thevalue,PASSED,,Mon Nov 28 16:00:33 2016
+Mon Nov 28 16:03:54 2016,updating QOS property is Passed,PASSED,,Mon Nov 28 16:07:12 2016
+Mon Nov 28 16:03:54 2016,Throughput value are different after updatingthe value and iops are running,PASSED,,Mon Nov 28 16:07:43 2016
+
+"Remove clients from exports while IOs are running" testcase starts....,,
+Mon Nov 28 16:31:03 2016,Remove clients from exports while IOs are running, testcase is,PASSED, ,Mon Nov 28 16:31:10 2016
+"Remove clients from exports while IOs are running" testcase ends....,,
+
+
+"Nfs soft/hard mount" testcase starts....,,
+Mon Nov 28 16:31:36 2016,NFS soft/hard mount, testcase is,PASSED, ,Mon Nov 28 16:31:36 2016
+"Nfs soft/hard mount" testcase ends....,,
+
+
+"Nfs soft/hard mount" testcase starts....,,
+Mon Nov 28 16:31:46 2016,NFS soft/hard mount, testcase is,PASSED, ,Mon Nov 28 16:31:46 2016
+"Nfs soft/hard mount" testcase ends....,,
+
+
+"Set all dir to no while IOs are running" testcase starts....,,
+Mon Nov 28 16:34:14 2016,Set all dir to no, testcase is,PASSED, ,Mon Nov 28 16:34:25 2016
+"Set all dir to no while IOs are running" testcase ends....,,
+
+
+"Verify NFS share mount/umount alerts(devd logs)" testcase starts....,,
+Mon Nov 28 16:34:37 2016 : !system=NFS_VOLUME subsystem=20.10.250.72,/AccnfsMountUmount type=mount
+Mon Nov 28 16:34:53 2016 : !system=NFS_VOLUME subsystem=20.10.250.72,/AccnfsMountUmount type=unmount
+Mon Nov 28 16:34:37 2016,NFS share mount/umount alerts(devd logs), testcase is,PASSED, ,Mon Nov 28 16:34:53 2016
+"Verify NFS share mount/umount alerts(devd logs)" testcase ends....,,
+
+
+"Mount NFS share on home directory" testcase starts....,,
+Mon Nov 28 16:34:58 2016,Mount NFS share on home directory, testcase is,PASSED, ,Mon Nov 28 16:35:02 2016
+Mon Nov 28 16:35:11 2016,Unmount the mount point when the file from the mount point is in use, testcase is,PASSED, ,Mon Nov 28 16:35:36 2016
+Mon Nov 28 16:36:07 2016,Verify the usedspace and available space of the mountpoint by adding files to the mountpoint, testcase is,PASSED, ,Mon Nov 28 16:41:25 2016
+Mon Nov 28 16:42:06 2016,Enable NFS on a Read-only Dataset and try adding files to that after mounting, testcase is,PASSED, ,Mon Nov 28 16:42:06 2016
+Mon Nov 28 16:42:51 2016,Successfully updated quota while IOs are running,PASSED,,Mon Nov 28 16:42:52 2016
+Mon Nov 28 16:43:02 2016,Successfully updated IOPS while IOs are running,PASSED,,Mon Nov 28 16:43:03 2016
+Mon Nov 28 16:43:13 2016,Successfully updated nfs threads while IOs are running,PASSED,,Mon Nov 28 16:43:15 2016
+Mon Nov 28 16:43:13 2016,Edit the properties of the dataset while IOs are running, testcase is,PASSED, ,Mon Nov 28 16:43:25 2016
+
+"Specify the NFS mount to use the TCP/UDP protocol" testcase starts....,,
+
+"Specify the NFS mount to use the TCP/UDP protocol" testcase starts....,,
+Mon Nov 28 18:14:30 2016,mount/umount 100 NFS volumes test case is,BLOCKED,,Mon Nov 28 18:14:31 2016
+Tue Nov 29 12:39:13 2016,Successfully updated quota while IOs are running,PASSED,,Tue Nov 29 12:39:13 2016
+Tue Nov 29 12:39:23 2016,Successfully updated IOPS while IOs are running,PASSED,,Tue Nov 29 12:39:24 2016
+Tue Nov 29 12:39:34 2016,Successfully updated nfs threads while IOs are running,PASSED,,Tue Nov 29 12:39:34 2016
+Tue Nov 29 12:39:34 2016,Edit the properties of the dataset while IOs are running, testcase is,PASSED, ,Tue Nov 29 12:39:44 2016
+
+"Specify the NFS mount to use the TCP/UDP protocol" testcase starts....,,
+Tue Nov 29 12:40:24 2016,Specify the NFS mount to use the TCP/UDP protocol, testcase is,PASSED, ,Tue Nov 29 12:40:26 2016
+"Specify the NFS mount to use the TCP/UDP protocol" testcase ends....,,
+
+
+"Specify the NFS mount to use the TCP/UDP protocol" testcase starts....,,
+Tue Nov 29 12:40:37 2016,Specify the NFS mount to use the TCP/UDP protocol, testcase is,PASSED, ,Tue Nov 29 12:40:38 2016
+"Specify the NFS mount to use the TCP/UDP protocol" testcase ends....,,
+
+Tue Nov 29 12:40:45 2016,updating QOS property is Passed,PASSED,,Tue Nov 29 12:44:03 2016
+Tue Nov 29 12:40:45 2016,Iops value are different after updating thevalue,PASSED,,Tue Nov 29 12:44:28 2016
+Tue Nov 29 12:45:18 2016,updating QOS property is Passed,PASSED,,Tue Nov 29 12:48:37 2016
+Tue Nov 29 12:45:18 2016,Throughput value are different after updatingthe value and iops are running,PASSED,,Tue Nov 29 12:49:03 2016
+Tue Nov 29 12:51:05 2016,Volume is Unmounted Succesfully is,PASSED,,Tue Nov 29 12:51:11 2016
+Tue Nov 29 12:51:15 2016,Mount NFS when Network set to None test case:,PASSED,,Tue Nov 29 12:51:20 2016
+Tue Nov 29 12:51:15 2016,Mount NFS when Network set to perticular N/W test case:,PASSED,,Tue Nov 29 12:51:33 2016
+Tue Nov 29 12:51:15 2016,Mount NFS when Network set to ALL test case:,PASSED,,Tue Nov 29 12:51:33 2016
+Tue Nov 29 12:55:22 2016,Snapshot created successfully on NFS share,PASSED,,Tue Nov 29 12:56:31 2016
+Tue Nov 29 12:55:22 2016,snapshot functionality on NFS share is working fine...,PASSED,,Tue Nov 29 12:56:38 2016
+Tue Nov 29 12:56:43 2016,Gracefull HA test case(NFS) passed,PASSED,,Tue Nov 29 12:57:54 2016
+Tue Nov 29 12:56:43 2016,Gracefull HA test case(NFS) passed,PASSED,,Tue Nov 29 13:00:51 2016
+Tue Nov 29 13:04:17 2016,mount/umount 100 NFS volumes test case is,PASSED,,Tue Nov 29 13:24:31 2016
+Thu Dec  1 18:30:21 2016,create pool, create vsms for regression test is,BLOCKED,,Thu Dec  1 18:30:22 2016
+Thu Dec  1 18:31:35 2016,create pool, create vsms for regression test is,BLOCKED,,Thu Dec  1 18:31:36 2016
+Thu Dec  1 18:32:33 2016,create pool, create vsms for regression test is,BLOCKED,,Thu Dec  1 18:33:08 2016
+
+"Adding more initiator in host allow" testcase starts....,,
+Thu Dec  1 18:38:58 2016,"Adding more initiator in host allow" testcase is ,FAILED, ,Thu Dec  1 18:39:00 2016
+
+"Adding more initiator in host allow" testcase starts....,,
+Thu Dec  1 19:11:31 2016,"Adding more initiator in host allow" testcase is ,FAILED, ,Thu Dec  1 19:11:32 2016
+Tue Dec  6 11:41:46 2016,create pool, create vsms for regression test is,BLOCKED,,Tue Dec  6 11:41:46 2016
+Tue Dec  6 11:43:57 2016,create pool, create vsms for regression test is,BLOCKED,,Tue Dec  6 11:44:00 2016
+Tue Dec  6 12:06:29 2016,create pool, create vsms for regression test is,BLOCKED,,Tue Dec  6 12:06:32 2016
+Tue Dec  6 12:53:23 2016,create pool, create vsms for regression test is,BLOCKED,,Tue Dec  6 12:53:26 2016
+Tue Dec  6 13:03:06 2016,create pool, create vsms for regression test is,BLOCKED,,Tue Dec  6 13:03:09 2016
+Tue Dec  6 14:41:13 2016,create pool, create vsms for regression test is,BLOCKED,,Tue Dec  6 14:41:16 2016

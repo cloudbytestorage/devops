@@ -1,0 +1,30 @@
+{
+
+  "_JSON Configuration": "Starts Here",
+
+
+  "Build_Path": "http://20.10.1.101/dailybuilds/1.4.0.p6/Aug23-1.4.0.950/patch_1.4.0.p6_950.tar.gz",
+
+  "setup_type": "Node-HA, EC-HA",
+  "setup": "Node-HA",
+  
+  "host": "20.10.218.189",
+  "username": "admin",
+  "password": "test",
+  "node_pswd": "test",
+ 
+  "EC1_IP": "20.10.112.70",
+  "EC1_Username": "root",
+  "EC1_Password": "test",
+  
+  "Node1_IP": "20.10.83.15",
+  "Node1_Username": "root",
+  "Node1_Password": "test",
+
+  "Node2_IP": "20.10.112.72",
+  "Node2_Username": "root",
+  "Node2_Password": "test",
+
+  "_JSON Configuration": "Ends Here"
+
+}
