@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-./gradlew -Dargs1=$1 -Dargs2=$2

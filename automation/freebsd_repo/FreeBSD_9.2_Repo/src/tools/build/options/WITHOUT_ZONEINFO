@@ -1,2 +1,0 @@
-.\" $FreeBSD: releng/9.2/tools/build/options/WITHOUT_ZONEINFO 235587 2012-05-18 02:00:01Z gjb $
-Set to not build the timezone database.

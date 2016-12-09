@@ -1,7 +1,0 @@
-# $FreeBSD: releng/9.2/tools/tools/ifinfo/Makefile 139103 2004-12-21 08:47:35Z ru $
-
-PROG=	ifinfo
-SRCS=	ifinfo.c rfc1650.c
-NO_MAN=
-
-.include <bsd.prog.mk>
