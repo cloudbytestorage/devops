@@ -1,0 +1,54 @@
+https://20.10.48.130/client/api?apikey=sfjJa6w6wxuiv_ju4KMiKCkTmOQO_ivRos4Qkht25CVO5w6zrCeR_tdxnutIkvx5jH0H8cnJR7dJ32sZ1XyAvQ&response=json&command=listFileSystem
+PoolRaidz1
+iopscontrolled = true
+throughputcontrolled = false
+deleteISCSI1
+TSM3
+Account1
+deleteISCSI1Account1TSM3
+iopscontrolled = true
+throughputcontrolled = false
+inside iops loop
+ reng list | grep -A 9 PoolRaidz1_ | grep 'Renegade IO remainder' | awk '{print$4}' 
+poolrengremainediops= 74980
+
+ reng list | grep -A 9 PoolRaidz1_ | grep 'Renegade throughput remainder' | awk '{print$4}'
+poolrengremained throughput=1240465408
+
+poolrengiops1= 74980
+
+volumeusediops=
+10
+https://20.10.48.130/client/api?apikey=sfjJa6w6wxuiv_ju4KMiKCkTmOQO_ivRos4Qkht25CVO5w6zrCeR_tdxnutIkvx5jH0H8cnJR7dJ32sZ1XyAvQ&response=json&command=deleteFileSystem&id=13215d69-b954-30ec-9d36-8c32902315e7
+https://20.10.48.130/client/api?apikey=sfjJa6w6wxuiv_ju4KMiKCkTmOQO_ivRos4Qkht25CVO5w6zrCeR_tdxnutIkvx5jH0H8cnJR7dJ32sZ1XyAvQ&response=json&command=queryAsyncJobResult&jobId=564af424-8613-416e-86de-b7ab90860651
+Processing ...
+0
+https://20.10.48.130/client/api?apikey=sfjJa6w6wxuiv_ju4KMiKCkTmOQO_ivRos4Qkht25CVO5w6zrCeR_tdxnutIkvx5jH0H8cnJR7dJ32sZ1XyAvQ&response=json&command=queryAsyncJobResult&jobId=564af424-8613-416e-86de-b7ab90860651
+Processing ...
+0
+https://20.10.48.130/client/api?apikey=sfjJa6w6wxuiv_ju4KMiKCkTmOQO_ivRos4Qkht25CVO5w6zrCeR_tdxnutIkvx5jH0H8cnJR7dJ32sZ1XyAvQ&response=json&command=queryAsyncJobResult&jobId=564af424-8613-416e-86de-b7ab90860651
+Processing ...
+0
+https://20.10.48.130/client/api?apikey=sfjJa6w6wxuiv_ju4KMiKCkTmOQO_ivRos4Qkht25CVO5w6zrCeR_tdxnutIkvx5jH0H8cnJR7dJ32sZ1XyAvQ&response=json&command=queryAsyncJobResult&jobId=564af424-8613-416e-86de-b7ab90860651
+Processing ...
+0
+https://20.10.48.130/client/api?apikey=sfjJa6w6wxuiv_ju4KMiKCkTmOQO_ivRos4Qkht25CVO5w6zrCeR_tdxnutIkvx5jH0H8cnJR7dJ32sZ1XyAvQ&response=json&command=queryAsyncJobResult&jobId=564af424-8613-416e-86de-b7ab90860651
+Processing ...
+0
+https://20.10.48.130/client/api?apikey=sfjJa6w6wxuiv_ju4KMiKCkTmOQO_ivRos4Qkht25CVO5w6zrCeR_tdxnutIkvx5jH0H8cnJR7dJ32sZ1XyAvQ&response=json&command=queryAsyncJobResult&jobId=564af424-8613-416e-86de-b7ab90860651
+Processing ...
+0
+https://20.10.48.130/client/api?apikey=sfjJa6w6wxuiv_ju4KMiKCkTmOQO_ivRos4Qkht25CVO5w6zrCeR_tdxnutIkvx5jH0H8cnJR7dJ32sZ1XyAvQ&response=json&command=queryAsyncJobResult&jobId=564af424-8613-416e-86de-b7ab90860651
+Dataset 'deleteISCSI1' deleted which had '10' iops
+ reng list | grep -A 9 PoolRaidz1_ | grep 'Renegade IO remainder' | awk '{print$4}' 
+poolrengremainediops= 74990
+
+ reng list | grep -A 9 PoolRaidz1_ | grep 'Renegade throughput remainder' | awk '{print$4}'
+poolrengremained throughput=1240465408
+
+poolrengiops2= 
+74990
+finalpoolrengiops=
+74990
+Pool QoS change Post Dataset Deletion passed
+done

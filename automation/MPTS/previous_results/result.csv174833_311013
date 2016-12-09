@@ -1,0 +1,50 @@
+Mount of NFS Volume TSM1NFS1,PASSED,
+Creation of File on NFS Volume TSM1NFS1,PASSED,
+Mount of NFS Volume TSM1NFS2,PASSED,
+Creation of File on NFS Volume TSM1NFS2,PASSED,
+Mount of NFS Volume TSM1NFS3,PASSED,
+Creation of File on NFS Volume TSM1NFS3,PASSED,
+Mount of NFS Volume TSM1NFS4,PASSED,
+Creation of File on NFS Volume TSM1NFS4,PASSED,
+Mount of NFS Volume TSM1NFS5,PASSED,
+Creation of File on NFS Volume TSM1NFS5,PASSED,
+Mount of NFS Volume TSM2NFS6,PASSED,
+Creation of File on NFS Volume TSM2NFS6,PASSED,
+Mount of NFS Volume TSM2NFS7,PASSED,
+Creation of File on NFS Volume TSM2NFS7,PASSED,
+Mount of NFS Volume TSM2NFS8,PASSED,
+Creation of File on NFS Volume TSM2NFS8,PASSED,
+Mount of NFS Volume TSM2NFS9,PASSED,
+Creation of File on NFS Volume TSM2NFS9,PASSED,
+Mount of NFS Volume TSM2NFS10,PASSED,
+Creation of File on NFS Volume TSM2NFS10,PASSED,
+Login of iSCSI Volume TSM1iSCSI1,PASSED,
+Creation of File on ISCSI Volume TSM1iSCSI1,PASSED,
+Logout of iSCSI Volume TSM1iSCSI1,PASSED,
+Login of iSCSI Volume TSM1iSCSI2,PASSED,
+Creation of File on ISCSI Volume TSM1iSCSI2,PASSED,
+Logout of iSCSI Volume TSM1iSCSI2,PASSED,
+Login of iSCSI Volume TSM1iSCSI3,PASSED,
+Creation of File on ISCSI Volume TSM1iSCSI3,PASSED,
+Logout of iSCSI Volume TSM1iSCSI3,PASSED,
+Login of iSCSI Volume TSM1iSCSI4,PASSED,
+Creation of File on ISCSI Volume TSM1iSCSI4,PASSED,
+Logout of iSCSI Volume TSM1iSCSI4,PASSED,
+Login of iSCSI Volume TSM1iSCSI5,PASSED,
+Creation of File on ISCSI Volume TSM1iSCSI5,PASSED,
+Logout of iSCSI Volume TSM1iSCSI5,PASSED,
+Login of iSCSI Volume TSM2iSCSI6,FAILED,iscsiadm: no records found!
+
+Further Execution of TCs Skipped on iSCSI Volume TSM2iSCSI6,Due to Login Failed, 
+Login of iSCSI Volume TSM2iSCSI7,FAILED,iscsiadm: no records found!
+
+Further Execution of TCs Skipped on iSCSI Volume TSM2iSCSI7,Due to Login Failed, 
+Login of iSCSI Volume TSM2iSCSI8,FAILED,iscsiadm: no records found!
+
+Further Execution of TCs Skipped on iSCSI Volume TSM2iSCSI8,Due to Login Failed, 
+Login of iSCSI Volume TSM2iSCSI9,FAILED,iscsiadm: no records found!
+
+Further Execution of TCs Skipped on iSCSI Volume TSM2iSCSI9,Due to Login Failed, 
+Login of iSCSI Volume TSM2iSCSI10,FAILED,iscsiadm: no records found!
+
+Further Execution of TCs Skipped on iSCSI Volume TSM2iSCSI10,Due to Login Failed, 

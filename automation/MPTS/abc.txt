@@ -1,0 +1,3 @@
+Fri Sep 19 12:19:58 2014,md5sum result of file 'cbrequest.py' on volume snpISCSI1 is: ,FAILED,,Fri Sep 19 12:20:05 2014
+Fri Sep 19 12:19:58 2014,Result for file 'createDeleteSnapshot.py' should not exit is: ,FAILED,,Fri Sep 19 12:20:05 2014
+Fri Sep 19 12:41:33 2014,Dedup Feature is not working on'PoolRaidz1' using dedupISCSI1 ,FAILED, ,Fri Sep 19 12:49:28 2014

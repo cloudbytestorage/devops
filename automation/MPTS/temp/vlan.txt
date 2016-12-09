@@ -1,0 +1,6 @@
+  "Number_of_Vlans": "1",
+  "_Vlan Configuration": "Details for Vlan1",
+  "vlanInterface1": "em1",
+  "vlanTag1": "1",
+  "vlanClusterName1": "Cluster1",
+

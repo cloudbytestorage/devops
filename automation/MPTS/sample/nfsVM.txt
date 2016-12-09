@@ -1,0 +1,4 @@
+ "_VM Configuration NFS": "Details for VM_#MyVaLuE#_..",
+ "nfsvmName_#MyVaLuE#_": "VMNAME",
+ "nfsdatastoreName_#MyVaLuE#_": "DATASTORENAME",
+ "nfsvmPassword_#MyVaLuE#_": "VMPASSWORD",

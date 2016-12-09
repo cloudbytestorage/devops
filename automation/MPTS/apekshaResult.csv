@@ -1,0 +1,33 @@
+Fri Jul 25 12:43:42 2014,ISCSIVolume ExpandISCSI1 Creation,PASSED,,Fri Jul 25 12:43:50 2014
+Fri Jul 25 12:43:50 2014,ISCSIVolume ExpandISCSI2 Creation,PASSED,,Fri Jul 25 12:43:59 2014
+Fri Jul 25 12:43:59 2014,NFSVolume ExpandNFS1 Creation,PASSED,,Fri Jul 25 12:44:04 2014
+Fri Jul 25 12:44:04 2014,NFSVolume ExpandNFS2 Creation,PASSED,,Fri Jul 25 12:44:08 2014
+Fri Jul 25 12:44:08 2014,CIFSVolume ExpandCIFS1 Creation,PASSED,,Fri Jul 25 12:44:17 2014
+Fri Jul 25 12:44:17 2014,CIFSVolume ExpandCIFS2 Creation,PASSED,,Fri Jul 25 12:44:26 2014
+Fri Jul 25 12:44:42 2014,Checksum Test Case on NFS Volume ExpandNFS1 is:,PASSED,,Fri Jul 25 12:44:43 2014
+Fri Jul 25 12:44:43 2014,Checksum Test Case on NFS Volume ExpandNFS2 is:,PASSED,,Fri Jul 25 12:44:44 2014
+Fri Jul 25 12:44:44 2014,Further Execution of TCs Skipped on iSCSI Volume ExpandISCSI1,Due to Login Failed, ,Fri Jul 25 12:44:49 2014
+Fri Jul 25 12:44:49 2014,Further Execution of TCs Skipped on iSCSI Volume ExpandISCSI2,Due to Login Failed, ,Fri Jul 25 12:44:54 2014
+Fri Jul 25 12:44:54 2014,Checksum result on CIFS Volume ExpandCIFS1 is:,PASSED,,Fri Jul 25 12:44:58 2014
+Fri Jul 25 12:44:58 2014,Checksum result on CIFS Volume ExpandCIFS2 is:,PASSED,,Fri Jul 25 12:44:59 2014
+Fri Jul 25 12:45:01 2014,ExpandISCSI1 volume creation - Negative testcase,PASSED,Failed to provision Qos group due to : A storage volume with that name already exists. Please specify a unique storage volume name.,Fri Jul 25 12:45:03 2014
+Fri Jul 25 12:45:03 2014,ExpandISCSI2 volume creation - Negative testcase,PASSED,Failed to provision Qos group due to : A storage volume with that name already exists. Please specify a unique storage volume name.,Fri Jul 25 12:45:06 2014
+Fri Jul 25 12:45:07 2014,ExpandNFS1 volume creation - negative testcase,PASSED,Failed to provision Qos group due to : A storage volume with that name already exists. Please specify a unique storage volume name.,Fri Jul 25 12:45:09 2014
+Fri Jul 25 12:45:09 2014,ExpandNFS2 volume creation - negative testcase,PASSED,Failed to provision Qos group due to : A storage volume with that name already exists. Please specify a unique storage volume name.,Fri Jul 25 12:45:12 2014
+Fri Jul 25 12:45:12 2014,ExpandCIFS1 volume creation - negative testcase,PASSED,Failed to provision Qos group due to : A storage volume with that name already exists. Please specify a unique storage volume name.,Fri Jul 25 12:45:14 2014
+Fri Jul 25 12:45:14 2014,ExpandCIFS2 volume creation - negative testcase,PASSED,Failed to provision Qos group due to : A storage volume with that name already exists. Please specify a unique storage volume name.,Fri Jul 25 12:45:17 2014
+Fri Jul 25 12:45:17 2014,Pool PoolRaidz1 Creation- negative testcase,PASSED,[Disks][Labels:C4R1-P0h5,C6R1-P0h5]:C4R1-P0h5 is part of Pool PoolRaidz1, C6R1-P0h5 is part of Pool PoolRaidz1 To continue, select an available disks.,Fri Jul 25 12:45:18 2014
+Fri Jul 25 12:45:18 2014,Pool SamediskPool Creation- negative testcase,PASSED,[Disks][Labels:C2R1-P0h5,C6R1-P0h5]:C2R1-P0h5 is part of Pool PoolRaidz1, C6R1-P0h5 is part of Pool PoolRaidz1 To continue, select an available disks.,Fri Jul 25 12:45:21 2014
+Fri Jul 25 14:29:10 2014,ISCSIVolume TPISCSI1 Creation,PASSED,,Fri Jul 25 14:29:19 2014
+Fri Jul 25 14:29:26 2014,Checksum result on ISCSI Volume TPISCSI1 is:,PASSED,,Fri Jul 25 14:32:24 2014
+Fri Jul 25 14:37:57 2014,No Thin provisioning alert for volume received,FAILED,,Fri Jul 25 14:37:57 2014
+Fri Jul 25 14:37:58 2014,TPISCSI1 volume expanded successfully,PASSED,,Fri Jul 25 14:37:59 2014
+Fri Jul 25 14:42:59 2014,No Thin provisioning alert for volume received,FAILED,,Fri Jul 25 14:42:59 2014
+Fri Jul 25 14:42:59 2014,ISCSIVolume SpaceReclaimISCSI1 Creation,PASSED,,Fri Jul 25 14:43:10 2014
+Fri Jul 25 14:43:10 2014,NFSVolume SpaceReclaimNFS1 Creation,PASSED,,Fri Jul 25 14:43:17 2014
+Fri Jul 25 14:43:17 2014,CIFSVolume SpaceReclaimCIFS1 Creation,PASSED,,Fri Jul 25 14:43:26 2014
+Fri Jul 25 14:43:39 2014, space reclaimation successfull on nfs volume SpaceReclaimNFS1 on client 0 10 0,PASSED, ,Fri Jul 25 14:43:55 2014
+Fri Jul 25 14:43:39 2014, space reclaimation successfull on nfs volume SpaceReclaimNFS1 on controller 40.0 10.4 40.0,PASSED, ,Fri Jul 25 14:43:55 2014
+Fri Jul 25 14:43:55 2014, space reclaimation successfull on cifs volume SpaceReclaimCIFS1 on client 40 11 40,PASSED, ,Fri Jul 25 14:44:10 2014
+Fri Jul 25 14:43:55 2014, space reclaimation successfull on cifs volume SpaceReclaimCIFS1 on controller 40.0 10.4 40.0,PASSED, ,Fri Jul 25 14:44:10 2014
+

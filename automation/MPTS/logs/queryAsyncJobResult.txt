@@ -1,0 +1,17 @@
+{ "queryasyncjobresultresponse" : {
+  "accountid": "853f76bf-9b0c-48cd-aabc-ddb0baede31b",
+  "userid": "0c9bb88d-fdf3-4446-ba3a-de9eb2116af7",
+  "cmd": "com.cloudbyte.api.commands.CreateVsmCmd",
+  "jobstatus": 2,
+  "jobprocstatus": 0,
+  "jobresultcode": 530,
+  "jobresulttype": "object",
+  "jobresult": {
+    "success": false,
+    "errorcode": 530,
+    "errortext": "[subnet] :The subnet mask is not valid. Specify the subnet mask of the parent interface <em0> or a higher value.",
+    "licensetype": "premium"
+  },
+  "created": "2016-11-22 03:16:53",
+  "jobid": "26a86d16-003e-4c73-9beb-abcf9f9c360d"
+} }

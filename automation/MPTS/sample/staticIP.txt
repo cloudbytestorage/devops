@@ -1,0 +1,7 @@
+  "_Static Configuration": "Details for StaticIP_#MyVaLuE#_",
+  "staticIPInterface_#MyVaLuE#_": "INTERFACE",
+  "staticIP_#MyVaLuE#_": "STATICIP",
+  "staticIPSubnet_#MyVaLuE#_": "SUBNET",
+  "staticIPGateway_#MyVaLuE#_": "GATEWAY",
+  "staticIPControllerName_#MyVaLuE#_": "NODENAME",
+

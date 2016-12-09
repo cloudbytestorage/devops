@@ -1,0 +1,52 @@
+Devman Configuration Begins,
+Begins,20.10.57.101,Ends,,,,,,,,,, 
+Site Configuration Begins,Create Site?,#Sites,SiteName,SiteConf,,,,,,,,,,,,,
+Begins,y,3,Site,End,,,,,,,,,,,,,
+Site Configuration Ends,,,,,,,,,,,,,,,,,
+Cluster Configuration Begins,StaticValue,Cluster Name,Site Name,ClusterDescription,Cluster StartIP,Cluster EndIP,Continue ClusterConf ,ClusterConf,,,,,,,,,
+Begins,y,Cluster1,Site1,ClusterDescription1,20.10.57.111,20.10.57.111,y,End
+Begins,y,Cluster2,Site1,ClusterDescription2,20.10.57.112,20.10.57.112,y,End
+Begins,y,Cluster3,Site3,ClusterDescription3,20.10.57.113,20.10.57.113,n,End
+Cluster Configuration Ends,,,,,,,,,,,,,,,,,
+Node Configuration Begins,StaticValue,Node Name,Site Name,Cluster Name,Node IP,Password,Continue NodeConf,NodeConf,,,,,,,,
+Begins,y,Node1,Site1,Cluster1,20.10.57.103,test,y,End
+Begins,n,Node2,Site1,Cluster1,20.10.57.104,test,n,End
+Node Configuration Ends,,,,,,,,,,,,,,,,,
+JBOD Configuration Begins,StaticValue,JBOD Name,No. of Disks,JbodConf,,,,,,,
+Begins,y,Enc1,11,End
+JBOD Configuration Ends,,,,,,,,,,,,,,,,,
+Pool Configuration Begins,StaticValue,Pool Name,Site Name,Cluster Name,Node Name,Continue PoolConf,PoolConf,,,,,,,
+Begins,y,PoolRaidz1,Site1,Cluster1,Node1,n,End
+Pool Configuration Ends,,,,,,,,,,,,,,,,,
+Account Configuration Begins,Create Account?,#Account,Account Name,AccountConf,,,,,,,,,,,,,
+Begins,y,3,Account,End,,,,,,,,,,,,,
+Account Configuration Ends,,,,,,,,,,,,,,,,,
+Vlan Configuration Begins,StaticValue,Interface Name, Tag Value,Cluster Name,Continue VlanConf,VlanConf,,,,,,,,,
+Begins,y,em1,1,Cluster1,y,End
+Begins,y,em2,2,Cluster1,y,End
+Begins,y,em3,3,Cluster1,n,End
+Vlan Configuration Ends,,,,,,,,,,,,,,,,,
+Static IP Configuration Begins,StaticValue,Interface Name,Static IP,Subnet,Gateway,Nodename,Continue StaticIPConf,StaticIPConf,,,,,
+Begins,y,em1,1.1.1.1,8,1.1.1.254,Node1,y,End
+Begins,y,em2,2.2.2.2,16,2.2.2.1,Node2,y,End
+Begins,y,em3,31.31.31.33,24,31.31.31.254,Node2,n,End
+Static IP Configuration Ends,,,,,,,,,,,,,,,,,
+File Name,TSM Configuration Begins,StaticValue,TSM NAME,Pool Name,Account,IP,Interface,DNS Server IP,Router,Subnet,Create NFS Volume?,#NFS Volume,NFS VolumeName,Create ISCSI Volume?,#ISCSI Volume,ISCSI VolumeName,Create CIFS Volume?,#CIFS Volume,CIFS VolumeName,Continue TSMConf,TSMConf,,,,,,,,,,,
+smoketest.txt,Begins,Y,TSM1,PoolRaidz1,Account1,20.10.57.121,em0,8.8.8.8,20.10.1.1,8,Y,2,TSM1NFS,Y,2,TSM1ISCSI,Y,2,TSM1CIFS,y,initiator,2,FC,Y,End
+smoketest.txt,Begins,n,TSM2,PoolRaidz1,Account1,20.10.57.122,em0,8.8.8.8,20.10.1.1,8,y,2,TSM2NFS,y,2,TSM2ISCSI,Y,2,TSM2CIFS,y,initiator,2,FC,Y,End
+smoketest.txt,Begins,n,TSM3,PoolRaidz1,Account1,20.10.57.123,em0,8.8.8.8,20.10.1.1,8,Y,2,TSM3NFS,Y,2,TSM3ISCSI,y,2,TSM3CIFS,y,initiator,2,FC,y,End
+regression.txt,Begins,n,RTSM1,PoolRaidz1,Account1,20.10.57.131,em0,8.8.8.8,20.10.1.1,8,y,1,RTSM1NFS,y,1,RTSM1ISCSI,y,1,RTSM1CIFS,n,initiator,1,FC,Y,End
+expandVol.txt,Begins,n,TSM1,PoolRaidz1,Account1,20.10.57.121,em0,8.8.8.8,20.10.1.1,8,Y,2,ExpandNFS,y,2,ExpandISCSI,Y,2,ExpandCIFS,n,initiator,2,FC,Y,End
+spaceReclaim.txt,Begins,n,TSM1,PoolRaidz1,Account1,20.10.57.121,em0,8.8.8.8,20.10.1.1,8,Y,1,spaceReclaimNFS,y,1,spaceReclaimISCSI,y,1,spaceReclaimCIFS,n,initiator,1,FC,Y,End
+copyVol.txt,Begins,n,TSM1,PoolRaidz1,Account1,20.10.57.121,em0,8.8.8.8,20.10.1.1,8,y,1,copyNFS,y,1,copyISCSI,y,1,copyCIFS,n,initiator,1,FC,Y,End
+dummyVol.txt,Begins,n,TSM1,PoolRaidz1,Account1,20.10.57.121,em0,8.8.8.8,20.10.1.1,8,y,2,dummyNFS,y,2,dummyISCSI,y,2,dummyCIFS,n,initiator,1,FC,Y,End
+tpAlert.txt,Begins,n,TSM1,PoolRaidz1,Account1,20.10.57.121,em0,8.8.8.8,20.10.1.1,8,y,1,TPNFS,y,1,TPISCSI,y,1,TPCIFS,n,initiator,1,FC,Y,End
+snapshot.txt,Begins,n,TSM3,PoolRaidz1,Account1,20.10.57.123,em0,8.8.8.8,20.10.1.1,8,Y,2,TSM3NFS,Y,2,TSM3ISCSI,y,2,TSM3CIFS,y,initiator,2,FC,n,End
+TSM Configuration Ends,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+Definition,,,,,,,,,,,,,,,,,
+Which ever is in green requires value,,,,,,,,,,,,,,,,,
+If y is given that will be created,,,,,,,,,,,,,,,,,
+if n is given that will not be created,,,,,,,,,,,,,,,,,
+To create a new TSM copy a row and paste below the existing one,,,,,,,,,,,,,,,,,
+At end of each section put n at Continue column to exit that section,,,,,,,,,,,,,,,,,

@@ -1,0 +1,25 @@
+  "Number_of_Clusters": "3",
+  "_Cluster Configuration" : "Details for Cluster1...",	
+  "clusterName1": "Cluster1",
+  "clusterSiteName1": "Site1",
+  "clusterDescription1": "ClusterDescription1",
+  "clusterStartIP1": "172.16.48.132",
+  "clusterEndIP1": "172.16.48.134",
+
+
+  "_Cluster Configuration" : "Details for Cluster2...",	
+  "clusterName2": "Cluster2",
+  "clusterSiteName2": "Site1",
+  "clusterDescription2": "ClusterDescription2",
+  "clusterStartIP2": "19.19.65.102",
+  "clusterEndIP2": "19.19.65.103",
+
+
+  "_Cluster Configuration" : "Details for Cluster3...",	
+  "clusterName3": "Cluster3",
+  "clusterSiteName3": "Site1",
+  "clusterDescription3": "ClusterDescription3",
+  "clusterStartIP3": "19.19.32.104",
+  "clusterEndIP3": "19.19.32.105",
+
+

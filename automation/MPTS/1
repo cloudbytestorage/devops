@@ -1,0 +1,174 @@
+Fri Jul 25 12:32:07 2014,Site Site1 Creation,PASSED,,Fri Jul 25 12:32:07 2014
+Fri Jul 25 12:32:07 2014,Site Site2 Creation,PASSED,,Fri Jul 25 12:32:07 2014
+Fri Jul 25 12:32:07 2014,Site Site3 Creation,PASSED,,Fri Jul 25 12:32:07 2014
+Fri Jul 25 12:32:08 2014,Node Node1 Import,PASSED,,Fri Jul 25 12:32:46 2014
+Fri Jul 25 12:32:54 2014,Pool PoolRaidz2 Creation ,PASSED,,Fri Jul 25 12:33:08 2014
+Fri Jul 25 12:33:09 2014,VDev with DiskGroupType spare Creation,PASSED,,Fri Jul 25 12:33:11 2014
+Fri Jul 25 12:33:11 2014,VDev with DiskGroupType log Creation,PASSED,,Fri Jul 25 12:33:14 2014
+Fri Jul 25 12:33:14 2014,VDev with DiskGroupType spare Creation,PASSED,,Fri Jul 25 12:33:16 2014
+Fri Jul 25 12:33:16 2014,VDev with DiskGroupType cache Creation,PASSED,,Fri Jul 25 12:33:18 2014
+Fri Jul 25 12:33:20 2014,verification of creation of Pool : PoolRaidz2 in DevMan and Node ,PASSED,,Fri Jul 25 12:33:20 2014
+Fri Jul 25 12:33:20 2014,verification of creation Meta Devices for PoolRaidz2 in DevMan and Node ,PASSED,,Fri Jul 25 12:33:21 2014
+Fri Jul 25 12:33:21 2014,Pool PoolRaidz2 Deletion,PASSED,,Fri Jul 25 12:33:29 2014
+Fri Jul 25 12:33:32 2014,Pool PoolMirror Creation ,PASSED,,Fri Jul 25 12:33:41 2014
+Fri Jul 25 12:33:42 2014,VDev with DiskGroupType spare Creation,PASSED,,Fri Jul 25 12:33:44 2014
+Fri Jul 25 12:33:44 2014,VDev with DiskGroupType log%20mirror Creation,PASSED,,Fri Jul 25 12:33:46 2014
+Fri Jul 25 12:33:46 2014,VDev with DiskGroupType spare Creation,PASSED,,Fri Jul 25 12:33:48 2014
+Fri Jul 25 12:33:48 2014,VDev with DiskGroupType cache Creation,PASSED,,Fri Jul 25 12:33:51 2014
+Fri Jul 25 12:33:52 2014,verification of creation of Pool : PoolMirror in DevMan and Node ,PASSED,,Fri Jul 25 12:33:53 2014
+Fri Jul 25 12:33:53 2014,verification of creation Meta Devices for PoolMirror in DevMan and Node ,PASSED,,Fri Jul 25 12:33:53 2014
+Fri Jul 25 12:33:53 2014,Pool PoolMirror Deletion,PASSED,,Fri Jul 25 12:34:00 2014
+Fri Jul 25 12:34:04 2014,Pool PoolRaidz1 Creation ,PASSED,,Fri Jul 25 12:34:10 2014
+Fri Jul 25 12:34:10 2014,VDev with DiskGroupType spare Creation,PASSED,,Fri Jul 25 12:34:13 2014
+Fri Jul 25 12:34:13 2014,VDev with DiskGroupType log Creation,PASSED,,Fri Jul 25 12:34:15 2014
+Fri Jul 25 12:34:15 2014,VDev with DiskGroupType spare Creation,PASSED,,Fri Jul 25 12:34:17 2014
+Fri Jul 25 12:34:17 2014,VDev with DiskGroupType cache Creation,PASSED,,Fri Jul 25 12:34:20 2014
+Fri Jul 25 12:34:21 2014,verification of creation of Pool : PoolRaidz1 in DevMan and Node ,PASSED,,Fri Jul 25 12:34:22 2014
+Fri Jul 25 12:34:22 2014,verification of creation Meta Devices for PoolRaidz1 in DevMan and Node ,PASSED,,Fri Jul 25 12:34:22 2014
+Fri Jul 25 12:34:27 2014,TSM RTSM1 Creation,PASSED,,Fri Jul 25 12:34:36 2014
+Fri Jul 25 12:34:36 2014,ISCSIVolume RTSM1ISCSI1 Creation,PASSED,,Fri Jul 25 12:34:43 2014
+Fri Jul 25 12:34:44 2014,NFSVolume RTSM1NFS1 Creation,PASSED,,Fri Jul 25 12:34:47 2014
+Fri Jul 25 12:34:47 2014,CIFSVolume RTSM1CIFS1 Creation,PASSED,,Fri Jul 25 12:34:52 2014
+Fri Jul 25 12:34:56 2014,Site Admin abcd@cb.com Creation Verification from Devman,PASSED,,Fri Jul 25 12:34:57 2014
+Fri Jul 25 12:34:57 2014,Site Admin xyz@cb.com Creation Verification from Devman,PASSED,,Fri Jul 25 12:34:57 2014
+Fri Jul 25 12:34:58 2014,Site Admin  abcd@cb.com Access Verification from Devman,PASSED,,Fri Jul 25 12:34:58 2014
+Fri Jul 25 12:34:58 2014,Site Admin  xyz@cb.com Access Verification from Devman,PASSED,,Fri Jul 25 12:34:58 2014
+Fri Jul 25 12:34:58 2014,Site Admin abcd@cb.com Deletion Verification from Devman,PASSED,,Fri Jul 25 12:34:58 2014
+Fri Jul 25 12:34:58 2014,Site Admin xyz@cb.com Deletion Verification from Devman,PASSED,,Fri Jul 25 12:34:58 2014
+Fri Jul 25 12:34:58 2014,Site Admin abcd@cb.com Creation Verification from Devman,PASSED,,Fri Jul 25 12:34:59 2014
+Fri Jul 25 12:34:59 2014,Site Admin xyz@cb.com Creation Verification from Devman,PASSED,,Fri Jul 25 12:34:59 2014
+Fri Jul 25 12:35:00 2014,Site Admin  abcd@cb.com Access Verification from Devman,PASSED,,Fri Jul 25 12:35:00 2014
+Fri Jul 25 12:35:00 2014,Site Admin  xyz@cb.com Access Verification from Devman,PASSED,,Fri Jul 25 12:35:00 2014
+Fri Jul 25 12:35:00 2014,VLAN Addition 1 Verification from Devman,PASSED,,Fri Jul 25 12:35:01 2014
+Fri Jul 25 12:35:00 2014,VLAN Addition 1 Verification from Node,PASSED,,Fri Jul 25 12:35:07 2014
+Fri Jul 25 12:35:07 2014,VLAN Addition 2 Verification from Devman,PASSED,,Fri Jul 25 12:35:07 2014
+Fri Jul 25 12:35:07 2014,VLAN Addition 2 Verification from Node,PASSED,,Fri Jul 25 12:35:09 2014
+Fri Jul 25 12:35:09 2014,VLAN Addition 3 Verification from Devman,PASSED,,Fri Jul 25 12:35:09 2014
+Fri Jul 25 12:35:09 2014,VLAN Addition 3 Verification from Node,PASSED,,Fri Jul 25 12:35:10 2014
+Fri Jul 25 12:35:11 2014,VLAN deletion 1 Verification from Devman,PASSED,,Fri Jul 25 12:35:11 2014
+Fri Jul 25 12:35:11 2014,VLAN deletion 1 Verification from Node,PASSED,,Fri Jul 25 12:35:12 2014
+Fri Jul 25 12:35:12 2014,VLAN deletion 2 Verification from Devman,PASSED,,Fri Jul 25 12:35:13 2014
+Fri Jul 25 12:35:12 2014,VLAN deletion 2 Verification from Node,PASSED,,Fri Jul 25 12:35:14 2014
+Fri Jul 25 12:35:14 2014,VLAN deletion 3 Verification from Devman,PASSED,,Fri Jul 25 12:35:15 2014
+Fri Jul 25 12:35:14 2014,VLAN deletion 3 Verification from Node,PASSED,,Fri Jul 25 12:35:16 2014
+Fri Jul 25 12:35:16 2014,VLAN Addition 1 Verification from Devman,PASSED,,Fri Jul 25 12:35:17 2014
+Fri Jul 25 12:35:16 2014,VLAN Addition 1 Verification from Node,PASSED,,Fri Jul 25 12:35:18 2014
+Fri Jul 25 12:35:18 2014,VLAN Addition 2 Verification from Devman,PASSED,,Fri Jul 25 12:35:19 2014
+Fri Jul 25 12:35:18 2014,VLAN Addition 2 Verification from Node,PASSED,,Fri Jul 25 12:35:20 2014
+Fri Jul 25 12:35:20 2014,VLAN Addition 3 Verification from Devman,PASSED,,Fri Jul 25 12:35:20 2014
+Fri Jul 25 12:35:20 2014,VLAN Addition 3 Verification from Node,PASSED,,Fri Jul 25 12:35:21 2014
+Fri Jul 25 12:35:22 2014,VLAN deletion 1 Verification from Devman,PASSED,,Fri Jul 25 12:35:22 2014
+Fri Jul 25 12:35:22 2014,VLAN deletion 1 Verification from Node,PASSED,,Fri Jul 25 12:35:23 2014
+Fri Jul 25 12:35:23 2014,VLAN deletion 2 Verification from Devman,PASSED,,Fri Jul 25 12:35:24 2014
+Fri Jul 25 12:35:23 2014,VLAN deletion 2 Verification from Node,PASSED,,Fri Jul 25 12:35:25 2014
+Fri Jul 25 12:35:25 2014,VLAN deletion 3 Verification from Devman,PASSED,,Fri Jul 25 12:35:26 2014
+Fri Jul 25 12:35:25 2014,VLAN deletion 3 Verification from Node,PASSED,,Fri Jul 25 12:35:27 2014
+Fri Jul 25 12:35:27 2014,Static IP Addition em1 Verification from Devman,PASSED,,Fri Jul 25 12:35:28 2014
+Fri Jul 25 12:35:27 2014,Static IP Addition em1 Verification from Node,PASSED,,Fri Jul 25 12:35:29 2014
+Fri Jul 25 12:35:29 2014,Static IP Addition em2 Verification from Devman,PASSED,,Fri Jul 25 12:35:29 2014
+Fri Jul 25 12:35:29 2014,Static IP Addition em2 Verification from Node,PASSED,,Fri Jul 25 12:35:30 2014
+Fri Jul 25 12:35:30 2014,Static IP Addition em3 Verification from Devman,PASSED,,Fri Jul 25 12:35:31 2014
+Fri Jul 25 12:35:30 2014,Static IP Addition em3 Verification from Node,PASSED,,Fri Jul 25 12:35:32 2014
+Fri Jul 25 12:35:32 2014,Static IP Clear em1 Verification from Devman,PASSED,,Fri Jul 25 12:35:32 2014
+Fri Jul 25 12:35:32 2014,Static IP Addition em1 Verification from Node,PASSED,,Fri Jul 25 12:35:34 2014
+Fri Jul 25 12:35:34 2014,Static IP Clear em2 Verification from Devman,PASSED,,Fri Jul 25 12:35:34 2014
+Fri Jul 25 12:35:34 2014,Static IP Addition em2 Verification from Node,PASSED,,Fri Jul 25 12:35:35 2014
+Fri Jul 25 12:35:35 2014,Static IP Clear em3 Verification from Devman,PASSED,,Fri Jul 25 12:35:36 2014
+Fri Jul 25 12:35:35 2014,Static IP Addition em3 Verification from Node,PASSED,,Fri Jul 25 12:35:37 2014
+Fri Jul 25 12:35:37 2014,Static IP Addition em1 Verification from Devman,PASSED,,Fri Jul 25 12:35:37 2014
+Fri Jul 25 12:35:37 2014,Static IP Addition em1 Verification from Node,PASSED,,Fri Jul 25 12:35:39 2014
+Fri Jul 25 12:35:39 2014,Static IP Addition em2 Verification from Devman,PASSED,,Fri Jul 25 12:35:39 2014
+Fri Jul 25 12:35:39 2014,Static IP Addition em2 Verification from Node,PASSED,,Fri Jul 25 12:35:40 2014
+Fri Jul 25 12:35:40 2014,Static IP Addition em3 Verification from Devman,PASSED,,Fri Jul 25 12:35:41 2014
+Fri Jul 25 12:35:40 2014,Static IP Addition em3 Verification from Node,PASSED,,Fri Jul 25 12:35:47 2014
+Fri Jul 25 12:35:47 2014,Static IP Clear em1 Verification from Devman,PASSED,,Fri Jul 25 12:35:47 2014
+Fri Jul 25 12:35:47 2014,Static IP Addition em1 Verification from Node,PASSED,,Fri Jul 25 12:35:49 2014
+Fri Jul 25 12:35:49 2014,Static IP Clear em2 Verification from Devman,PASSED,,Fri Jul 25 12:35:49 2014
+Fri Jul 25 12:35:49 2014,Static IP Addition em2 Verification from Node,PASSED,,Fri Jul 25 12:35:50 2014
+Fri Jul 25 12:35:50 2014,Static IP Clear em3 Verification from Devman,PASSED,,Fri Jul 25 12:35:50 2014
+Fri Jul 25 12:35:50 2014,Static IP Addition em3 Verification from Node,PASSED,,Fri Jul 25 12:35:52 2014
+Fri Jul 25 12:35:52 2014,HA Admin ha1@cb.com Creation Verification from Devman,PASSED,,Fri Jul 25 12:35:52 2014
+Fri Jul 25 12:35:52 2014,HA Admin ha2@cb.com Creation Verification from Devman,PASSED,,Fri Jul 25 12:35:53 2014
+Fri Jul 25 12:35:54 2014,HA Admin  ha1@cb.com Access Verification from Devman,PASSED,,Fri Jul 25 12:35:54 2014
+Fri Jul 25 12:35:54 2014,HA Admin  ha2@cb.com Access Verification from Devman,PASSED,,Fri Jul 25 12:35:54 2014
+Fri Jul 25 12:35:54 2014,HA Admin ha1@cb.com Deletion Verification from Devman,PASSED,,Fri Jul 25 12:35:54 2014
+Fri Jul 25 12:35:54 2014,HA Admin ha2@cb.com Deletion Verification from Devman,PASSED,,Fri Jul 25 12:35:54 2014
+Fri Jul 25 12:35:55 2014,HA Admin ha1@cb.com Creation Verification from Devman,PASSED,,Fri Jul 25 12:35:55 2014
+Fri Jul 25 12:35:55 2014,HA Admin ha2@cb.com Creation Verification from Devman,PASSED,,Fri Jul 25 12:35:55 2014
+Fri Jul 25 12:35:56 2014,HA Admin  ha1@cb.com Access Verification from Devman,PASSED,,Fri Jul 25 12:35:56 2014
+Fri Jul 25 12:35:56 2014,HA Admin  ha2@cb.com Access Verification from Devman,PASSED,,Fri Jul 25 12:35:57 2014
+Fri Jul 25 12:36:09 2014,TSM TSM1 Creation,PASSED,,Fri Jul 25 12:36:18 2014
+Fri Jul 25 12:36:18 2014,TSM TSM2 Creation,PASSED,,Fri Jul 25 12:36:28 2014
+Fri Jul 25 12:36:28 2014,TSM TSM3 Creation,PASSED,,Fri Jul 25 12:36:37 2014
+Fri Jul 25 12:36:37 2014,ISCSIVolume TSM1ISCSI1 Creation,PASSED,,Fri Jul 25 12:36:44 2014
+Fri Jul 25 12:36:44 2014,ISCSIVolume TSM1ISCSI2 Creation,PASSED,,Fri Jul 25 12:36:51 2014
+Fri Jul 25 12:36:51 2014,ISCSIVolume TSM1ISCSI3 Creation,PASSED,,Fri Jul 25 12:36:57 2014
+Fri Jul 25 12:36:57 2014,ISCSIVolume TSM1ISCSI4 Creation,PASSED,,Fri Jul 25 12:37:04 2014
+Fri Jul 25 12:37:04 2014,ISCSIVolume TSM1ISCSI5 Creation,PASSED,,Fri Jul 25 12:37:11 2014
+Fri Jul 25 12:37:11 2014,ISCSIVolume TSM2ISCSI6 Creation,PASSED,,Fri Jul 25 12:37:18 2014
+Fri Jul 25 12:37:18 2014,ISCSIVolume TSM2ISCSI7 Creation,PASSED,,Fri Jul 25 12:37:25 2014
+Fri Jul 25 12:37:25 2014,ISCSIVolume TSM2ISCSI8 Creation,PASSED,,Fri Jul 25 12:37:32 2014
+Fri Jul 25 12:37:32 2014,ISCSIVolume TSM2ISCSI9 Creation,PASSED,,Fri Jul 25 12:37:40 2014
+Fri Jul 25 12:37:40 2014,ISCSIVolume TSM2ISCSI10 Creation,PASSED,,Fri Jul 25 12:37:47 2014
+Fri Jul 25 12:37:47 2014,ISCSIVolume TSM3ISCSI11 Creation,PASSED,,Fri Jul 25 12:37:54 2014
+Fri Jul 25 12:37:54 2014,ISCSIVolume TSM3ISCSI12 Creation,PASSED,,Fri Jul 25 12:38:01 2014
+Fri Jul 25 12:38:01 2014,ISCSIVolume TSM3ISCSI13 Creation,PASSED,,Fri Jul 25 12:38:08 2014
+Fri Jul 25 12:38:08 2014,ISCSIVolume TSM3ISCSI14 Creation,PASSED,,Fri Jul 25 12:38:15 2014
+Fri Jul 25 12:38:15 2014,ISCSIVolume TSM3ISCSI15 Creation,PASSED,,Fri Jul 25 12:38:23 2014
+Fri Jul 25 12:38:36 2014,NFSVolume TSM1NFS1 Creation,PASSED,,Fri Jul 25 12:38:39 2014
+Fri Jul 25 12:38:39 2014,NFSVolume TSM1NFS2 Creation,PASSED,,Fri Jul 25 12:38:42 2014
+Fri Jul 25 12:38:42 2014,NFSVolume TSM1NFS3 Creation,PASSED,,Fri Jul 25 12:38:45 2014
+Fri Jul 25 12:38:45 2014,NFSVolume TSM1NFS4 Creation,PASSED,,Fri Jul 25 12:38:49 2014
+Fri Jul 25 12:38:49 2014,NFSVolume TSM1NFS5 Creation,PASSED,,Fri Jul 25 12:38:52 2014
+Fri Jul 25 12:38:52 2014,NFSVolume TSM2NFS6 Creation,PASSED,,Fri Jul 25 12:38:55 2014
+Fri Jul 25 12:38:55 2014,NFSVolume TSM2NFS7 Creation,PASSED,,Fri Jul 25 12:38:59 2014
+Fri Jul 25 12:38:59 2014,NFSVolume TSM2NFS8 Creation,PASSED,,Fri Jul 25 12:39:02 2014
+Fri Jul 25 12:39:02 2014,NFSVolume TSM2NFS9 Creation,PASSED,,Fri Jul 25 12:39:06 2014
+Fri Jul 25 12:39:06 2014,NFSVolume TSM2NFS10 Creation,PASSED,,Fri Jul 25 12:39:09 2014
+Fri Jul 25 12:39:09 2014,NFSVolume TSM3NFS11 Creation,PASSED,,Fri Jul 25 12:39:12 2014
+Fri Jul 25 12:39:12 2014,NFSVolume TSM3NFS12 Creation,PASSED,,Fri Jul 25 12:39:16 2014
+Fri Jul 25 12:39:16 2014,NFSVolume TSM3NFS13 Creation,PASSED,,Fri Jul 25 12:39:19 2014
+Fri Jul 25 12:39:19 2014,NFSVolume TSM3NFS14 Creation,PASSED,,Fri Jul 25 12:39:23 2014
+Fri Jul 25 12:39:23 2014,NFSVolume TSM3NFS15 Creation,PASSED,,Fri Jul 25 12:39:27 2014
+Fri Jul 25 12:39:36 2014,CIFSVolume TSM1CIFS1 Creation,PASSED,,Fri Jul 25 12:39:41 2014
+Fri Jul 25 12:39:41 2014,CIFSVolume TSM1CIFS2 Creation,PASSED,,Fri Jul 25 12:39:45 2014
+Fri Jul 25 12:39:45 2014,CIFSVolume TSM1CIFS3 Creation,PASSED,,Fri Jul 25 12:39:51 2014
+Fri Jul 25 12:39:51 2014,CIFSVolume TSM1CIFS4 Creation,PASSED,,Fri Jul 25 12:39:57 2014
+Fri Jul 25 12:39:57 2014,CIFSVolume TSM1CIFS5 Creation,PASSED,,Fri Jul 25 12:40:03 2014
+Fri Jul 25 12:40:03 2014,CIFSVolume TSM2CIFS6 Creation,PASSED,,Fri Jul 25 12:40:08 2014
+Fri Jul 25 12:40:08 2014,CIFSVolume TSM2CIFS7 Creation,PASSED,,Fri Jul 25 12:40:16 2014
+Fri Jul 25 12:40:16 2014,CIFSVolume TSM2CIFS8 Creation,PASSED,,Fri Jul 25 12:40:25 2014
+Fri Jul 25 12:40:25 2014,CIFSVolume TSM2CIFS9 Creation,PASSED,,Fri Jul 25 12:40:30 2014
+Fri Jul 25 12:40:30 2014,CIFSVolume TSM2CIFS10 Creation,PASSED,,Fri Jul 25 12:40:36 2014
+Fri Jul 25 12:40:36 2014,CIFSVolume TSM3CIFS11 Creation,PASSED,,Fri Jul 25 12:40:45 2014
+Fri Jul 25 12:40:45 2014,CIFSVolume TSM3CIFS12 Creation,PASSED,,Fri Jul 25 12:40:51 2014
+Fri Jul 25 12:40:51 2014,CIFSVolume TSM3CIFS13 Creation,PASSED,,Fri Jul 25 12:40:58 2014
+Fri Jul 25 12:40:58 2014,CIFSVolume TSM3CIFS14 Creation,PASSED,,Fri Jul 25 12:41:06 2014
+Fri Jul 25 12:41:06 2014,CIFSVolume TSM3CIFS15 Creation,PASSED,,Fri Jul 25 12:41:10 2014
+Fri Jul 25 12:41:33 2014,FCVolume FC1 Creation,PASSED,,Fri Jul 25 12:41:37 2014
+Fri Jul 25 12:41:37 2014,FCVolume FC2 Creation,PASSED,,Fri Jul 25 12:41:41 2014
+Fri Jul 25 12:41:41 2014,FCVolume FC3 Creation,PASSED,,Fri Jul 25 12:41:46 2014
+Fri Jul 25 12:41:46 2014,FCVolume FC4 Creation,PASSED,,Fri Jul 25 12:41:50 2014
+Fri Jul 25 12:41:50 2014,FCVolume FC5 Creation,PASSED,,Fri Jul 25 12:41:54 2014
+Fri Jul 25 12:41:54 2014,FCVolume FC6 Creation,PASSED,,Fri Jul 25 12:41:59 2014
+Fri Jul 25 12:43:42 2014,ISCSIVolume ExpandISCSI1 Creation,PASSED,,Fri Jul 25 12:43:50 2014
+Fri Jul 25 12:43:50 2014,ISCSIVolume ExpandISCSI2 Creation,PASSED,,Fri Jul 25 12:43:59 2014
+Fri Jul 25 12:43:59 2014,NFSVolume ExpandNFS1 Creation,PASSED,,Fri Jul 25 12:44:04 2014
+Fri Jul 25 12:44:04 2014,NFSVolume ExpandNFS2 Creation,PASSED,,Fri Jul 25 12:44:08 2014
+Fri Jul 25 12:44:08 2014,CIFSVolume ExpandCIFS1 Creation,PASSED,,Fri Jul 25 12:44:17 2014
+Fri Jul 25 12:44:17 2014,CIFSVolume ExpandCIFS2 Creation,PASSED,,Fri Jul 25 12:44:26 2014
+Fri Jul 25 12:44:42 2014,Checksum Test Case on NFS Volume ExpandNFS1 is:,PASSED,,Fri Jul 25 12:44:43 2014
+Fri Jul 25 12:44:43 2014,Checksum Test Case on NFS Volume ExpandNFS2 is:,PASSED,,Fri Jul 25 12:44:44 2014
+Fri Jul 25 12:44:44 2014,Further Execution of TCs Skipped on iSCSI Volume ExpandISCSI1,Due to Login Failed, ,Fri Jul 25 12:44:49 2014
+Fri Jul 25 12:44:49 2014,Further Execution of TCs Skipped on iSCSI Volume ExpandISCSI2,Due to Login Failed, ,Fri Jul 25 12:44:54 2014
+Fri Jul 25 12:44:54 2014,Checksum result on CIFS Volume ExpandCIFS1 is:,PASSED,,Fri Jul 25 12:44:58 2014
+Fri Jul 25 12:44:58 2014,Checksum result on CIFS Volume ExpandCIFS2 is:,PASSED,,Fri Jul 25 12:44:59 2014
+Fri Jul 25 12:45:01 2014,ExpandISCSI1 volume creation - Negative testcase,PASSED,Failed to provision Qos group due to : A storage volume with that name already exists. Please specify a unique storage volume name.,Fri Jul 25 12:45:03 2014
+Fri Jul 25 12:45:03 2014,ExpandISCSI2 volume creation - Negative testcase,PASSED,Failed to provision Qos group due to : A storage volume with that name already exists. Please specify a unique storage volume name.,Fri Jul 25 12:45:06 2014
+Fri Jul 25 12:45:07 2014,ExpandNFS1 volume creation - negative testcase,PASSED,Failed to provision Qos group due to : A storage volume with that name already exists. Please specify a unique storage volume name.,Fri Jul 25 12:45:09 2014
+Fri Jul 25 12:45:09 2014,ExpandNFS2 volume creation - negative testcase,PASSED,Failed to provision Qos group due to : A storage volume with that name already exists. Please specify a unique storage volume name.,Fri Jul 25 12:45:12 2014
+Fri Jul 25 12:45:12 2014,ExpandCIFS1 volume creation - negative testcase,PASSED,Failed to provision Qos group due to : A storage volume with that name already exists. Please specify a unique storage volume name.,Fri Jul 25 12:45:14 2014
+Fri Jul 25 12:45:14 2014,ExpandCIFS2 volume creation - negative testcase,PASSED,Failed to provision Qos group due to : A storage volume with that name already exists. Please specify a unique storage volume name.,Fri Jul 25 12:45:17 2014
+Fri Jul 25 12:45:17 2014,Pool PoolRaidz1 Creation- negative testcase,PASSED,[Disks][Labels:C4R1-P0h5,C6R1-P0h5]:C4R1-P0h5 is part of Pool PoolRaidz1, C6R1-P0h5 is part of Pool PoolRaidz1 To continue, select an available disks.,Fri Jul 25 12:45:18 2014
+Fri Jul 25 12:45:18 2014,Pool SamediskPool Creation- negative testcase,PASSED,[Disks][Labels:C2R1-P0h5,C6R1-P0h5]:C2R1-P0h5 is part of Pool PoolRaidz1, C6R1-P0h5 is part of Pool PoolRaidz1 To continue, select an available disks.,Fri Jul 25 12:45:21 2014
+Fri Jul 25 12:45:21 2014,ISCSIVolume TPISCSI1 Creation,PASSED,,Fri Jul 25 12:45:30 2014

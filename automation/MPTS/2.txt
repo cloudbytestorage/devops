@@ -1,0 +1,70 @@
+https://20.10.48.130/client/api?apikey=sfjJa6w6wxuiv_ju4KMiKCkTmOQO_ivRos4Qkht25CVO5w6zrCeR_tdxnutIkvx5jH0H8cnJR7dJ32sZ1XyAvQ&response=json&command=listFileSystem
+PoolRaidz1
+deleteNFS1
+TSM3
+Account1
+deleteNFS1Account1TSM3
+iopscontrolled = true
+throughputcontrolled = false
+ reng list | grep -A 9 PoolRaidz1_ | grep 'Renegade IO remainder' | awk '{print$4}' 
+poolrengremainediops= 74970
+
+ reng list | grep -A 9 PoolRaidz1_ | grep 'Renegade throughput remainder' | awk '{print$4}'
+poolrengremained throughput=1240465408
+
+inside iops loop
+74981
+https://20.10.48.130/client/api?apikey=sfjJa6w6wxuiv_ju4KMiKCkTmOQO_ivRos4Qkht25CVO5w6zrCeR_tdxnutIkvx5jH0H8cnJR7dJ32sZ1XyAvQ&response=json&command=updateQosGroup&id=c98f6328-a803-317a-af4c-c96920729f18&iops=74981
+ New IOPS value can only be increased upto 80
+volIops=
+74981
+rengiops=10
+
+Changing IOPS more than pool failed on deleteNFS1: PASSED
+>>>> NFS >>>>updated deleteNFS1
+iopscontrolled = true
+throughputcontrolled = false
+PoolRaidz1
+deleteCIFS1
+TSM3
+Account1
+deleteCIFS1Account1TSM3
+ reng list | grep -A 9 PoolRaidz1_ | grep 'Renegade IO remainder' | awk '{print$4}' 
+poolrengremainediops= 74970
+
+ reng list | grep -A 9 PoolRaidz1_ | grep 'Renegade throughput remainder' | awk '{print$4}'
+poolrengremained throughput=1240465408
+
+74981
+https://20.10.48.130/client/api?apikey=sfjJa6w6wxuiv_ju4KMiKCkTmOQO_ivRos4Qkht25CVO5w6zrCeR_tdxnutIkvx5jH0H8cnJR7dJ32sZ1XyAvQ&response=json&command=updateQosGroup&id=474d1a4a-836e-3c7a-b9d4-ab64fbccfc3e&iops=74981
+ New IOPS value can only be increased upto 80
+volIops=
+74981
+rengiops=10
+
+Changing IOPS more than pool failed on deleteCIFS1: PASSED
+>>>> CIFS >>updated deleteCIFS1
+PoolRaidz1
+iopscontrolled = true
+throughputcontrolled = false
+deleteISCSI1
+TSM3
+Account1
+deleteISCSI1Account1TSM3
+iopscontrolled = true
+throughputcontrolled = false
+ reng list | grep -A 9 PoolRaidz1_ | grep 'Renegade IO remainder' | awk '{print$4}' 
+poolrengremainediops= 74970
+
+ reng list | grep -A 9 PoolRaidz1_ | grep 'Renegade throughput remainder' | awk '{print$4}'
+poolrengremained throughput=1240465408
+
+74981
+https://20.10.48.130/client/api?apikey=sfjJa6w6wxuiv_ju4KMiKCkTmOQO_ivRos4Qkht25CVO5w6zrCeR_tdxnutIkvx5jH0H8cnJR7dJ32sZ1XyAvQ&response=json&command=updateQosGroup&id=f37571e2-3414-36cd-8468-93edfeed3bdb&iops=74981
+ New IOPS value can only be increased upto 80
+volIops=
+74981
+rengiops=10
+
+Changing IOPS more than pool failed on deleteISCSI1: PASSED
+done

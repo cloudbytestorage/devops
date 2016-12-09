@@ -1,0 +1,15 @@
+Site Configuration Begins,Create Site?,#Sites,SiteName,SiteConf,,,,,,,,,,,,,
+Begins,y,3,Site,End,,,,,,,,,,,,,
+Site Configuration Ends,,,,,,,,,,,,,,,,,
+Account Configuration Begins,Create Account?,#Account,Account Name,AccountConf,,,,,,,,,,,,,
+Begins,y,1,RAccount,End,,,,,,,,,,,,,
+Account Configuration Ends,,,,,,,,,,,,,,,,,
+TSM Configuration Begins,StaticValue,TSM NAME,Pool Name,Account,IP,Interface,Create NFS Volume?,#NFS Volume,NFS VolumeName,Create ISCSI Volume?,#ISCSI Volume,ISCSI VolumeName,Create CIFS Volume?,#CIFS Volume,CIFS VolumeName,StaticValue,TSMConf
+Begins,y,TSM1,PoolRaidz1,Account1,20.10.57.121,em0,y,2,dummyNFS,y,2,dummyISCSI,y,2,dummyCIFS,n,initiator,1,FC,Y,End
+TSM Configuration Ends,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+Definition,,,,,,,,,,,,,,,,,
+Which ever is in green requires value,,,,,,,,,,,,,,,,,
+If y is given that will be created,,,,,,,,,,,,,,,,,
+if n is given that will not be created,,,,,,,,,,,,,,,,,
+To create a new TSM copy a row and paste below the existing one,,,,,,,,,,,,,,,,,

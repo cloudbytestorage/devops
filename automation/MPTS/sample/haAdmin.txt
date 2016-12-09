@@ -1,0 +1,24 @@
+
+  "Details for creating HA Delegated Administrators" : "Starts here...",
+  "Number_of_HAAdmins": "2",
+
+  "haAdminUsername1" : "ha1@cb.com",
+  "haAdminPassword1" : "test",
+  "haAdminApikey1" : "0KltqawHnvU8Ot3YB-0L_D3ELE-HpUv_gY5Jye_txSQ4gLDU_J98JrlEtWzft5v9kKcFS93O_J-bGU5s07Quaw",
+  "noOfHAAssociated1" : "2",
+  "haAssociatedName11" : "Cluster1",
+  "haAssociatedName21" : "Cluster2",
+  "haNotAssociatedName1" : "Cluster3",
+  "haAccountName1" : "Account1",
+
+  "haAdminUsername2" : "ha2@cb.com",
+  "haAdminPassword2" : "test",
+  "haAdminApikey2" : "kEfzXuqsM39fsjHIBJURmQw8NDhQptz-NKbNknT5_tC0qFnG1qM9tz103VtuSUwT-bOG_eTJuFgmTrvmwZwnRg",
+  "noOfHAAssociated2" : "2",
+  "haAssociatedName12" : "Cluster2",
+  "haAssociatedName22" : "Cluster3",
+  "haNotAssociatedName2" : "Cluster1",
+  "haAccountName2" : "Account1",
+
+
+

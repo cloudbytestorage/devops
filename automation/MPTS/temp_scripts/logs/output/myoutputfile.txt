@@ -1,0 +1,3 @@
+NAME    SIZE  ALLOC   FREE    CAP  DEDUP  HEALTH  ALTROOT
+Pool1  31.8G   150M  31.6G     0%  1.00x  ONLINE  -
+tpool  9.94G   891M  9.07G     8%  1.00x  ONLINE  -

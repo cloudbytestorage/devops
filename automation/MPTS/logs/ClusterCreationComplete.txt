@@ -1,0 +1,19 @@
+{ "createHAClusterResponse" :  { "hacluster" : {
+  "id": "da80b4d7-aadd-4396-8d07-9203f443862c",
+  "simpleid": 3,
+  "name": "Cluster3",
+  "siteid": "e2a55536-3678-49fb-b2c9-f0494815e386",
+  "sitename": "Site1",
+  "managedstate": "Available",
+  "status": "Online",
+  "availIOPS": 0,
+  "revisionnumber": 0,
+  "startip": "19.19.32.104",
+  "endip": "19.19.32.105",
+  "hpds": [],
+  "numericquota": 0.0,
+  "currentnumericquota": 0.0,
+  "undiscoverednodes": [
+    "172.16.48.140"
+  ]
+} }  }

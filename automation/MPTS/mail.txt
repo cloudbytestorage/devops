@@ -1,0 +1,10 @@
+ 
+Summary of Automation Result
+Total number of Automated testcases are -- 28
+Total number of BLOCKED testcases are    -- 0
+Total number of FAILED testcases are    -- 1
+Total number of PASSED testcases are    -- 27
+
+Automation Report
+List of Failed TestCases are as below 
+Tue Nov 22 07:45:45 2016,TSM RTSM1 Creation,FAILED,[subnet] :The subnet mask is not valid. Specify the subnet mask of the parent interface <em0> or a higher value.,Tue Nov 22 07:45:55 2016
