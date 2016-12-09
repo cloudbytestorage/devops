@@ -1,7 +1,0 @@
-  "_Cluster Configuration" : "Details for Cluster_#MyVaLuE#_...",	
-  "clusterName_#MyVaLuE#_": "CLUSTERNAME",
-  "clusterSiteName_#MyVaLuE#_": "SITENAME",
-  "clusterDescription_#MyVaLuE#_": "CLUSTERDESCRIPTION",
-  "clusterStartIP_#MyVaLuE#_": "CLUSTERSTARTIP",
-  "clusterEndIP_#MyVaLuE#_": "CLUSTERENDIP",
-

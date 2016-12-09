@@ -1,1 +1,0 @@
-gcc iotest.c -lrt -l pthread

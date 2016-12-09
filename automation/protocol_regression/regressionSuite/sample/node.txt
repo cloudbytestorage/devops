@@ -1,7 +1,0 @@
-  "_Node Configurarion": "Details for Node_#MyVaLuE#_...",
-  "nodeName_#MyVaLuE#_": "NODENAME",
-  "nodeSiteName_#MyVaLuE#_": "SITENAME",
-  "nodeClusterName_#MyVaLuE#_": "CLUSTERNAME",
-  "nodeIP_#MyVaLuE#_": "NODEIP",
-  "nodePasswd_#MyVaLuE#_": "NODEPASSWORD",
-

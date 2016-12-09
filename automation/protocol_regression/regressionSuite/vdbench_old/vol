@@ -1,5 +1,0 @@
-data_errors=
-fsd=fsd1,anchor=mountDirectory,files=10,size=60M,openflags=o_direct
-fwd=fwd1,fsd=fsd*,xfersize=4k,rdpct=50,fileio=random,threads=10
-rd=rd1,fwd=fwd*,fwdrate=max,format=yes,elapsed=10,interval=1
-

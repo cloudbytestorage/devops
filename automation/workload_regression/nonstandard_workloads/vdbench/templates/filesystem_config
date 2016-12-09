@@ -1,4 +1,0 @@
-data_errors=1
-sd=sd1,lun=#anchor,openflags=o_direct,size=volumeSize
-wd=wd1,sd=sd*,xfersize=4k,rdpct=50,skew=100,seekpct=random
-rd=rd1,wd=wd*,elapsed=180,interval=1,iorate=max,format=yes

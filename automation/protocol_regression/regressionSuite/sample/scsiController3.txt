@@ -1,2 +1,0 @@
-scsi3.present = "TRUE"
-scsi3.sharedBus = "none"

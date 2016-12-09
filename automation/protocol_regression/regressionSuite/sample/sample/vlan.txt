@@ -1,4 +1,0 @@
-  "_Vlan Configuration": "Details for Vlan_#MyVaLuE#_",
-  "vlanInterface_#MyVaLuE#_": "INTERFACE",
-  "vlanTag_#MyVaLuE#_": "TAGVALUE",
-  "vlanClusterName_#MyVaLuE#_": "CLUSTERNAME",
