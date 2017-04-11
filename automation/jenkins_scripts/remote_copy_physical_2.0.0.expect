@@ -1,0 +1,23 @@
+#/usr/local/bin/expect -f
+
+#set timeout 60
+set timeout -1
+ 
+spawn ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no [lindex $argv 1]@[lindex $argv 0]
+ 
+expect "yes/no" { 
+    send "yes\r"
+    expect "*?assword" { send "[lindex $argv 2]\r" }
+    } "*?assword" { send "[lindex $argv 2]\r" }
+ 
+expect "Administrator@WIN-6UD4FB89STL " { send "cd C:/shareiso \r" }
+
+expect "Administrator@WIN-6UD4FB89STL " { send "wget http://20.10.1.101/dailybuilds/AutoInstall/Devman_UT/ElastiStor_UT.iso \r" }
+
+expect "Administrator@WIN-6UD4FB89STL " { send "mv ElastiStor_UT.iso latest_2.0.0.iso \r" }
+
+expect "Administrator@WIN-6UD4FB89STL " { send "sleep 300 \r" }
+
+expect "Administrator@WIN-6UD4FB89STL " { send "exit\r" }
+
+interact

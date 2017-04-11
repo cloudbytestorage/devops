@@ -1,0 +1,569 @@
+#!/bin/sh
+#-
+# Copyright (c) 2011 Nathan Whitehorn
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1. Redistributions of source code must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright
+#    notice, this list of conditions and the following disclaimer in the
+#    documentation and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+# OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+# HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+# LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+# OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+# SUCH DAMAGE.
+#
+# $FreeBSD: release/9.0.0/usr.sbin/bsdinstall/scripts/auto 228241 2011-12-03 17:17:32Z nwhitehorn $
+
+echo "Begun Installation at $(date)" > $BSDINSTALL_LOG
+
+build_version=`cat $BSDINSTALL_DISTDIR/cbdir/buildversion`
+product_name=`cat $BSDINSTALL_DISTDIR/cbdir/companybranding.txt | grep 'product' | sed 's/^.*= //'`;
+product_center=`cat $BSDINSTALL_DISTDIR/cbdir/companybranding.txt | grep 'elasticenter' | sed 's/^.*= //'`;
+product_node=`cat $BSDINSTALL_DISTDIR/cbdir/companybranding.txt | grep 'node' | sed 's/^.*= //'`;
+
+error() {
+	test -n "$DISTDIR_IS_UNIONFS" && umount -f $BSDINSTALL_DISTDIR
+	test -f $PATH_FSTAB && bsdinstall umount
+	dialog --colors --backtitle "$product_name Installer - $build_version" --title "$product_name installation ERROR in auto" \
+	    --ok-label "Exit Installation" --textbox /tmp/bsdinstall_log 0 0
+		/sbin/poweroff;
+		/bin/sleep 20
+}
+
+
+rm -rf $BSDINSTALL_TMPETC
+mkdir $BSDINSTALL_TMPETC
+
+trap true SIGINT	# This section is optional
+#bsdinstall keymap
+
+#unload the splash image and start the install program
+#kldunload  splash_bmp.ko ;
+
+#bsdinstall cloudbyteeula 
+#dialog --backtitle "$product_name Installer" --title "EULA" --yesno \
+#    "Do you accept the CloudByte EULA ?" 0 0 
+if [ ! -e /etc/install.config ] && [ ! -e $BSDINSTALL_CHROOT/etc/auto_upgrade.config ]; then
+	dialog --backtitle "$product_name Installer - $build_version" --title "End Users License Agreement" --ok-label "I Accept" --extra-button --extra-label "I Do Not Accept" --textbox  $BSDINSTALL_DISTDIR/eula.txt 50 70
+	       if [ $? -ne 0 ]; then
+			/sbin/poweroff;
+			exit
+	      fi
+fi
+
+#eula.txt is available as $BSDINSTALL_DISTDIR/eula.txt
+ 
+#CloudByte Install Welcome screen
+#dialog --colors --backtitle "CloudByte 6.0 Installer" --title "CloudByte Installation Start" --nocancel --ok-label "Continue" --extra-button --extra-label "Stop Installation" --yesno "\n \Z1\Zb WELCOME TO CLOUDBYTE 6.0 INSTALLATION. \Zn \n \n If you want to start the installation procedure CONTINUE, if you do not wish to start installation procedure, we recommend you to stop the installation right now." 10 100
+
+#instalcb_status="$?"
+
+#if [ "$instalcb_status" -ne 0 ]; then
+#	dialog --colors --backtitle "CloudByte 6.0 Installer" --title "CloudByte 6.0 EXIT" --infobox "\Z1\Zb Installation aborted by Enduser... Exiting" 10 100
+#	exit;
+#fi
+
+trap error SIGINT	# Catch cntrl-C here
+#bsdinstall hostname || error
+
+export DISTRIBUTIONS="base.txz kernel.txz"
+#if [ -f $BSDINSTALL_DISTDIR/MANIFEST ]; then
+#	DISTMENU=`cut -f 4,5,6 $BSDINSTALL_DISTDIR/MANIFEST | grep -v -e ^kernel -e ^base`
+#
+#	exec 3>&1
+#	EXTRA_DISTS=$(echo $DISTMENU | xargs dialog \
+#	    --backtitle "$product_name Installer" \
+#	    --title "Distribution Select" --nocancel --separate-output \
+#	    --checklist "Choose optional system components to install:" \
+#	    0 0 0 \
+#	2>&1 1>&3)
+#	for dist in $EXTRA_DISTS; do
+#		export DISTRIBUTIONS="$DISTRIBUTIONS $dist.txz"
+#	done
+#fi
+
+FETCH_DISTRIBUTIONS=""
+for dist in $DISTRIBUTIONS; do
+	if [ ! -f $BSDINSTALL_DISTDIR/$dist ]; then
+		FETCH_DISTRIBUTIONS="$FETCH_DISTRIBUTIONS $dist"
+	fi
+done
+FETCH_DISTRIBUTIONS=`echo $FETCH_DISTRIBUTIONS`	# Trim white space
+
+if [ -n "$FETCH_DISTRIBUTIONS" -a -n "$BSDINSTALL_CONFIGCURRENT" ]; then
+	dialog --backtitle "$product_name Installer - $build_version" --title "Network Installation" --msgbox "No installation files were found on the boot volume. The next few screens will allow you to configure networking so that they can be downloaded from the Internet." 0 0
+	bsdinstall netconfig || error
+	NETCONFIG_DONE=yes
+fi
+
+if [ -n "$FETCH_DISTRIBUTIONS" ]; then
+	exec 3>&1
+	BSDINSTALL_DISTSITE=$(`dirname $0`/mirrorselect 2>&1 1>&3)
+	MIRROR_BUTTON=$?
+	exec 3>&-
+	test $MIRROR_BUTTON -eq 0 || error
+	export BSDINSTALL_DISTSITE
+fi
+
+rm $PATH_FSTAB
+touch $PATH_FSTAB
+
+#dialog --backtitle "$product_name Installer" --title "Partitioning" --extra-button \
+#    --extra-label "Manual" --ok-label "Guided" --cancel-label "Shell" \
+#    --yesno "Would you like to use the guided partitioning tool (recommended for beginners) or to set up partitions manually (experts)? You can also open a shell and set up partitions entirely by hand." 0 0
+#
+#case $? in
+#0)	# Guided
+#	bsdinstall autopart || error
+#	bsdinstall mount || error
+#	;;
+#1)	# Shell
+#	clear
+#	echo "Use this shell to set up partitions for the new system. When finished, mount the system at $BSDINSTALL_CHROOT and place an fstab file for the new system at $PATH_FSTAB. Then type 'exit'. You can also enter the partition editor at any time by entering 'bsdinstall partedit'."
+#	sh 2>&1
+#	;;
+#3)	# Manual
+#	bsdinstall partedit || error
+#	bsdinstall mount || error
+#	;;
+#*)
+#	error
+#	;;
+#esac
+
+if [ ! -d /tmp/bsdinstall_etc ]; then
+        mkdir /tmp/bsdinstall_etc/
+        chmod 777 /tmp/bsdinstall_etc/
+fi
+    
+        chmod 777 /tmp/bsdinstall_log;
+        touch /tmp/bsdinstall_etc/._rc.conf.disk_name;
+        #touch /tmp/bsdinstall_etc/._rc.conf.ram_size;
+        touch /tmp/bsdinstall_etc/._rc.conf.root_space;
+        touch /tmp/bsdinstall_etc/._rc.conf.swap_space;
+        #touch /tmp/bsdinstall_etc/._rc.conf.tpool_space;
+
+        chmod 777 /tmp/bsdinstall_log;
+        chmod 777 /tmp/bsdinstall_etc/._rc.conf.disk_name;
+        #chmod 777 /tmp/bsdinstall_etc/._rc.conf.ram_size;
+        chmod 777 /tmp/bsdinstall_etc/._rc.conf.root_space;
+        chmod 777 /tmp/bsdinstall_etc/._rc.conf.swap_space;
+        #chmod 777 /tmp/bsdinstall_etc/._rc.conf.tpool_space;
+    
+        echo "permissions changed for bsdinstall_log" >> /tmp/bsdinstall_log;
+	
+        # START OF KARTHIK'S CHANGES
+
+	#bsdinstall check_existing_cloudbyte 
+	#upgrade_exit_status=$?;
+	#while  [ $upgrade_exit_status -eq 78 ];do 
+	#	bsdinstall check_existing_cloudbyte
+	#	upgrade_exit_status=$?;
+	#done
+	#if [ $upgrade_exit_status -ne 0 ]; then
+	#	error;	
+	#fi	
+	# 	
+	#if [ -e /tmp/upgrade_complete ];then
+    	#	return 0;
+	#fi
+
+        # END OF KARTHIK'S CHANGES	
+
+	#get install type 
+	bsdinstall user_details 
+	ext_st_user_details=$?	
+	echo "exit status of bsdinstall user_details is: $ext_st_user_details" >> /tmp/bsdinstall_log
+	while [ $ext_st_user_details -ne 0 ]; do
+		bsdinstall user_details 
+		ext_st_user_details="$?"
+		echo "exit status of bsdinstall user_details is: $ext_st_user_details" >> /tmp/bsdinstall_log
+	done;
+	
+	#removing the os disk mirror option, since its is not supported with new partition changes 
+	#bsdinstall cb_ask_os_disk_mirror || error
+
+	os_disk=`/usr/bin/head -n1 < $BSDINSTALL_TMPETC/._rc.conf.disk_name | /usr/bin/tail -n1`
+
+        if [ -e $BSDINSTALL_TMPETC/._rc.conf.mirror_disk_name ]; then
+                mirror_os_disk=`cat $BSDINSTALL_TMPETC/._rc.conf.mirror_disk_name`;
+
+                #delete partitions if any on the disk
+                /sbin/gpart delete -i 1 $mirror_os_disk                              1>>/tmp/bsdinstall_log  2>>/tmp/bsdinstall_log
+                /sbin/gpart delete -i 2 $mirror_os_disk                              1>>/tmp/bsdinstall_log  2>>/tmp/bsdinstall_log
+                /sbin/gpart delete -i 3 $mirror_os_disk                              1>>/tmp/bsdinstall_log  2>>/tmp/bsdinstall_log
+
+                #destroy partition scheme if any on the disk
+                /sbin/gpart destroy -F $mirror_os_disk                               1>>/tmp/bsdinstall_log  2>>/tmp/bsdinstall_log
+
+		#fix for clearing the old pool traces in the disk BUG ID - 3839
+		blocksize=`/usr/sbin/diskinfo $mirror_os_disk | /usr/bin/cut -f4`
+		mbsize=`echo "$blocksize / 2048" | /usr/bin/bc`
+		seeksize=`echo "$mbsize - 2048" | /usr/bin/bc`
+
+		/bin/dd if=/dev/zero of=/dev/$mirror_os_disk bs=1M count=2K >>/tmp/bsdinstall_log 2>&1
+	        /bin/dd if=/dev/zero of=/dev/$mirror_os_disk bs=1M count=2K seek=$seeksize  >>/tmp/bsdinstall_log 2>&1
+	fi
+
+	#kldload -n zfs;
+	zpool labelclear -f /dev/label/root_0   >>/tmp/bsdinstall_log 2>&1
+	zpool labelclear -f /dev/label/root_1   >>/tmp/bsdinstall_log 2>&1
+
+	zpool labelclear -f /dev/label/tpool_0          >>/tmp/bsdinstall_log 2>&1
+	zpool labelclear -f /dev/label/tpool_1          >>/tmp/bsdinstall_log 2>&1
+	/sbin/gmultipath dump $os_disk >>/tmp/bsdinstall_log 2>&1	
+	if [ $? -eq 0 ]; then
+		multipath_name=`/sbin/gmultipath dump $os_disk | /usr/bin/grep -i "multipath label" | /usr/bin/cut -f2 -d ":" `
+		/sbin/gmultipath destroy $multipath_name	>>/tmp/bsdinstall_log 2>&1
+		/sbin/gmultipath stop $multipath_name	>>/tmp/bsdinstall_log 2>&1
+	fi
+	
+	/sbin/gpart status $os_disk >>/tmp/bsdinstall_log 2>&1
+        if [ $? -eq 0 ]; then
+                /sbin/gpart destroy -F  /dev/$os_disk   >>/tmp/bsdinstall_log 2>&1
+        fi
+
+	#fix for clearing the old pool traces in the disk BUG ID - 3839
+	blocksize=`/usr/sbin/diskinfo $os_disk | /usr/bin/cut -f4`
+	mbsize=`echo "$blocksize / 2048" | /usr/bin/bc`
+	seeksize=`echo "$mbsize - 2048" | /usr/bin/bc`
+
+	/bin/dd if=/dev/zero of=/dev/$os_disk bs=1M count=2K >>/tmp/bsdinstall_log 2>&1
+        /bin/dd if=/dev/zero of=/dev/$os_disk bs=1M count=2K seek=$seeksize  >>/tmp/bsdinstall_log 2>&1
+
+
+	root_fs=`/usr/bin/head -n1 < $BSDINSTALL_TMPETC/._rc.conf.select_component_root_fs`;
+        if [ $root_fs -eq 2 ]; then
+		bsdinstall zfsboot || error;
+		mkdir $BSDINSTALL_CHROOT/dev
+		mount -t devfs devfs $BSDINSTALL_CHROOT/dev
+	else
+       		bsdinstall autopart || error
+		bsdinstall cb_os_disk_label || error	
+       		bsdinstall mount || error
+	fi
+	
+	cp /tmp/bsdinstall_etc/install_input $BSDINSTALL_CHROOT/install_input
+	cp /tmp/bsdinstall_etc/install_input_devman_ip $BSDINSTALL_CHROOT/install_input_devman_ip
+
+
+if [ ! -z "$FETCH_DISTRIBUTIONS" ]; then
+	ALL_DISTRIBUTIONS="$DISTRIBUTIONS"
+
+	# Download to a directory in the new system as scratch space
+	BSDINSTALL_FETCHDEST="$BSDINSTALL_CHROOT/usr/freebsd-dist"
+	mkdir -p "$BSDINSTALL_FETCHDEST" || error
+
+	export DISTRIBUTIONS="$FETCH_DISTRIBUTIONS"
+	# Try to use any existing distfiles
+	if [ -d $BSDINSTALL_DISTDIR ]; then
+		DISTDIR_IS_UNIONFS=1
+		mount_nullfs -o union "$BSDINSTALL_FETCHDEST" "$BSDINSTALL_DISTDIR"
+	else
+		export DISTRIBUTIONS="MANIFEST $ALL_DISTRIBUTIONS"
+		export BSDINSTALL_DISTDIR="$BSDINSTALL_FETCHDEST"
+	fi
+		
+	export FTP_PASSIVE_MODE=YES
+	bsdinstall distfetch || error
+	export DISTRIBUTIONS="$ALL_DISTRIBUTIONS"
+fi
+
+	bsdinstall checksum || error
+	bsdinstall distextract || error
+#bsdinstall rootpass || error
+#bsdinstall user_details || error
+
+#trap true SIGINT	# This section is optional
+#if [ "$NETCONFIG_DONE" != yes ]; then
+#	bsdinstall netconfig	# Don't check for errors -- the user may cancel
+#fi
+#bsdinstall time
+#bsdinstall services
+
+#dialog --backtitle "$product_name Installer" --title "Add User Accounts" --yesno \
+#    "Would you like to add users to the installed system now?" 0 0 && \
+#    bsdinstall adduser
+
+
+	# Write cb_device mode in a /etc file
+        CB_DEVICE=`/usr/bin/head -n1 < $BSDINSTALL_TMPETC/._rc.conf.select_component`;
+	if [ $CB_DEVICE -eq 1 ]; then
+			echo "3" > $BSDINSTALL_TMPETC/._rc.conf.select_component_elasticenter_mode;	
+	elif [ $CB_DEVICE -eq 3 ]; then
+		devman_type=`/usr/bin/head -n1 < $BSDINSTALL_TMPETC/._rc.conf.select_component_devman_type`;
+		if [ $devman_type -eq 2 ]; then
+			echo "3" > $BSDINSTALL_TMPETC/._rc.conf.select_component_elasticenter_mode;	
+		fi
+	fi
+
+	#get fstab file into chroot env
+	mkdir -p $BSDINSTALL_CHROOT/tmp/bsdinstall_etc
+	cp $BSDINSTALL_TMPETC/fstab $BSDINSTALL_CHROOT/tmp/bsdinstall_etc/fstab;
+
+	#for zfs root file system copy fstab to etc directory
+	root_fs=`/usr/bin/head -n1 < $BSDINSTALL_TMPETC/._rc.conf.select_component_root_fs`;
+        if [ $root_fs -eq 2 ]; then
+		cp $BSDINSTALL_TMPETC/fstab $BSDINSTALL_CHROOT/etc/fstab;
+		touch $BSDINSTALL_CHROOT/etc/ZFS_install;
+	else
+		touch $BSDINSTALL_CHROOT/etc/UFS_install;
+	fi
+
+	#touch a file to indicate mirror os install
+	if [ -e $BSDINSTALL_TMPETC/._rc.conf.mirror_disk_name ]; then
+		touch $BSDINSTALL_CHROOT/etc/mirror_install;
+	fi
+	if [ -e $BSDINSTALL_TMPETC/._rc.conf.select_component_elasticenter_mode ];then
+                cp $BSDINSTALL_TMPETC/._rc.conf.select_component_elasticenter_mode $BSDINSTALL_CHROOT/etc/cb_elasticenter_mode;
+   	fi
+	cp -R $BSDINSTALL_TMPETC/._rc.conf.select_component $BSDINSTALL_CHROOT/etc/cb_device_mode
+	cp -R $BSDINSTALL_TMPETC/zoneinfo $BSDINSTALL_CHROOT/usr/share/zoneinfo
+	cp -R $BSDINSTALL_TMPETC/localtime $BSDINSTALL_CHROOT/etc/localtime
+	cp -R $BSDINSTALL_TMPETC/zoneinfo $BSDINSTALL_CHROOT/var/db/zoneinfo
+	cp -R $BSDINSTALL_TMPETC/wall_cmos_clock $BSDINSTALL_CHROOT/etc/wall_cmos_clock
+
+
+
+finalconfig() {
+	exec 3>&1
+	REVISIT=$(dialog --backtitle "$product_name Installer - $build_version" \
+	    --title "Final Configuration" --no-cancel --menu \
+	    "Setup of your $product_name system is nearly complete. You can now modify your configuration choices. After this screen, you will have an opportunity to make more complex changes using a shell." 0 0 0 \
+		"Exit" "Apply configuration and exit installer" \
+		"Add User" "Add a user to the system" \
+		"Root Password" "Change root password" \
+		"Hostname" "Set system hostname" \
+		"Network" "Networking configuration" \
+		"Services" "Set daemons to run on startup" \
+		"Time Zone" "Set system timezone" \
+		"Handbook" "Install CloudByte Handbook (requires network)" 2>&1 1>&3)
+	exec 3>&-
+
+	case "$REVISIT" in
+	"Add User")
+		bsdinstall adduser
+		finalconfig
+		;;
+	"Root Password")
+		bsdinstall rootpass 
+		finalconfig
+		;;
+	"Hostname")
+		bsdinstall hostname
+		finalconfig
+		;;
+	"Network")
+		bsdinstall netconfig
+		finalconfig
+		;;
+	"Services")
+		bsdinstall services
+		finalconfig
+		;;
+	"Time Zone")
+		bsdinstall time
+		finalconfig
+		;;
+	"Handbook")
+		bsdinstall docsinstall
+		finalconfig
+		;;
+	esac
+}
+
+# Allow user to change his mind
+#finalconfig
+
+trap error SIGINT	# SIGINT is bad again
+bsdinstall config  || error
+
+if [ ! -z "$BSDINSTALL_FETCHDEST" ]; then
+	[ "$BSDINSTALL_FETCHDEST" != "$BSDINSTALL_DISTDIR" ] && \
+	    umount "$BSDINSTALL_DISTDIR"
+	rm -rf "$BSDINSTALL_FETCHDEST"
+fi
+
+#dialog --backtitle "$product_name Installer" --title "Manual Configuration" \
+#    --yesno "The installation is now finished. Before exiting the installer, would you like to open a shell in the new system to make any final manual modifications?" 0 0
+#if [ $? -eq 0 ]; then
+#	clear
+#	echo This shell is operating in a chroot in the new system. \
+#	    When finished making configuration changes, type \"exit\".
+#	chroot "$BSDINSTALL_CHROOT" /bin/sh 2>&1
+#fi
+#
+
+
+echo "About to start copying base.txz to /base" >> $BSDINSTALL_LOG;
+
+dialog  --colors --backtitle "$product_name Installer - $build_version" \
+	--title "Installation Status" \
+	--mixedgauge "\n Copying configuration files" 0 0 50 \
+	"\Zb Base" "3" \
+	"\Zb Kernel" "3" \
+	"\Zb $product_name Configuration" "-0"
+
+mkdir $BSDINSTALL_CHROOT/base;
+mkdir $BSDINSTALL_CHROOT/kernel;
+cp -R $BSDINSTALL_DISTDIR/base.txz  $BSDINSTALL_CHROOT/base/;
+cp -R $BSDINSTALL_DISTDIR/kernel.txz  $BSDINSTALL_CHROOT/kernel/;
+
+
+dialog  --colors --backtitle "$product_name Installer - $build_version" \
+	--title "Installation Status" \
+	--mixedgauge "\n About to complete copying configuration files" 0 0 55 \
+	"\Zb Base" "3" \
+	"\Zb Kernel" "3" \
+	"\Zb $product_name Configuration" "-10"
+
+echo "Completed copying base.txz to /base with exit status $?" >> $BSDINSTALL_LOG;
+
+echo " About to start copying BSDINSTALL_DISTDIR/cbdir/* to BSDINSTALL_CHROOT/cbdir" >> $BSDINSTALL_LOG;
+
+mkdir $BSDINSTALL_CHROOT/cbdir;
+cp -R $BSDINSTALL_DISTDIR/cbdir/* $BSDINSTALL_CHROOT/cbdir;
+
+
+dialog  --colors --backtitle "$product_name Installer - $build_version" \
+	--title "Installation Status" \
+	--mixedgauge "\nFinished copying configuration files" 0 0 60 \
+	"\Zb Base" "3" \
+	"\Zb Kernel" "3" \
+	"\Zb $product_name Configuration" "-15"
+
+echo " Completed copying BSDINSTALL_DISTDIR/cbdir/* to BSDINSTALL_CHROOT/cbdir" >> $BSDINSTALL_LOG;
+ 
+chmod +x $BSDINSTALL_CHROOT/cbdir/cbpostinstall.sh;
+
+echo " starting cbpostinstall scripts" >> $BSDINSTALL_LOG;
+chroot $BSDINSTALL_CHROOT /cbdir/cbpostinstall.sh;
+cbpost_ext_status=$?
+if [ $cbpost_ext_status -ne 0]; then
+	exit;
+fi 
+
+dialog  --colors --backtitle "$product_name Installer - $build_version" \
+	--title "Installation Status" \
+	--mixedgauge "\nCompleting Installation of Elastistor" 0 0 100 \
+	"\Zb Base" "3" \
+	"\Zb Kernel" "3" \
+	"\Zb $product_name Configuration" "-100"
+
+# get the time-zone here
+if [ ! -e /etc/install.config ]; then
+	bsdinstall time;
+else 
+	tzsetup Asia/Kolkata;
+fi
+
+node_ip_address=`/usr/bin/head -n5 < $BSDINSTALL_CHROOT/install_input | /usr/bin/tail -n1`;
+hst_name=`/usr/bin/head -n3 < $BSDINSTALL_CHROOT/install_input | /usr/bin/tail -n1`;
+dmn_name=`/usr/bin/head -n9 < $BSDINSTALL_CHROOT/install_input | /usr/bin/tail -n1`;
+cb_mode=`/usr/bin/head -n10 < $BSDINSTALL_CHROOT/install_input | /usr/bin/tail -n1`;
+cb_dev_ip=`/usr/bin/head -n11 < $BSDINSTALL_CHROOT/install_input | /usr/bin/tail -n1`;
+
+# Make root in sync 
+#rt_nu=`grep -n "root" "$BSDINSTALL_CHROOT/etc/fstab" | awk -F ':' '{print $1}'`
+#sed -i -e ""$rt_nu"s/rw/rw,sync/" $BSDINSTALL_CHROOT/etc/fstab
+#/usr/bin/sed -i -e "s/$disk_name1"p3"/label\/"var_0"/g" $BSDINSTALL_CHROOT/etc/fstab
+# Make Sure All pending writes are flushed to disk by sync command
+/bin/sync;
+echo "All install actions completed and called sync command with exit status $?" >> $BSDINSTALL_LOG;
+
+if [ $cb_mode -eq 1 ] || [ $cb_mode -eq 3 ]; then
+	
+	elasticenter_mode=`/bin/cat $BSDINSTALL_CHROOT/etc/cb_elasticenter_mode`;
+        if [ $elasticenter_mode -eq 3 ]; then
+		COUNT=10
+		(
+			while test $COUNT != 105 
+			do
+				echo $COUNT
+				COUNT=`expr $COUNT + 5`
+				sleep 1
+			done
+		) |
+		dialog --colors --backtitle "$product_name Installer - $build_version" --title "Installation Complete" --gauge "\n \Zb\Z1 CONGRATULATIONS !!! \Zn \n \n You have successfully installed $product_name. \n \n Before the system reboots, remove the installation DVD from the disk drive. \n\n You can access your $product_name storage by Web Browser using URL: \n \n                      https://$node_ip_address \n\n                       or by \n\n                      https://$hst_name.$dmn_name \n\n \Zb\Z1                  YOUR SYSTEM IS ABOUT TO REBOOT" 0 0 0;
+	else 
+		virtual_ip=`/usr/bin/head -n13 < $BSDINSTALL_CHROOT/install_input | /usr/bin/tail -n1`;
+		if [ -z $virtual_ip ];then
+			COUNT=10
+			(
+				while test $COUNT != 105
+				do
+					echo $COUNT
+					COUNT=`expr $COUNT + 5`
+					sleep 1
+				done
+			) |
+			 dialog --colors --backtitle "$product_name Installer - $build_version" --title "Installation Complete" --gauge "\n \Zb\Z1 CONGRATULATIONS !!! \Zn \n \n You have successfully installed $product_name. \n \n Before the system reboots, remove the installation DVD from the disk drive.\n\n You can access your $product_name storage by Web Browser.   \n\n \Zb\Z1                   YOUR SYSTEM IS ABOUT TO REBOOT" 0 0 0;
+		else	
+		COUNT=10
+                (
+                        while test $COUNT != 105 
+                        do
+                                echo $COUNT
+                                COUNT=`expr $COUNT + 5`
+                                sleep 1
+                        done
+                ) |
+                dialog --colors --backtitle "$product_name Installer - $build_version" --title "Installation Complete" --gauge "\n \Zb\Z1 CONGRATULATIONS !!! \Zn \n \n  You have successfully installed $product_name. \n \n Before the system reboots, remove the installation DVD from the disk drive. \n\n You can access your $product_name storage by Web Browser using URL: \n \n                      https://$virtual_ip \n\n                       or by \n\n                      https://$hst_name.$dmn_name \n\n \Zb\Z1                  YOUR SYSTEM IS ABOUT TO REBOOT" 0 0 0; 
+		fi;
+	fi;
+fi;
+
+if [ $cb_mode -eq 2 ]; then
+
+	#This node is controller only, put sync on:
+
+	if [ ! -z $cb_dev_ip ];then
+		COUNT=10
+		(
+			while test $COUNT != 105 
+			do
+				echo $COUNT
+				COUNT=`expr $COUNT + 5`
+				sleep 1
+			done
+		) |
+		 dialog --colors --backtitle "$product_name Installer - $build_version" --title "Installation Complete" --gauge "\n \Zb\Z1 CONGRATULATIONS !!! \Zn \n \n You have successfully installed the $product_name. \n \n Before the system reboots, remove the installation DVD from the disk drive. \n\n You can access your $product_name storage by accessing $product_center: \n \n                      https://$cb_dev_ip \n\n \Zb\Z1                  YOUR SYSTEM IS ABOUT TO REBOOT" 0 0 0;
+
+
+	else
+		COUNT=10
+		(
+			while test $COUNT != 105 
+			do
+				echo $COUNT
+				COUNT=`expr $COUNT + 5`
+				sleep 1
+			done
+		) |
+		dialog --colors --backtitle "$product_name Installer - $build_version" --title "Installation Complete" --gauge "\n \Zb\Z1 CONGRATULATIONS !!! \Zn \n \nYou have successfully installed the $product_name. \n \n Before the system reboots, remove the installation DVD from the disk drive. \n\n To access storage, add the $product_node to $product_center. \n\n \Zb\Z1                  YOUR SYSTEM IS ABOUT TO REBOOT" 0 0 0;
+
+
+	fi	
+
+
+fi
+
+# Make Sure All pending writes are flushed to disk by sync command 
+# Check again
+/bin/sync;
+
+echo "Installation Completed at $(date)" >> $BSDINSTALL_LOG;
+
+/bin/cp $BSDINSTALL_LOG $BSDINSTALL_CHROOT/tmp/osinstall_log;

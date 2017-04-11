@@ -1,0 +1,16 @@
+#/usr/local/bin/expect -f
+
+#set timeout 60
+set timeout -1
+ 
+spawn ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no [lindex $argv 1]@[lindex $argv 0]
+ 
+expect "yes/no" { 
+    send "yes\r"
+    expect "*?assword" { send "[lindex $argv 2]\r" }
+    } "*?assword" { send "[lindex $argv 2]\r" }
+ 
+expect "# " { send "sleep 1200 \r" }
+expect "# " { send "sh /root/automation/2.0.0/all.sh > /tmp/automation_2.0.0.log 2>&1 \r" }
+expect "# " { send "exit\r" }
+interact

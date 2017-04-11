@@ -1,0 +1,17 @@
+#/usr/local/bin/expect -f
+
+#set timeout 60
+set timeout -1
+ 
+spawn ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no [lindex $argv 1]@[lindex $argv 0]
+ 
+expect "yes/no" { 
+    send "yes\r"
+    expect "*?assword" { send "[lindex $argv 2]\r" }
+    } "*?assword" { send "[lindex $argv 2]\r" }
+ 
+expect "# " { send "touch /etc/cb_elasticenter_mode \r" }
+expect "# " { send "echo 3 > /etc/cb_elasticenter_mode \r" }
+expect "# " { send "shutdown -r +1 jenkins \r" }
+expect "# " { send "exit\r" }
+interact
