@@ -1,0 +1,87 @@
+{ "listSiteResponse" : { "count":3 ,"site" : [  {
+  "id": "e2a55536-3678-49fb-b2c9-f0494815e386",
+  "simpleid": 1,
+  "name": "Site1",
+  "description": "SiteDescription1",
+  "location": "SiteLocation1",
+  "managedstate": "Available",
+  "revisionnumber": 0,
+  "currentUsedSpace": 0,
+  "currentAvailableSpace": 0,
+  "currentTotalSpace": 0,
+  "currentThroughput": 0,
+  "currentIOPS": 0,
+  "currentLatency": 0,
+  "currentThrottle": 0,
+  "accounts": 0,
+  "numericquota": 0.0,
+  "currentnumericquota": 0.0,
+  "haclusters": [
+    {
+      "id": "2173ac0c-9d07-48a4-a9a0-3a81a8f2ebc8",
+      "status": "Online",
+      "haClusterDatasets": "0",
+      "name": "Cluster1",
+      "siteid": "e2a55536-3678-49fb-b2c9-f0494815e386"
+    },
+    {
+      "id": "1deffb3f-107b-4833-a308-34ece142a443",
+      "status": "Online",
+      "haClusterDatasets": "0",
+      "name": "Cluster2",
+      "siteid": "e2a55536-3678-49fb-b2c9-f0494815e386"
+    },
+    {
+      "id": "da80b4d7-aadd-4396-8d07-9203f443862c",
+      "status": "Online",
+      "haClusterDatasets": "0",
+      "name": "Cluster3",
+      "siteid": "e2a55536-3678-49fb-b2c9-f0494815e386"
+    }
+  ],
+  "undiscoverednodes": [
+    "172.16.48.140"
+  ]
+}, {
+  "id": "2447a309-93e4-4c13-a109-faf4c12f0e26",
+  "simpleid": 2,
+  "name": "Site2",
+  "description": "SiteDescription2",
+  "location": "SiteLocation2",
+  "managedstate": "Available",
+  "revisionnumber": 0,
+  "currentUsedSpace": 0,
+  "currentAvailableSpace": 0,
+  "currentTotalSpace": 0,
+  "currentThroughput": 0,
+  "currentIOPS": 0,
+  "currentLatency": 0,
+  "currentThrottle": 0,
+  "accounts": 0,
+  "numericquota": 0.0,
+  "currentnumericquota": 0.0,
+  "undiscoverednodes": [
+    "172.16.48.140"
+  ]
+}, {
+  "id": "c7177375-440f-419a-9973-ffd206f5caaa",
+  "simpleid": 3,
+  "name": "Site3",
+  "description": "SiteDescription3",
+  "location": "SiteLocation3",
+  "managedstate": "Available",
+  "revisionnumber": 0,
+  "currentUsedSpace": 0,
+  "currentAvailableSpace": 0,
+  "currentTotalSpace": 0,
+  "currentThroughput": 0,
+  "currentIOPS": 0,
+  "currentLatency": 0,
+  "currentThrottle": 0,
+  "accounts": 0,
+  "numericquota": 0.0,
+  "currentnumericquota": 0.0,
+  "undiscoverednodes": [
+    "172.16.48.140"
+  ]
+} ] } }

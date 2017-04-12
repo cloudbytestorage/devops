@@ -1,0 +1,8 @@
+  "Number_of_StaticIPs": "1",
+  "_Static Configuration": "Details for StaticIP1",
+  "staticIPInterface1": "em1",
+  "staticIP1": "1.1.1.1",
+  "staticIPSubnet1": "8",
+  "staticIPGateway1": "1.1.1.254",
+  "staticIPControllerName1": "Node1",
+

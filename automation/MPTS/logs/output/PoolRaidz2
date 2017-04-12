@@ -1,0 +1,20 @@
+  pool: PoolRaidz2
+ state: ONLINE
+  scan: none requested
+config:
+
+	NAME                     STATE     READ WRITE CKSUM
+	PoolRaidz2               ONLINE       0     0     0
+	  raidz2-0               ONLINE       0     0     0
+	    multipath/C1R1-THg6  ONLINE       0     0     0
+	    multipath/C2R1-THg6  ONLINE       0     0     0
+	    multipath/C3R1-THg6  ONLINE       0     0     0
+	    multipath/C4R1-THg6  ONLINE       0     0     0
+	logs
+	  multipath/C5R1-THg6    ONLINE       0     0     0
+	cache
+	  multipath/C7R1-THg6    ONLINE       0     0     0
+	spares
+	  multipath/C6R1-THg6    AVAIL   
+
+errors: No known data errors

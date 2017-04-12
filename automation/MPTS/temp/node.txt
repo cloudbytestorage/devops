@@ -1,0 +1,10 @@
+  "Number_of_Nodes": "1",
+  "_Node Configurarion": "Details for Node1...",
+  "nodeName1": "Node1",
+  "nodeSiteName1": "Site1",
+  "nodeClusterName1": "Cluster1",
+  "nodeIP1": "172.16.48.140",
+  "nodePasswd1": "test",
+
+
+

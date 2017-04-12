@@ -1,0 +1,8 @@
+SSH into build machine
+vitta@10.10.1.101
+pwd: vitta
+cd kernel
+
+1) Modify the size intialize the variable n with some number 
+2) Run the command make
+

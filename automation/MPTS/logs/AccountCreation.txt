@@ -1,0 +1,20 @@
+{ "createaccountresponse" :  { "account2" : {
+  "id": "27405d6d-0960-4d8e-8575-8b64feca43e9",
+  "name": "Account3",
+  "simpleid": 3,
+  "description": "AccountDesc3",
+  "iqnname": "iqn.2016-11.Account3",
+  "availIOPS": 0,
+  "totaliops": 0,
+  "usedIOPS": 0,
+  "currentUsedSpace": 0,
+  "currentAvailableSpace": 0,
+  "currentThroughput": 0,
+  "currentIOPS": 0,
+  "currentLatency": 0,
+  "currentThrottle": 0,
+  "numericquota": 0.0,
+  "currentnumericquota": 0.0,
+  "currentavailablequota": 0.0,
+  "revisionnumber": 0
+} }  }

@@ -1,0 +1,1 @@
+{"noOfSpareDisks": "1", "noOfMetaGroups": "0", "dataDiskGroupType": "raidz1", "noOfMetaDisks": "0", "noOfLogs": "0", "noOfDataDisks": "6", "noOfCaches": "0", "noOfLogDisks": "1", "pool": "PoolRaidz1", "noOfCacheDisks": "1", "state": "ONLINE", "noOfSpares": "0", "noOfDataDiskGroups": "2"}

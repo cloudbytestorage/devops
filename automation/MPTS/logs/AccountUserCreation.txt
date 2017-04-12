@@ -1,0 +1,7 @@
+{ "tsmcifsauthgroupresponse" :  { "cifsauthgroup" : {
+  "id": "0fc34989-ceef-3944-9ac7-53591f89f632",
+  "accountid": 3,
+  "name": "Account3AUTH",
+  "comment": "Comment",
+  "vsmcount": 0
+} }  }

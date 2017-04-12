@@ -1,0 +1,15 @@
+{ "createSiteResponse" :  { "site" : {
+  "id": "c7177375-440f-419a-9973-ffd206f5caaa",
+  "simpleid": 3,
+  "name": "Site3",
+  "description": "SiteDescription3",
+  "location": "SiteLocation3",
+  "managedstate": "Available",
+  "revisionnumber": 0,
+  "accounts": 0,
+  "numericquota": 0.0,
+  "currentnumericquota": 0.0,
+  "undiscoverednodes": [
+    "172.16.48.140"
+  ]
+} }  }

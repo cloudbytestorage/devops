@@ -1,0 +1,4 @@
+ "_VM Configuration ISCSI": "Details for VM_#MyVaLuE#_..",
+ "vmName_#MyVaLuE#_": "VMNAME",
+ "datastoreName_#MyVaLuE#_": "DATASTORENAME",
+ "vmPassword_#MyVaLuE#_": "VMPASSWORD",

@@ -1,0 +1,225 @@
+Tue Sep  9 16:27:13 2014,Site Site1 Creation,PASSED,,Tue Sep  9 16:27:13 2014
+Tue Sep  9 16:27:13 2014,Site Site2 Creation,PASSED,,Tue Sep  9 16:27:14 2014
+Tue Sep  9 16:27:14 2014,Site Site3 Creation,PASSED,,Tue Sep  9 16:27:14 2014
+Tue Sep  9 16:27:19 2014,Node Node1 Import,PASSED,,Tue Sep  9 16:27:53 2014
+Tue Sep  9 16:28:02 2014,Pool PoolRaidz2 Creation ,PASSED,,Tue Sep  9 16:28:16 2014
+Tue Sep  9 16:28:16 2014,VDev with DiskGroupType meta%20raidz1 Creation,FAILED,[Disks]All the disks must be of the type SSD. ,Tue Sep  9 16:28:18 2014
+Tue Sep  9 16:28:18 2014,VDev with DiskGroupType log Creation,PASSED,,Tue Sep  9 16:28:21 2014
+Tue Sep  9 16:28:21 2014,VDev with DiskGroupType spare Creation,PASSED,,Tue Sep  9 16:28:26 2014
+Tue Sep  9 16:28:26 2014,VDev with DiskGroupType cache Creation,PASSED,,Tue Sep  9 16:28:29 2014
+Tue Sep  9 16:28:30 2014,verification of creation of Pool : PoolRaidz2 in DevMan and Node ,PASSED,,Tue Sep  9 16:28:31 2014
+Tue Sep  9 16:28:31 2014,Pool PoolRaidz2 Deletion,PASSED,,Tue Sep  9 16:28:39 2014
+Tue Sep  9 16:28:43 2014,Pool PoolMirror Creation ,PASSED,,Tue Sep  9 16:29:05 2014
+Tue Sep  9 16:29:08 2014,VDev with DiskGroupType log%20mirror Creation,PASSED,,Tue Sep  9 16:29:10 2014
+Tue Sep  9 16:29:10 2014,VDev with DiskGroupType spare Creation,PASSED,,Tue Sep  9 16:29:12 2014
+Tue Sep  9 16:29:12 2014,VDev with DiskGroupType cache Creation,PASSED,,Tue Sep  9 16:29:14 2014
+Tue Sep  9 16:29:16 2014,verification of creation of Pool : PoolMirror in DevMan and Node ,PASSED,,Tue Sep  9 16:29:16 2014
+Tue Sep  9 16:29:16 2014,Pool PoolMirror Deletion,PASSED,,Tue Sep  9 16:29:24 2014
+Tue Sep  9 16:29:28 2014,Pool PoolRaidz1 Creation ,PASSED,,Tue Sep  9 16:29:49 2014
+Tue Sep  9 16:29:49 2014,VDev with DiskGroupType spare Creation,PASSED,,Tue Sep  9 16:29:54 2014
+Tue Sep  9 16:29:54 2014,VDev with DiskGroupType log Creation,PASSED,,Tue Sep  9 16:29:56 2014
+Tue Sep  9 16:29:58 2014,verification of creation of Pool : PoolRaidz1 in DevMan and Node ,PASSED,,Tue Sep  9 16:29:58 2014
+Tue Sep  9 16:29:58 2014,verification of creation Meta Devices for PoolRaidz1 in DevMan and Node ,PASSED,,Tue Sep  9 16:29:58 2014
+Tue Sep  9 16:29:58 2014,Account Account1 creation is,PASSED,,Tue Sep  9 16:29:58 2014
+Tue Sep  9 16:29:58 2014,AuthGroup Account1AUTH creation is,PASSED,,Tue Sep  9 16:30:00 2014
+Tue Sep  9 16:29:58 2014,Cifs User Account1user1 creation is,PASSED,,Tue Sep  9 16:30:00 2014
+Tue Sep  9 16:29:58 2014,Cifs User Account1user2 creation is,PASSED,,Tue Sep  9 16:30:01 2014
+Tue Sep  9 16:30:03 2014,Account Account2 creation is,PASSED,,Tue Sep  9 16:30:03 2014
+Tue Sep  9 16:30:03 2014,AuthGroup Account2AUTH creation is,PASSED,,Tue Sep  9 16:30:05 2014
+Tue Sep  9 16:30:07 2014,Account Account3 creation is,PASSED,,Tue Sep  9 16:30:07 2014
+Tue Sep  9 16:30:07 2014,AuthGroup Account3AUTH creation is,PASSED,,Tue Sep  9 16:30:09 2014
+Tue Sep  9 16:30:11 2014,TSM RTSM1 Creation,PASSED,,Tue Sep  9 16:30:19 2014
+Tue Sep  9 16:30:20 2014,ISCSIVolume RTSM1ISCSI1 Creation,PASSED,,Tue Sep  9 16:30:26 2014
+Tue Sep  9 16:30:27 2014,NFSVolume RTSM1NFS1 Creation,PASSED,,Tue Sep  9 16:30:29 2014
+Tue Sep  9 16:30:30 2014,CIFSVolume RTSM1CIFS1 Creation,PASSED,,Tue Sep  9 16:30:39 2014
+Tue Sep  9 16:30:49 2014,Site Admin abcd@cb.com Deletion Verification from Devman,PASSED,,Tue Sep  9 16:30:49 2014
+Tue Sep  9 16:30:49 2014,Site Admin xyz@cb.com Deletion Verification from Devman,PASSED,,Tue Sep  9 16:30:49 2014
+Tue Sep  9 16:30:49 2014,Site Admin abcd@cb.com Creation Verification from Devman,PASSED,,Tue Sep  9 16:30:50 2014
+Tue Sep  9 16:30:50 2014,Site Admin xyz@cb.com Creation Verification from Devman,PASSED,,Tue Sep  9 16:30:51 2014
+Tue Sep  9 16:30:52 2014,Site Admin  abcd@cb.com Access Verification from Devman,PASSED,,Tue Sep  9 16:30:53 2014
+Tue Sep  9 16:30:53 2014,Site Admin  xyz@cb.com Access Verification from Devman,PASSED,,Tue Sep  9 16:30:53 2014
+Tue Sep  9 16:30:53 2014,VLAN Addition 1 Verification from Devman,PASSED,,Tue Sep  9 16:30:55 2014
+Tue Sep  9 16:30:53 2014,VLAN Addition 1 Verification from Node,PASSED,,Tue Sep  9 16:30:56 2014
+Tue Sep  9 16:30:56 2014,VLAN Addition 2 Verification from Devman,PASSED,,Tue Sep  9 16:30:58 2014
+Tue Sep  9 16:30:56 2014,VLAN Addition 2 Verification from Node,PASSED,,Tue Sep  9 16:30:59 2014
+Tue Sep  9 16:30:59 2014,VLAN Addition 4 Verification from Devman,PASSED,,Tue Sep  9 16:31:00 2014
+Tue Sep  9 16:30:59 2014,VLAN Addition 4 Verification from Node,PASSED,,Tue Sep  9 16:31:01 2014
+Tue Sep  9 16:31:02 2014,VLAN deletion 1 Verification from Devman,PASSED,,Tue Sep  9 16:31:03 2014
+Tue Sep  9 16:31:02 2014,VLAN deletion 1 Verification from Node,PASSED,,Tue Sep  9 16:31:04 2014
+Tue Sep  9 16:31:04 2014,VLAN deletion 2 Verification from Devman,PASSED,,Tue Sep  9 16:31:05 2014
+Tue Sep  9 16:31:04 2014,VLAN deletion 2 Verification from Node,PASSED,,Tue Sep  9 16:31:07 2014
+Tue Sep  9 16:31:07 2014,VLAN deletion 4 Verification from Devman,PASSED,,Tue Sep  9 16:31:08 2014
+Tue Sep  9 16:31:07 2014,VLAN deletion 4 Verification from Node,PASSED,,Tue Sep  9 16:31:09 2014
+Tue Sep  9 16:31:09 2014,VLAN Addition 1 Verification from Devman,PASSED,,Tue Sep  9 16:31:11 2014
+Tue Sep  9 16:31:09 2014,VLAN Addition 1 Verification from Node,PASSED,,Tue Sep  9 16:31:12 2014
+Tue Sep  9 16:31:12 2014,VLAN Addition 2 Verification from Devman,PASSED,,Tue Sep  9 16:31:13 2014
+Tue Sep  9 16:31:12 2014,VLAN Addition 2 Verification from Node,PASSED,,Tue Sep  9 16:31:15 2014
+Tue Sep  9 16:31:15 2014,VLAN Addition 4 Verification from Devman,PASSED,,Tue Sep  9 16:31:16 2014
+Tue Sep  9 16:31:15 2014,VLAN Addition 4 Verification from Node,PASSED,,Tue Sep  9 16:31:17 2014
+Tue Sep  9 16:31:17 2014,VLAN deletion 1 Verification from Devman,PASSED,,Tue Sep  9 16:31:19 2014
+Tue Sep  9 16:31:17 2014,VLAN deletion 1 Verification from Node,PASSED,,Tue Sep  9 16:31:20 2014
+Tue Sep  9 16:31:20 2014,VLAN deletion 2 Verification from Devman,PASSED,,Tue Sep  9 16:31:21 2014
+Tue Sep  9 16:31:20 2014,VLAN deletion 2 Verification from Node,PASSED,,Tue Sep  9 16:31:23 2014
+Tue Sep  9 16:31:23 2014,VLAN deletion 4 Verification from Devman,PASSED,,Tue Sep  9 16:31:24 2014
+Tue Sep  9 16:31:23 2014,VLAN deletion 4 Verification from Node,PASSED,,Tue Sep  9 16:31:25 2014
+Tue Sep  9 16:31:25 2014,Static IP Addition em1 Verification from Devman,PASSED,,Tue Sep  9 16:31:26 2014
+Tue Sep  9 16:31:25 2014,Static IP Addition em1 Verification from Node,PASSED,,Tue Sep  9 16:31:27 2014
+Tue Sep  9 16:31:30 2014,Static IP Clear em1 Verification from Devman,PASSED,,Tue Sep  9 16:31:30 2014
+Tue Sep  9 16:31:30 2014,Static IP Addition em1 Verification from Node,PASSED,,Tue Sep  9 16:31:31 2014
+Tue Sep  9 16:31:31 2014,Static IP Addition em2 Verification from Node,PASSED,,Tue Sep  9 16:31:33 2014
+Tue Sep  9 16:31:33 2014,Static IP Addition em3 Verification from Node,PASSED,,Tue Sep  9 16:31:34 2014
+Tue Sep  9 16:31:34 2014,Static IP Addition em1 Verification from Devman,PASSED,,Tue Sep  9 16:31:35 2014
+Tue Sep  9 16:31:34 2014,Static IP Addition em1 Verification from Node,PASSED,,Tue Sep  9 16:31:36 2014
+Tue Sep  9 16:31:39 2014,Static IP Clear em1 Verification from Devman,PASSED,,Tue Sep  9 16:31:39 2014
+Tue Sep  9 16:31:39 2014,Static IP Addition em1 Verification from Node,PASSED,,Tue Sep  9 16:31:40 2014
+Tue Sep  9 16:31:40 2014,Static IP Addition em2 Verification from Node,PASSED,,Tue Sep  9 16:31:42 2014
+Tue Sep  9 16:31:42 2014,Static IP Addition em3 Verification from Node,PASSED,,Tue Sep  9 16:31:43 2014
+Tue Sep  9 16:31:47 2014,HA Admin ha1@cb.com Deletion Verification from Devman,PASSED,,Tue Sep  9 16:31:47 2014
+Tue Sep  9 16:31:47 2014,HA Admin ha2@cb.com Deletion Verification from Devman,PASSED,,Tue Sep  9 16:31:47 2014
+Tue Sep  9 16:31:47 2014,HA Admin ha1@cb.com Creation Verification from Devman,PASSED,,Tue Sep  9 16:31:48 2014
+Tue Sep  9 16:31:48 2014,HA Admin ha2@cb.com Creation Verification from Devman,PASSED,,Tue Sep  9 16:31:50 2014
+Tue Sep  9 16:31:50 2014,HA Admin  ha1@cb.com Access Verification from Devman,PASSED,,Tue Sep  9 16:31:51 2014
+Tue Sep  9 16:31:51 2014,HA Admin  ha2@cb.com Access Verification from Devman,PASSED,,Tue Sep  9 16:31:52 2014
+Tue Sep  9 16:31:53 2014,TSM TSM1 Creation,PASSED,,Tue Sep  9 16:32:02 2014
+Tue Sep  9 16:32:02 2014,TSM TSM2 Creation,PASSED,,Tue Sep  9 16:32:10 2014
+Tue Sep  9 16:32:10 2014,TSM TSM3 Creation,PASSED,,Tue Sep  9 16:32:19 2014
+Tue Sep  9 16:32:19 2014,ISCSIVolume TSM1ISCSI1 Creation,PASSED,,Tue Sep  9 16:32:26 2014
+Tue Sep  9 16:32:26 2014,ISCSIVolume TSM1ISCSI2 Creation,PASSED,,Tue Sep  9 16:32:33 2014
+Tue Sep  9 16:32:33 2014,ISCSIVolume TSM2ISCSI3 Creation,PASSED,,Tue Sep  9 16:32:40 2014
+Tue Sep  9 16:32:40 2014,ISCSIVolume TSM2ISCSI4 Creation,PASSED,,Tue Sep  9 16:32:48 2014
+Tue Sep  9 16:32:48 2014,ISCSIVolume TSM3ISCSI5 Creation,PASSED,,Tue Sep  9 16:32:55 2014
+Tue Sep  9 16:32:55 2014,ISCSIVolume TSM3ISCSI6 Creation,PASSED,,Tue Sep  9 16:33:02 2014
+Tue Sep  9 16:33:07 2014,NFSVolume TSM1NFS1 Creation,PASSED,,Tue Sep  9 16:33:11 2014
+Tue Sep  9 16:33:11 2014,NFSVolume TSM1NFS2 Creation,PASSED,,Tue Sep  9 16:33:14 2014
+Tue Sep  9 16:33:14 2014,NFSVolume TSM2NFS3 Creation,PASSED,,Tue Sep  9 16:33:17 2014
+Tue Sep  9 16:33:17 2014,NFSVolume TSM2NFS4 Creation,PASSED,,Tue Sep  9 16:33:22 2014
+Tue Sep  9 16:33:22 2014,NFSVolume TSM3NFS5 Creation,PASSED,,Tue Sep  9 16:33:25 2014
+Tue Sep  9 16:33:25 2014,NFSVolume TSM3NFS6 Creation,PASSED,,Tue Sep  9 16:33:30 2014
+Tue Sep  9 16:33:33 2014,CIFSVolume TSM1CIFS1 Creation,PASSED,,Tue Sep  9 16:33:42 2014
+Tue Sep  9 16:33:42 2014,CIFSVolume TSM1CIFS2 Creation,PASSED,,Tue Sep  9 16:33:51 2014
+Tue Sep  9 16:33:51 2014,CIFSVolume TSM2CIFS3 Creation,PASSED,,Tue Sep  9 16:34:01 2014
+Tue Sep  9 16:34:01 2014,CIFSVolume TSM2CIFS4 Creation,PASSED,,Tue Sep  9 16:34:10 2014
+Tue Sep  9 16:34:10 2014,CIFSVolume TSM3CIFS5 Creation,PASSED,,Tue Sep  9 16:34:19 2014
+Tue Sep  9 16:34:19 2014,CIFSVolume TSM3CIFS6 Creation,PASSED,,Tue Sep  9 16:34:28 2014
+Tue Sep  9 16:35:23 2014,FCVolume FC1 Creation,PASSED,,Tue Sep  9 16:35:26 2014
+Tue Sep  9 16:35:26 2014,FCVolume FC2 Creation,PASSED,,Tue Sep  9 16:35:32 2014
+Tue Sep  9 16:35:32 2014,FCVolume FC3 Creation,PASSED,,Tue Sep  9 16:35:35 2014
+Tue Sep  9 16:35:35 2014,FCVolume FC4 Creation,PASSED,,Tue Sep  9 16:35:38 2014
+Tue Sep  9 16:35:38 2014,FCVolume FC5 Creation,PASSED,,Tue Sep  9 16:35:41 2014
+Tue Sep  9 16:35:41 2014,FCVolume FC6 Creation,PASSED,,Tue Sep  9 16:35:47 2014
+Tue Sep  9 16:35:50 2014,ISCSIVolume ExpandISCSI1 Creation,PASSED,,Tue Sep  9 16:35:57 2014
+Tue Sep  9 16:35:57 2014,ISCSIVolume ExpandISCSI2 Creation,PASSED,,Tue Sep  9 16:36:05 2014
+Tue Sep  9 16:36:05 2014,NFSVolume ExpandNFS1 Creation,PASSED,,Tue Sep  9 16:36:08 2014
+Tue Sep  9 16:36:08 2014,NFSVolume ExpandNFS2 Creation,PASSED,,Tue Sep  9 16:36:14 2014
+Tue Sep  9 16:36:14 2014,CIFSVolume ExpandCIFS1 Creation,PASSED,,Tue Sep  9 16:36:24 2014
+Tue Sep  9 16:36:24 2014,CIFSVolume ExpandCIFS2 Creation,PASSED,,Tue Sep  9 16:36:33 2014
+Tue Sep  9 16:36:55 2014,Checksum result on NFS Volume ExpandNFS1 is:,PASSED,,Tue Sep  9 16:36:55 2014
+Tue Sep  9 16:36:55 2014,Checksum result on NFS Volume ExpandNFS2 is:,PASSED,,Tue Sep  9 16:36:57 2014
+Tue Sep  9 16:42:34 2014,Checksum result on NFS Volume ExpandNFS1 is:,PASSED,,Tue Sep  9 16:42:35 2014
+Tue Sep  9 16:42:35 2014,Checksum result on NFS Volume ExpandNFS2 is:,PASSED,,Tue Sep  9 16:42:36 2014
+Tue Sep  9 17:40:47 2014,no iscsi volumes discovered on the client,FAILED,,Tue Sep  9 17:40:48 2014
+Tue Sep  9 18:49:30 2014,Checksum result on NFS Volume ExpandNFS1 is:,PASSED,,Tue Sep  9 18:49:30 2014
+Tue Sep  9 18:49:30 2014,Checksum result on NFS Volume ExpandNFS2 is:,PASSED,,Tue Sep  9 18:49:32 2014
+Tue Sep  9 18:49:32 2014,Checksum result on ISCSI Volume ExpandISCSI1 is:,PASSED,,Tue Sep  9 18:49:48 2014
+Tue Sep  9 18:49:51 2014,Checksum result on ISCSI Volume ExpandISCSI2 is:,PASSED,,Tue Sep  9 18:50:08 2014
+Tue Sep  9 18:50:09 2014,Checksum result on CIFS Volume ExpandCIFS1 is:,PASSED,,Tue Sep  9 18:50:13 2014
+Tue Sep  9 18:50:13 2014,Checksum result on CIFS Volume ExpandCIFS2 is:,PASSED,,Tue Sep  9 18:50:15 2014
+Tue Sep  9 18:50:16 2014,ExpandISCSI1 volume creation - Negative testcase,PASSED,Failed to provision Qos group due to : A storage volume with that name already exists. Please specify a unique storage volume name.,Tue Sep  9 18:50:18 2014
+Tue Sep  9 18:50:18 2014,ExpandISCSI2 volume creation - Negative testcase,PASSED,Failed to provision Qos group due to : A storage volume with that name already exists. Please specify a unique storage volume name.,Tue Sep  9 18:50:19 2014
+Tue Sep  9 18:50:19 2014,ExpandNFS1 volume creation - negative testcase,PASSED,Failed to provision Qos group due to : A storage volume with that name already exists. Please specify a unique storage volume name.,Tue Sep  9 18:50:21 2014
+Tue Sep  9 18:50:21 2014,ExpandNFS2 volume creation - negative testcase,PASSED,Failed to provision Qos group due to : A storage volume with that name already exists. Please specify a unique storage volume name.,Tue Sep  9 18:50:22 2014
+Tue Sep  9 18:50:22 2014,ExpandCIFS1 volume creation - negative testcase,PASSED,Failed to provision Qos group due to : A storage volume with that name already exists. Please specify a unique storage volume name.,Tue Sep  9 18:50:24 2014
+Tue Sep  9 18:50:24 2014,ExpandCIFS2 volume creation - negative testcase,PASSED,Failed to provision Qos group due to : A storage volume with that name already exists. Please specify a unique storage volume name.,Tue Sep  9 18:50:26 2014
+Tue Sep  9 18:50:26 2014,Pool PoolRaidz1 Creation- negative testcase,PASSED,[Disks][Labels:C4R1-AFgV,C6R1-AFgV]:C4R1-AFgV is part of Pool PoolRaidz1, C6R1-AFgV is part of Pool PoolRaidz1 To continue, select an available disks.,Tue Sep  9 18:50:28 2014
+Tue Sep  9 18:50:29 2014,ISCSIVolume TPISCSI1 Creation,PASSED,,Tue Sep  9 18:50:38 2014
+Tue Sep  9 18:50:43 2014,Checksum result on ISCSI Volume TPISCSI1 is:,PASSED,,Tue Sep  9 18:52:25 2014
+Tue Sep  9 19:02:37 2014,90% of space has been consumed in the Storage Volume TPISCSI1.,PASSED,,Tue Sep  9 19:02:37 2014
+Tue Sep  9 19:02:38 2014,TPISCSI1 volume expanded successfully,PASSED,,Tue Sep  9 19:02:38 2014
+Tue Sep  9 19:12:39 2014,ISCSIVolume spaceReclaimISCSI1 Creation,PASSED,,Tue Sep  9 19:12:46 2014
+Tue Sep  9 19:12:47 2014,NFSVolume spaceReclaimNFS1 Creation,PASSED,,Tue Sep  9 19:12:52 2014
+Tue Sep  9 19:12:53 2014,CIFSVolume spaceReclaimCIFS1 Creation,PASSED,,Tue Sep  9 19:13:02 2014
+Tue Sep  9 19:13:28 2014, space reclaimation successfull on nfs volume spaceReclaimNFS1 on client 0 10 0,PASSED, ,Tue Sep  9 19:13:45 2014
+Tue Sep  9 19:13:28 2014, space reclaimation successfull on nfs volume spaceReclaimNFS1 on controller 40.0 10.4 40.0,PASSED, ,Tue Sep  9 19:13:45 2014
+Tue Sep  9 19:13:45 2014, space reclaimation successfull on cifs volume spaceReclaimCIFS1 on client 16 11 16,PASSED, ,Tue Sep  9 19:14:01 2014
+Tue Sep  9 19:13:45 2014, space reclaimation successfull on cifs volume spaceReclaimCIFS1 on controller 40.0 10.4 40.0,PASSED, ,Tue Sep  9 19:14:01 2014
+Tue Sep  9 19:14:01 2014,ISCSIVolume copyISCSI1 Creation,PASSED,,Tue Sep  9 19:14:11 2014
+Tue Sep  9 19:14:24 2014,ISCSIVolume dummyISCSI1 Creation,PASSED,,Tue Sep  9 19:14:32 2014
+Tue Sep  9 19:14:32 2014,ISCSIVolume dummyISCSI2 Creation,PASSED,,Tue Sep  9 19:14:42 2014
+Tue Sep  9 19:15:16 2014,ISCSI Volume dummyISCSI1 Deletion,PASSED,,Tue Sep  9 19:15:18 2014
+Tue Sep  9 19:15:18 2014,ISCSI Volume dummyISCSI2 Deletion,PASSED,,Tue Sep  9 19:15:22 2014
+Tue Sep 9 19:14:23 IST 2014, 4383 of prccess - python execution.py copyVol.txt iscsi is killed due to timeout copy failed during creation/deletion of volumes , FAILED ,,Tue Sep 9 19:17:05 IST 2014
+Tue Sep  9 19:17:05 2014,NFSVolume copyNFS1 Creation,PASSED,,Tue Sep  9 19:17:11 2014
+Tue Sep  9 19:17:24 2014,NFSVolume dummyNFS1 Creation,PASSED,,Tue Sep  9 19:17:30 2014
+Tue Sep  9 19:17:30 2014,NFSVolume dummyNFS2 Creation,PASSED,,Tue Sep  9 19:17:35 2014
+Tue Sep  9 19:18:09 2014,NFS Volume dummyNFS1 Deletion,PASSED,,Tue Sep  9 19:18:13 2014
+Tue Sep  9 19:18:13 2014,NFS Volume dummyNFS2 Deletion,PASSED,,Tue Sep  9 19:18:17 2014
+Tue Sep 9 19:17:23 IST 2014, 5376 of prccess - python execution.py copyVol.txt nfs is killed due to timeout copy failed during creation/deletion of volumes , FAILED ,,Tue Sep 9 19:20:00 IST 2014
+Tue Sep  9 19:20:01 2014,ISCSIVolume snpISCSI1 Creation,PASSED,,Tue Sep  9 19:20:09 2014
+Tue Sep  9 19:20:09 2014,NFSVolume snpNFS1 Creation,PASSED,,Tue Sep  9 19:20:15 2014
+Tue Sep  9 19:20:15 2014,CIFSVolume snpCIFS1 Creation,PASSED,,Tue Sep  9 19:20:27 2014
+Tue Sep  9 19:20:56 2014,Checksum result on NFS Volume snpNFS1 is:,PASSED,,Tue Sep  9 19:20:56 2014
+Tue Sep  9 19:20:56 2014,Checksum result on ISCSI Volume snpISCSI1 is:,PASSED,,Tue Sep  9 19:21:14 2014
+Tue Sep  9 19:21:14 2014,Checksum result on CIFS Volume snpCIFS1 is:,PASSED,,Tue Sep  9 19:21:14 2014
+Tue Sep  9 19:21:15 2014,Result for snapshot "test_101" creation on volume snpCIFS1 is: ,PASSED,,Tue Sep  9 19:21:16 2014
+Tue Sep  9 19:21:18 2014,Result for snapshot "test_101" creation on volume snpNFS1 is: ,PASSED,,Tue Sep  9 19:21:18 2014
+Tue Sep  9 19:21:19 2014,Result for snapshot "test_101" creation on volume snpISCSI1 is: ,PASSED,,Tue Sep  9 19:21:19 2014
+Tue Sep  9 19:21:21 2014,Checksum result on NFS Volume snpNFS1 is:,PASSED,,Tue Sep  9 19:21:21 2014
+Tue Sep  9 19:21:21 2014,Checksum result on ISCSI Volume snpISCSI1 is:,PASSED,,Tue Sep  9 19:21:27 2014
+Tue Sep  9 19:21:28 2014,Checksum result on CIFS Volume snpCIFS1 is:,PASSED,,Tue Sep  9 19:21:28 2014
+Tue Sep  9 19:21:28 2014,Delete file "cbrequest.py" operation on volume snpNFS1 is:,PASSED,,Tue Sep  9 19:21:28 2014
+Tue Sep  9 19:21:28 2014,Delete file "cbrequest.py" operation on volume snpISCSI1 is:,PASSED,,Tue Sep  9 19:21:35 2014
+Tue Sep  9 19:21:35 2014,Delete file "cbrequest.py" operation on volume snpCIFS1 is:,PASSED,,Tue Sep  9 19:21:37 2014
+Tue Sep  9 19:21:42 2014,md5sum result of file 'cbrequest.py' on volume snpCIFS1 is :,PASSED,,Tue Sep  9 19:21:42 2014
+Tue Sep  9 19:21:42 2014,Result for file 'createDeleteSnapshot.py' should not exit is: ,PASSED,,Tue Sep  9 19:21:42 2014
+Tue Sep  9 19:21:42 2014,md5sum result of file 'cbrequest.py' on volume snpNFS1 is :,PASSED,,Tue Sep  9 19:21:42 2014
+Tue Sep  9 19:21:42 2014,Result for file 'createDeleteSnapshot.py' should not exit is: ,PASSED,,Tue Sep  9 19:21:42 2014
+Tue Sep  9 19:21:42 2014,md5sum result of file 'cbrequest.py' on volume snpISCSI1 is: ,FAILED,,Tue Sep  9 19:21:52 2014
+Tue Sep  9 19:21:42 2014,Result for file 'createDeleteSnapshot.py' should not exit is: ,FAILED,,Tue Sep  9 19:21:52 2014
+Tue Sep  9 19:21:54 2014,Result for clone  "BLsnpCIFS11" creation on volume snpCIFS1 is: ,FAILED,Failed to create clone due to timeout.,Tue Sep  9 19:31:58 2014
+Tue Sep  9 19:21:54 2014,Result for clone  "BLsnpCIFS12" creation on volume snpCIFS1 is: ,FAILED,Failed to create clone due to timeout.,Tue Sep  9 19:42:03 2014
+Tue Sep  9 19:46:48 2014,Checksum result on NFS Volume ExpandNFS1 is:,PASSED,,Tue Sep  9 19:46:49 2014
+Tue Sep  9 19:47:39 2014,CIFS Clones BLsnpCIFS11 Deletion,FAILED,Cannot delete the volume that is in ceretion state.,Tue Sep  9 19:47:41 2014
+Tue Sep  9 19:47:41 2014,CIFS Clones BLsnpCIFS12 Deletion,FAILED,Cannot delete the volume that is in ceretion state.,Tue Sep  9 19:47:43 2014
+Tue Sep  9 19:47:45 2014,NFS Clones BLsnpNFS11 Deletion,FAILED,Cannot delete the volume that is in ceretion state.,Tue Sep  9 19:47:47 2014
+Tue Sep  9 19:47:54 2014,Result for snapshot "tsmsnp101" creation on TSM TSM3 is: ,PASSED,,Tue Sep  9 19:47:56 2014
+Tue Sep  9 19:47:58 2014,Result for snapshot "tsmsnp101" deletion on TSM TSM3 is: ,PASSED,,Tue Sep  9 19:48:01 2014
+Tue Sep  9 19:48:01 2014,Not able to write on volume snpNFS1 so test case for mount with ro option is:,PASSED,,Tue Sep  9 19:48:01 2014
+Tue Sep  9 19:48:02 2014,Result for NFS Status "false" on volume snpNFS1 is: ,PASSED,,Tue Sep  9 19:48:03 2014
+Tue Sep  9 19:48:03 2014,Not able to mount NFS Disabled volume snpNFS1 so test case for disable nfs is : ,PASSED,,Tue Sep  9 19:48:03 2014
+Tue Sep  9 19:48:04 2014,Result for NFS Status "true" on volume snpNFS1 is: ,PASSED,,Tue Sep  9 19:48:04 2014
+Tue Sep  9 19:48:05 2014,Duplicate cifs user TC is,PASSED,An authentication user with the name testuser1 exists. Specify a unique name.,Tue Sep  9 19:48:06 2014
+Tue Sep  9 19:48:06 2014,Mount of CIFS Volume snpCIFS1 with user Account1user1 is:,PASSED,,Tue Sep  9 19:48:06 2014
+Tue Sep  9 19:48:06 2014,Mount of CIFS Volume snpCIFS1 with user Account1user2 is:,PASSED,,Tue Sep  9 19:48:08 2014
+Tue Sep  9 20:49:33 2014,ISCSIVolume dedupISCSI1 Creation,PASSED,,Tue Sep  9 20:49:42 2014
+Tue Sep  9 20:49:42 2014,ISCSIVolume deleteISCSI1 Creation,PASSED,,Tue Sep  9 20:49:50 2014
+Tue Sep  9 20:49:50 2014,NFSVolume dedupNFS1 Creation,PASSED,,Tue Sep  9 20:49:57 2014
+Tue Sep  9 20:49:57 2014,NFSVolume deleteNFS1 Creation,PASSED,,Tue Sep  9 20:50:03 2014
+Tue Sep  9 20:50:03 2014,CIFSVolume dedupCIFS1 Creation,PASSED,,Tue Sep  9 20:50:14 2014
+Tue Sep  9 20:50:14 2014,CIFSVolume deleteCIFS1 Creation,PASSED,,Tue Sep  9 20:50:26 2014
+Tue Sep  9 20:51:15 2014,PASS to update deduplication as "on" on  pool "PoolRaidz1",PASSED,,Tue Sep  9 20:51:15 2014
+Tue Sep  9 20:51:15 2014,Mount of NFS Volume dedupNFS1,PASSED,,Tue Sep  9 20:51:15 2014
+Tue Sep  9 20:51:15 2014,Dedup is enabled and working on'PoolRaidz1',PASSED, ,Tue Sep  9 20:51:35 2014
+Tue Sep  9 20:51:35 2014,Mount of CIFS Volume dedupCIFS1,PASSED,,Tue Sep  9 20:51:35 2014
+Tue Sep  9 20:51:35 2014,Dedup is enabled and working on'PoolRaidz1',PASSED, ,Tue Sep  9 20:52:09 2014
+Tue Sep  9 20:52:09 2014,Dedup is enabled and working on'PoolRaidz1',PASSED, ,Tue Sep  9 20:52:54 2014
+Tue Sep  9 20:52:56 2014,PASS to update deduplication as "off" on  pool "PoolRaidz1",PASSED,,Tue Sep  9 20:52:56 2014
+Tue Sep  9 20:52:56 2014,Mount of NFS Volume dedupNFS1,PASSED,,Tue Sep  9 20:52:56 2014
+Tue Sep  9 20:52:56 2014,Dedup Feature is not working on'PoolRaidz1',FAILED, ,Tue Sep  9 20:53:16 2014
+Tue Sep  9 20:53:16 2014,Mount of CIFS Volume dedupCIFS1,PASSED,,Tue Sep  9 20:53:16 2014
+Tue Sep  9 20:53:16 2014,Dedup Feature is not working on'PoolRaidz1',FAILED, ,Tue Sep  9 20:53:50 2014
+Tue Sep  9 20:53:50 2014,Dedup Feature is not working on'PoolRaidz1',FAILED, ,Tue Sep  9 20:54:36 2014
+Tue Sep  9 20:54:38 2014,PASS to update deduplication as "on" on  pool "PoolRaidz1",PASSED,,Tue Sep  9 20:54:39 2014
+Tue Sep  9 20:54:48 2014,Checksum result on NFS Volume dedupNFS1 is:,PASSED,,Tue Sep  9 20:54:49 2014
+Tue Sep  9 20:54:49 2014,Checksum result on ISCSI Volume dedupISCSI1 is:,PASSED,,Tue Sep  9 20:54:56 2014
+Tue Sep  9 20:54:58 2014,Checksum result on CIFS Volume dedupCIFS1 is:,PASSED,,Tue Sep  9 20:55:00 2014
+Tue Sep  9 20:55:06 2014,Delete file "testfile" operation on volume dedupNFS1 is not possible because read only is on:,P,A,Tue Sep  9 20:55:06 2014
+Tue Sep  9 20:55:06 2014,Delete file "testfile" operation on volume dedupISCSI1 is not possible because read only is on:,P,A,Tue Sep  9 20:55:13 2014
+Tue Sep  9 20:55:13 2014,Delete file "testfile" operation on volume dedupCIFS1 is not possible because read only is on:,P,A,Tue Sep  9 20:55:13 2014
+Tue Sep  9 20:55:16 2014,Checksum result on NFS Volume dedupNFS1 is:,PASSED,,Tue Sep  9 20:55:17 2014
+Tue Sep  9 20:55:17 2014,Checksum result on ISCSI Volume dedupISCSI1 is:,PASSED,,Tue Sep  9 20:55:24 2014
+Tue Sep  9 20:55:25 2014,Checksum result on CIFS Volume dedupCIFS1 is:,PASSED,,Tue Sep  9 20:55:28 2014
+Tue Sep  9 21:37:14 2014,Changing IOPS more than pool on'dedupNFS1' failed.,PASSED, ,Tue Sep  9 21:37:23 2014
+Tue Sep  9 21:37:23 2014,Changing IOPS more than pool on'dedupCIFS1' failed.,PASSED, ,Tue Sep  9 21:37:31 2014
+Tue Sep  9 21:37:31 2014,Changing IOPS more than pool on'dedupISCSI1' failed.,PASSED, ,Tue Sep  9 21:37:40 2014
+Tue Sep  9 21:37:41 2014,Pool QoS change Post Dataset Deletion passed on iops controlled 'deleteCIFS1' and 'PoolRaidz1'   ,PASSED, ,Tue Sep  9 21:37:55 2014
+Tue Sep  9 21:37:55 2014,Pool QoS change Post Dataset Deletion passed on iops controlled 'deleteISCSI1' and 'PoolRaidz1'   ,PASSED, ,Tue Sep  9 21:38:09 2014

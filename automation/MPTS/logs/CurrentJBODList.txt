@@ -1,0 +1,7 @@
+{ "createJbodResponse" :  { "jbod" : {
+  "id": "e3b087a9-92c5-445b-93a3-805b97f28bfc",
+  "name": "Enc1",
+  "type": 1,
+  "rows": 1,
+  "cols": 13
+} }  }

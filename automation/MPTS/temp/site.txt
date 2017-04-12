@@ -1,0 +1,17 @@
+  "Number_of_Sites": "3", 
+
+  "_Site Configuration" : "Details for Site1....",	
+  "siteName1": "Site1",
+  "siteLocation1": "SiteLocation1",
+  "siteDescription1": "SiteDescription1",
+
+  "_Site Configuration" : "Details for Site2....",	
+  "siteName2": "Site2",
+  "siteLocation2": "SiteLocation2",
+  "siteDescription2": "SiteDescription2",
+
+  "_Site Configuration" : "Details for Site3....",	
+  "siteName3": "Site3",
+  "siteLocation3": "SiteLocation3",
+  "siteDescription3": "SiteDescription3",
+

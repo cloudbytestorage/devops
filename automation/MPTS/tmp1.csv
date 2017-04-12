@@ -1,0 +1,13 @@
+smoketest.txt,Y,TSM1,PoolRaidz1,Account1,172.16.48.135,em0,8.8.8.8,172.16.1.1,8,Y,1,TSM1NFS,Y,1,TSM1ISCSI,Y,1,TSM1CIFS,n,initiator,1,FC,Y
+smoketest.txt,y,TSM2,PoolRaidz1,Account1,172.16.48.136,em0,8.8.8.8,172.16.1.1,8,y,1,TSM2NFS,y,1,TSM2ISCSI,Y,1,TSM2CIFS,n,initiator,1,FC,Y
+smoketest.txt,y,TSM3,PoolRaidz1,Account1,172.16.48.137,em0,8.8.8.8,172.16.1.1,8,Y,1,TSM3NFS,Y,1,TSM3ISCSI,y,1,TSM3CIFS,n,initiator,1,FC,y
+regression.txt,y,RTSM1,PoolRaidz1,Account1,172.16.48.138,em0,8.8.8.8,172.16.1.1,8,y,1,RTSM1NFS,y,1,RTSM1ISCSI,y,1,RTSM1CIFS,n,initiator,1,FC,Y
+expandVol.txt,Y,TSM1,PoolRaidz1,Account1,172.16.48.135,em0,8.8.8.8,172.16.1.1,8,Y,1,ExpandNFS,y,1,ExpandISCSI,Y,1,ExpandCIFS,n,initiator,1,FC,Y
+spaceReclaim.txt,y,TSM1,PoolRaidz1,Account1,172.16.48.135,em0,8.8.8.8,172.16.1.1,8,Y,1,spaceReclaimNFS,y,1,spaceReclaimISCSI,y,1,spaceReclaimCIFS,n,initiator,1,FC,Y
+copyVol.txt,y,TSM1,PoolRaidz1,Account1,172.16.48.135,em0,8.8.8.8,172.16.1.1,8,y,1,copyFileNFS,y,1,copyISCSI,y,1,copyCIFS,n,initiator,1,FC,Y
+dummyVol.txt,y,TSM1,PoolRaidz1,Account1,172.16.48.135,em0,8.8.8.8,172.16.1.1,8,y,1,dummyNFS,y,1,dummyISCSI,y,1,dummyCIFS,n,initiator,1,FC,Y
+tpAlert.txt,y,TSM1,PoolRaidz1,Account1,172.16.48.135,em0,8.8.8.8,172.16.1.1,8,y,1,TPNFS,y,1,TPISCSI,y,1,TPCIFS,n,initiator,1,FC,Y
+snapshot.txt,y,TSM3,PoolRaidz1,Account1,172.16.48.137,em0,8.8.8.8,172.16.1.1,8,Y,1,snpNFS,Y,1,snpISCSI,y,1,snpCIFS,n,initiator,2,FC,y
+dedup.txt,y,TSM3,PoolRaidz1,Account1,172.16.48.137,em0,8.8.8.8,172.16.1.1,8,Y,1,dedupNFS,Y,1,dedupISCSI,y,1,dedupCIFS,n,initiator,2,FC,y
+delete.txt,y,TSM3,PoolRaidz1,Account1,172.16.48.137,em0,8.8.8.8,172.16.1.1,8,Y,1,deleteNFS,Y,1,deleteISCSI,y,1,deleteCIFS,n,initiator,2,FC,y
+dummy.txt,n,DonotDeleteTSM,PoolRaidz1,Account1,0.0.0.0,em0,0.0.0.0,0.0.0.0,8,n,2,TSM3NFS,n,2,TSM3ISCSI,n,2,TSM3CIFS,n,initiator,2,FC,n
