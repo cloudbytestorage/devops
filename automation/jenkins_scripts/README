@@ -1,0 +1,14 @@
+Due to certain issues with the VM approach for performing MPTS as UT (such as worsening datastores & insufficient memory/CPU for certain tests), the UT environment has now been shifted to a physical box. This means - the pre-configured ISO for every build is now going to be installed on a physical box and MPTS performed on it. 
+Please note that the I/O hosts and script repository will continue to be VMs. In lieu of these changes a new set of UT_jobs, and by consequence the corresponding scripts have been created. The jobs, corresponding scripts and their functions are listed below :
+
+1. UT_ElastiStor_Physical_Build_2.0.0 : Shell script : This creates the pre-configured iso for installation from the latest files in the workspace. Being a physical machine, there is a step to check existing connections and ask the user for confirmation before install. This has to be avoided, so this step has been commented in the bsdinstall/auto script. This is also done as part of the same job. The generated pre-configured iso is now placed in AutoInstall directory.
+
+2. UT_ElastiStor_Physical_Copy_2.0.0 : /usr/local/jenkins/physicalbox/remote_copy_physical_2.0.0.expect : This job performs the copy of the build from the AutoInstall directory into a network share created on a windows box. This is the location from which the ISO is attached to the physical machine's iDRAC controller as a remote-file-share. This job achieves the copy b/w jenkins freebsd box to windows using SSH enabled via cygwin linux emulation environment on windows
+
+3. UT_ElastiStor_Physical_Install_2.0.0 : /usr/local/jenkins/physicalbox/remote_install_physical_2.0.0.expect : This job uses the racadm utility on a Linux VM to attach the ISO from above-mentioned share to the iDRAC and boot from the same for performing auto install. The steps for this using the utility can be found here : Remote OS installation on Dell servers using racadm utility
+
+4. UT_ElastiStor_Physical_Configure_2.0.0 : /usr/local/jenkins/physicalbox/device_touch_cb_ec_mode_2.0.0.expect : This job touches a file cb_elasticenter_mode with content "3" on the box and reboots it. This is necessary on the 2.0 build to ensure that the java and rabbitmq services are started successfully
+
+5. UT_ElastiStor_Physical_MPTS_2.0.0 : /usr/local/jenkins/physicalbox/remote_install_physical_2.0.0.expect : This box starts the MPTS shell wrapper on the I/O         client
+
+6
