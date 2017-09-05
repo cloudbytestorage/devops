@@ -643,6 +643,71 @@ class WebUtils():
         print table_data_list
         return table_header_list, table_data_list
 
+    def HA_Maintenance(self,node, state):
+        '''node: name of the node which we need to move to maintenance
+        '''
+        try:
+              self.driver.implicitly_wait(10)
+              self.driver.find_element_by_xpath(".//*[@id='navigation']/ul/li[7]").click()
+              self.driver.find_element_by_xpath(".//*[@id='dataTable']/tbody/tr[%s]/td[1]/span" %node).click()
+              nodestatus = self.driver.find_element_by_xpath(".//*[@class='nodestatus icon-view']/a/span[4]").text
+              if nodestatus == state:
+                self.driver.implicitly_wait(5)
+                self.driver.find_element_by_xpath(".//*[@class='widget nodestatus']/ul/li[2]/a/span").click()
+                self.driver.find_element_by_xpath(".//*[@class='ui-dialog-buttonset']/button[1]").click()
+                time.sleep(100)
+              else:
+                  print "Node is not in available state"
+              '''table = self.driver.find_element_by_xpath("//table[@class='ha-job-table adminTable']")
+              if table:
+                  print ("Table Present as expected")
+              else:
+                  print ("Table not Present")'''
+
+        except NoSuchElementException as e1:
+              print "Error: Maintenance", str(e1)
+
+    def Maintenance_table_info(self):
+        #self.driver.find_element_by_xpath(".//*[@id='navigation']/ul/li[4]").click()
+        #self.driver.implicitly_wait(10)
+        table = self.driver.find_element_by_xpath("//table[@class='ha-job-table adminTable']")
+        if table:
+            print ("Table Present as expected")
+        else:
+            print ("Table not Present")
+        row_count = len(self.driver.find_elements_by_xpath(
+            ".//table[@class='ha-job-table adminTable']/tbody/tr"))
+        print row_count
+        column_count = len(self.driver.find_elements_by_xpath(
+            ".//table[@class='ha-job-table adminTable']/tbody/tr[2]/td"))
+        print column_count
+        table_header_list = []
+        first_part = ".//table[@class='ha-job-table adminTable']/tbody/tr[1]/th["
+        second_part = "]"
+        for i in range(column_count):
+            i += 1
+            final_xpath = first_part + str(i) + second_part
+            table_head = self.driver.find_element_by_xpath(final_xpath)
+            print table_head.text
+            table_header_list.append(table_head.text)
+        first_part = ".//table[@class='ha-job-table adminTable']/tbody/tr["
+        second_part = "]/td["
+        third_part = "]"
+        table_data_list = []
+        rows = row_count-1
+        for i in range(1, rows):
+            i = i+1
+            #print i
+            for j in range(column_count):
+                j += 1
+                final_xpath = first_part + str(i) + second_part + str(j) + third_part
+                table_data = self.driver.find_element_by_xpath(final_xpath)
+                table_data_list.append(table_data.text)
+        print table_header_list
+        print table_data_list
+        return table_header_list, table_data_list
+
+
     def close_browser(self):
         self.driver.quit()
 
