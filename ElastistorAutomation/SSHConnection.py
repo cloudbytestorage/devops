@@ -45,11 +45,8 @@ class SSHConnection():
             print data
             return data
 
-    def cbdpctl_status(self):
-        username = const.node_username
-        password = const.node_password
-        host = const.Node1_IP
-        vsm_ip = const.VSM1Ip
+    def cbdpctl_status(self, username, password, host, vsm_ip):
+
         t = SSHConnection()
         t.createSSHConnection(host=host, username=username, password=password)
         time.sleep(5)
