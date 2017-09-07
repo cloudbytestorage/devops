@@ -1,0 +1,2 @@
+python s6.py -H 192.168.235.103 -u root -i ./icoe-dev/icoe-dev.pem
+result will be genrated in mylogs file see the script ,the actul scripy should be copyed in command.txt file

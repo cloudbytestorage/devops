@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html> 
+  <head> 
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>.datagrid table { border-collapse: collapse; text-align: left; width: 100%; }.datagrid {font: normal 12px/150% Arial, Helvetica, sans-serif; background: #fff; overflow-x: auto; border: 1px solid #006699; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }.datagrid table td, .datagrid table th { padding: 3px 10px; }.datagrid table thead th {background-color:#006699; color:#FFFFFF; font-size: 12px; font-weight: bold; border-left: 1px solid #0070A8; } .datagrid table thead th:first-child { border: none; }.datagrid table tbody td { color: #00557F; border-left: 2px solid #E1EEF4;font-size: 12px;font-weight: normal; }.datagrid table tbody .alt td { background: #E1EEf4; color: #00557F; }.datagrid table tbody td:first-child { border-left: none; }.datagrid table tbody tr:last-child td { border-bottom: none; }.datagrid table tfoot td div { border-top: 1px solid #006699;background: #E1EEf4;} .datagrid table tfoot td { padding: 0; font-size: 12px } .datagrid table tfoot td div{ padding: 2px; }.datagrid table tfoot td ul { margin: 0; padding:0; list-style: none; text-align: right; }.datagrid table tfoot li { display: inline; }.datagrid table tfoot li a { text-decoration: none; display: inline-block; padding: 2px 8px; margin: 1px;color: #FFFFFF;border: 1px solid #006699;-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #006699), color-stop(1, #00557F) );background:-moz-linear-gradient( center top, #006699 5%, #00557F 100% );filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#006699', endColorstr='#00557F');background-color:#006699; }.datagrid table tfoot ul.active, .datagrid table tfoot ul a:hover { text-decoration:none;border-color: #00557F; color: #FFFFFF; background: none;background-color:#006699;}
+.serviceDetail table 
+{ 
+	border-collapse: collapse; text-align: left;  
+}
+.serviceDetail 
+{
+	font: normal 9px/150% Arial, Helvetica, sans-serif; 
+	background: #fff; overflow-x: auto; border: 1px solid #1e1e1e; 
+	width: 85%;
+}
+.serviceDetail table td, .serviceDetail table th 
+{ 
+	padding: 3px 10px; 
+}
+.serviceDetail table thead th 
+{
+	background-color:#aaccee; color:#000000; font-size: 10px; font-weight: bold; border-left: 1px solid #aaccee; 
+} 
+.serviceDetail table thead th:first-child 
+{ 
+	border: none; 
+}
+.serviceDetail table tbody td 
+{ 
+	color: #000000; border-left: 2px solid #E1EEF4;font-size: 10px;font-weight: normal; 
+}
+.serviceDetail table tbody .alt td 
+{ 
+	background: #E1EEf4; color: #00557F; 
+}
+.serviceDetail table tbody td:first-child 
+{ 
+	border-left: none; 
+}
+.serviceDetail table tbody tr:last-child td 
+{ 
+	border-bottom: none; 
+}
+.serviceDetail table tfoot td div 
+{ 
+	border-top: 1px solid #006699;background: #E1EEf4;
+} 
+.serviceDetail table tfoot td 
+{
+ padding: 0; font-size: 12px 
+} 
+.serviceDetail table tfoot td div
+{
+ padding: 2px; 
+}
+.serviceDetail table tfoot td ul 
+{ 
+	margin: 0; padding:0; list-style: none; text-align: right; 
+}
+.serviceDetail table tfoot li 
+{ 
+	display: inline; 
+}
+.serviceDetail table tfoot li a 
+{ 
+	text-decoration: none; 
+	display: inline-block; 
+	padding: 2px 8px; 
+	margin: 1px;
+	color: #FFFFFF;
+	border: 1px solid #006699;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #006699), color-stop(1, #00557F) );
+	background:-moz-linear-gradient( center top, #006699 5%, #00557F 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#006699', endColorstr='#00557F');background-color:#006699;
+}
+.serviceDetail table tfoot ul.active, .serviceDetail table tfoot ul a:hover 
+{ 
+	text-decoration:none;border-color: #00557F; color: #FFFFFF; background: none;background-color:#006699;
+}
+	</style> 
+	<script type="text/javascript" src="codebase/js/jquery.min.js">//Test</script>
+     <script src="codebase/js/highcharts.js">//Test</script>
+     <script src="codebase/js/result.js">//Test</script>
+</head>
+<body onload="detail('container','test');">
+<div align='center'><h1 id='header'></h1></div>
+<table align='center'><tr><td><div id="container" style="min-width: 500px; height: 400px; margin: 0 auto"></div></td><td>
+<div class='datagrid'>
+
+
+<table id='tblDetails'><thead>
+				<tr><th>Date</th><th>No. of Steps Passed</th><th>No. of Steps Failed</th></tr>
+				</thead><tbody><tr><td id='date'></td><td id='pCount'></td><td id='fCount'></td></tr></tbody></table></div>
+
+</td></tr></table>
+
+<div class='datagrid'><table id='tblDetail'><thead>
+				<tr><th>S.No.</th><th>Description</th><th>Expected</th><th>Actual</th><th>Timestamp</th><th>Status</th><th>Link</th></tr>
+</thead><tbody></tbody></table></div></body></html>
