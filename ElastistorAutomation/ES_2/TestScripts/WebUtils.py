@@ -591,42 +591,41 @@ class WebUtils():
 
     def Create_DR(self, name, bkp_ip):
         '''Arg:uments:
-        Author: Sudarshan
+        Author: Swarnalatha
                 name = name for the DR
                 bkp_ip= Ip for backup vsm
         '''
         try:
-            vsm = self.driver.find_element_by_xpath(".//*[@id='navigation']/ul/li[5]")
-            self.driver.execute_script("$(arguments[0]).click();", vsm)
-            selectvsm = self.driver.find_element_by_xpath(".//*[@id='dataTable']/tbody/tr[1]/td[1]/span")
-            self.driver.execute_script("$(arguments[0]).click();", selectvsm)
-            time.sleep(5)
-            self.driver.implicitly_wait(60)
-            self.driver.find_element_by_xpath(".//*[@class='top-widgets tcc-topbar']/div[3]/span/i").click()
-            self.driver.find_element_by_xpath(".//*[@class='widget action-tasks']/div/div/ul[2]/li/a/span").click()
-            self.driver.implicitly_wait(10)
-            self.driver.find_element_by_xpath(".//*[@id='name']").send_keys(name)
-            self.driver.find_element_by_xpath(".//*[@class='cloud-button next']").click()
-            self.driver.implicitly_wait(10)
-            time.sleep(5)
-            pyautogui.click(422, 435)
-            time.sleep(2)
-            self.driver.find_element_by_xpath(".//*[@class='cloud-button next']").click()
-            self.driver.find_element_by_xpath(".//*[@id='address']").send_keys(bkp_ip)
-            self.driver.implicitly_wait(10)
-            self.driver.find_element_by_xpath(".//*[@class='cron month']/span[1]/span").click()
-            time.sleep(2)
-            self.driver.find_element_by_xpath(".//*[@class='cron-period']/div/ul/li[2]").click()
-            self.driver.implicitly_wait(60)
-            self.driver.find_element_by_xpath(".//*[@class='cloud-button next final']").click()
-            time.sleep(20)
-        except NoSuchElementException as e:
-            self.log.error("Exception occured while creating DR"),str(e)
-            return False
-
+                vsm = self.driver.find_element_by_xpath(".//*[@id='navigation']/ul/li[5]")
+                self.driver.execute_script("$(arguments[0]).click();", vsm)
+                selectvsm = self.driver.find_element_by_xpath(".//*[@id='dataTable']/tbody/tr[1]/td[1]/span")
+                self.driver.execute_script("$(arguments[0]).click();", selectvsm)
+                time.sleep(5)
+                self.driver.implicitly_wait(60)
+                self.driver.find_element_by_xpath(".//*[@class='top-widgets tcc-topbar']/div[3]/span/i").click()
+                self.driver.find_element_by_xpath(".//*[@class='widget action-tasks']/div/div/ul[2]/li/a/span").click()
+                self.driver.implicitly_wait(10)
+                self.driver.find_element_by_xpath(".//*[@id='name']").send_keys(name)
+                self.driver.find_element_by_xpath(".//*[@class='cloud-button next']").click()
+                self.driver.implicitly_wait(10)
+                time.sleep(5)
+                pyautogui.click(422, 435)
+                time.sleep(2)
+                self.driver.find_element_by_xpath(".//*[@class='cloud-button next']").click()
+                self.driver.find_element_by_xpath(".//*[@id='address']").send_keys(bkp_ip)
+                self.driver.implicitly_wait(10)
+                self.driver.find_element_by_xpath(".//*[@class='cron month']/span[1]/span").click()
+                time.sleep(2)
+                self.driver.find_element_by_xpath(".//*[@class='cron-period']/div/ul/li[2]").click()
+                self.driver.implicitly_wait(60)
+                self.driver.find_element_by_xpath(".//*[@class='cloud-button next final']").click()
+                time.sleep(60)
+            except NoSuchElementException as e:
+                self.log.error("Exception occured while creating DR"), str(e)
+                return False
     def DR_Enable_Disable(self,state):
         '''Arguments:
-        Author: Sudarshan
+        Author: Swarnalatha
         state: Enter Enable or Disable to do specific action'''
         try:
             if state == "Enable":
@@ -636,10 +635,12 @@ class WebUtils():
                 self.driver.execute_script("$(arguments[0]).click();", selectvsm)
                 time.sleep(5)
                 self.driver.implicitly_wait(60)
-                self.driver.find_element_by_xpath(".//*[@class='widget mirror']/ul/li[2]/a/span").click()
+                self.driver.find_element_by_xpath(".//*[@class='top-widgets tcc-topbar']/div[3]/span/i").click()
+                self.driver.find_element_by_xpath(".//*[@class='widget action-tasks']/div/div/ul[2]/li[2]/a/span").click()
                 self.driver.implicitly_wait(10)
+                time.sleep(10)
                 self.driver.find_element_by_xpath(".//*[@class='ui-dialog-buttonset']/button[1]/span").click()
-                time.sleep(5)
+                time.sleep(20)
             elif state == "Disable":
                 vsm = self.driver.find_element_by_xpath(".//*[@id='navigation']/ul/li[5]")
                 self.driver.execute_script("$(arguments[0]).click();", vsm)
@@ -647,15 +648,18 @@ class WebUtils():
                 self.driver.execute_script("$(arguments[0]).click();", selectvsm)
                 time.sleep(5)
                 self.driver.implicitly_wait(60)
-                self.driver.find_element_by_xpath(".//*[@class='widget mirror']/ul/li[2]/a/span").click()
+                self.driver.find_element_by_xpath(".//*[@class='top-widgets tcc-topbar']/div[3]/span/i").click()
+                self.driver.find_element_by_xpath(".//*[@class='widget action-tasks']/div/div/ul[2]/li[2]/a/span").click()
                 self.driver.implicitly_wait(10)
+                time.sleep(10)
                 self.driver.find_element_by_xpath(".//*[@class='ui-dialog-buttonset']/button[2]/span").click()
-                time.sleep(5)
+                time.sleep(20)
             else:
-                self.log.error("Invalid Input Given")
+                print ("Invalid Input Given")
         except NoSuchElementException as Enb:
-            self.log.error("Exception occured during Enable/Disable DR"),str(Enb)
-            sys.exit(1)
+            print("Exception occured during Enable/Disable DR"),str(Enb)
+            return False
+
 
     def Enable_Flash(self):
         self.driver.get("about:addons")
@@ -669,7 +673,9 @@ class WebUtils():
     def deleteDR(self):
         '''Author:Swarnalatha'''
         try:
-            self.driver.find_element_by_xpath(".//*[@class='remove']/a/span").click()
+            self.driver.find_element_by_xpath(".//*[@id='navigation']/ul/li[5]").click()
+            self.driver.find_element_by_xpath(".//*[@id='dataTable']/tbody/tr[1]/td[1]/span[1]/i").click()
+            self.driver.find_element_by_xpath(".//*[@id='dataTable']/tbody/tr[2]/td[12]/div/i").click()
             time.sleep(2)
             self.driver.implicitly_wait(10)
             self.driver.find_element_by_xpath(".//*[@class='ui-dialog-buttonset']/button[2]/span").click()
@@ -677,7 +683,7 @@ class WebUtils():
             message = self.driver.find_element_by_xpath(".//*[@class='message']/span/span").text
             expected_msg = "Successfully deleted the DR VSM."
             if message == expected_msg:
-                print "Successfully Added Volume: "
+                print "Successfully deleted DR: "
             else:
                 print "Warning: Unable to view log msg"
         except NoSuchElementException as vol1:
@@ -689,20 +695,23 @@ class WebUtils():
         node: name of the node which we need to move to maintenance
         '''
         try:
-            self.driver.implicitly_wait(10)
-            self.driver.find_element_by_xpath(".//*[@id='navigation']/ul/li[7]").click()
-            self.driver.find_element_by_xpath(".//*[@id='dataTable']/tbody/tr[%s]/td[1]/span" % node).click()
-            nodestatus = self.driver.find_element_by_xpath(".//*[@class='nodestatus icon-view']/a/span[4]").text
-            if nodestatus == state:
-                self.driver.implicitly_wait(5)
-                self.driver.find_element_by_xpath(".//*[@class='widget nodestatus']/ul/li[2]/a/span").click()
-                self.driver.find_element_by_xpath(".//*[@class='ui-dialog-buttonset']/button[1]").click()
-                time.sleep(50)
-            else:
-                print "Current node state is not supported for this action"
+              self.driver.implicitly_wait(10)
+              self.driver.find_element_by_xpath(".//*[@id='navigation']/ul/li[7]").click()
+              self.driver.find_element_by_xpath(".//*[@id='dataTable']/tbody/tr[%s]/td[1]/span" %node).click()
 
+              nodestatus = self.driver.find_element_by_xpath(".//*[@class='nodestatus info-text']").text
+              nodestatus1 =nodestatus.split(' ')[1]
+              if nodestatus1 == state:
+                self.driver.implicitly_wait(5)
+                self.driver.find_element_by_xpath(".//*[@class='top-widgets tcc-topbar']/div[3]/span/i").click()
+                self.driver.find_element_by_xpath(".//*[@class='nodemanagestatetask']/a/span").click()
+                self.driver.find_element_by_xpath(".//*[@class='ui-dialog-buttonset']/button[1]").click()
+                time.sleep(100)
+              else:
+                  print "Node is not in available state"
         except NoSuchElementException as e1:
-            print "Error: Maintenance", str(e1)
+              print "Error: Maintenance", str(e1)
+
 
     def Maintenance_table_info(self):
         table = self.driver.find_element_by_xpath("//table[@class='ha-job-table adminTable']")
