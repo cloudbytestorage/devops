@@ -10,7 +10,7 @@
 #==============================================================================
 
 import types, os, yaml, sys, datetime, importlib, yamlordereddictloader, traceback
-from SCM.constants import Constants as const
+from ES_1.constants import Constants as const
 from FCM.utils.ResultUtils import ResultUtilities as Rutils
 from GUIConfig import GuiConfig as Gconst
 
