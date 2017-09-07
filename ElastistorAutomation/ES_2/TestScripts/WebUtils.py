@@ -15,7 +15,7 @@ from selenium import webdriver
 from selenium.webdriver.common.action_chains import *
 from selenium.common.exceptions import NoAlertPresentException, WebDriverException, NoSuchElementException
 import time, pyautogui, sys, Logging, os
-from GUIConfig import GuiConfig as const
+from ES_2.GUIConfig import GuiConfig as const
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.firefox.firefox_profile import FirefoxProfile
 
@@ -596,33 +596,34 @@ class WebUtils():
                 bkp_ip= Ip for backup vsm
         '''
         try:
-                vsm = self.driver.find_element_by_xpath(".//*[@id='navigation']/ul/li[5]")
-                self.driver.execute_script("$(arguments[0]).click();", vsm)
-                selectvsm = self.driver.find_element_by_xpath(".//*[@id='dataTable']/tbody/tr[1]/td[1]/span")
-                self.driver.execute_script("$(arguments[0]).click();", selectvsm)
-                time.sleep(5)
-                self.driver.implicitly_wait(60)
-                self.driver.find_element_by_xpath(".//*[@class='top-widgets tcc-topbar']/div[3]/span/i").click()
-                self.driver.find_element_by_xpath(".//*[@class='widget action-tasks']/div/div/ul[2]/li/a/span").click()
-                self.driver.implicitly_wait(10)
-                self.driver.find_element_by_xpath(".//*[@id='name']").send_keys(name)
-                self.driver.find_element_by_xpath(".//*[@class='cloud-button next']").click()
-                self.driver.implicitly_wait(10)
-                time.sleep(5)
-                pyautogui.click(422, 435)
-                time.sleep(2)
-                self.driver.find_element_by_xpath(".//*[@class='cloud-button next']").click()
-                self.driver.find_element_by_xpath(".//*[@id='address']").send_keys(bkp_ip)
-                self.driver.implicitly_wait(10)
-                self.driver.find_element_by_xpath(".//*[@class='cron month']/span[1]/span").click()
-                time.sleep(2)
-                self.driver.find_element_by_xpath(".//*[@class='cron-period']/div/ul/li[2]").click()
-                self.driver.implicitly_wait(60)
-                self.driver.find_element_by_xpath(".//*[@class='cloud-button next final']").click()
-                time.sleep(60)
-            except NoSuchElementException as e:
-                self.log.error("Exception occured while creating DR"), str(e)
-                return False
+            vsm = self.driver.find_element_by_xpath(".//*[@id='navigation']/ul/li[5]")
+            self.driver.execute_script("$(arguments[0]).click();", vsm)
+            selectvsm = self.driver.find_element_by_xpath(".//*[@id='dataTable']/tbody/tr[1]/td[1]/span")
+            self.driver.execute_script("$(arguments[0]).click();", selectvsm)
+            time.sleep(5)
+            self.driver.implicitly_wait(60)
+            self.driver.find_element_by_xpath(".//*[@class='top-widgets tcc-topbar']/div[3]/span/i").click()
+            self.driver.find_element_by_xpath(".//*[@class='widget action-tasks']/div/div/ul[2]/li/a/span").click()
+            self.driver.implicitly_wait(10)
+            self.driver.find_element_by_xpath(".//*[@id='name']").send_keys(name)
+            self.driver.find_element_by_xpath(".//*[@class='cloud-button next']").click()
+            self.driver.implicitly_wait(10)
+            time.sleep(5)
+            pyautogui.click(422, 435)
+            time.sleep(2)
+            self.driver.find_element_by_xpath(".//*[@class='cloud-button next']").click()
+            self.driver.find_element_by_xpath(".//*[@id='address']").send_keys(bkp_ip)
+            self.driver.implicitly_wait(10)
+            self.driver.find_element_by_xpath(".//*[@class='cron month']/span[1]/span").click()
+            time.sleep(2)
+            self.driver.find_element_by_xpath(".//*[@class='cron-period']/div/ul/li[2]").click()
+            self.driver.implicitly_wait(60)
+            self.driver.find_element_by_xpath(".//*[@class='cloud-button next final']").click()
+            time.sleep(60)
+        except NoSuchElementException as e:
+            self.log.error("Exception occured while creating DR"), str(e)
+            return False
+
     def DR_Enable_Disable(self,state):
         '''Arguments:
         Author: Swarnalatha
@@ -820,53 +821,5 @@ class WebUtils():
         self.driver.quit()
         self.log.info("Closed Browser Successfully")
 
-def main():
-    username = "admin"
-    password = "test"
-    url = "https://20.10.31.10/client/index.jsp"
-    t = WebUtils()
-    t.login_EC(url,username,password)
-    '''time.sleep(5)
-    t.Addsite(1,"TestSite","Bangalore")
-    t.Add_HA_Group(1,"SudHA","16.10.31.5","16.10.31.6")
-    time.sleep(5)
-    t.Add_Node(2,"N")
-    time.sleep(5)
-    #t.Add_Node(2,"N2")'''
-    #t.Configure_DA(const.Disk_Enclosure_Name, 18)
-    #t.Add_Pools(1, "N11", const.Pool1, const.R5, 3)
-    #time.sleep(5)
-    #t.Add_VLAN("16","ix0(active)")
-    #time.sleep(3)
-    #t.Add_VSMS("VSM1",1,1,"6.10.21.133")
-    '''t.Add_iSCSI_FC_Volume(1, "iscsiVol1", 100)
-    t.Add_NCFS_Volume(1,"NFSVol1",100,"NFS",const.NFSClientIP)
-    t.Add_NCFS_Volume(1, "CFSVol1", 100, "CFS", const.NFSClientIP)
-    time.sleep(5)
-    t.Add_VSMS("SudVSM2", 1,"16.10.31.201")
-    time.sleep(5)
-    t.Add_Volume("NFSVol1",100)
-    time.sleep(5)
-    t.Add_Volume("NFSVol2",100)
-    time.sleep(5)'''
-    #t.Add_VLAN("16")
-    t.deleteDR()
-    #time.sleep(60)
-    #t.Configure_DA("CB_Storage", 18)
-    #t.Add_VSMS("TestVSM", 1, "16.10.92.201")
-    #time.sleep(5)
-    #t.Add_Volume("TestVol",100)
-    #time.sleep(5)
-    #t.Add_Volume("TestVol2",100)
-    #t.Add_VSMS("TestVSM2", 700, 2, "16.10.92.202")
 
-    #t.Addsite(2,"testsite","hyd")
-    #time.sleep(5)
-    #t.Add_HA_Group(1,"testha","20.10.31.70","20.10.31.71")
-    #time.sleep(5)
-    #t.Add_Node(1,"Testnode")
-    t.close_browser()
-
-if __name__ == '__main__':
-    main()
 

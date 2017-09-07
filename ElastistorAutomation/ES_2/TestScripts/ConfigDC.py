@@ -9,7 +9,7 @@
 #python_version  :2.7
 #==============================================================================
 
-from GUIConfig import GuiConfig as const
+from ES_2.GUIConfig import GuiConfig as const
 from WebUtils import WebUtils
 import Logging, time, sys, os
 
