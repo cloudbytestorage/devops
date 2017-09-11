@@ -288,15 +288,17 @@ class WebUtils():
             self.driver.find_element_by_xpath(".//*[@id='dataTable']/tbody/tr[1]/td[1]/span[1]").click()
             time.sleep(2)
             self.driver.implicitly_wait(10)
-            self.driver.find_element_by_xpath(".//*[@id='dataTable']/tbody/tr[2]/td[1]/span[2]").click()
+            self.driver.find_element_by_xpath(".//*[@id='dataTable']/tbody/tr[2]/td[1]").click()
             time.sleep(2)
             self.driver.implicitly_wait(10)
-            self.driver.find_element_by_xpath(".//*[@class='widget mirrorTasks']/ul/li[2]/a/span").click()
+            self.driver.find_element_by_xpath(".//*[@class='dashboard-widget']/div/div[1]/div[2]/ul/li[1]/a/i").click()
             time.sleep(3)
             self.driver.implicitly_wait(10)
             self.driver.find_element_by_xpath(".//*[@id='settings-detail']/div[1]/a").click()
             time.sleep(3)
             self.driver.implicitly_wait(10)
+            self.driver.find_element_by_xpath(".//*[@id='mainselection']/select").click()
+            time.sleep(2)
             self.driver.find_element_by_xpath(
                 ".//*[@id='mainselection']/select/option[text()='vlan16(active)']").click()
             time.sleep(2)
@@ -310,16 +312,19 @@ class WebUtils():
             message = self.driver.find_element_by_xpath(".//*[@class='message']/span/span").text
             expected_msg = "DR VSM network configuration is updated successfully."
             if message == expected_msg:
-                self.log.info("DR VSM network configuration is updated successfully.")
+                print ("DR VSM network configuration is updated successfully.")
             else:
-                self.log.error("Unable to view log msg")
-            self.log.info("Backup Ip assigned successfully")
-            time.sleep(10)
+                print ("Unable to view log msg")
+            print ("Backup Ip assigned successfully")
+            time.sleep(20)
             self.driver.implicitly_wait(10)
-            self.driver.find_element_by_xpath(".//*[@id='back']").click()
+            self.driver.find_element_by_xpath(".//*[@id='navigation']/ul/li[5]").click()
+            self.driver.find_element_by_xpath(".//*[@id='dataTable']/tbody/tr[1]/td[1]/span[1]").click()
+            self.driver.find_element_by_xpath(".//*[@id='dataTable']/tbody/tr[2]/td[1]").click()
             time.sleep(3)
             self.driver.implicitly_wait(10)
-            self.driver.find_element_by_xpath(".//*[@class='widget mirrorTasks']/ul/li[1]/a/span").click()
+            self.driver.find_element_by_xpath(".//*[@class='top-widgets tcc-topbar']/div[3]/span/i").click()
+            self.driver.find_element_by_xpath(".//*[@class='widget action-tasks']/div/div/ul[2]/li[1]/a").click()
             self.driver.implicitly_wait(10)
             time.sleep(2)
             self.driver.find_element_by_xpath(".//*[@class='ui-dialog-buttonset']/button[2]/span").click()
@@ -327,9 +332,10 @@ class WebUtils():
             self.driver.implicitly_wait(200)
             self.driver.find_element_by_xpath(".//*[@class='ui-dialog-buttonset']/button[1]/span").click()
             self.log.info("Activation is success, remount the volumes and use.")
+            time.sleep(60)
         except Exception as t:
             self.log.error("Exception occured while activating DR", str(t))
-            sys.exit(1)
+            return False
 
     def Add_Pools(self,n,nodename,name,raid,no_of_disks):
         '''Arguments:
