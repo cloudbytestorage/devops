@@ -1,0 +1,9 @@
+1505887221286	geckodriver	INFO	geckodriver 0.18.0
+1505887221301	geckodriver	INFO	Listening on 127.0.0.1:50912
+1505887223361	geckodriver::marionette	INFO	Starting browser C:\Program Files (x86)\Mozilla Firefox\firefox.exe with args ["-marionette"]
+1505887229257	Marionette	INFO	Listening on port 50918
+1505887229625	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://20.10.31.10/client/lib/jquery.js, line 622: TypeError: obj is undefined
+JavaScript error: https://20.10.31.10/client/lib/jquery.js, line 622: TypeError: obj is undefined
+1505887427747	Marionette	INFO	New connections will no longer be accepted
+e	ERROR	Failed to kill browser process

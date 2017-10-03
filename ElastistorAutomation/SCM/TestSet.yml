@@ -1,0 +1,11 @@
+Regression:
+
+   ConfigDC: no
+   StorageConfig: no
+   RunIO: no
+   DR_resumablity: no
+   delete_DR: execute
+   DR_Reboot: execute
+   Verify_ungracefullDR: execute
+   ActivateDR: execute
+

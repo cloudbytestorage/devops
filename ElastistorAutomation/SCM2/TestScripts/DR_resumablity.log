@@ -1,0 +1,7 @@
+2017-09-13 16:39:44,489 - Resumability_DR - INFO - Test Resumability_DR begins
+2017-09-13 16:42:36,075 - Resumability_DR - INFO - Waiting till schedule duration for DR to begin
+2017-09-13 16:45:07,151 - Resumability_DR - INFO - DR transfer disabled successfully
+2017-09-13 16:46:03,009 - Resumability_DR - INFO - Pass: Verified that DR transfer did not continued after disabling transfer
+2017-09-13 16:46:13,013 - Resumability_DR - INFO - Enabling DR transfer to verify resumability
+2017-09-13 16:46:51,255 - Resumability_DR - INFO - DR transfer enabled successfully
+2017-09-13 16:50:16,993 - Resumability_DR - INFO - Pass: DR transfer resumed successfully

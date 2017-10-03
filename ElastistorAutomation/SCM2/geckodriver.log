@@ -1,0 +1,11 @@
+1505884447287	geckodriver	INFO	geckodriver 0.18.0
+1505884447304	geckodriver	INFO	Listening on 127.0.0.1:50387
+1505884449383	geckodriver::marionette	INFO	Starting browser C:\Program Files (x86)\Mozilla Firefox\firefox.exe with args ["-marionette"]
+1505884456085	Marionette	INFO	Listening on port 50395
+1505884456802	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://20.10.31.10/client/lib/jquery.js, line 622: TypeError: obj is undefined
+JavaScript error: https://20.10.31.10/client/lib/jquery.js, line 622: TypeError: obj is undefined
+1505884790352	Marionette	INFO	New connections will no longer be accepted
+
+e 328: NS_ERROR_XPC_GS_RETURNED_FAILURE: Component returned failure code: 0x80570016 (NS_ERROR_XPC_GS_RETURNED_FAILURE) [nsIJSCID.getService]
+1505299003054	Marionette	INFO	Ceased listening

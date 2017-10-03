@@ -1,0 +1,5 @@
+2017-09-13 15:55:18,944 - UngracefullHA_DR - INFO - Test UngracefullHA_DR begins
+2017-09-13 15:57:48,085 - UngracefullHA_DR - INFO - Waiting till schedule duration for DR to begin
+2017-09-13 15:59:21,250 - UngracefullHA_DR - INFO - Rebooting Node for ungracefull HA
+2017-09-13 16:04:41,717 - UngracefullHA_DR - INFO - Pass: DR transfer resumed successfully
+2017-09-13 16:06:09,540 - UngracefullHA_DR - INFO - Moved Node to available state

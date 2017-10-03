@@ -1,0 +1,11 @@
+2017-09-20 10:44:16,881 - Elastistor - INFO - Elastistor Automation Suite
+2017-09-20 10:44:25,029 - Elastistor - INFO - Logged into EC successfully
+2017-09-20 10:45:02,786 - Elastistor - WARNING - Unable to view pools log msg
+2017-09-20 10:45:39,721 - Elastistor - WARNING - Unable to view pools log msg
+2017-09-20 10:46:56,765 - Elastistor - INFO - Successfully Added VSM: VSMCB1
+2017-09-20 10:48:09,997 - Elastistor - INFO - Successfully Added VSM: VSMCB2
+2017-09-20 10:48:46,538 - Elastistor - INFO - Successfully Added Volume: NFSVolCB1
+2017-09-20 10:48:58,463 - Elastistor - INFO - Authorized NFS clients have been added
+2017-09-20 10:49:36,155 - Elastistor - INFO - Successfully Added Volume: NFSVolCB2
+2017-09-20 10:49:48,354 - Elastistor - INFO - Authorized NFS clients have been added
+2017-09-20 10:49:51,480 - Elastistor - INFO - Closed Browser Successfully
