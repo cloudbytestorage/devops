@@ -9,7 +9,7 @@
 #python_version  :2.7
 #==============================================================================
 
-from ES_1.GUIConfig import GuiConfig as const
+from SCM.GUIConfig import GuiConfig as const
 from SSHConnection import SSHConnection
 from WebUtils import WebUtils
 import Logging, time, sys, os
