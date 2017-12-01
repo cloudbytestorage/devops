@@ -13,7 +13,7 @@
 
 import paramiko
 import os, time, subprocess, re
-from ES_1.GUIConfig import GuiConfig as const
+from SCM.GUIConfig import GuiConfig as const
 
 
 __SCRIPTDELAY__ = .5
