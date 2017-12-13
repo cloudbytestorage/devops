@@ -844,6 +844,157 @@ class WebUtils():
             self.log.error("Exception occured"), str(e1)
             sys.exit(1)
 
+    def Create_MigrantVSM(self, bkp_ip):
+        '''Arg:uments:
+        Author: Swarnalatha
+                bkp_ip= Ip for backup vsm'''
+
+        try:
+            vsm = self.driver.find_element_by_xpath(".//*[@id='navigation']/ul/li[5]")
+            self.driver.execute_script("$(arguments[0]).click();", vsm)
+            selectvsm = self.driver.find_element_by_xpath(".//*[@id='dataTable']/tbody/tr[1]/td[1]/span")
+            self.driver.execute_script("$(arguments[0]).click();", selectvsm)
+            time.sleep(5)
+            self.driver.implicitly_wait(60)
+            self.driver.find_element_by_xpath(".//*[@class='top-widgets tcc-topbar']/div[3]/span/i").click()
+            self.driver.find_element_by_xpath(".//*[@class='widget action-tasks']/div/div/ul[3]/li/a").click()
+            self.driver.implicitly_wait(10)
+            time.sleep(10)
+            self.driver.find_element_by_xpath(".//*[@class='pd-buttons buttons']/button[1]/span").click()
+            self.driver.implicitly_wait(10)
+            time.sleep(5)
+            pyautogui.click(422, 435)
+            time.sleep(2)
+            self.driver.find_element_by_xpath(".//*[@class='cloud-button next']").click()
+            self.driver.find_element_by_xpath(".//*[@id='address']").send_keys(bkp_ip)
+            self.driver.implicitly_wait(10)
+            self.driver.find_element_by_xpath(".//*[@class='cron month']/span[1]/span").click()
+            time.sleep(2)
+            self.driver.find_element_by_xpath(".//*[@class='cron-period']/div/ul/li[1]").click()
+            self.driver.implicitly_wait(60)
+            self.driver.find_element_by_xpath(".//*[@class='cloud-button next final']").click()
+            time.sleep(60)
+        except NoSuchElementException as e:
+            self.log.error("Exception occured while creating Migrant VSM"), str(e)
+            return False
+
+    def Activate_MigrantVSM(self, backupip):
+        ''' Arguments:
+        Author: Swarnalatha
+            backupip: IP for backup vsm'''
+        try:
+            self.driver.find_element_by_xpath(".//*[@id='navigation']/ul/li[5]").click()
+            self.driver.implicitly_wait(10)
+            self.driver.find_element_by_xpath(".//*[@id='dataTable']/tbody/tr[1]/td[1]/span[1]").click()
+            time.sleep(2)
+            self.driver.implicitly_wait(10)
+            self.driver.find_element_by_xpath(".//*[@id='dataTable']/tbody/tr[2]/td[1]").click()
+            time.sleep(2)
+            self.driver.implicitly_wait(10)
+            self.driver.find_element_by_xpath(".//*[@class='dashboard-widget']/div/div[1]/div[2]/ul/li[1]/a/i").click()
+            time.sleep(3)
+            self.driver.implicitly_wait(10)
+            self.driver.find_element_by_xpath(".//*[@id='settings-detail']/div[1]/a").click()
+            time.sleep(3)
+            self.driver.implicitly_wait(10)
+            self.driver.find_element_by_xpath(".//*[@id='mainselection']/select").click()
+            time.sleep(2)
+            self.driver.find_element_by_xpath(
+                ".//*[@id='mainselection']/select/option[text()='em0 (active)']").click()
+            time.sleep(2)
+            self.driver.implicitly_wait(10)
+            time.sleep(2)
+            self.driver.implicitly_wait(10)
+            self.driver.find_element_by_xpath(".//*[@id='settings-detail']/div/a[2]").click()
+            message = self.driver.find_element_by_xpath(".//*[@class='message']/span/span").text
+            expected_msg = "Migrant VSM network configuration is updated successfully."
+            if message == expected_msg:
+                print (" Migrant VSM network configuration is updated successfully.")
+            else:
+                print ("Unable to view log msg")
+            print ("Backup Ip assigned successfully")
+            time.sleep(20)
+            self.driver.implicitly_wait(10)
+            self.driver.find_element_by_xpath(".//*[@id='navigation']/ul/li[5]").click()
+            self.driver.find_element_by_xpath(".//*[@id='dataTable']/tbody/tr[1]/td[1]/span[1]").click()
+            self.driver.find_element_by_xpath(".//*[@id='dataTable']/tbody/tr[2]/td[1]").click()
+            time.sleep(3)
+            self.driver.implicitly_wait(10)
+            self.driver.find_element_by_xpath(".//*[@class='top-widgets tcc-topbar']/div[3]/span/i").click()
+            self.driver.find_element_by_xpath(".//*[@class='widget action-tasks']/div/div/ul[2]/li[1]/a").click()
+            self.driver.implicitly_wait(10)
+            time.sleep(2)
+            self.driver.find_element_by_xpath(".//*[@class='ui-dialog-buttonset']/button[2]/span").click()
+            time.sleep(30)
+            self.driver.implicitly_wait(200)
+            self.driver.find_element_by_xpath(".//*[@class='ui-dialog-buttonset']/button[1]/span").click()
+            self.log.info("Activation is success, remount the volumes and use.")
+            time.sleep(60)
+        except Exception as t:
+            self.log.error("Exception occured while activating Migrant VSM"), str(t)
+            return False
+
+    def Migration_Enable_Disable(self, state):
+        '''Arguments:
+        Author: Swarnalatha
+        state: Enter Enable or Disable to do specific action'''
+        try:
+            self.driver.implicitly_wait(100)
+            if state == "Enable":
+                vsm = self.driver.find_element_by_xpath(".//*[@id='navigation']/ul/li[5]")
+                self.driver.execute_script("$(arguments[0]).click();", vsm)
+                selectvsm = self.driver.find_element_by_xpath(".//*[@id='dataTable']/tbody/tr[1]/td[1]/span[2]")
+                self.driver.execute_script("$(arguments[0]).click();", selectvsm)
+                time.sleep(5)
+                self.driver.implicitly_wait(60)
+                self.driver.find_element_by_xpath(".//*[@class='top-widgets tcc-topbar']/div[3]/span/i").click()
+                self.driver.find_element_by_xpath(
+                    ".//*[@class='widget action-tasks']/div/div/ul[2]/li[2]/a/span").click()
+                self.driver.implicitly_wait(10)
+                time.sleep(10)
+                self.driver.find_element_by_xpath(".//*[@class='ui-dialog-buttonset']/button[1]/span").click()
+                time.sleep(20)
+            elif state == "Disable":
+                vsm = self.driver.find_element_by_xpath(".//*[@id='navigation']/ul/li[5]")
+                self.driver.execute_script("$(arguments[0]).click();", vsm)
+                selectvsm = self.driver.find_element_by_xpath(".//*[@id='dataTable']/tbody/tr[1]/td[1]/span[2]")
+                self.driver.execute_script("$(arguments[0]).click();", selectvsm)
+                time.sleep(5)
+                self.driver.implicitly_wait(60)
+                self.driver.find_element_by_xpath(".//*[@class='top-widgets tcc-topbar']/div[3]/span/i").click()
+                self.driver.find_element_by_xpath(
+                    ".//*[@class='widget action-tasks']/div/div/ul[2]/li[2]/a/span").click()
+                self.driver.implicitly_wait(10)
+                time.sleep(10)
+                self.driver.find_element_by_xpath(".//*[@class='ui-dialog-buttonset']/button[2]/span").click()
+                time.sleep(20)
+            else:
+                print ("Invalid Input Given")
+        except NoSuchElementException as Enb:
+            print("Exception occured during Enable/Disable Migrant schedule"), str(Enb)
+            return False
+
+    def deleteMigrantVSM(self):
+        '''Author:Swarnalatha'''
+        try:
+            self.driver.implicitly_wait(100)
+            self.driver.find_element_by_xpath(".//*[@id='navigation']/ul/li[5]").click()
+            self.driver.find_element_by_xpath(".//*[@id='dataTable']/tbody/tr[1]/td[1]/span[1]/i").click()
+            self.driver.find_element_by_xpath(".//*[@id='dataTable']/tbody/tr[2]/td[12]/div/i").click()
+            time.sleep(2)
+            self.driver.implicitly_wait(10)
+            self.driver.find_element_by_xpath(".//*[@class='ui-dialog-buttonset']/button[2]/span").click()
+            self.driver.implicitly_wait(20)
+            message = self.driver.find_element_by_xpath(".//*[@class='message']/span/span").text
+            expected_msg = "Successfully deleted the Migrant VSM."
+            if message == expected_msg:
+                print "Successfully deleted Migrant VSM: "
+            else:
+                print "Warning: Unable to view log msg"
+        except NoSuchElementException as vol1:
+            print "Error:", str(vol1)
+            sys.exit(1)
+
     def close_browser(self):
         self.driver.quit()
         self.log.info("Closed Browser Successfully")
