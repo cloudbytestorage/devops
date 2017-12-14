@@ -41,7 +41,7 @@ def main():
         vsm_ip = const.VSM1Ip
         time.sleep(80)
         SSH = SSHConnection()
-        output = SSH.cbdpctl_status(user,pwd,host1,vsm_ip)
+        output = SSH.cbdpctl_Migration(user,pwd,host1,vsm_ip)
         print output
         if output[0] == "transferring":
             try:

@@ -41,7 +41,7 @@ def main():
         host1 = const.Node1_IP
         vsm_ip = const.VSM1Ip
         SSH = SSHConnection()
-        output = SSH.cbdpctl_status(user,pwd,host1,vsm_ip)
+        output = SSH.cbdpctl_Migration(user,pwd,host1,vsm_ip)
         print output
         if output[0] == "transferring":
             try:
@@ -61,7 +61,7 @@ def main():
                     log.info("Data network is down")
 
                 time.sleep(30)
-                output = t1.cbdpctl_status(user,pwd,host1,vsm_ip)
+                output = t1.cbdpctl_Migration(user,pwd,host1,vsm_ip)
                 if output:
                     print "Fail: Migrant transfer is still running after Data N/W loss"
                     log.error("Fail: Migrant transfer is still running after Data N/W loss")
@@ -79,7 +79,7 @@ def main():
                 t1.exec_cmd("ifconfig %s up" % interface)
                 print "vlan network is up"
                 time.sleep(60)
-                output = t1.cbdpctl_status(user, pwd, host1, vsm_ip)
+                output = t1.cbdpctl_Migration(user, pwd, host1, vsm_ip)
                 if output:
                     print "pass: Migrant transfer is continuied after making nw interface ip"
                     log.info("pass: Migrant transfer is continuied after making nw interface ip")

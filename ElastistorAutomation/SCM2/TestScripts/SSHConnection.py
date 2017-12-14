@@ -73,6 +73,33 @@ class SSHConnection():
         else:
             print "VSM not found"
 
+    def cbdpctl_Migration(self, username, password, host, vsm_ip):
+        t = SSHConnection()
+        t.createSSHConnection(host=host, username=username, password=password)
+        time.sleep(5)
+        out = t.exec_cmd("jls")
+        out1 = out.split()
+        if vsm_ip in out1:
+            jls = out1.index(vsm_ip)
+            jls_id = int(out1[jls - 1])
+            time.sleep(2)
+            output = t.exec_cmd("jexec %s cbdpctl -c list" % jls_id)
+            o1 = output.split('\n')
+            Job = o1[0].split(':')[1]
+            instance = o1[1].split(':')[1]
+            command = ("jexec %s cbdpctl -c status -i %s -j %s" % (jls_id, instance, Job))
+            time.sleep(2)
+            validate = t.exec_cmd(command)
+            out0 = validate.split('\n')
+            print out0
+            status = out0[2].split()[1]
+            print status
+            bytes_transfered = out0[11].split()[1]
+            t.close()
+            return status, bytes_transfered
+        else:
+            print "VSM not found"
+
     def check_Ping(self,ip):
         ps = subprocess.Popen(['ping', ip, '-c', '1'], stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                               stderr=subprocess.PIPE)

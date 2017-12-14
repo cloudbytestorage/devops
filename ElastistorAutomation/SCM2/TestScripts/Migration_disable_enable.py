@@ -39,7 +39,7 @@ def main():
         host1 = const.Node1_IP
         vsm_ip = const.VSM1Ip
         SSH = SSHConnection()
-        output = SSH.cbdpctl_status(user,pwd,host1,vsm_ip)
+        output = SSH.cbdpctl_Migration(user,pwd,host1,vsm_ip)
         print output
         if output[0] == "transferring":
             try:
@@ -73,10 +73,10 @@ def main():
                 log.error("Error: Exception occured while enabling transfer"), str(f)
                 raise
             time.sleep(50)
-            out1 = SSH.cbdpctl_status(user,pwd,host1,vsm_ip)
+            out1 = SSH.cbdpctl_Migration(user,pwd,host1,vsm_ip)
             bytestransfered = out1[1]
             time.sleep(30)
-            out2 = SSH.cbdpctl_status(user,pwd,host1,vsm_ip)
+            out2 = SSH.cbdpctl_Migration(user,pwd,host1,vsm_ip)
             cstatus = out2[0]
             cbytestransfered = out2[1]
             if cstatus == "transferring" and int(cbytestransfered) > int(bytestransfered):
@@ -86,7 +86,7 @@ def main():
             else:
                 log.error("Fail: Migration resume failed")
             time.sleep(2)
-        elif output[0] == "Uptodate":
+        elif output[0] == "uptodate":
             log.info("Base snapshot transfered")
         else:
             log.info("Failed to get DR status, please recheck")

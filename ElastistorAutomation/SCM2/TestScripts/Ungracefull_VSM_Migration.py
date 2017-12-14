@@ -23,11 +23,11 @@ def main():
         vsm_ip = const.VSM1Ip
         SSH = SSHConnection()
         time.sleep(10)
-        out1 = SSH.cbdpctl_status(user, pwd, host2, vsm_ip)
+        out1 = SSH.cbdpctl_Migration(user, pwd, host2, vsm_ip)
         print out1
         bytestransfered = out1[1]
         time.sleep(60)
-        out2 = SSH.cbdpctl_status(user, pwd, host2, vsm_ip)
+        out2 = SSH.cbdpctl_Migration(user, pwd, host2, vsm_ip)
         print out2
         cstatus = out2[0]
         cbytestransfered = out2[1]

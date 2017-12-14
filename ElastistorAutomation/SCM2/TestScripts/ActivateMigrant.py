@@ -28,7 +28,7 @@ def main():
         pwd = const.node_password
         host = const.Node1_IP
         vsm_ip = const.VSM1Ip
-        out = t.cbdpctl_status(user, pwd, host, vsm_ip)
+        out = t.cbdpctl_Migration(user, pwd, host, vsm_ip)
         print out[1], "Sud"
 
         if out[0] == "uptodate":
