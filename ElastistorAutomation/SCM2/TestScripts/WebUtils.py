@@ -995,6 +995,72 @@ class WebUtils():
             print "Error:", str(vol1)
             sys.exit(1)
 
+    def Create_Migrantvolume(self,name):
+        try:
+            '''Getting elements'''
+            self.driver.find_element_by_xpath(".//*[@id='navigation']/ul/li[4]").click() # Click volume
+            self.driver.implicitly_wait(10)
+            self.driver.find_element_by_xpath(".//*[@id='dataTable']/tbody/tr[1]/td[1]/span").click() # Select 1st volume
+            time.sleep(5)
+            self.driver.implicitly_wait(5)
+            self.driver.find_element_by_xpath(".//*[@class='top-widgets tcc-topbar']/div[3]/span/i").click()# Click volume actions
+            self.driver.implicitly_wait(10)
+            self.driver.find_element_by_xpath(".//*[@id='53e6ca4d-47af-328e-8c8b-7952c41b70f6']/div/div/ul[2]/li/a/span").click() # Click Migration schedule
+            self.driver.implicitly_wait(10)
+            self.driver.find_element_by_xpath(".//*[@id='cb-wizard-container']/div[2]/div[1]/div[2]/div[2]/button[1]").click()  # First form 'next' button
+            self.driver.implicitly_wait(10)
+            pyautogui.click(423,515) # selecting second pool
+            self.driver.find_element_by_xpath(".//*[@id='cb-wizard-container']/div[2]/div[1]/div[2]/div[2]/button[1]").click()
+            self.driver.implicitly_wait(10)
+            time.sleep(10)
+            self.driver.find_element_by_xpath(".//*[@id='name']").send_keys(name) # Entering migrant's name
+            self.driver.implicitly_wait(10)
+            self.driver.find_element_by_xpath(".//*[@id='cb-wizard-container']/div[2]/div[1]/div[2]/div[2]/button[1]").click()
+            self.driver.implicitly_wait(10)
+            self.driver.find_element_by_xpath(".//*[@id='address']").send_keys(const.BackupVSMIP)
+            self.driver.implicitly_wait(10)
+            self.driver.find_element_by_xpath(".//*[@id='cb-wizard-container']/div[2]/div[1]/div[2]/div[2]/button[1]").click() #Final button
+            time.sleep(10)
+        except NoSuchElementException as e:
+            self.log.error("Exception occurred while creating migrant volume"), str(e)
+            return False
+
+    def Assign_NFSClient(self):
+        try:
+            time.sleep(3)
+            self.driver.find_element_by_xpath(".//*[@class='widget volumeAccessible']/div[2]/div/div/div").click()
+            self.driver.find_element_by_xpath(".//*[@id='authnetwork']").send_keys(const.NFSClientIP)
+            self.driver.find_element_by_xpath("html/body/div[3]/div[3]/div/button[1]").click()
+            message = self.driver.find_element_by_xpath(".//*[@id='container']/div[4]/div[2]/span/span").text
+            Expected_message = "Authorized NFS clients have been added"
+            if message == Expected_message:
+                self.log.info("NFS client is assigned successfully")
+            else:
+                self.log.error("Exception while assigning client")
+        except Exception as e1:
+            print "Exception", str(e1)
+
+    def Activate_Volume(self):
+        try:
+            self.driver.find_element_by_xpath(".//*[@class='dashboard-content']/div/div/ul/li[4]").click()  # Click Volumes in the side pane
+            var = self.driver.find_element_by_xpath(".//*[@class='data-table tcc-leftbar']/div/div/table/tbody/tr/td/span/i")
+            self.driver.execute_script("$(arguments[0]).click();", var)                   # Expanding tree view
+            self.driver.find_element_by_xpath(".//*[@class='data-table tcc-leftbar']/div/div/table/tbody/tr[2]/td[1]/span").click()   # Click dest vol
+            self.driver.implicitly_wait(10)
+            time.sleep(15)
+            self.driver.find_element_by_xpath(".//*[@class='top-widgets tcc-topbar']/div[3]/span/i").click()     # Click CB actions menu
+            #self.driver.execute_script("$(arguments[0]).click();", action_menu)
+            # Click 'Migrate' link
+            self.driver.find_element_by_xpath(".//*[@class='activate']/a/span").click()
+            time.sleep(15)
+            self.driver.implicitly_wait(10)
+            # Entering ok in the confirmation dialog
+            self.driver.find_element_by_xpath(".//*[@class='ui-dialog-buttonpane ui-widget-content ui-helper-clearfix']/div/button[2]").click()
+            time.sleep(60)
+
+        except Exception as e:
+            print "Exception occurred", str(e)
+
     def close_browser(self):
         self.driver.quit()
         self.log.info("Closed Browser Successfully")
