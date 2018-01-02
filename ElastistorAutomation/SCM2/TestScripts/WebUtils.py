@@ -32,18 +32,17 @@ class WebUtils():
                 username = "username to login"
                 password = "password to login" '''
         try:
-            self.driver.implicitly_wait(20)
+            self.driver.implicitly_wait(2)
             self.driver.get(url)
-            self.driver.implicitly_wait(50)
-            emailElem = self.driver.find_element_by_xpath(".//*[@class='login-raw field username']/input")
-            ActionChains(self.driver).move_to_element(emailElem).send_keys(username).perform()
-            pyautogui.press("tab")
+            self.driver.implicitly_wait(5)
+            time.sleep(5)
+            self.driver.find_element_by_xpath("/html/body/div[3]/div[2]/div[3]/form/div[1]/input").send_keys(username)
+            self.driver.implicitly_wait(5)
             time.sleep(2)
-            pswd = self.driver.find_element_by_xpath(".//*[@class='login-raw field password']/input")
-            ActionChains(self.driver).move_to_element(pswd).send_keys(password).perform()
-            pyautogui.press("tab")
+            self.driver.find_element_by_xpath("/html/body/div[3]/div[2]/div[3]/form/div[2]/input").send_keys(password)
+            self.driver.implicitly_wait(5)
             time.sleep(2)
-            pyautogui.press("enter")
+            self.driver.find_element_by_xpath("/html/body/div[3]/div[2]/div[3]/form/div[3]/button").click()
             self.log.info("Logged into EC successfully")
         except NoSuchElementException as e1:
             self.log.error("While logging to EC "), str(e1)
