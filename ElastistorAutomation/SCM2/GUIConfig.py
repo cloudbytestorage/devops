@@ -16,9 +16,9 @@ class GuiConfig(object):
      dict['testsetloc'] = testsetloc
      dict['testtype'] = 'Regression'
      scmpath = os.getcwd()
-     url = "https://20.10.31.10/client/index.jsp"
+     url = "https://20.10.21.50/client/index.jsp"
      username = "admin"
-     password = "test"
+     password = "test123"
      SiteName = "CB"
      Location = "Bangalore"
      HaGroupName = "CB_HAG"
