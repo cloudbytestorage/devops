@@ -1066,14 +1066,15 @@ class WebUtils():
         self.log.info("Closed Browser Successfully")
 
 def main():
+    def main():
     username = "admin"
     password = "test"
-    url = "https://20.10.31.10/client/index.jsp"
+    url = "https://20.10.92.190/client/index.jsp"
     t = WebUtils()
     t.login_EC(url,username,password)
     time.sleep(5)
-    t.Add_Account("Sudarshan")
-    time.sleep(5)
+    #t.Add_Account("Sudarshan")
+    #time.sleep(5)
     '''
     t.Add_HA_Group(1,"SudHA","16.10.31.5","16.10.31.6")
     time.sleep(5)
