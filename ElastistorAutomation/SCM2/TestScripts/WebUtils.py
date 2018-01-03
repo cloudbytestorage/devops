@@ -131,6 +131,7 @@ class WebUtils():
         count = 0
         while count < n:
             count = count + 1
+            print count
             try:
                 time.sleep(5)
                 self.driver.implicitly_wait(100)
