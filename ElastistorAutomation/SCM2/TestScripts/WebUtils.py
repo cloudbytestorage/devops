@@ -24,6 +24,7 @@ class WebUtils():
         self.filename = os.path.abspath(__file__)
         self.log = Logging.getLogger(self.filename, 'Elastistor')
         self.log.info("Elastistor Automation Suite")
+        pyautogui.FAILSAFE = False
 
     def login_EC(self, url, username, password):
         '''Arguments:
