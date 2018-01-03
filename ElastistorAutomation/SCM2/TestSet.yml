@@ -1,8 +1,8 @@
 Regression:
 
-   ConfigDC: no
-   StorageConfig: no
-   RunIO: execute
+   ConfigDC: execute
+   StorageConfig: execute
+   RunIO: no
 
 
 
