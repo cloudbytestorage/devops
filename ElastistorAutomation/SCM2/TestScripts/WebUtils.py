@@ -1066,7 +1066,6 @@ class WebUtils():
         self.log.info("Closed Browser Successfully")
 
 def main():
-    
     username = "admin"
     password = "test"
     url = "https://20.10.92.190/client/index.jsp"
